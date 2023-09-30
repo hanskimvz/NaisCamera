@@ -1,0 +1,177 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Video & Audio</span> > <strong>Burnt in Text</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header pl-0 pr-0 pt-2 pb-2">
+								<canvas id="canvas" class="card-img-top "></canvas></div>
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="formEncoderPFEnable_stream_0" class="form-check-input" />
+									<span>Enable B-I Text</span>
+								</label>
+								<div class="form-group ml-2 mb-0">
+									<div class="form-inline mb-3">
+										<span class="col-md-2">Display items</span>
+										<label class="form-check">
+											<input type="checkbox" id="formBitxtDateEnable" class="form-check-input" />
+											<span class="form-check-label">Date</span>
+										</label>
+										<label class="form-check">
+											<input type="checkbox" id="formBitxtTimeEnable" class="form-check-input ml-2" />
+											<span class="form-check-label">Time</span>
+										</label>
+										<label class="form-check">
+											<input type="checkbox" id="formBitxtNameEnable" class="form-check-input ml-2" />
+											<span class="form-check-label">Name</span>
+										</label>
+									</div>
+									<span>Text format</span>
+									<div class="form-inline">
+										<span class="col-md-2">Name</span>
+										<input type="text" id="formBitxtName" class="form-control-custom mr-2" size="30" />
+										<label>(<span>Max 48 characters</span>)</label>
+									</div>
+									<label class="form-check mb-3 mt-2">
+										<input type="checkbox" id="formBitxtTimeMillisec" class="form-check-input"/>
+										<span class="form-check-label">Enable milliseconds for time display</span>
+									</label>
+									<span>Text position</span>
+									<div class="form-inline">
+										<span class="col-md-2">Date position</span>
+										<select id="formBitxtDatePosition" class="form-control-custom mr-2">
+											<option value="custom">Percent X,Y</option>
+											<option value="10:10">Top-Left</option>
+											<option value="10:90">Bottom-Left</option>
+											<option value="90:10">Top-Right</option>
+											<option value="90:90">Bottom-Right</option>
+										</select>
+										<div id="datePositionCustom" class="form-inline">
+											X : <input type="text" id="formBitxtDatePositionX" class="form-control-custom text-center" size="3" />%,
+											Y : <input type="text" id="formBitxtDatePositionY" class="form-control-custom text-center" size="3" />%
+										</div>
+									</div>
+									<div class="form-inline mt-2">
+										<span class="col-md-2">Time position</span>
+										<select id="formBitxtTimePosition" class="form-control-custom mr-2">
+											<option value="custom">Percent X,Y</option>
+											<option value="10:10">Top-Left</option>
+											<option value="10:90">Bottom-Left</option>
+											<option value="90:10">Top-Right</option>
+											<option value="90:90">Bottom-Right</option>
+										</select>
+										<div id="timePositionCustom" class="form-inline">
+											X : <input type="text" id="formBitxtTimePositionX" class="form-control-custom text-center" size="3" />%,
+											Y :	<input type="text" id="formBitxtTimePositionY" class="form-control-custom text-center" size="3" />% 
+										</div>
+									</div>
+									<div class="form-inline mt-2">
+										<span class="col-md-2">Nameposition</span>
+										<select id="formBitxtNamePosition" class="form-control-custom mr-2">
+											<option value="custom">Percent X,Y</option>
+											<option value="10:10">Top-Left</option>
+											<option value="10:90">Bottom-Left</option>
+											<option value="90:10">Top-Right</option>
+											<option value="90:90">Bottom-Right</option>
+										</select>
+										<div id="namePositionCustom" class="form-inline">
+											X :	<input type="text" id="formBitxtNamePositionX" class="form-control-custom text-center" size="3" />%,
+											Y : <input type="text" id="formBitxtNamePositionY" class="form-control-custom text-center" size="3" />%
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer text-center">
+								<button id="btnApply"  class="btn btn-sm btn-primary ">Apply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="viewToggle" class="box dsp_show_block text_cen"></div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+	var canvas = document.getElementById("canvas");
+	canvas.width=720;
+	canvas.height = 360;
+	var ctx = canvas.getContext('2d');
+	var img =  new Image();
+	// img.src="../images/demo_screen.jpg";
+	ctx.drawImage(img, 0,0,720,360);
+	function render(){
+		img.src="../images/demo_screen.jpg";
+		ctx.drawImage(img, 0,0,720,360);
+	}
+	function main() {
+		render();
+		requestAnimationFrame(main);
+	}
+	main();
+</script>
+
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+function loadBITConfig(){
+	// url = "/inc/query.php?page=tcpip";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=BITXT.Ch0";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['BITXT.Ch0.St0.enable']=='yes'){
+			$("#formEncoderPFEnable_stream_0").prop('checked', true);
+		}
+		if (response['BITXT.Ch0.St0.Date.enable']=='yes'){
+			$("#formBitxtDateEnable").prop('checked', true);
+		}
+		if (response['BITXT.Ch0.St0.Time.enable']=='yes'){
+			$("#formBitxtTimeEnable").prop('checked', true);
+		}
+		if (response['BITXT.Ch0.St0.Name.enable']=='yes'){
+			$("#formBitxNameEnable").prop('checked', true);
+		}
+		
+		$("#formBitxtName").val(response['BITXT.Ch0.St0.Name.text']);
+
+		if (response['BITXT.Ch0.St0.Time.millisec']=='yes'){
+			$("#formBitxtTimeMillisec").prop('checked', true);
+		}
+		ex = response['BITXT.Ch0.St0.Date.position'].split(":");
+		$("#formBitxtDatePositionX").val(ex[0].replace("%",""));
+		$("#formBitxtDatePositionY").val(ex[1].replace("%",""));
+		ex = response['BITXT.Ch0.St0.Time.position'].split(":");
+		$("#formBitxtTimePositionX").val(ex[0].replace("%",""));
+		$("#formBitxtTimePositionY").val(ex[1].replace("%",""));
+		ex = response['BITXT.Ch0.St0.Name.position'].split(":");
+		$("#formBitxtNamePositionX").val(ex[0].replace("%",""));
+		$("#formBitxtNamePositionY").val(ex[1].replace("%",""));
+
+		
+	});
+}
+loadBITConfig();
+
+</script>
+</html>

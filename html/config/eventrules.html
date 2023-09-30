@@ -1,0 +1,1060 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Event Configuration</span> > <strong>Event Rules</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check mb-0">
+									<input type="checkbox" id="formEventRulesEnable" class="form-check-input"/>
+									<span>Enable event rules</span>
+								</label>
+							</div>
+							<div class="card-footer text-center">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Event rule list</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-1">Use</span>
+										<span class="col-md-3">Name</span>
+										<span class="col-md-5">Description</span>
+									</div>
+									<select size="10" id="formProfileList" class="form-control-custom col-md-12 mb-2"></select>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnAdd" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Add</button>
+								<button id="btnCopy" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Copy</button>
+								<button id="btnModify" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#eventProfileModal">Modify</button>
+								<button id="btnRemove" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#eventProfileModal">Remove</button>
+							</div>
+						</div>
+					</div>
+					<div id="eventprofileinfo" class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Information</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-3">Enable profile</span>
+										<label  id="infoEventPFEnable"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Name</span>
+										<span id="infoEventPFName"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Description</span>
+										<label id="infoEventPFDescription"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Event source</span>
+										<label id="infoEventPFSources"></label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Event action</span>
+										<label id="infoEventPFNotification"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+
+	<div class="modal fade" id="eventProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document" >
+            <div class="modal-content">
+				<div class="modal-header mb-0">
+                    <h6 class="modal-title" id="exampleModalLabel">Event Profile Info</h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+				<div class="modal-body">
+					<div class="card col-lg-12">
+						<div class="card-header">
+							<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label class="form-check">
+									<input type="checkbox" id="formEventPFEnable" class="form-check-input"/>
+									<span>Enable rule</span>
+								</label>
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-3">Name</span>
+										<input type="text" id="formEventPFName" class="form-control-custom" size="30"/>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Description</span>
+										<input type="text" id="formEventPFDesc" class="form-control-custom" size="60"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab mt-2">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab"><span>Event Source</span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab"><span>Event Action</span></a></li>
+						</ul>
+						<div class="tab-content mt-1">
+							<div class="tab-pane active" id="tab-1" role="tabpanel">
+<!-- Trigger source -->
+<div class="card col-lg-12">
+	<div class="card-header">
+		<h6 class="m-0 font-weight-bold text-primary">Triggered by</h6>
+	</div>
+	<div class="card-body">
+		<span>Detectors</span>
+		<div class="form-group ml-3">
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFSensor" class="form-check-input"/>
+				<span>Sensor(DI #1)</span>
+			</label>
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFSourceAlarm" class="form-check-input"/>
+				<span>Alarm(DO #1)</span>
+			</label>
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFMotion" class="form-check-input"/>
+				<span>Motion detection</span>
+			</label>
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFVCA" class="form-check-input"/>
+				<span>VCA source</span>
+			</label>
+			<label class="form-check">
+				<input type="checkbox" id="eventSrcFace" class="form-check-input"/>
+				<span>Face detection</span>
+			</label>
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFNetworkLossDetect" class="form-check-input"/>
+				<span>Network loss/detect</span>
+			</label>
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFDayNightTransition" class="form-check-input"/>
+				<span>Day &amp; Night Transition</span>
+			</label>
+		</div>
+		
+		<span>System</span>
+		<div class="form-group ml-3">
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFIPchange" class="form-check-input"/>
+				<span>Network setting changed</span>
+			</label>
+		</div>
+		
+		<span>Time</span>
+		<div class="form-group ml-3">
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFSourceRecurrence" class="form-check-input"/>
+				<span>Recurrence</span>
+			</label>
+			<label class="form-check">
+				<input type="checkbox" id="formEventPFSourceSchedule" class="form-check-input"/>
+				<span>Schedule</span>
+			</label>
+		</div>
+	</div>
+</div>
+
+							</div>
+							<div class="tab-pane" id="tab-2" role="tabpanel">
+
+<!-- Trigger Actions -->
+<div class="card col-lg-12">
+	<div class="card-header">
+		<h6 class="m-0 font-weight-bold text-primary">When Triggered</h6>
+	</div>
+	<div class="card-body">
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFAlarm" class="form-check-input"/>
+			<span>Active alarm(DO #1)</span>
+		</label>
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFActiveRec" class="form-check-input"/>
+			<span>Recording</span>
+		</label>
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFSaveLog" class="form-check-input"/>
+			<span>Save event log</span>
+		</label>
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFEmail" class="form-check-input"/>
+			<span>Send e-mail notification</span>
+		</label>
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFFtp" class="form-check-input"/>
+			<span>Upload notification to FTP</span>
+		</label>
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFHttp" class="form-check-input"/>
+			<span>Send HTTP notification</span>
+		</label>	
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFTcpPush" class="form-check-input"/>
+			<span>Send TCP notification</span>
+		</label>
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFTcp" class="form-check-input"/>
+			<span>Send notification via TCP event server</span>
+		</label>	
+		<label class="form-check">
+			<input type="checkbox" id="formEventPFMulticast" class="form-check-input"/>
+			<span>Send multicast notification</span>
+		</label>
+	</div>
+</div>
+	
+	
+	
+							</div>
+						</div>
+					</div>
+				</div>
+
+                <div class="modal-footer">
+                    <button id="modalApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
+                    <button id="modalCancel" class="btn btn-secondary ml-2" data-dismiss="modal">Cancel</button>					
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+function loadEventProfile(){
+	// url = "/config/query_config.php?page=event_profile";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=EVENTPROFILE";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['EVENTPROFILE.enable'] == 'yes') {
+			$("#formEventRulesEnable").prop("checked", true);
+		}
+		for (i=0; i<response['EVENTPROFILE.nbrofcount']; i++){
+			$("select#formProfileList").append(
+				'<option value="' + response['EVENTPROFILE.P'+i+'.id'] +'">&nbsp;' + 
+					FillText(response['EVENTPROFILE.P'+i+'.enable'], 16, "left") + 
+					FillText(response['EVENTPROFILE.P'+i+'.name'], 50, "left") + 
+					FillText(response['EVENTPROFILE.P'+i+'.description'], 20, "left") + '</option>');
+		}
+	});
+}
+// $("#formSnmpVersion1").prop('checked')
+
+	// var formData = {};
+	// $.ajax({
+	// 	type: "POST",
+	// 	enctype: 'multipart/form-data',
+	// 	url: url,
+	// 	data: formData,
+	// 	processData: false,
+	// 	contentType: false,
+	// 	cache: false,
+	// 	timeout: 600000,
+	// 	success: function (response) {
+	// 		console.log("SUCCESS : ", response);
+	// 	},
+	// 	error: function (e) {
+	// 		console.log("ERROR : ", e);
+	// 	}
+	// });	
+loadEventProfile();
+
+</script>
+</html>
+<?php
+exit();
+?>
+							
+	<!-- <link type="text/css" href="../css/common.css" rel="stylesheet" /> -->
+</head>
+
+
+<div id="input_form">
+	<p id="msg_status"></p>
+	<fieldset>
+		<ul class="box">
+		
+			<li class="item"></li>
+			<li>
+				<div id="event_tab" class="tab_inline">
+					<ul class="css-tabs">
+						<li><a href="#event_sources" id="event_sources_link" class="04030117">Event Sources</a></li>
+						<li><a href="#event_notification" class="04030118">Event Action</a></li>
+					</ul>
+
+					<!--			 Event Sources			 -->
+					<div id="event_sources">
+						<ul class="box">
+							<li class="box-title"><h2 class="04030119">Triggered by</h2></li>
+							<li class="box-content">
+								<ul>
+									<li class="item">
+										<ul>
+											<li class="item-title 0403019921">Detectors</li>
+										</ul>
+									</li>
+									<li class="item di_Contents">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="formEventPFSensor" class="formEventPFSensor" />
+												<label for="formEventPFSensor"><span class="04030120"> Sensor(DI</span>#1)</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkDi" href="#" class="04030121 linkDi">Go to Sensor/Alarm Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubSensor" class="subsection">
+											<ul>
+												<li>
+													<input type="radio" name="formEventPFSensorTriger" id="formEventPFSensorTriger0" value="active" />
+													<label for="formEventPFSensorTriger0" class="04030187"> Active</label>
+													<input type="radio" name="formEventPFSensorTriger" id="formEventPFSensorTriger1" value="inactive" />
+													<label for="formEventPFSensorTriger1" class="04030188"> Inactive</label>
+													<input type="radio" name="formEventPFSensorTriger" id="formEventPFSensorTriger2" value="all" />
+													<label for="formEventPFSensorTriger2" class="04030189"> Both</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<div id="di_append"></div>
+									<li class="item do_Contents">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="formEventPFSourceAlarm" class="formEventPFSourceAlarm" />
+												<label for="formEventPFSourceAlarm"><span class="0403019923"> Alarm(DO</span>#1)</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkDi" href="#" class="0403019927 linkDi">Go to Sensor/Alarm Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubSourceAlarm" class="subsection">
+											<ul>
+												<li>
+													<input type="radio" name="formEventPFSourceAlarmTriger" id="formEventPFSourceAlarmTriger0" value="active" />
+													<label for="formEventPFSourceAlarmTriger0" class="0403019924"> Active</label>
+													<input type="radio" name="formEventPFSourceAlarmTriger" id="formEventPFSourceAlarmTriger1" value="inactive" />
+													<label for="formEventPFSourceAlarmTriger1" class="0403019925"> Inactive</label>
+													<input type="radio" name="formEventPFSourceAlarmTriger" id="formEventPFSourceAlarmTriger2" value="all" />
+													<label for="formEventPFSourceAlarmTriger2" class="0403019926"> Both</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<div id="sourcedo_append"></div>
+									<li id="pir" class="item">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="formERPir" />
+												<label for="formERPir" class="0403019962"> PIR</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkPir" href="#" class="0403019963">Go to PIR Configuration</a>
+												</span>
+											</li>
+										</ul>
+									</li>
+									<li class="item motionContents">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="formEventPFMotion" />
+												<label for="formEventPFMotion" class="04030122"> Motion detection</label>
+											</li>
+											<li class="float_r">
+												<span class="configlinkspan">
+													<a id="linkMD" href="#" class="04030123">Go to Motion Detection Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubMD" class="subsection">
+											<div class="sublist">
+												<ul>
+													<li id="reclistMD"></li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="item">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="formEventPFVCA" />
+												<label for="formEventPFVCA" class="04030126">VCA source</label>
+											</li>
+											<li class="float_r">
+												<span class="configlinkspan">
+													<a id="linkVCA" href="#" class="04030127">Go to VCA Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubVCA" class="subsection">
+											<ul>
+												<li>
+													<input type="checkbox" id="formEventPFAllVCAZone" />
+													<label for="formEventPFAllVCAZone" class="04030128">All rules</label>
+												</li>
+											</ul>
+											<!--
+											<span class="04030128">Zones :</span>
+											-->
+											  <div class="sublist">
+												<ul>
+												  <li id="reclistVCAZone" class="sublist"></li>
+												</ul>
+											  </div>
+											<ul>
+												<li>
+													<input type="checkbox" id="formEventPFVCACount"/>
+													<label for="formEventPFVCACount" class="04030191">All counters</label>
+												</li>
+											</ul>
+											<div class="sublist">
+											<ul>
+												<li id="reclistVCACounter" class="sublist"></li>
+											</ul>
+										  </div>
+											<ul>
+												<li>
+													<input type="checkbox" id="formEventPFVCAConfig" />
+													<label for="formEventPFVCAConfig" class="04030130">Configuration</label>
+												</li>
+											</ul>
+											<ul>
+												<li class='notTofDevice'>
+													<input type="checkbox" id="formEventPFVCATamper" />
+													<label for="formEventPFVCATamper" class="04030131">Tamper</label>
+												</li>
+											</ul>
+											<div class="sublist"></div>
+											<ul>
+												<li class="item-title 0403019961 sublist" id="formVcaEventTitle">VCA event option</li>
+											</ul>
+											<ul>
+												<li class="item-title 04030192" id="formVcaEventOption">Generated from :</li>
+												<li class="formVcaEventOption">
+													<input type="radio" name="formEventPFVCATrigger" id="formEventPFVCATrigger0" value="begin" />
+													<label for="formEventPFVCATrigger0" class="04030193"> Start of VCA event</label>
+													<input type="radio" name="formEventPFVCATrigger" id="formEventPFVCATrigger1" value="end" />
+													<label for="formEventPFVCATrigger1" class="04030194"> End of VCA event</label>
+													<input type="radio" name="formEventPFVCATrigger" id="formEventPFVCATrigger2" value="all" />
+													<label for="formEventPFVCATrigger2" class="04030195"> Start/End of VCA event</label>
+												</li>
+											</ul>
+
+											<ul>
+												<li>
+													<input type="checkbox" id="convertVcaToMD" />
+													<label for="convertVcaToMD" class="0403019944">Convert VCA event to MD event</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="item faceContents">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="eventSrcFace" />
+												<label for="eventSrcFace" class="0403019945"> Face detection</label>
+											</li>
+											<li class="float_r">
+												<span class="configlinkspan">
+													<a id="linkFaceDetection" href="#" class="0403019948">Go to Face Detection Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="eventSrcFaceSub" class="subsection dsp_hide">
+											<div class="sublist">
+												<ul>
+													<li id="listFace"></li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="item">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="formEventPFNetworkLossDetect" />
+												<label for="formEventPFNetworkLossDetect" class="0403019934">Network loss/detect</label>
+											</li>
+											<li class="float_r">
+												<span class="configlinkspan">
+													<a id="linkNetloss" href="#" class="0403019935">Go to Network Loss Configuration</a>
+												</span>
+											</li>
+										</ul>
+									</li>
+									<li class="item dn_Contents">
+										<ul class="detectorsContents">
+											<li>
+												<input type="checkbox" id="formEventPFDayNightTransition" />
+												<label for="formEventPFDayNightTransition" class="0403019958">Day &amp; Night Transition</label>
+											</li>
+											<li class="float_r">
+												<span class="configlinkspan">
+													<a id="linkCamera" href="#" class="0403019959">Go to Day &amp; Night Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubDayNightTransition" class="subsection">
+											<ul>
+												<li>
+													<input type="radio" name="formEventPFFDayNightRadio" id="formEventPFDayNightRadio0" value="dtn" />
+													<label for="formEventPFDayNightRadio0" class="0403019990"> Day to Night</label>
+													<input type="radio" name="formEventPFFDayNightRadio" id="formEventPFDayNightRadio1" value="ntd" />
+													<label for="formEventPFDayNightRadio1" class="0403019991"> Night to Day</label>
+													<input type="radio" name="formEventPFFDayNightRadio" id="formEventPFDayNightRadio2" value="both" />
+													<label for="formEventPFDayNightRadio2" class="0403019992"> Both</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="item">
+										<ul>
+											<li class="item-title 0403019922">System</li>
+										</ul>
+									</li>
+									<li class="item VideoStatusContents">
+										<ul class="systemContents">
+											<li>
+												<input type="checkbox" id="formEventPFVideoStatus" />
+												<label for="formEventPFVideoStatus" class="04030175">Video loss/detect</label>
+											</li>
+										</ul>
+										<div id="formEventPFSubVideo" class="subsection">
+											<ul>
+												<li>
+													<input type="radio" name="formEventPFVideoTriger" id="formEventPFVideoTriger0" value="loss" />
+													<label for="formEventPFVideoTriger0" class="0403019936"> Loss</label>
+													<input type="radio" name="formEventPFVideoTriger" id="formEventPFVideoTriger1" value="detect" />
+													<label for="formEventPFVideoTriger1" class="0403019937"> Detect</label>
+													<input type="radio" name="formEventPFVideoTriger" id="formEventPFVideoTriger2" value="all" />
+													<label for="formEventPFVideoTriger2" class="0403019938"> Both</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="item">
+										<ul class="systemContents">
+											<li>
+												<input type="checkbox" id="formEventPFIPchange" />
+												<label for="formEventPFIPchange" class="04030134">Network setting changed</label>
+											</li>
+										</ul>
+									</li>
+									<li class="item dsp_hide">
+										<ul class="systemContents">
+											<li>
+												<input type="checkbox" id="formEventPFTemperature" />
+												<label for="formEventPFTemperature" class="04030135">Fan/Heater operation changed</label>
+											</li>
+										</ul>
+									</li>
+									<li class="item storageContents dsp_hide">
+										<ul class="systemContents">
+											<li>
+												<input type="checkbox" id="storageStatus" />
+												<label for="storageStatus" class="0403019946">Storage error</label>
+											</li>
+										</ul>
+									</li>
+									<li class="item apChangedContents dsp_hide">
+										<ul class="systemContents">
+											<li>
+												<input type="checkbox" id="apChangedStatus" />
+												<label for="apChangedStatus" class="0403019952">AP will be changed</label>
+											</li>
+										</ul>
+									</li>
+									<li class="item" style="display:none">
+										<ul>
+											<li>
+												<input type="checkbox" id="formCompexRules" />
+												<label for="formCompexRules" class="04030196">Complex rules</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkComplexRl" href="#" class="04030197">Go to Complex Rule Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formSubComplexRules" class="subsection">
+											<div class="sublist">
+												<ul>
+													<li id="reclistComplexRules" class="sublist"></li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="item">
+										<ul>
+											<li class="item-title 0403019928">Time</li>
+										</ul>
+									</li>
+									<li class="item">
+										<ul class="scheduleContents">
+											<li>
+												<input type="checkbox" id="formEventPFSourceRecurrence" />
+												<label for="formEventPFSourceRecurrence"><span class="0403019929"> Recurrence</span></label>
+											</li>
+										</ul>
+										<div id="formEventPFSubSourceRecurrence" class="subsection">
+											<ul>
+												<li class="0403019930">Recurrence period :</li>
+												<li>
+													<input type="text" size="5" id="formEventPFRecurrencePeriod" />
+												</li>
+												<li>
+													<select id="formRecurrenceUnit">
+														<option value="day"> day(s)</option>
+														<option value="hour"> hour(s)</option>
+														<option value="minute"> minute(s)</option>
+													</select>
+												</li>
+												<li>
+													<label >(1 ... 1440)</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="item">
+										<ul class="scheduleContents">
+											<li>
+												<input type="checkbox" id="formEventPFSourceSchedule" />
+												<label for="formEventPFSourceSchedule"><span class="0403019931"> Schedule</span></label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkSchedule" href="#" class="0403019932">Go to Schedule Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubSourceSchedule" class="subsection">
+											<ul>
+												<li class="0403019933">Select schedule :</li>
+												<li>
+													<select id="formScheduleList">
+													</select>
+												</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!--			Event Sources	END				-->
+
+					<!--			 Event Action				 -->
+					<div id="event_notification">
+						<ul class="box">
+							<li class="box-title"><h2 class="04030137">When Triggered</h2></li>
+							<li class="box-content">
+								<ul>
+									<li class="item do_Contents">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFAlarm" />
+												<label for="formEventPFAlarm"><span class="04030138">Active alarm(DO</span>#1)</label>
+											</li>
+											<li id="listDoLink" class="float_r">
+												<span>
+													<a id="linkDo" href="#" class="04030139 linkDo">Go to Sensor/Alarm Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubDisDo" class="formEventPFSubDisDo dsp_hide">
+											<ul>
+												<li>
+													<input type="radio" name="edgeLevelTrigger" id="edgeLevelTrigger0" value="edge" />
+													<label for="edgeLevelTrigger0" class="0403019954"> Hold the status for the duration</label>
+													<input type="radio" name="edgeLevelTrigger" id="edgeLevelTrigger1" value="level" />
+													<label for="edgeLevelTrigger1" class="0403019955"> Synchronize with the event source(s)</label>
+												</li>
+											</ul>
+											<ul class="activeInactiveContents">
+												<li class="margin_left_46 margin_top_small_step3 0403019956">Status :</li>
+												<li class="margin_left_step4">
+													<input type="radio" name="formEventPFActionAlarmTriger" id="formEventPFActionAlarmTriger0" value="active" />
+													<label for="formEventPFActionAlarmTriger0" class="0403019939"> Active</label>
+													<input type="radio" name="formEventPFActionAlarmTriger" id="formEventPFActionAlarmTriger1" value="inactive" />
+													<label for="formEventPFActionAlarmTriger1" class="0403019940"> Inactive</label>
+												</li>
+											</ul>
+											<ul class="edgeDurationContents">
+												<li class="04030140 durationTitle_contents margin_left_46">Duration :</li>
+												<li><div id="sliderEventPFDuration" class="slider-bar"></div></li>
+												<li>
+													<input type="text" size="5" id="formEventPFDuration" class="text_cen"/>
+													<label class="04030141">(0 ... 600 sec)</label>
+												</li>
+												<li class="margin_top_small_step2_reverse">
+													<input type="checkbox" id="formEventPFUnlimited"/>
+													<label for="formEventPFUnlimited" class="04030142"> Unlimited</label>
+												</li>
+											</ul>
+											<ul class="levelMinHoldOnTimeContents">
+												<li class="margin_right_step2 margin_top_small_step3 margin_left_46 0403019953">Min hold-on time :</li>
+												<li><div id="sliderMinHoldOnTime" class="slider-bar"></div></li>
+												<li>
+													<input type="text" size="5" id="textMinHoldOnTime" class="text_cen"/>
+													<label>(1 ... 600 sec)</label>
+												</li>
+												<li class="margin_top_small_step2_reverse">
+													<input type="checkbox" id="minHoldOnTimeUnlimited"/>
+													<label for="minHoldOnTimeUnlimited" class="04030142"> Unlimited</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<div id="do_append"></div>
+									<li class="item RecordingContents">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFActiveRec" />
+												<label for="formEventPFActiveRec" class="04030168"> Recording</label>
+											</li>
+											<li id="" class="float_r">
+												<span>
+													<a id="linkRec" href="#" class="04030171">Go to Recording Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubRecording" class="dsp_hide">
+											<ul>
+												<li id="linkRecording" class="0403019941">To use Recording, make sure that the recording type is event.</li>
+											</ul>
+											<ul>
+												<li class="interval_contents 04030169">Pre interval :</li>
+												<li><div id="sliderEventPFRecPreInterval" class="slider-bar"></div></li>
+												<li>
+													<input type="text" size="5" id="formEventPFRecPreInterval" class="text_cen"/>
+													<label class="04030172">(0 ... 5 sec, 3)</label>
+												</li>
+											</ul>
+											<ul>
+												<li class="interval_contents 04030170">Post interval :</li>
+												<li><div id="sliderEventPFRecPostInterval" class="slider-bar"></div></li>
+												<li>
+													<input type="text" size="5" id="formEventPFRecPostInterval" class="text_cen"/>
+													<label class="04030173">(0 ... 60 sec, 10)</label>
+												</li>
+											</ul>
+											<ul>
+												<li>
+													<input type="checkbox" id="recSubThumbnail" />
+													<label for="recSubThumbnail" class="0403019947">Attach thumbnail(or face image)</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="item SaveEventLogContents">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFSaveLog" />
+												<label for="formEventPFSaveLog" class="04030176"> Save event log</label>
+											</li>
+										</ul>
+									</li>
+									<li class="item">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFEmail"/>
+												<label for="formEventPFEmail" class="04030143">Send e-mail notification</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkEmailRecipient" href="#" class="04030144">Go to E-Mail Recipient Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubDisEmail" class="dsp_hide">
+											<ul>
+												<li>
+													<input type="checkbox" id="emailSubThumbnail" />
+													<label for="emailSubThumbnail" class="0403019947">Attach thumbnail(or face image)</label>
+												</li>
+											</ul>
+											<ul>
+												<li>
+													<input type="checkbox" id="emailSubSnapshot" />
+													<label for="emailSubSnapshot" class="04030145">Attach snapshot</label>
+												</li>
+											</ul>
+											<ul>
+												<li class="width_step18 adjustLable 04030177">Number of pre image :</li>
+												<li class="formEventPFPreSlider"><div id="sliderEventPFPreImg" class="slider-bar"></div></li>
+												<li class="formEventPFPreText">
+													<input type="text" size="5" id="formEventPFPreImg" class="text_cen"/>
+													<label class="adjustLable">(0 ... 8)</label>
+												</li>
+											</ul>
+											<ul>
+												<li class="width_step18 adjustLable 04030181">Number of post image :</li>
+												<li class="formEventPFPostSlider"><div id="sliderEventPFPostImg" class="slider-bar"></div></li>
+												<li class="formEventPFPostText">
+													<input type="text" size="5" id="formEventPFPostImg" class="text_cen"/>
+													<label class="adjustLable">(1 ... 8)</label>
+												</li>
+											</ul>
+											<ul>
+												<li class="formEventPFfirstExp linkStreamSnap 0403019951">To use pre/post Image, make sure that the snapshot or MJPEG stream is enabled.</li>
+												<li class="formEventPFfirstExp noti_msg 0403019950">* The sum of pre image and post image can not exceed 8.</li>
+											</ul>
+											<ul>
+												<li id="eventprofile_to" class="04030146">To :</li>
+												<li>
+													<input type="text" id="emailSubTo" />
+												</li>
+											</ul>
+											<ul>
+												<li id="eventprofile_subject" class="04030147">Subject :</li>
+												<li>
+													<input type="text" id="emailSubSubject" />
+												</li>
+											</ul>
+											<div>
+												<ul>
+													<li id="reclistEmail"></li>
+												</ul>
+											</div>											
+										</div>
+									</li>
+									<li class="item">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFFtp"/>
+												<label for="formEventPFFtp" class="04030149">Upload notification to FTP</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkFtpNotification" href="#" class="04030150">Go to FTP Notification Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubDisFtp" class="dsp_hide">
+											<ul>
+												<li>
+													<input type="checkbox" id="ftpSubThumbnail" />
+													<label for="ftpSubThumbnail" class="0403019947">Attach thumbnail(or face image)</label>
+												</li>
+											</ul>
+											<ul>
+												<li>
+													<input type="checkbox" id="ftpSubSnapshot" />
+													<label for="ftpSubSnapshot" class="0403015001">Attach snapshot</label>
+												</li>
+											</ul>
+											<ul>
+												<li>
+													<input type="checkbox" id="ftpSubText" />
+													<label for="ftpSubText" class="04030151">Attach a text message</label>
+												</li>
+											</ul>
+											<div>
+												<ul>
+													<li id="reclistFtp"></li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="item">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFHttp"/>
+												<label for="formEventPFHttp" class="04030152">Send HTTP notification</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkHttpNotification" href="#" class="04030153">Go to HTTP Notification Configuration</a>
+												</span>
+											</li>
+										</ul>
+										<div id="formEventPFSubDisHttp" class="dsp_hide">
+											<ul>
+												<li>
+													<input type="radio" name="httpMethod" id="httpMethod0" value="GET" />
+													<label for="httpMethod0" class=""> GET</label>
+													<input type="radio" name="httpMethod" id="httpMethod1" value="POST" />
+													<label for="httpMethod1" class=""> POST</label>
+												</li>
+											</ul>
+											<ul class="postContents">
+												<ul>
+													<li>
+														<input type="checkbox" id="httpSubThumbnail" />
+														<label for="httpSubThumbnail" class="0403019947">Attach thumbnail(or face image)</label>
+													</li>
+												</ul>
+												<ul>
+													<li>
+														<input type="checkbox" id="httpSubSnapshot" />
+														<label for="httpSubSnapshot" class="0403019960">Attach snapshot</label>
+													</li>
+												</ul>
+											</ul>
+											<div>
+												<ul>
+													<li id="reclistHttp"></li>
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="item">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFTcpPush"/>
+												<label for="formEventPFTcpPush" class="04030154">Send TCP notification</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkTcpNotification" href="#" class="04030155">Go to TCP Notification Configuration</a>
+												</span>
+											</li>
+										</ul>
+									</li>
+									<li class="item">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFTcp"/>
+												<label for="formEventPFTcp" class="04030156">Send notification via TCP event server</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkTcpServer" href="#" class="04030157">Go to TCP Server Configuration</a>
+												</span>
+											</li>
+										</ul>
+									</li>
+									<li class="item">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFMulticast"/>
+												<label for="formEventPFMulticast" class="04030158">Send multicast notification</label>
+											</li>
+											<li class="float_r">
+												<span>
+													<a id="linkMulticastNotification" href="#" class="04030159">Go to Multicast Notification Configuration</a>
+												</span>
+											</li>
+										</ul>
+									</li>
+									<li class="item actionPtz">
+										<ul>
+											<li>
+												<input type="checkbox" id="formEventPFPTZ"/>
+												<label for="formEventPFPTZ" class="04030174">Active PTZ</label>
+											</li>
+										</ul>
+										<div id="formEventPFSubPTZ" class="dsp_hide">
+											<div>
+												<ul>
+													<li>
+														<select id="ptzlist"></select>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!--			Event Action	 END				 -->
+				</div>
+			</li>
+		</ul>
+		<div class="box settingButtonDialog text_right">
+			<button id="btnDialogOK"><span class="0403019915">OK</span></button>
+			<button id="btnDialogCancel"><span class="0403019916">Cancel</span></button>
+		</div>
+	</fieldset>
+</div>
+<!-- Start demo -->
+<div class="demo">
+	<div class="toggler">
+		<div id="effect" class="ui-widget-content ui-corner-all dsp_hide">
+			<ul class="box">
+				<li class="box-title"><h2 class="04030160">Information</h2></li>
+				<li class="box-content">
+					<ul>
+						<li class="item">
+							<ul>
+								<li class="item-title 04030161">Enable profile :</li>
+								<li id="infoEventPFEnable"></li>
+							</ul>
+						</li>
+						<li class="item">
+							<ul>
+								<li class="item-title 04030162">Name :</li>
+								<li id="infoEventPFName"></li>
+							</ul>
+						</li>
+						<li class="item">
+							<ul>
+								<li class="item-title 04030163">Description :</li>
+								<li id="infoEventPFDescription"></li>
+							</ul>
+						</li>
+						<li class="item">
+							<ul>
+								<li class="item-title 04030164">Event sources :</li>
+								<li id="infoEventPFSources"></li>
+							</ul>
+						</li>
+						<li class="item">
+							<ul>
+								<li class="item-title 04030165">Event action :</li>
+								<li id="infoEventPFNotification"></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- End demo -->
+<div id='debug_console'></div>
+</body>
+</html>

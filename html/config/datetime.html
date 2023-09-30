@@ -1,0 +1,170 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<style>
+.btn-white{
+    background-color:#eee;
+    width:160px;
+}
+</style>
+<?php
+$body = file_get_contents("/root/data/setting/zoneinfo/tz.json");
+$arr_tz = json_decode($body, True);
+$sel_tz = '';
+foreach($arr_tz as $tz){
+	// print_r($tz);
+	$sel_tz .= '<option value="'.$tz['tz'].'">'.$tz['description'].'</option>';
+	$sel_tz .= "\r\n";
+}
+
+$now = date("Y/m/d H:i:s");
+// print $now;
+
+?>
+<div id="content">
+	<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>Date & Time</strong></p>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="card col-lg-6">
+				<div class="card-header mb-0 form-inline" style="border-bottom:0px;">
+					<h6 class="mb-0 font-weight-bold text-primary">Current Camera Time</h6>
+					<span class="ml-4" id="server_clock"><?=$now?></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-2">
+			<div class="card col-lg-6">
+				<div class="card-header mb-0">
+					<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+				</div>
+				<div class="card-body">
+					<div class="form-group form-inline">
+						<span class="col-md-2">Time zone</span>
+						<select id="formTzName" class="form-control-custom"><?=$sel_tz?></select>
+					</div>
+					<div class="form-group">
+						<div class="float-right">
+							<a id="linkNtp" href="#"><span>Go to NTP configuration</span></a>
+						</div>
+						<div class="form-inline">
+							<span class="col-md-3">Sync source</span>
+							<label class="form-check">
+								<input type="checkbox" class="form-check-input" id="formSyncSource" />
+								<span>NTP server</span>
+							</label>
+						</div>
+						<div class="form-inline">
+							<span class="col-md-3">Date & Time format</span>
+							<span>predefined</span>
+							<select id="formDateFormat" class="ml-2 form-control-custom" style="width:160px">
+								<option value="yyyymmdd">YYYY-MM-DD</option>
+								<option value="mmddyyyy">MM-DD-YYYY</option>
+								<option value="ddmmyyyy">DD-MM-YYYY</option>
+							</select>
+							<label class="form-check ml-3">
+								<input type="checkbox" id="formTimehour" class="form-check-input" />
+								<span>24-hour</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer text-center">
+					<button class="btn btn-sm btn-primary" id="btnApply">Apply</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-2">
+			<div class="card col-lg-6">
+				<div class="card-header mb-0">
+					<h6 class="m-0 font-weight-bold text-primary">New camera time</span></h6>
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<div class="form-inline">
+							<span class="col-md-2">Source</span>
+							<label class="form-check">	
+								<input type="radio" name="formSyncMethod" id="formSyncMethod0" value="pc" class="form-check-input"/>
+								<span>Set this computer's Datetime</span>
+							</label>
+						</div>
+						<div class="form-inline">
+							<span class="col-md-2 mr-4"></span>
+							<label id="machineTime">2020 01 01 12 00 00</label>
+						</div>
+						<div class="form-inline mt-2">
+							<span class="col-md-2"></span>
+							<label class="form-check">
+								<input type="radio" name="formSyncMethod" id="formSyncMethod1" value="ntp" class="form-check-input"/>
+								<span>Set with NTP server</span>
+							</label>
+						</div>
+						<div class="form-inline">
+							<span class="col-md-2 mr-4"></span>
+							<span>NTP server</span>:<label id="formNtpServer" class="ml-2">time.windows.com</label>
+						</div>
+						<div class="form-inline mt-2">
+							<span class="col-md-2"></span>
+							<label class="form-check">
+								<input type="radio" name="formSyncMethod" id="formSyncMethod2" value="menu" class="form-check-input" />
+								<span>Set manually</span>
+							</label>
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-2 mr-4"></span>
+							<span class="col-md-1">Date</span>
+							<input id="formDate" type="text" class="form-control-custom mr-2" /> 
+							<span>MM-DD-YYYY</span>
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-2 mr-4"></span>
+							<span class="col-md-1">Time</span>
+							<input id="formTime" type="text"  class="form-control-custom mr-2" />
+							<label>HH:MM:SS(<span>24-Hour</span>)</label>
+						</div>
+					</div> 
+				</div>
+				<div class="card-footer text-center">
+					<button id="btnSet" class="btn btn-sm btn-primary">Apply</button>
+				</div>							
+			</div>
+		</div>
+	</div>
+</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+function loadDatetimeConfig() {
+url = "/uapi-cgi/param.cgi?action=list&format=json&group=system.datetime";
+	console.log(url);
+	$.getJSON(url, function(response) {
+		console.log(response);
+		$('#formTzName').val(response.system.datetime.tz.name);
+		if(response.system.datetime.syncsource=='ntp') {
+			$('#formSyncSource').prop("checked", true);
+		}
+		$('#formDateFormat').val(response.system.datetime.date.format);
+	});
+}
+loadDatetimeConfig();
+// $("#basic").addClass("show");
+// $("#datetime").addClass("active");
+</script>
+</html>

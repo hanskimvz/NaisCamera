@@ -1,0 +1,189 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+			<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Import/Export</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">VCA Configuration Export</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="form-inline">
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expGeneral" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">General</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expZones" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Zones</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expRules" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Rules</span>
+										</label>	
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expCounters" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Counters</span>
+										</label>
+
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expCalibration" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Calibration</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expClass" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Classification</span>
+										</label>									
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expTamper" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Tamper</span>
+										</label>									
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expBIA" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">BIA</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expPTZ" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">PTZ</span>
+										</label>										
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="expScene" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Scene Change</span>
+										</label>
+									</div>
+								</div>								
+								<button id='btnApply' class="btn btn-sm btn-warning">Start Export</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">VCA Configuration Import</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="form-inline">
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impGeneral" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">General</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impZones" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Zones</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impRules" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Rules</span>
+										</label>	
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impCounters" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Counters</span>
+										</label>
+
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impCalibration" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Calibration</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impClass" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Classification</span>
+										</label>									
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impTamper" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Tamper</span>
+										</label>									
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impBIA" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">BIA</span>
+										</label>
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impPTZ" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">PTZ</span>
+										</label>										
+										<label class="form-check ml-1 mr-1">
+											<input type="checkbox" id="impScene" name="xmltick" class="form-check-input" />
+											<span class="form-check-label">Scene Change</span>
+										</label>
+									</div>
+								</div>
+								<span class="col-sm-2 form-label" for="fileData">Import from</span>
+								<input type="file" id="fileData" />
+								<button id="btnStart" class="btn btn-sm btn-info">Start Import</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="debug_console"></div>
+	<div id='loadingMessage' hidden>
+		<img id='loadingImage' src='/images/loading.gif'></img>
+		<span>Loading Data - Please Wait</span>
+	</div>
+
+
+
+
+
+<!-- <div class="form-group">
+	<label for="InputSubject1">파일첨부</label>
+	<input id="fileInput" filestyle="" type="file" data-class-button="btn btn-default" data-class-input="form-control" data-button-text="" data-icon-name="fa fa-upload" class="form-control" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+	<div class="bootstrap-filestyle input-group">
+		<input type="text" id="userfile" class="form-control" name="userfile" disabled="">
+		<span class="group-span-filestyle input-group-btn" tabindex="0">
+			<label for="fileInput" class="btn btn-default">
+				<span class="glyphicon fa fa-upload"></span>
+			</label>
+		</span>
+	</div>
+</div>
+	 -->
+
+
+
+</body>
+<?=$footer?>
+
+<!-- <script type="text/javascript">
+$(document).ready(function(){
+	$("#fileData").on('change', function(){  // 값이 변경되면
+		if(window.FileReader){  // modern browser
+			var filename = $(this)[0].files[0].name;
+		} else {  // old IE
+ 			var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+		}
+
+ 		// 추출한 파일명 삽입
+		$("#userfile").val(filename);
+	});
+});
+</script> -->
+
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+</script>
+</html>

@@ -1,0 +1,260 @@
+{
+    "enable": "yes",
+    "nbrofchannel": "1",
+    "calibration": {
+        "periodic": {
+            "enable": "no",
+            "endhour": "23",
+            "endminute": "59",
+            "hour": "0",
+            "interval": "1440",
+            "minute": "0"
+        }
+    },
+    "ch0": {
+        "enable": "yes",
+        "autorun": {
+            "enable": "no",
+            "preset": "",
+            "timeunit": "sec",
+            "waittime": "30"
+        },
+        "preset": {
+            "defaultvcaprofile": "0",
+            "list": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+            "nbrofpreset": "16",
+            "p0": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "0",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p1": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "1",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p10": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "10",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p11": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "11",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p12": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "12",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p13": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "13",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p14": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "14",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p15": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "15",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p2": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "2",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p3": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "3",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p4": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "4",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p5": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "5",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p6": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "6",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p7": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "7",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p8": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "8",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            },
+            "p9": {
+                "description": "",
+                "enable": "no",
+                "focus": "0",
+                "name": "",
+                "number": "9",
+                "pan": "0",
+                "tilt": "0",
+                "vcaprofile": "-1",
+                "zoom": "0"
+            }
+        },
+        "schedule": {
+            "list": "0,1,2,3",
+            "nbrofschedule": "4",
+            "s0": {
+                "day": "",
+                "enable": "yes",
+                "preset": "0",
+                "time": "00:00:00"
+            },
+            "s1": {
+                "day": "",
+                "enable": "yes",
+                "preset": "0",
+                "time": "00:00:00"
+            },
+            "s2": {
+                "day": "",
+                "enable": "yes",
+                "preset": "0",
+                "time": "00:00:00"
+            },
+            "s3": {
+                "day": "",
+                "enable": "yes",
+                "preset": "0",
+                "time": "00:00:00"
+            }
+        }
+    },
+    "default": {
+        "preset": {
+            "description": "",
+            "enable": "yes",
+            "focus": "0",
+            "name": "",
+            "number": "0",
+            "pan": "0",
+            "tilt": "0",
+            "vcaprofile": "-1",
+            "zoom": "0"
+        },
+        "schedule": {
+            "day": "",
+            "enable": "yes",
+            "preset": "0",
+            "time": "0:00:00"
+        }
+    },
+    "driver": {
+        "nbrofchannel": "1",
+        "ch0": {
+            "address": "1",
+            "enable": "yes",
+            "port": "1",
+            "protocol": "pelco-d.ptzs"
+        }
+    }
+}

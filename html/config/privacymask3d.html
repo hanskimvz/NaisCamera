@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<title></title>
+	<link type="text/css" href="../css/common.css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.mouse.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.slider.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/jquery.browser.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/defstring/defregexp.js"></script>
+	<script type="text/javascript" src="../js/utils/control.js"></script>
+	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+	<script type="text/javascript" src="../js/uapi.player.js"></script>
+	<script type="text/javascript" src="../js/activexobject.js"></script>
+	<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
+	<script type="text/javascript" src="../js/config/privacymask3d.js"></script>
+	<script type="text/javascript" src="../js/config/privacymask3d_activex.js"></script>
+</head>
+
+<body id="config-page">
+	<p class="menuLocationInfo">
+		<span id="parentpagename" class="04020901">Setup &gt; Video &amp; Audio &gt;</span>
+		<span id="parentpagename_video" class="04020922" style="display:none;">Setup &gt; Video &gt;</span>
+		<span id="pagename" class="04020902">Privacy Mask</span>
+	</p>
+
+	<ul class="box">
+		<li class="box-title"><h2 class="04020903">View</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item nocolor">
+					<ul>
+						<li id="ptzContents" class="margin_right_step1">
+							<div id="panel_ptz">
+								<dl class="box noIEContents">
+									<dd class="box-title" class=""><h2 class="04020904">Movement</h2></dd>
+									<dd id="ptz" class="box-content">
+										<dl>
+											<dd id="ptz_panel">
+												<dl>
+													<dd id="pt_lu" class="ui-button"></dd>
+													<dd id="pt_cu" class="ui-button"></dd>
+													<dd id="pt_ru" class="ui-button"></dd>
+													<dd id="pt_lm" class="ui-button"></dd>
+													<dd id="pt_cm" class="ui-button"></dd>
+													<dd id="pt_rm" class="ui-button"></dd>
+													<dd id="pt_ld" class="ui-button"></dd>
+													<dd id="pt_cd" class="ui-button"></dd>
+													<dd id="pt_rd" class="ui-button"></dd>
+												</dl>
+											</dd>
+											<dd id="ptz_zoomfocus">
+												<dl>
+													<dd id="main_ptz_zoom" class="04020905">Zoom</dd>
+													<dd>
+														<img id="_zIn" class="ui-button" width="16" height="16" src="../images/pt_fnear.gif" alt="zoom in" />
+														<img id="_zOut" class="ui-button" width="16" height="16" src="../images/pt_ffar.gif" alt="zoom out" />
+													</dd>
+												</dl>
+												<dl>
+													<dd id="main_ptz_focus" class="04020906">Focus</dd>
+													<dd>
+														<img id="_fNear" class="ui-button" width="16" height="16" src="../images/pt_fnear.gif" alt="focus near" />
+														<img id="_fFar" class="ui-button" width="16" height="16" src="../images/pt_ffar.gif" alt="focus far" />
+													</dd>
+												</dl>
+											</dd>
+										</dl>
+									</dd>
+								</dl>
+								<dl class="box noIEContents">
+									<dd class="box-title"><h2 class="04020907">Speed</h2></dd>
+									<dd class="box-content">
+										<dl>
+											<dd id="ptz_speedbar">
+												<dl>
+													<dd><div id="slider_speedbar"></div></dd>
+													<dd>
+														<input type="text" size="3" id="text_speedbar" value=20></input>
+													</dd>
+												</dl>
+											</dd>
+										</dl>
+									</dd>
+								</dl>
+								<dl class="box ptz_info noIEContents">
+									<dd class="box-title"><h2 class="04020908">Information</h2></dd>
+									<dd class="box-content">
+										<dl>
+											<div><span class="04020909">Center: </span><div id="default_center"></div></div>
+											<div><span class="04020910">Range: </span><div id="default_range"></div></div>
+										</dl>
+									</dd>
+								</dl>
+							</div>
+						</li>
+						<li id="screen" class="float_left"></li>
+						<li>
+							<span class="noIEMsg 04020709">* Privacy mask configuration is only supported in Internet Explorer.</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class="box noIEContents">
+		<li class="box-title"><h2 class="04020911">Privacy Mask Zones</h2></li>
+		<li>
+			<ul id="infoTable">
+				<li class="item nocolor">
+					<ul>
+						<table id="users">
+							<thead>
+								<tr>
+									<th class="04020912">Use</th>
+									<th class="04020913">Zone ID</th>
+									<th class="04020914">Name</th>
+									<th> <span class="04020915">Position</span><br>(P:0...360, T:-25...70, W:1...40, H:1...30)</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<div id="debug_console"></div>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Event Configuration</span> > <strong>Schedule</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Schedule list</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-1">ID</span>
+										<span class="col-md-3">Name</span>
+										<span class="col-md-4">Description</span>
+									</div>
+									<select size="8" id="formScheduleList" class="form-control-custom col-md-12" onClick="viewSchedule(this)"><option></option></select>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnAdd" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#scheduleModal">Add</button>
+								<button id="btnModify" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#scheduleModal">Modify</button>
+								<button id="btnRemove" class="btn btn-sm btn-secondary" >Remove</span></button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Information</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-2">Name</span>
+										<label id="infoScheduleName"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Description</span>
+										<label id="infoScheduleDes"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Start date</span>
+										<label id="infoStartDate"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">End date</span>
+										<label id="infoEndDate"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Time</span>
+										<label id="infoTime"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Week day</span>
+										<label id="infoDays"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" role="document" >
+		<div class="modal-content">
+			<div class="modal-header mb-0">
+				<h6 class="modal-title" id="exampleModalLabel">Schedule information</h6>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+			</div>
+			<div class="card-body">
+				<div class="form-group">
+					<div class="form-inline">	
+						<span class="col-md-3">Name</span>
+						<input type="text" id="formScheduleName" class="form-control-custom col-md-8" />
+					</div>
+					<div class="form-inline mt-1">	
+						<span class="col-md-3">Description</span>
+						<input type="text" id="formScheduleDes" class="form-control-custom col-md-8" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="form-check">
+						<input type="checkbox" id="formDateEnable" class="form-check-input"/>
+						<span>date</span>
+					</label>
+					<div class="form-inline">
+						<span class="col-md-2">Start</span>
+						<span>month</span><select id="formDateStartMonth" class="form-control-custom ml-1 mr-2"><option>00<option></select>
+						<span>day</span><select id="formDateStartDay" class="form-control-custom ml-1 mr-2"><option>00<option></select>
+						<span>year</span><select id="formDateStartYear" class="form-control-custom ml-1"><option>0000<option></select>
+					</div>
+					<div class="form-inline mt-1">
+						<span class="col-md-2">End</span>
+						<span>month</span><select id="formDateEndMonth" class="form-control-custom ml-1 mr-2"><option>00<option></select>
+						<span>day</span><select id="formDateEndDay" class="form-control-custom ml-1 mr-2"><option>00<option></select>
+						<span>year</span><select id="formDateEndYear" class="form-control-custom ml-1"><option>0000<option></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="form-check">
+						<input type="checkbox" id="formTimeEnable" class="form-check-input"/>
+						<span>time</span>
+					</label>
+					<div class="form-inline">
+						<span class="col-md-2">Start</span>
+						<span>Hour</span><select id="formTimeStartHour" class="form-control-custom ml-1 mr-2"><option>00<option></select>
+						<span>Min</span><select id="formTimeStartMinute" class="form-control-custom ml-1"><option>00<option></select>
+					</div>
+					<div class="form-inline mt-1">
+						<span class="col-md-2">End</span>
+						<span>Hour</span><select id="formTimeEndHour" class="form-control-custom ml-1 mr-2"><option>00<option></select>
+						<span>Min</span><select id="formTimeEndMinute" class="form-control-custom ml-1"><option>00<option></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="form-check mb-0">
+						<input type="checkbox" id="formDaysEnable" class="form-check-input"/>
+						<span>Weekday</span>
+					</label>
+					<div class="form-inline ml-2 mt-0">
+						<label class="form-check mr-2">
+							<input type="checkbox" id="formDays1" class="form-check-input"/>
+							<span>Mon</span>
+						</label>
+						<label class="form-check mr-2">
+							<input type="checkbox" id="formDays2" class="form-check-input"/>
+							<span>Tue</span>
+						</label>
+						<label class="form-check mr-2">
+							<input type="checkbox" id="formDays3" class="form-check-input"/>
+							<span>Wed</span>
+						</label>
+						<label class="form-check mr-2">
+							<input type="checkbox" id="formDays4" class="form-check-input"/>
+							<span>Thu</span>
+						</label>
+						<label class="form-check mr-2">
+							<input type="checkbox" id="formDays5" class="form-check-input"/>
+							<span>Fri</span>
+						</label>
+						<label class="form-check mr-2">
+							<input type="checkbox" id="formDays6" class="form-check-input"/>
+							<span>Sat</span>
+						</label>
+						<label class="form-check">
+							<input type="checkbox" id="formDays0" class="form-check-input"/>
+							<span>Sun</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="btnDialogOK" class="btn btn-primary" data-dismiss="modal">Apply</button>
+				<button id="btnDialogCancel" class="btn btn-secondary ml-2" data-dismiss="modal">Cancel</button>					
+            </div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+
+function viewSchedule(t){
+	console.log(t);
+	console.log(t.value);
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=SCHEDULE.S" + t.value;
+	$.getJSON(url, function(response) {
+		console.log(response);
+		$("#infoScheduleName").text(response['SCHEDULE.S'+t.value+'.name']);
+		$("#infoScheduleDes").text(response['SCHEDULE.S'+t.value+'.description']);
+		if(response['SCHEDULE.S'+t.value+'.dateenable']=='yes'){
+			$st_date = response['SCHEDULE.S'+t.value+'.startyear'] + "-" +
+				response['SCHEDULE.S'+t.value+'.startmonth'] + "-" +
+				response['SCHEDULE.S'+t.value+'.startday'];
+			$ed_date = response['SCHEDULE.S'+t.value+'.endyear'] + "-" +
+				response['SCHEDULE.S'+t.value+'.endmonth'] + "-" +
+				response['SCHEDULE.S'+t.value+'.endday'];
+
+			$("#infoStartDate").text($st_date);
+			$("#infoEndDate").text($ed_date);
+		}
+		if(response['SCHEDULE.S'+t.value+'.timeenable']=='yes'){
+			$du_time = response['SCHEDULE.S'+t.value+'.starthour'] + ":" +
+				response['SCHEDULE.S'+t.value+'.startminute'] + "~" +
+				response['SCHEDULE.S'+t.value+'.endhour'] + ":" +
+				response['SCHEDULE.S'+t.value+'.endminute'];
+
+			$("#infoTime").text($du_time);
+		}
+		$("#infoDays").text(response['SCHEDULE.S'+t.value+'.dayofweek']);
+		
+	});
+}
+
+
+month = ['Jan', 'Feb', 'Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+$("#formDateStartMonth").empty();
+$("#formDateEndMonth").empty();
+for(i=0; i<12; i++) {
+	$("#formDateStartMonth").append('<option value="'+(i+1)+'">'+month[i]+'</option>');
+	$("#formDateEndMonth").append('<option value="'+(i+1)+'">'+month[i]+'</option>');
+}
+
+$("#formDateStartDay").empty();
+$("#formDateEndDay").empty();
+for(i=0; i<31; i++) {
+	$("#formDateStartDay").append('<option value="'+(i+1)+'">'+padLeft(i+1,2)+'</option>');
+	$("#formDateEndDay").append('<option value="'+(i+1)+'">'+padLeft(i+1,2)+'</option>');
+}
+
+function loadSCHEDULEConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=SCHEDULE";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		response['SCHEDULE.nbrofcount'] = 2;
+		$("select#formScheduleList").empty();
+		for(i=0; i<response['SCHEDULE.nbrofcount']; i++){
+			if (!response['SCHEDULE.S'+i+'.id']) {
+				continue;
+			}
+			$("select#formScheduleList").append(
+				'<option value="' + response['SCHEDULE.S'+i+'.id'] +'">&nbsp;' + 
+					FillText(response['SCHEDULE.S'+i+'.id'], 16, "left") + 
+					FillText(response['SCHEDULE.S'+i+'.name'], 50, "left") + 
+					FillText(response['SCHEDULE.S'+i+'.description'], 20, "left") + '</option>');
+		}
+	});
+}
+
+loadSCHEDULEConfig();
+
+$(document).ready(function(){
+    $(window).scrollTop(0);
+});
+
+</script>
+</html>

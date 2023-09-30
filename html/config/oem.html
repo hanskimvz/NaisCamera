@@ -1,0 +1,177 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>OEM</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<span class="col-sm-2">Logo images</span>
+								<input id="oemImages" name="logo" type="file"></input>
+								<button id="logoSubmit" type="submit">Send</button>
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-sm-2">Logo position</span>
+										<select class="form-control-custom">
+											<option value="left"> Top Left</option>
+											<option value="right"> Top Right</option>
+										</select>
+									</div>
+									<div class="form-inline">
+										<span class="col-sm-2">Logo link URL</span>
+										<select class="form-control-custom">
+											<option value="enter"> Input URL</option>
+											<option value="live"> Live page</option>
+										</select>
+										<input id="logolinkEnter" type="text" class="form-control-custom" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-sm-2">Text link URL</span>
+										<input id="textlinkEnter" type="text" class="form-control-custom" />
+									</div>
+									<div class="form-inline">
+										<span class="col-sm-2">Web-page title name</span>
+										<select  class="form-control-custom">
+											<option value="enter"> Input</option>
+											<option value="%shortname%"> Use short name</option>
+											<option value="%fullname%"> Use full name</option>
+										</select>
+										<input id="titleNameEnter" type="text" class="form-control-custom" />
+									</div>
+
+									<div class="form-inline">
+										<span class="col-sm-2">Production full name</span>
+										<input id="fullNameEnter" type="text" class="form-control-custom" />
+									</div>
+									<div class="form-inline">
+										<span class="col-sm-2">Production short name</span>
+										<input id="shortNameEnter" type="text" class="form-control-custom" />(Max. 60 characters)
+									</div>
+									<div class="form-inline">
+										<span class="col-sm-2">Skin</span>
+										<select id="formThemes" class="form-control-custom">
+											<option value="noline-silver">Nolinesilver</option>
+											<!--<option value="redmond">Redmond</option>//-->
+											<option value="black-tie">Black Tie</option>
+											<option value="blitzer">Blitzer</option>
+											<option value="humanity">Humanity</option>
+											<option value="ui-darkness">UI Darkness</option>
+											<option value="ui-lightness">UI Lightness</option>
+											<option value="smoothness">Smoothness</option>
+											<option value="start">Start</option>
+											<option value="sunny">Sunny</option>
+											<option value="overcast">Overcast</option>
+											<!--<option value="le-frog">Green</option>//-->
+											<option value="eggplant">Eggplant</option>
+											<option value="trontastic">Trontastic</option>
+											<option value="swanky-purse">Swanky Purse</option>
+											<!-- <option value="user">User</option> -->
+										</select>
+									</div>
+								</div>
+							</div>	
+							<div class="card-footer text-center">
+								<button id="btnSet"  class="btn btn-sm btn-info">Set </button>
+								<button id="btnResetLogo"  class="btn btn-sm btn-info">Default Logo </button>
+								<button id="btnDefaultset"  class="btn btn-sm btn-info">Defaultset </button>
+								<button id="btnDown"  class="btn btn-sm btn-info">Export </button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Import</h6>
+							</div>
+							<div class="card-body">
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>
+<?php exit() ?>
+
+<ul id="importZone" class="box">
+		<li class="box-title"><h2 class="04100117">Import</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li class="item-title 04100118">Package :</li>
+						<form id="formPackageSubmit" action="/uapi-cgi/oem.cgi" enctype="multipart/form-data" method="post" target="iframepackage">
+							<li>
+								<iframe name="iframepackage" id="iframepackage"></iframe>
+								<input type="hidden" name="action" value="set">
+								<input id="oemPackage" name="package" type="file"></input>
+							</li>
+							<li	id="packageApply">
+								<input id="packageBtnStart" type="submit" value="Apply"></input>
+							</li>
+						</form>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 04100119">OEM DB :</li>
+						<form id="formOEMDBSubmit" action="/uapi-cgi/oem.cgi" enctype="multipart/form-data" method="post" target="iframeOEMDB">
+							<li>
+								<iframe name="iframeOEMDB" id="iframeOEMDB"></iframe>
+								<input type="hidden" name="action" value="set">
+								<input id="oemOEMDB" name="oemdb" type="file"></input>
+							</li>
+							<li	id="OEMDBApply">
+								<input id="oemdbBtnStart" type="submit" value="Apply"></input>
+							</li>
+						</form>
+					</ul>
+				</li>
+				<li class="item hidden_contents">
+					<ul>
+						<li class="item-title">Factory Default :</li>
+						<form id="formFDSubmit" action="/uapi-cgi/oem.cgi" enctype="multipart/form-data" method="post" target="iframeFD">
+							<li>
+								<iframe name="iframeFD" id="iframeFD"></iframe>
+								<input type="hidden" name="action" value="set">
+								<input id="oemFD" name="FatoryDefault" type="file"></input>
+							</li>
+							<li	id="FDApply">
+								<input type="submit" value="Apply"></input>
+							</li>
+						</form>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>

@@ -1,0 +1,92 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Classification</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Choose an object classifier</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<select id="classifierlist" class="form-control form-control-sm" size="8"><option></option></select>
+								</div>
+							</div>
+							<div class="card-footer text-center">
+								<button id='btnAdd' class="btn btn-sm btn-primary">Add</button>
+								<button id='btnRemove' class="btn btn-sm btn-secondary">Remove</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-1">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Detailed object classifier information</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline mt-1">
+										<span class="col-sm-2">Name</span>
+										<input type="text" id="formName" class="form-control-custom" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-sm-2">Enable</span>
+										<input type="text" id="formEnable" class="form-control-custom" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-sm-2">Min Area</span>
+										<input type="text" id="formMinArea" class="form-control-custom mr-1" size="4" /><span>sqmt</span>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-sm-2">Max Area</span>
+										<input type="text" id="formMaxArea" class="form-control-custom mr-1" size="4" /><span>sqmt</span>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-sm-2">Min Speed</span>
+										<input type="text" id="formMinSpeed" class="form-control-custom mr-1" size="4" />Km/h
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-sm-2">Max Speed</span>
+										<input type="text" id="formMaxSpeed" class="form-control-custom mr-1" size="4" />Km/h
+									</div>
+								</div>
+							</div>
+							<div class="card-footer text-center">
+								<button id='btnApply' class="btn btn-sm btn-primary">Apply</button>
+								<button id='btnRestoreDefaults'  class="btn btn-sm btn-secondary">Restore Defaults</button>
+							</span>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+</script>
+</html>

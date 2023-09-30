@@ -1,0 +1,644 @@
+[
+    {
+        "tz": "GMT+12",
+        "description": "(UTC-12:00) International Date Line West",
+        "tz_name": "GMT12",
+        "offset": -43200
+    },
+    {
+        "tz": "GMT+11",
+        "description": "(UTC-11:00) Coordinated Universal Time-11",
+        "tz_name": "GMT11",
+        "offset": -39600
+    },
+    {
+        "tz": "Samoa",
+        "description": "(UTC-11:00) Samoa, Midway Is.",
+        "tz_name": "SST11",
+        "offset": -39600
+    },
+    {
+        "tz": "GMT+10",
+        "description": "(UTC-10:00) Hawaii, Honolulu, Aleutian Is.",
+        "tz_name": "GMT10",
+        "offset": -36000
+    },
+    {
+        "tz": "GMT+9",
+        "description": "(UTC-09:00) Coordinated Universal Time-9",
+        "tz_name": "GMT9",
+        "offset": -32400
+    },
+    {
+        "tz": "Alaska",
+        "description": "(UTC-09:00) Alaska, Anchorage, Juneau, Yakutat, Nome",
+        "tz_name": "AKST9AKDT,M3.2.0,M11.1.0",
+        "offset": -32400
+    },
+    {
+        "tz": "GMT+8",
+        "description": "(UTC-08:00) Coordinated Universal Time-8",
+        "tz_name": "GMT8",
+        "offset": -28800
+    },
+    {
+        "tz": "Tijuana",
+        "description": "(UTC-08:00) Tijuana, Baja California",
+        "tz_name": "PST8PDT,M4.1.0,M10.5.0",
+        "offset": -28800
+    },
+    {
+        "tz": "Pacific",
+        "description": "(UTC-08:00) Pacific Time (US & Canada)",
+        "tz_name": "PST8PDT,M3.2.0,M11.1.0",
+        "offset": -28800
+    },
+    {
+        "tz": "GMT+7",
+        "description": "(UTC-07:00) Coordinated Universal Time-7",
+        "tz_name": "GMT7",
+        "offset": -25200
+    },
+    {
+        "tz": "Arizona",
+        "description": "(UTC-07:00) Arizona",
+        "tz_name": "MST7",
+        "offset": -25200
+    },
+    {
+        "tz": "Mountain",
+        "description": "(UTC-07:00) Mountain Time (US & Canada)",
+        "tz_name": "MST7MDT,M3.2.0,M11.1.0",
+        "offset": -25200
+    },
+    {
+        "tz": "Chihuahua",
+        "description": "(UTC-07:00) Chihuahua, La Paz, Mazatlan",
+        "tz_name": "MST7MDT,M4.1.0,M10.5.0",
+        "offset": -25200
+    },
+    {
+        "tz": "GMT+6",
+        "description": "(UTC-06:00) Central America",
+        "tz_name": "GMT6",
+        "offset": -21600
+    },
+    {
+        "tz": "Saskatchewan",
+        "description": "(UTC-06:00) Saskatchewan",
+        "tz_name": "CST6",
+        "offset": -21600
+    },
+    {
+        "tz": "Central",
+        "description": "(UTC-06:00) Central Time (US & Canada)",
+        "tz_name": "CST6CDT,M3.2.0,M11.1.0",
+        "offset": -21600
+    },
+    {
+        "tz": "Mexico",
+        "description": "(UTC-06:00) Mexico City, Guadalajara, Monterrey",
+        "tz_name": "CST6CDT,M4.1.0,M10.5.0",
+        "offset": -21600
+    },
+    {
+        "tz": "Bogota",
+        "description": "(UTC-05:00) Bogota",
+        "tz_name": "COT5",
+        "offset": -18000
+    },
+    {
+        "tz": "Eastern",
+        "description": "(UTC-05:00) Eastern Time (US & Canada)",
+        "tz_name": "EST5EDT,M3.2.0,M11.1.0",
+        "offset": -18000
+    },
+    {
+        "tz": "GMT+5",
+        "description": "(UTC-05:00) Indiana (East)",
+        "tz_name": "GMT5",
+        "offset": -18000
+    },
+    {
+        "tz": "Lima",
+        "description": "(UTC-05:00) Lima",
+        "tz_name": "PET5",
+        "offset": -18000
+    },
+    {
+        "tz": "Caracas",
+        "description": "(UTC-04:30) Caracas",
+        "tz_name": "VET4:30",
+        "offset": -12600
+    },
+    {
+        "tz": "GMT+4",
+        "description": "(UTC-04:00) Georgetown, La Paz, Manaus, San Juan",
+        "tz_name": "GMT4",
+        "offset": -14400
+    },
+    {
+        "tz": "Asuncion",
+        "description": "(UTC-04:00) Asuncion",
+        "tz_name": "PYT4PYST,M10.1.0\/0,M4.2.0\/0",
+        "offset": -14400
+    },
+    {
+        "tz": "Atlantic",
+        "description": "(UTC-04:00) Atlantic Time(Canada)",
+        "tz_name": "AST4ADT,M3.2.0,M11.1.0",
+        "offset": -14400
+    },
+    {
+        "tz": "Cuiaba",
+        "description": "(UTC-04:00) Cuiaba",
+        "tz_name": "AMT4AMST,M10.3.0\/0,M2.3.0\/0",
+        "offset": -14400
+    },
+    {
+        "tz": "Santiago",
+        "description": "(UTC-04:00) Santiago",
+        "tz_name": "CLT4CLST,M9.1.6\/24,M4.4.6\/24",
+        "offset": -14400
+    },
+    {
+        "tz": "Newfoundland",
+        "description": "(UTC-03:30) Newfoundland",
+        "tz_name": "NST3:30NDT,M3.2.0,M11.1.0",
+        "offset": -9000
+    },
+    {
+        "tz": "Sao_Paulo",
+        "description": "(UTC-03:00) Sao_Paulo, Brazilia",
+        "tz_name": "BRT3BRST,M10.3.0\/0,M2.3.0\/0",
+        "offset": -10800
+    },
+    {
+        "tz": "Buenos_Aires",
+        "description": "(UTC-03:00) Buenos Aires",
+        "tz_name": "ART3ARST,M10.3.0\/0,M3.3.0\/0",
+        "offset": -10800
+    },
+    {
+        "tz": "GMT+3",
+        "description": "(UTC-03:00) Cayenne, Fortaleza, Salvador",
+        "tz_name": "GMT3",
+        "offset": -10800
+    },
+    {
+        "tz": "Montevideo",
+        "description": "(UTC-03:00) Montevideo, Greenland",
+        "tz_name": "UYT3UYST,M10.1.0,M3.2.0",
+        "offset": -10800
+    },
+    {
+        "tz": "GMT+2",
+        "description": "(UTC-02:00) Mid-Atlantic",
+        "tz_name": "GMT2",
+        "offset": -7200
+    },
+    {
+        "tz": "Noronha",
+        "description": "(UTC-02:00) Noronha",
+        "tz_name": "FNT2",
+        "offset": -7200
+    },
+    {
+        "tz": "GMT+1",
+        "description": "(UTC-01:00) Coordinated Universal Time-1",
+        "tz_name": "GMT1",
+        "offset": -3600
+    },
+    {
+        "tz": "Azores",
+        "description": "(UTC-01:00) Azores",
+        "tz_name": "AZOT1AZOST,M3.5.0\/0,M10.5.0\/1",
+        "offset": -3600
+    },
+    {
+        "tz": "Cape_Verde",
+        "description": "(UTC-01:00) Cape Verde Is.",
+        "tz_name": "CVT1",
+        "offset": -3600
+    },
+    {
+        "tz": "Casablanca",
+        "description": "(UTC) Casablanca",
+        "tz_name": "WET0",
+        "offset": 0
+    },
+    {
+        "tz": "UTC",
+        "description": "(UTC) Coordinated Universal Time",
+        "tz_name": "GMT0",
+        "offset": 0
+    },
+    {
+        "tz": "London",
+        "description": "(UTC) Dublin, Edinburgh, Lisbon, London",
+        "tz_name": "GMT0BST,M3.5.0\/1,M10.5.0",
+        "offset": 0
+    },
+    {
+        "tz": "Amsterdam",
+        "description": "(UTC+01:00) Amsterdam, Berlin, Rome, Stockholm, Paris",
+        "tz_name": "CET-1CEST,M3.5.0,M10.5.0\/3",
+        "offset": 3600
+    },
+    {
+        "tz": "GMT-1",
+        "description": "(UTC+01:00) West Central Africa",
+        "tz_name": "GMT-1",
+        "offset": 3600
+    },
+    {
+        "tz": "Windhoek",
+        "description": "(UTC+01:00) Windhoek",
+        "tz_name": "WAT-1WAST,M9.1.0,M4.1.0",
+        "offset": 3600
+    },
+    {
+        "tz": "GMT-2",
+        "description": "(UTC+02:00) Coordinated Universal Time+2",
+        "tz_name": "GMT-2",
+        "offset": 7200
+    },
+    {
+        "tz": "Helsinki",
+        "description": "(UTC+02:00) Athens, Helsinki, Istanbul, Riga, Sofia",
+        "tz_name": "EET-2EEST,M3.5.0\/3,M10.5.0\/4",
+        "offset": 7200
+    },
+    {
+        "tz": "Beirut",
+        "description": "(UTC+02:00) Beirut",
+        "tz_name": "EET-2EEST,M3.5.0\/0,M10.5.0\/0",
+        "offset": 7200
+    },
+    {
+        "tz": "Cairo",
+        "description": "(UTC+02:00) Cairo",
+        "tz_name": "EET-2EEST,M4.5.5\/0,M9.5.4\/24",
+        "offset": 7200
+    },
+    {
+        "tz": "Damascus",
+        "description": "(UTC+02:00) Damascus",
+        "tz_name": "EET-2EEST,M3.5.5\/0,M11.1.5\/0",
+        "offset": 7200
+    },
+    {
+        "tz": "Harare",
+        "description": "(UTC+02:00) Harare, Pretoria",
+        "tz_name": "CAT-2",
+        "offset": 7200
+    },
+    {
+        "tz": "Jerusalem",
+        "description": "(UTC+02:00) Jerusalem",
+        "tz_name": "IST-2IDT,M3.5.5,M9.5.0",
+        "offset": 7200
+    },
+    {
+        "tz": "Amman",
+        "description": "(UTC+02:00) Amman",
+        "tz_name": "EET-2EEST,M3.5.4\/24,M10.5.5\/1",
+        "offset": 7200
+    },
+    {
+        "tz": "GMT-3",
+        "description": "(UTC+03:00) Coordinated Universal Time+3",
+        "tz_name": "GMT-3",
+        "offset": 10800
+    },
+    {
+        "tz": "Minsk",
+        "description": "(UTC+03:00) Kaliningrad, Minsk, E.Europe",
+        "tz_name": "EET-2EEST,M3.5.0\/2,M10.5.0\/3",
+        "offset": 10800
+    },
+    {
+        "tz": "Kuwait",
+        "description": "(UTC+03:00) Baghdad, Kuwait, Riyadh",
+        "tz_name": "AST-3",
+        "offset": 10800
+    },
+    {
+        "tz": "Nairobi",
+        "description": "(UTC+03:00) Nairobi",
+        "tz_name": "EAT-3",
+        "offset": 10800
+    },
+    {
+        "tz": "Tehran",
+        "description": "(UTC+03:30) Tehran",
+        "tz_name": "IRST-3:30IRDT,J81\/0,J265\/0",
+        "offset": 12600
+    },
+    {
+        "tz": "Volgograd",
+        "description": "(UTC+04:00) Volgograd",
+        "tz_name": "VOLT-3VOLST,M3.5.0,M10.5.0\/3",
+        "offset": 14400
+    },
+    {
+        "tz": "Moscow",
+        "description": "(UTC+04:00) Moscow",
+        "tz_name": "MSK-4",
+        "offset": 14400
+    },
+    {
+        "tz": "GMT-4",
+        "description": "(UTC+04:00) Port Louis, Yerevan",
+        "tz_name": "GMT-4",
+        "offset": 14400
+    },
+    {
+        "tz": "Dubai",
+        "description": "(UTC+04:00) Dubai, Abu Dhabi, Muscat",
+        "tz_name": "GST-4",
+        "offset": 14400
+    },
+    {
+        "tz": "Baku",
+        "description": "(UTC+04:00) Baku",
+        "tz_name": "AZT-4AZST,M3.5.0\/4,M10.5.0\/5",
+        "offset": 14400
+    },
+    {
+        "tz": "Tbilisi",
+        "description": "(UTC+04:00) Tbilisi",
+        "tz_name": "GET-4",
+        "offset": 14400
+    },
+    {
+        "tz": "Kabul",
+        "description": "(UTC+04:30) Kabul",
+        "tz_name": "AFT-4:30",
+        "offset": 16200
+    },
+    {
+        "tz": "GMT-5",
+        "description": "(UTC+05:00) Coordinated Universal Time+5",
+        "tz_name": "GMT-5",
+        "offset": 18000
+    },
+    {
+        "tz": "Karachi",
+        "description": "(UTC+05:00) Karachi, Islamabad",
+        "tz_name": "PKT-5",
+        "offset": 18000
+    },
+    {
+        "tz": "Tashkent",
+        "description": "(UTC+05:00) Tashkent",
+        "tz_name": "UZT-5",
+        "offset": 18000
+    },
+    {
+        "tz": "Kolkata",
+        "description": "(UTC+05:30) Kolkata, Chennai, Mumbai, New Delhi, Sri Jayawardenepura",
+        "tz_name": "IST-5:30",
+        "offset": 19800
+    },
+    {
+        "tz": "Kathmandu",
+        "description": "(UTC+05:45) Kathmandu",
+        "tz_name": "NPT-5:45",
+        "offset": 20700
+    },
+    {
+        "tz": "GMT-6",
+        "description": "(UTC+06:00) Coordinated Universal Time+6",
+        "tz_name": "GMT-6",
+        "offset": 21600
+    },
+    {
+        "tz": "Dhaka",
+        "description": "(UTC+06:00) Dhaka",
+        "tz_name": "BDT-6",
+        "offset": 21600
+    },
+    {
+        "tz": "Yekaterinburg",
+        "description": "(UTC+06:00) Yekaterinburg, Ekaterinburg",
+        "tz_name": "YEKT-5YEKST,M3.5.0,M10.5.0\/3",
+        "offset": 21600
+    },
+    {
+        "tz": "Rangoon",
+        "description": "(UTC+06:30) Yangon (Rangoon)",
+        "tz_name": "MMT-6:30",
+        "offset": 23400
+    },
+    {
+        "tz": "GMT-7",
+        "description": "(UTC+07:00) Coordinated Universal Time+7",
+        "tz_name": "GMT-7",
+        "offset": 25200
+    },
+    {
+        "tz": "Novosibirsk",
+        "description": "(UTC+07:00) Novosibirsk",
+        "tz_name": "NOVT-6NOVST,M3.5.0,M10.5.0\/3",
+        "offset": 25200
+    },
+    {
+        "tz": "Bangkok",
+        "description": "(UTC+07:00) Bangkok, Hanoi",
+        "tz_name": "ICT-7",
+        "offset": 25200
+    },
+    {
+        "tz": "Jakarta",
+        "description": "(UTC+07:00) Jakarta",
+        "tz_name": "WIB-7",
+        "offset": 25200
+    },
+    {
+        "tz": "GMT-8",
+        "description": "(UTC+08:00) Coordinated Universal Time+8",
+        "tz_name": "GMT-8",
+        "offset": 28800
+    },
+    {
+        "tz": "Hong_Kong",
+        "description": "(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi",
+        "tz_name": "HKT-8",
+        "offset": 28800
+    },
+    {
+        "tz": "Krasnoyarsk",
+        "description": "(UTC+08:00) Krasnoyarsk",
+        "tz_name": "KRAT-7KRAST,M3.5.0,M10.5.0\/3",
+        "offset": 28800
+    },
+    {
+        "tz": "Singapore",
+        "description": "(UTC+08:00) Singapore, Kuala Lumpur",
+        "tz_name": "SGT-8",
+        "offset": 28800
+    },
+    {
+        "tz": "Perth",
+        "description": "(UTC+08:00) Perth",
+        "tz_name": "WST-8",
+        "offset": 28800
+    },
+    {
+        "tz": "Taipei",
+        "description": "(UTC+08:00) Taipei, Shanghai",
+        "tz_name": "CST-8",
+        "offset": 28800
+    },
+    {
+        "tz": "Ulaanbaatar",
+        "description": "(UTC+08:00) Ulaanbaatar",
+        "tz_name": "GMT-8",
+        "offset": 28800
+    },
+    {
+        "tz": "GMT-9",
+        "description": "(UTC+09:00) Coordinated Universal Time+9",
+        "tz_name": "GMT-9",
+        "offset": 32400
+    },
+    {
+        "tz": "Irkutsk",
+        "description": "(UTC+09:00) Irkutsk",
+        "tz_name": "IRKT-8IRKST,M3.5.0,M10.5.0\/3",
+        "offset": 32400
+    },
+    {
+        "tz": "Tokyo",
+        "description": "(UTC+09:00) Tokyo, Osaka, Sapporo",
+        "tz_name": "JST-9",
+        "offset": 32400
+    },
+    {
+        "tz": "Seoul",
+        "description": "(UTC+09:00) Seoul, Inchon, Pusan, Kimpo",
+        "tz_name": "KST-9",
+        "offset": 32400
+    },
+    {
+        "tz": "Adelaide",
+        "description": "(UTC+09:30) Adelaide",
+        "tz_name": "CST-9:30CST,M10.1.0,M4.1.0\/3",
+        "offset": 34200
+    },
+    {
+        "tz": "Darwin",
+        "description": "(UTC+09:30) Darwin",
+        "tz_name": "CST-9:30",
+        "offset": 34200
+    },
+    {
+        "tz": "GMT-10",
+        "description": "(UTC+10:00) Coordinated Universal Time+10",
+        "tz_name": "GMT-10",
+        "offset": 36000
+    },
+    {
+        "tz": "Brisbane",
+        "description": "(UTC+10:00) Brisbane",
+        "tz_name": "EST-10",
+        "offset": 36000
+    },
+    {
+        "tz": "Melbourne",
+        "description": "(UTC+10:00) Canberra, Melbourne, Sydney, Hobart",
+        "tz_name": "EST-10EST,M10.1.0,M4.1.0\/3",
+        "offset": 36000
+    },
+    {
+        "tz": "Guam",
+        "description": "(UTC+10:00) Guam, Port Moresby",
+        "tz_name": "ChST-10",
+        "offset": 36000
+    },
+    {
+        "tz": "Yakutsk",
+        "description": "(UTC+10:00) Yakutsk",
+        "tz_name": "YAKT-9YAKST,M3.5.0,M10.5.0\/3",
+        "offset": 36000
+    },
+    {
+        "tz": "GMT-11",
+        "description": "(UTC+11:00) Coordinated Universal Time+11",
+        "tz_name": "GMT-11",
+        "offset": 39600
+    },
+    {
+        "tz": "Guadalcanal",
+        "description": "(UTC+11:00) Solomon Is.",
+        "tz_name": "SBT-11",
+        "offset": 39600
+    },
+    {
+        "tz": "Noumea",
+        "description": "(UTC+11:00) New Caledonia",
+        "tz_name": "NCT-11",
+        "offset": 39600
+    },
+    {
+        "tz": "Vladivostok",
+        "description": "(UTC+11:00) Vladivostok",
+        "tz_name": "VLAT-11",
+        "offset": 39600
+    },
+    {
+        "tz": "Norfolk",
+        "description": "(UTC+11:30) Norfolk",
+        "tz_name": "NFT-11:30",
+        "offset": 41400
+    },
+    {
+        "tz": "Magadan",
+        "description": "(UTC+12:00) Magadan",
+        "tz_name": "MAGT-11MAGST,M3.5.0,M10.5.0\/3",
+        "offset": 43200
+    },
+    {
+        "tz": "Auckland",
+        "description": "(UTC+12:00) Auckland, Wellington",
+        "tz_name": "NZST-12NZDT,M9.5.0,M4.1.0\/3",
+        "offset": 43200
+    },
+    {
+        "tz": "GMT-12",
+        "description": "(UTC+12:00) Coordinated Universal Time+12",
+        "tz_name": "GMT-12",
+        "offset": 43200
+    },
+    {
+        "tz": "Fiji",
+        "description": "(UTC+12:00) Fiji",
+        "tz_name": "FJT-12FJST,M10.3.1\/146,M1.3.4\/74",
+        "offset": 43200
+    },
+    {
+        "tz": "Kamchatka",
+        "description": "(UTC+12:00) Kamchatka",
+        "tz_name": "PETT-12PETST,M3.5.0,M10.5.0\/3",
+        "offset": 43200
+    },
+    {
+        "tz": "Kwajalein",
+        "description": "(UTC+12:00) Kwajalein, Marshall Is.",
+        "tz_name": "MHT-12",
+        "offset": 43200
+    },
+    {
+        "tz": "Chatham",
+        "description": "(UTC+12:45) Chatham",
+        "tz_name": "CHAST-12:45CHADT,M9.5.0\/2:45,M4.1.0\/3:45",
+        "offset": 45900
+    },
+    {
+        "tz": "Tongatapu",
+        "description": "(UTC+13:00) Tongatapu, Nuku'alofa",
+        "tz_name": "TOT-13",
+        "offset": 46800
+    }
+]

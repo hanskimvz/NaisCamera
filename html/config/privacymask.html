@@ -1,0 +1,80 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Video & Audio</span> > <strong>Privacy mask</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6 ">
+							<div class="card-body  pl-0 pr-0 pt-2 pb-0">
+								<canvas id="canvas" class="card-img-top"></canvas>
+							</div>
+							<div class="card-body"> 
+								<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
+								<span>* Privacy mask configuration is only supported in Internet Explorer.</span>
+							</div>
+
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary"><span>Privacy mask zones</span></h6>
+							</div>
+							<div class="card-body"> 
+								<table id="users" class="table table-sm">
+									<thead>
+										<tr>
+											<th><span>Show<span></th>
+											<th><span>Zone id</span></th>
+											<th><span>Name</span></th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+							<div class="card-footer text-center">
+								<button id="save" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+
+<?=$footer?>
+<script>
+	var canvas = document.getElementById("canvas");
+	canvas.width=720;
+	canvas.height = 360;
+	var ctx = canvas.getContext('2d');
+	var img =  new Image();
+	// img.src="../images/demo_screen.jpg";
+	ctx.drawImage(img, 0,0,720,360);
+	function render(){
+		img.src="../images/demo_screen.jpg";
+		ctx.drawImage(img, 0,0,720,360);
+	}
+	function main() {
+		render();
+		requestAnimationFrame(main);
+	}
+	main();
+</script>
+
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+$arr_tz = [
+	["GMT12", "(UTC-12:00) International Date Line West", "GMT12"],
+	["GMT11", "(UTC-11:00) Coordinated Universal Time-11", "GMT11"],
+	["Samoa", "(UTC-11:00) Samoa, Midway Is.", "SST11"],
+	["GMT10", "(UTC-10:00) Hawaii, Honolulu, Aleutian Is.", "GMT10"],
+	["GMT9", "(UTC-09:00) Coordinated Universal Time-9", "GMT9"],
+	["Alaska", "(UTC-09:00) Alaska, Anchorage, Juneau, Yakutat, Nome", "AKST9AKDT,M3.2.0,M11.1.0"],
+	["GMT8", "(UTC-08:00) Coordinated Universal Time-8", "GMT8"],
+	["Tijuana", "(UTC-08:00) Tijuana, Baja California", "PST8PDT,M4.1.0,M10.5.0"],
+	["Pacific", "(UTC-08:00) Pacific Time (US & Canada)", "PST8PDT,M3.2.0,M11.1.0"],
+	["GMT7", "(UTC-07:00) Coordinated Universal Time-7", "GMT7"],
+	["Arizona", "(UTC-07:00) Arizona", "MST7"],
+	["Mountain", "(UTC-07:00) Mountain Time (US & Canada)", "MST7MDT,M3.2.0,M11.1.0"],
+	["Chihuahua", "(UTC-07:00) Chihuahua, La Paz, Mazatlan", "MST7MDT,M4.1.0,M10.5.0"],
+	["GMT6", "(UTC-06:00) Central America", "GMT6"],
+	["Saskatchewan", "(UTC-06:00) Saskatchewan", "CST6"],
+	["Central", "(UTC-06:00) Central Time (US & Canada)", "CST6CDT,M3.2.0,M11.1.0"],
+	["Mexico", "(UTC-06:00) Mexico City, Guadalajara, Monterrey", "CST6CDT,M4.1.0,M10.5.0"],
+	["Bogota", "(UTC-05:00) Bogota", "COT5"],
+	["Eastern", "(UTC-05:00) Eastern Time (US & Canada)", "EST5EDT,M3.2.0,M11.1.0"],
+	["GMT5", "(UTC-05:00) Indiana (East)", "GMT5"],
+	["Lima", "(UTC-05:00) Lima", "PET5"],
+	["Caracas", "(UTC-04:30) Caracas", "VET4:30"],
+	["GMT4", "(UTC-04:00) Georgetown, La Paz, Manaus, San Juan", "GMT4"],
+	["Asuncion", "(UTC-04:00) Asuncion", "PYT4PYST,M10.1.0/0,M4.2.0/0"],
+	["Atlantic", "(UTC-04:00) Atlantic Time(Canada)", "AST4ADT,M3.2.0,M11.1.0"],
+	["Cuiaba", "(UTC-04:00) Cuiaba", "AMT4AMST,M10.3.0/0,M2.3.0/0"],
+	["Santiago", "(UTC-04:00) Santiago", "CLT4CLST,M9.1.6/24,M4.4.6/24"],
+	["Newfoundland", "(UTC-03:30) Newfoundland", "NST3:30NDT,M3.2.0,M11.1.0"],
+	["Sao_Paulo", "(UTC-03:00) Sao_Paulo, Brazilia", "BRT3BRST,M10.3.0/0,M2.3.0/0"],
+	["Buenos_Aires", "(UTC-03:00) Buenos Aires", "ART3ARST,M10.3.0/0,M3.3.0/0"],
+	["GMT3", "(UTC-03:00) Cayenne, Fortaleza, Salvador", "GMT3"],
+	["Montevideo", "(UTC-03:00) Montevideo, Greenland", "UYT3UYST,M10.1.0,M3.2.0"],
+	["GMT2", "(UTC-02:00) Mid-Atlantic", "GMT2"],
+	["Noronha", "(UTC-02:00) Noronha", "FNT2"],
+	["GMT1", "(UTC-01:00) Coordinated Universal Time-1", "GMT1"],
+	["Azores", "(UTC-01:00) Azores", "AZOT1AZOST,M3.5.0/0,M10.5.0/1"],
+	["Cape_Verde", "(UTC-01:00) Cape Verde Is.", "CVT1"],
+	["Casablanca", "(UTC) Casablanca", "WET0"],
+	["UTC", "(UTC) Coordinated Universal Time", "GMT0"],
+	["London", "(UTC) Dublin, Edinburgh, Lisbon, London", "GMT0BST,M3.5.0/1,M10.5.0"],
+	["Amsterdam", "(UTC+01:00) Amsterdam, Berlin, Rome, Stockholm, Paris", "CET-1CEST,M3.5.0,M10.5.0/3"],
+	["GMT-1", "(UTC+01:00) West Central Africa", "GMT-1"],
+	["Windhoek", "(UTC+01:00) Windhoek", "WAT-1WAST,M9.1.0,M4.1.0"],
+	["GMT-2", "(UTC+02:00) Coordinated Universal Time+2", "GMT-2"],
+	["Helsinki", "(UTC+02:00) Athens, Helsinki, Istanbul, Riga, Sofia", "EET-2EEST,M3.5.0/3,M10.5.0/4"],
+	["Beirut", "(UTC+02:00) Beirut", "EET-2EEST,M3.5.0/0,M10.5.0/0"],
+	["Cairo", "(UTC+02:00) Cairo", "EET-2EEST,M4.5.5/0,M9.5.4/24"],
+	["Damascus", "(UTC+02:00) Damascus", "EET-2EEST,M3.5.5/0,M11.1.5/0"],
+	["Harare", "(UTC+02:00) Harare, Pretoria", "CAT-2"],
+	["Jerusalem", "(UTC+02:00) Jerusalem", "IST-2IDT,M3.5.5,M9.5.0"],
+	["Amman", "(UTC+02:00) Amman", "EET-2EEST,M3.5.4/24,M10.5.5/1"],
+	["GMT-3", "(UTC+03:00) Coordinated Universal Time+3", "GMT-3"],
+	["Minsk", "(UTC+03:00) Kaliningrad, Minsk, E.Europe", "EET-2EEST,M3.5.0/2,M10.5.0/3"],
+	["Kuwait", "(UTC+03:00) Baghdad, Kuwait, Riyadh", "AST-3"],
+	["Nairobi", "(UTC+03:00) Nairobi", "EAT-3"],
+	["Tehran", "(UTC+03:30) Tehran", "IRST-3:30IRDT,J81/0,J265/0"],
+	["Volgograd", "(UTC+04:00) Volgograd", "VOLT-3VOLST,M3.5.0,M10.5.0/3"],
+	["Moscow", "(UTC+04:00) Moscow", "MSK-4"],
+	["GMT-4", "(UTC+04:00) Port Louis, Yerevan", "GMT-4"],
+	["Dubai", "(UTC+04:00) Dubai, Abu Dhabi, Muscat", "GST-4"],
+	["Baku", "(UTC+04:00) Baku", "AZT-4AZST,M3.5.0/4,M10.5.0/5"],
+	["Tbilisi", "(UTC+04:00) Tbilisi", "GET-4"],
+	["Kabul", "(UTC+04:30) Kabul", "AFT-4:30"],
+	["GMT-5", "(UTC+05:00) Coordinated Universal Time+5", "GMT-5"],
+	["Karachi", "(UTC+05:00) Karachi, Islamabad", "PKT-5"],
+	["Tashkent", "(UTC+05:00) Tashkent", "UZT-5"],
+	["Kolkata", "(UTC+05:30) Kolkata, Chennai, Mumbai, New Delhi, Sri Jayawardenepura", "IST-5:30"],
+	["Kathmandu", "(UTC+05:45) Kathmandu", "NPT-5:45"],
+	["GMT-6", "(UTC+06:00) Coordinated Universal Time+6", "GMT-6"],
+	["Astana", "(UTC+06:00) Astana", "ALMT-6"],
+	["Dhaka", "(UTC+06:00) Dhaka", "BDT-6"],
+	["Yekaterinburg", "(UTC+06:00) Yekaterinburg, Ekaterinburg", "YEKT-5YEKST,M3.5.0,M10.5.0/3"],
+	["Rangoon", "(UTC+06:30) Yangon (Rangoon)", "MMT-6:30"],
+	["GMT-7", "(UTC+07:00) Coordinated Universal Time+7", "GMT-7"],
+	["Novosibirsk", "(UTC+07:00) Novosibirsk", "NOVT-6NOVST,M3.5.0,M10.5.0/3"],
+	["Bangkok", "(UTC+07:00) Bangkok, Hanoi", "ICT-7"],
+	["Jakarta", "(UTC+07:00) Jakarta", "WIB-7"],
+	["GMT-8", "(UTC+08:00) Coordinated Universal Time+8", "GMT-8"],
+	["Hong_Kong", "(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi", "HKT-8"],
+	["Krasnoyarsk", "(UTC+08:00) Krasnoyarsk", "KRAT-7KRAST,M3.5.0,M10.5.0/3"],
+	["Singapore", "(UTC+08:00) Singapore, Kuala Lumpur", "SGT-8"],
+	["Perth", "(UTC+08:00) Perth", "WST-8"],
+	["Taipei", "(UTC+08:00) Taipei, Shanghai", "CST-8"],
+	["Ulaanbaatar", "(UTC+08:00) Ulaanbaatar", "GMT-8"],
+	["GMT-9", "(UTC+09:00) Coordinated Universal Time+9", "GMT-9"],
+	["Irkutsk", "(UTC+09:00) Irkutsk", "IRKT-8IRKST,M3.5.0,M10.5.0/3"],
+	["Tokyo", "(UTC+09:00) Tokyo, Osaka, Sapporo", "JST-9"],
+	["Seoul", "(UTC+09:00) Seoul, Inchon, Pusan, Kimpo", "KST-9"],
+	["Adelaide", "(UTC+09:30) Adelaide", "CST-9:30CST,M10.1.0,M4.1.0/3"],
+	["Darwin", "(UTC+09:30) Darwin", "CST-9:30"],
+	["GMT-10", "(UTC+10:00) Coordinated Universal Time+10", "GMT-10"],
+	["Brisbane", "(UTC+10:00) Brisbane", "EST-10"],
+	["Melbourne", "(UTC+10:00) Canberra, Melbourne, Sydney, Hobart", "EST-10EST,M10.1.0,M4.1.0/3"],
+	["Guam", "(UTC+10:00) Guam, Port Moresby", "ChST-10"],
+	["Yakutsk", "(UTC+10:00) Yakutsk", "YAKT-9YAKST,M3.5.0,M10.5.0/3"],
+	["GMT-11", "(UTC+11:00) Coordinated Universal Time+11", "GMT-11"],
+	["Guadalcanal", "(UTC+11:00) Solomon Is.", "SBT-11"],
+	["Noumea", "(UTC+11:00) New Caledonia", "NCT-11"],
+	["Vladivostok", "(UTC+11:00) Vladivostok", "VLAT-11"],
+	["Norfolk", "(UTC+11:30) Norfolk", "NFT-11:30"],
+	["Magadan", "(UTC+12:00) Magadan", "MAGT-11MAGST,M3.5.0,M10.5.0/3"],
+	["Auckland", "(UTC+12:00) Auckland, Wellington", "NZST-12NZDT,M9.5.0,M4.1.0/3"],
+	["GMT-12", "(UTC+12:00) Coordinated Universal Time+12", "GMT-12"],
+	["Fiji", "(UTC+12:00) Fiji", "FJT-12FJST,M10.3.1/146,M1.3.4/74"],
+	["Kamchatka", "(UTC+12:00) Kamchatka", "PETT-12PETST,M3.5.0,M10.5.0/3"],
+	["Kwajalein", "(UTC+12:00) Kwajalein, Marshall Is.", "MHT-12"],
+	["Chatham", "(UTC+12:45) Chatham", "CHAST-12:45CHADT,M9.5.0/2:45,M4.1.0/3:45"],
+	["Tongatapu", "(UTC+13:00) Tongatapu, Nuku'alofa", "TOT-13"],
+];
+
+$sel_tz = '';
+foreach($arr_tz as $tz){
+	$sel_tz .= '<option value="'.$tz[0].'">'.$tz[1].' '.$tz[2].'</option>';
+}
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>Retail Cloud Service</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Time zone</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<span class="col-md-2">Time zone</span>
+									<select id="iotServiceTzList" class="form-control-custom"><?=$sel_tz?></select>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="formIoTEnable" class="form-check-input" />
+									<span>Enable</span>
+								</label>								
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-3">Server address</span>
+										<input type="text" id="formURL" class="form-control-custom" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Server port</span>
+										<input type="text" id="formPort" class="form-control-custom mr-2" />
+										<label>(1 ... 65535)</label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">connectionstatus</span>
+										<label id="st_connecting" hidden>Connecting...</label>
+										<label id="st_failure" hidden>Failure</label>
+										<label id="st_success" hidden>Success</label>
+										<label id="st_none" hidden></label>
+									</div>
+								</div>
+								<div class="form-group mb-0">
+									<h6><span>note</span></h6>
+									<p class="text-sm">
+										When Retail Cloud Service is enabled,<br />
+										&middot;&nbsp;The time &amp; date of this camera will be automatically synchronized from a NTP server in <a href="#">"NTP > NTP Server Lists".</a><br/>
+										&middot;&nbsp;If <a href="#">"NTP > NTP Server Lists"</a> is empty, the default values will be recovered.<br/>
+										&middot;&nbsp;If <a href="#">"TCP/IP > Primary DNS server"</a> is empty, the default values will be recovered.</span>
+									</p>
+								</div>
+							</div>
+							<div class="card-footer text-center">
+								<button id="btnApply" class="btn btn-sm btn-primary mt-2">Apply</button>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+function loadIOTConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=IOT";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['IOT.enable']=='yes'){
+			$("#formIoTEnable").prop('checked', true);
+		}
+
+		$("#formURL").val(response['IOT.address']);
+		$("#formPort").val(response['IOT.port']);
+		$("#network_ieee8021x_pwd").val(response['IOT.status']);
+		// $("#system_datetime_ntp_s3").val(response['SYSTEM.Datetime.Ntp.s3']);
+	});
+}
+loadIOTConfig();
+
+</script>
+</html>

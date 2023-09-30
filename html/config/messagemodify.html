@@ -1,0 +1,250 @@
+
+<div class="modal fade" id="tcpNotiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document" >
+		<div class="modal-content">
+			<div class="modal-header mb-0">
+				<h6 class="modal-title" id="exampleModalLabel">TCP message info</span></h6>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="tab">
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab"><span>Message header</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab"><span>VCA</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab-3" data-bs-toggle="tab" role="tab"><span>Motion detection</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab-4" data-bs-toggle="tab" role="tab"><span>Network</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab-5" data-bs-toggle="tab" role="tab"><span>DI/DO</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab-6" data-bs-toggle="tab" role="tab"><span>System</span></a></li>
+					</ul>
+					<div class="tab-content">
+
+						<div class="tab-pane active" id="tab-1" role="tabpanel">
+							<div class="card">
+								<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">Customized message header</span></h6></div>
+								<div class="card-body">
+									<span>The message header will be sent out first before the message if using customized message header. And it will be effective for all event messages.</span>
+									<label class="form-check">
+										<input type="checkbox" id="idck_enablecusheader" class="form-check-input">
+										<span class="font-weight-bold">Enable using customized messageh eader</span>
+									</label>
+									<textarea type="text" id="idtext_cusheader" rows="10" class="form-control form-control-sm col-md-12"></textarea>
+								</div>
+								<div class="card-footer">
+									<button id="btnDialogHeaderOK" class="btn btn-sm btn-primary" data-dismiss="modal">Apply</button>
+									<button id="btnDialogHeaderCancel"  class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane" id="tab-2" role="tabpanel">
+							<div class="card">
+								<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">VCA events</h6></div>
+								<div class="card-body">
+									<div class="form-group">
+										<span class="font-weight-bold">VCA Config</span>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_vcaconfigformat" id="idradio_vcaconfigformat1" value="default" />
+											<span>Default message</span>
+										</label>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_vcaconfigformat" id="idradio_vcaconfigformat2" value="custom" />
+											<span>Customized message</span>
+										</label>
+										<input class="form-control form-control-sm col-md-12" type="text" id="idtext_vcaconfigformat" />
+									</div>
+									<div class="form-group">
+										<span class="font-weight-bold">VCA Alarm</span>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_vcaalarmformat" id="idradio_vcaalarmformat1" value="default" />
+											<span>Default message</span>
+										</label>
+										<label class="form-check mt-1">
+											<input class="form-check-input" type="radio" name="idradio_vcaalarmformat" id="idradio_vcaalarmformat2" value="custom" />
+											<span>Customized message</span>
+										</label>
+										<input class="form-control form-control-sm col-md-12" type="text" id="idtext_vcaalarmformat" />
+									</div>										
+									<div class="form-group">
+										<span class="font-weight-bold">VCA Counter</span>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_vcacounterformat" id="idradio_vcacounterformat1" value="default" />
+											<span>Default message</span>
+										</label>
+										<label class="form-check mt-1">
+											<input class="form-check-input" type="radio" name="idradio_vcacounterformat" id="idradio_vcacounterformat2" value="custom" />
+											<span>Customized message</span>
+										</label>
+										<input class="form-control form-control-sm col-md-12" type="text" id="idtext_vcacounterformat" />
+									</div>
+								</div>
+								<div class="card-footer">
+									<button id="btnDialogVcaOK" class="btn btn-sm btn-primary" data-dismiss="modal">Apply</button>
+									<button id="btnDialogVcaCancel"  class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+								</div>		
+							</div>
+						</div>
+
+
+						<div class="tab-pane" id="tab-3" role="tabpanel">
+							<div class="card">
+								<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">MD events</h6></div>
+								<div class="card-body">
+									<div class="form-group">
+										<span class="font-weight-bold">MD detected alarm</span>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_mddetectedformat" id="idradio_mddetectedformat1" value="default" />
+											<span>Default message</span>
+										</label>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_mddetectedformat" id="idradio_mddetectedformat2" value="custom" />
+											<span>Customized message</span>
+										</label>
+										<input class="form-control form-control-sm col-md-12" type="text" id="idtext_mddetectedformat" />
+									</div>
+								</div>
+								<div class="card-footer">
+									<button id="btnDialogMdOK" class="btn btn-sm btn-primary" data-dismiss="modal">Apply<</button>
+									<button id="btnDialogMdCancel"  class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+								</div>		
+							</div>
+						</div>
+
+
+						<div class="tab-pane" id="tab-4" role="tabpanel">
+							<div class="card">
+								<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">Network events</h6></div>
+								<div class="card-body">
+									<div class="form-group">
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_networkformat" id="idradio_networkformat1" value="default" />
+											<span>Default message</span>
+										</label>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_networkformat" id="idradio_networkformat2" value="custom" />
+											<span>Customized message</span>
+										</label>
+										<input class="form-control form-control-sm col-md-12" type="text" id="idtext_networkformat" />
+									</div>
+								</div>
+								<div class="card-footer">
+									<button id="btnDialogNetOK" class="btn btn-sm btn-primary" data-dismiss="modal">Apply</button>
+									<button id="btnDialogNetCancel"  class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+								</div>		
+							</div>
+						</div>
+
+
+						<div class="tab-pane" id="tab-5" role="tabpanel">
+							<div class="card">
+								<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">DI/DO events</h6></div>
+								<div class="card-body">
+									<div class="form-group">
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_didoformat" id="idradio_didoformat1" value="default" />
+											<span>Default message</span>
+										</label>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_didoformat" id="idradio_didoformat2" value="custom" />
+											<span>Customized message</span>
+										</label>
+										<input class="form-control form-control-sm col-md-12" type="text" id="idtext_didoformat" />
+									</div>
+								</div>
+								<div class="card-footer">
+									<button id="btnDialogDidoOK" class="btn btn-sm btn-primary" data-dismiss="modal">Apply</button>
+									<button id="btnDialogDidoCancel"  class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+								</div>		
+							</div>
+						</div>
+											
+											
+						<div class="tab-pane" id="tab-6" role="tabpanel">
+							<div class="card">
+								<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">Video Loss events</h6></div>
+								<div class="card-body">
+									<div class="form-group">
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_sysformat" id="idradio_sysformat1" value="default" />
+											<span>Default message</span>
+										</label>
+										<label class="form-check">
+											<input class="form-check-input" type="radio" name="idradio_sysformat" id="idradio_sysformat2" value="custom" />
+											<span>Customized message</span>
+										</label>
+										<input class="form-control form-control-sm col-md-12" type="text" id="idtext_sysformat" />
+									</div>
+								</div>
+								<div class="card-footer">
+									<button id="btnDialogSysOK" class="btn btn-sm btn-primary" data-dismiss="modal">Apply</button>
+									<button id="btnDialogSysCancel"  class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+								</div>		
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<div id="tooltipmsg" style="display:none">
+	<div id="CH_ID">Channel ID</div>
+	<div id="CFG_INFO">Config information</div>
+	<div id="EV_ID">Event's ID</div>
+	<div id="EV_DESC">Event's description</div>
+	<div id="TIMESTAMP">Time-stamp</div>
+	<div id="CT_ID">Counter's ID</div>
+	<div id="CT_NAME">Counter's name</div>
+	<div id="CT_VAL">Counter's value</div>
+	<div id="ST_NO">Steam's number</div>
+	<div id="ZN_BIT">Detected zone's bit value</div>
+	<div id="ZN_MASK">Mask of zones</div>
+	<div id="ZN_IDX">Zone's index</div>
+	<div id="OBJ_SZ">Objects' size</div>
+	<div id="MD_ENDIS">MD enabled/disabled</div>
+	<div id="SENSITIVITY">Value of sensitivity</div>
+	<div id="PT_NUM">Number of points</div>
+	<div id="PT_POS">Position of points</div>
+	<div id="BTARY_ENDIS">Bit array enabled/disabled</div>
+	<div id="ZNINFO_ENDIS">Zone information enabled/disabled</div>
+	<div id="ALMINFO_ENDIS">Alarm information enabled/disabled</div>
+	<div id="INTERFACE">Network interface</div>
+	<div id="PREV_IP">Previous IP</div>
+	<div id="PREV_SUBNET">Previous subnet mask</div>
+	<div id="PREV_GATEWAY">Previous gateway</div>
+	<div id="PREV_DNS1">Previous DNS1</div>
+	<div id="PREV_DNS2">Previous DNS2</div>
+	<div id="CURR_IP">Current IP</div>
+	<div id="CURR_SUBNET">Current subnet mask</div>
+	<div id="CURR_GATEWAY">Current gateway</div>
+	<div id="CURR_DNS1">Current DNS1</div>
+	<div id="CURR_DNS2">Current DNS2</div>
+	<div id="DSPLOAD">DSP load</div>
+	<div id="FPS">FPS</div>
+	<div id="BITRATE">Bit rate</div>
+	<div id="COUNT">Number of DI sensor</div>
+	<div id="PREV_MASK">Previous status mask</div>
+	<div id="CURR_MASK">Current status mask</div>
+	<div id="TEMP_CELSIUS">Temperature in Celsius</div>
+	<div id="TEMP_CELSIUS_PRECISION3">Three decimal places of current Celsius</div>
+	<div id="TEMP_FAHRENHEIT">Temperature in Fahrenheit</div>
+	<div id="TEMP_FAHRENHEIT_PRECISION3">Three decimal places of current Fahrenheit</div>
+	<div id="HEATER">Heater On/Off</div>
+	<div id="FAN">Fan On/Off</div>
+	<div id="SYS_TYPE">Type of system alarm</div>
+	<div id="SYS_ACTION">Action of system alarm</div>
+	<div id="SYS_INFO">Information of system alarm</div>
+	<div id="PACKETLEN">Length of whole packet</div>
+	<div id="DEVIP">IP of the device</div>
+	<div id="UNITNAME">Unit name</div>
+	<div id="DATETIME">Date and time</div>
+	<div id="DTS">Digital time-stamp</div>
+	<div id="MSGTYPE">Type of alarm message</div>
+	<div id="MSGINFO">Detail of alarm message</div>
+	<div id="EOS">End of string</div>
+	<div id="SUPPORT_KW">The supported keywords:</div>
+	<div id="EXAMPLE">Example:</div>
+	<div id="RULENAME">Event rule name</div>
+</div>		

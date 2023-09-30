@@ -1,0 +1,727 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<style>
+.card .card-header, .card-body {
+	padding-top: 0.5rem !important;
+	padding-bottom: 0.5rem !important;
+}
+</style>
+<?php
+if (!$_GET['tab']){
+	$_GET['tab']= "basic";
+}
+$active_tab[$_GET['tab']] = 'active';
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<div class="container-fluid">
+					<p class="menuLocationInfo"><span>Setup</span> > <span>Video & Audio</span> > <strong>Video</strong></p>
+					<div class="col-lg-6">
+						<div class="tab">
+							<ul class="nav nav-tabs" role="tablist">
+								<li class="nav-item" style="height:30px;"><a class="nav-link <?=$active_tab['basic']?>" href="#tab-1" data-bs-toggle="tab" role="tab"><span>basic</span></a></li>
+								<li class="nav-item"><a class="nav-link <?=$active_tab['advanced']?>" href="#tab-2" data-bs-toggle="tab" role="tab"><span>advanced</a></li>
+								<li class="nav-item"><a class="nav-link <?=$active_tab['expert']?>" href="#tab-3" data-bs-toggle="tab" role="tab"><span>Expert</span></a></li>
+							</ul>
+							<div class="tab-content mt-1">
+
+
+
+
+<!-- Basic setting -->								
+<div class="tab-pane <?=$active_tab['basic']?>" id="tab-1" role="tabpanel">				
+	<div class="card">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">General</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group mb-0">
+				<div class="form-inline">
+					<span class="col-md-2">Friendly name</span>
+					<input type="text" id="formCamName" class="form-control-custom" />
+				</div>
+				<div class="form-inline mt-2">
+					<span class="col-md-2">Aspect ratio</span>
+					<label for="aspectRatioOption_1" class="form-check">					
+						<input type="radio"	name="aspectRatioOption" id="aspectRatioOption_1" value="4:3" class="form-check-input" />
+						<span>4:3</span>
+					</label>
+					<label for="aspectRatioOption_0" class="form-check ml-4">
+						<input type="radio"	name="aspectRatioOption" id="aspectRatioOption_0" value="16:9" class="form-check-input" />
+						<span>16:9</span>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2" hidden>
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary"><span>Video Standard Format</span></h6>
+		</div>
+		<div class="card-body">
+			<span id="formCamStandard">NTSC PAL</span>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Video appearance</h6>
+		</div>
+		<div class="card-body">  
+			<div class="form-group mb-0">
+				<div class="form-inline">
+					<span class="col-md-2">Brightness</span>
+					<input type="range" id="sliderCamBright"  min="0" max="255"  style="width:200px;" class="slider">
+					<input type="text" size="3" id="formCamBright" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 255, 128)</label>
+				</div>
+				<div class="form-inline">
+					<span class="col-md-2">Contrast</span>
+					<input type="range" id="sliderCamContrast"  min="0" max="255" style="width:200px;" class="slider">
+					<input type="text" size="3" id="formCamContrast" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 255, 128)</label>
+				</div>
+				<div class="form-inline">
+					<span class="col-md-2">Saturation</span>
+					<input type="range" id="sliderCamSaturation"  min="0" max="255"  style="width:200px;" class="slider">
+					<input type="text" size="3" id="formCamSaturation" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 255, 128)</label>
+				</div>
+				<div class="form-inline">
+					<span class="col-md-2">Sharpness</span>
+					<input type="range" id="sliderCamSharpness"  min="0" max="255" style="width:200px;" class="slider">
+					<input type="text" size="3" id="formCamSharpness" class="form-control-custom text-center ml-2 mr-2"  />
+					<label>(0 ... 255, 128)</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Exposure</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<span class="col-md-3">Exposure mode</span>
+				<div class="form-group ml-5">
+					<label class="form-inline"> 
+						<input type="radio" name="formCamExposureMode" id="formCamExposureModeAuto" value="auto" class="form-check-input"/>
+						<span>Auto</span>:
+						<span class="ml-3">Maximum exposure time</span>: 1/
+						<input id="maxshutter" class="form-control-custom text-center ml-1 mr-2" type="text" size="4" />(1/30 ... 1/500 <span>sec</span>)
+						<span class="ml-3">Minimum exposure time</span>: 1/
+						<input id="minshutter" class="form-control-custom text-center ml-1 mr-2" type="text" size="4" />(1/1000 ... 1/10000 <span>sec</span>)
+					</label>
+					<label class="form-inline"> 
+						<input type="radio" name="formCamExposureMode" id="formCamExposureModeManual" value="manual" class="form-check-input"/>
+						<span>Manual</span>:
+						<span class="ml-3">Shutter speed</span>: 1/
+						<input id="fixedshutter" class="form-control-custom text-center ml-1 mr-1" type="text" size="4" />(1/2 ... 1/5000 <span>sec</span>)
+					</label>
+					<label class="form-inline"> 
+						<input type="radio" name="formCamExposureMode" id="formCamExposureModeFlicker" value="flickerless" class="form-check-input"/>
+						<span>Flickerless</span>:
+						<input type="radio" name="en773v_flickerlessMode" id="en773v_flickerless50" value="50" class="form-check-input ml-3"/>50Hz
+						<input type="radio" name="en773v_flickerlessMode" id="en773v_flickerless60" value="60" class="form-check-input ml-3" checked/>60Hz
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class=" form-inline">	
+					<span class="col-md-3">Maximum AGC</span>
+					<input id="maxagc" class="form-control-custom text-center mr-2" type="text" size="4" />
+					<label>(0 ... 100)</label>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Exposure adjustment</span>
+					<select id="formCamEVComp" class="form-control-custom mr-2" style="width:100px;">
+						<option value="171">+1.0</option>
+						<option value="153">+0.6</option>
+						<option value="139">+0.3</option>
+						<option value="128">0</option>
+						<option value="117">-0.3</option>
+						<option value="103">-0.6</option>
+						<option value="85">-1.0</option>
+					</select>
+					<span>EV</span>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Back light compensation</span>
+					<label class="form-check">
+						<input type="radio" name="formCamBLC" id="formCamBLCOn" value="yes" class="form-check-input"/>
+						<span>On</span>
+					</label>
+					<label class="form-check ml-3">
+						<input type="radio" name="formCamBLC" id="formCamBLCOff" value="no" class="form-check-input"/>
+						<span>Off</span>
+					</label>
+					<select id="formCamBLCZone" class="form-control-custom ml-3" style="width:100px;">
+						<option value="center">center</option>
+						<option value="left">left</option>
+						<option value="right">right</option>
+						<option value="top">top</option>
+						<option value="bottom">bottom</option>
+					</select>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Digital slow shutter</span>
+					<select id="formCamDSS" class="form-control-custom" style="width:100px;">
+						<option value="off">off</option>
+						<option value="2x">2x</option>
+						<option value="4x">4x</option>
+						<option value="8x">8x</option>
+						<option value="16x">16x</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Digital Wide Dynamic Range</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group mb-0">
+				<label class="form-check">
+					<input type="checkbox" id="formCamDWDR" class="form-check-input"/>
+					<span class="form-check-label">Enable</span>
+				</label>
+				<div class="form-inline">
+					<span class="col-md-2">Level</span>
+					<input type="range" id="sliderCamDWDRLevel"  min="0" max="16"  style="width:200px;" class="slider">
+					<input type="text" size="1" id="formCamDWDRLevel"class="form-control-custom text-center ml-2 mr-2" />
+					<label>(1 ... 16, 8)</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Day & Night</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group form-inline mb-0">
+				<span class="col-md-3">Day & Night mode</span>
+				<label class="form-check">
+					<input type="radio" name="formCamDaynightMode" id="formCamDaynightMode0" value="auto" class="form-check-input" />
+					<span>Auto</span>
+				</label>
+				<label class="form-check">
+					<input type="radio" name="formCamDaynightMode" id="formCamDaynightMode1" value="day" class="form-check-input ml-2" />
+					<span>Day</span>
+				</label>
+				<label class="form-check">
+					<input type="radio" name="formCamDaynightMode" id="formCamDaynightMode2" value="night" class="form-check-input ml-2" />
+					<span>Night</span>
+				</label>
+				<label class="form-check">
+					<input type="checkbox" id="enableIllumiSensor" class="form-check-input ml-2" />
+					<span>Enable illumination sensor</span>
+				</label>
+			</div>
+			<div class="form-inline ml-2">
+				<span class="col-md-3">Day to Night level</span>
+				<input type="range" id="sliderCamDaytonight"  min="0" max="64" style="width:200px;" class="slider">
+				<input type="text" size="5" id="formCamDaytonight"  class="form-control-custom text-center ml-2 mr-2" />
+				<label>(0 ... 63, 1)</label>
+			</div>
+			<div class="form-inline ml-2">
+				<span class="col-md-3">Night to Day level</span>
+				<input type="range" id="sliderCamNighttoday"  min="0" max="64"  style="width:200px;" class="slider">
+				<input type="text" size="5" id="formCamNighttoday" class="form-control-custom text-center ml-2 mr-2" />
+				<label>(1 ... 64, 3)</label>
+			</div>
+			<div class="form-inline" hidden>
+				<span class="col-md-3">Refocus</span>
+				<label class="form-check">
+					<input type="checkbox" id="syncDayNight" class="form-check-input"/>
+					<span>Sync with Day & Night</span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class = "col-md-12 mt-2 text-center">
+		<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+		<button id="btnView"  class="btn btn-sm btn-primary ml-3 mr-3">View</button>
+		<button id="btnPopup" class="btn btn-sm btn-primary">Pop-up</button>
+	</div>
+</div>
+<script>
+function displayBasic(key){
+	$("#formCamName").val(key.name);
+	if (key.cmos.ratio == '4:3'){
+		$('#aspectRatioOption_1').prop("checked", true);
+	}
+	else {
+		$('#aspectRatioOption_0').prop("checked", true);
+	}
+	
+	$("#formCamBright").val(key.color.brightness);
+	$("#sliderCamBright").val(key.color.brightness);
+	$("#formCamContrast").val(key.color.contrast);
+	$("#sliderCamContrast").val(key.color.contrast);
+	$("#formCamSaturation").val(key.color.saturation);
+	$("#sliderCamSaturation").val(key.color.saturation);
+	$("#formCamSharpness").val(key.color.sharpness);
+	$("#sliderCamSharpness").val(key.color.sharpness);		
+
+	if(key.isp.exposure.mode == 'normal') {
+		$("#formCamExposureModeAuto").prop("checked", true);
+	}
+	else if(key.isp.exposure.mode == 'manual') {
+		$("#formCamExposureModeManual").prop("checked", true);
+	}
+	else if(key.isp.exposure.mode == 'flicker') {
+		$("#formCamExposureModeFlicker").prop("checked", true);
+	}
+
+	$("#maxshutter").val(key.isp.exposure.maxshutter);
+	$("#minshutter").val(key.isp.exposure.minshutter);
+	$("#fixedshutter").val(key.isp.exposure.fixedshutter);
+
+	$("#maxagc").val(key.isp.exposure.maxagc);
+	$("#formCamEVComp").val(key.isp.exposure.irlevel);
+	
+
+	if (key.light.backlight.enable == 'yes') {
+		$("#formCamBLCOn").prop("checked", true);
+	}
+	else {
+		$("#formCamBLCOff").prop("checked", true);
+	}
+
+	$("#formCamBLCZone").val(key.light.backlight.zone);
+	$("#formCamDSS").val(key.isp.exposure.dss);
+
+	if(key.wdr.enable == 'yes'){
+		$("#formCamDWDR").prop("checked", true);
+	}
+	$("#formCamDWDRLevel").val(key.wdr.level);
+$("#sliderCamDWDRLevel").val(key.wdr.level);01111111111
+
+	if(key.light.daynight.mode == 'auto'){
+		$("#formCamDaynightMode0").prop("checked", true);
+	}
+	else if(key.light.daynight.mode == 'day'){
+		$("#formCamDaynightMode1").prop("checked", true);
+	}
+	else if(key.light.daynight.mode == 'night'){
+		$("#formCamDaynightMode2").prop("checked", true);
+	}
+	if(key.light.daynight.sensor.enable=="yes"){
+		$("#enableIllumiSensor").prop("checked", true);
+	}
+
+	$("#formCamDaytonight").val(key.light.daynight.dtnlevel);
+	$("#sliderCamDaytonight").val(key.light.daynight.dtnlevel);
+	$("#formCamNighttoday").val(key.light.daynight.ntdlevel);
+	$("#sliderCamNighttoday").val(key.light.daynight.ntdlevel);
+}
+</script>
+
+<!-- Advanced -->
+<div class="tab-pane <?=$active_tab['advanced']?>" id="tab-2" role="tabpanel">												
+	<div class="card">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Image Signal Processing</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group form-inline mb-0">
+				<span class="col-md-3">Dynamic 2D DNR</span>
+				<input type="range" id="sliderCamNoisefilter" min="0" max="15"  style="width:200px;" class="slider">
+				<input type="text" size="5" id="formCamNoisefilter" class="form-control-custom text-center ml-2 mr-2"/>
+				<label>(0 ... 15)</label>
+			</div>
+			<div class="form-group form-inline" hidden>
+				<span class="col-md-3">Noise Filter</span>
+				<input type="range" id="sliderCamNoisefilter_sub" min="0" max="15"  style="width:200px;" class="slider">
+				<input type="text" size="5" id="formCamNoisefilter_sub" class="form-control-custom text-center ml-2 mr-2"/>
+				<label>(0 ... 15)</label>
+			</div>
+			<div class="form-group ml-4">
+				<label class="form-check mb-0">
+					<input type="checkbox" id="formDefogEnable" class="form-check-input"/>
+					<span  class="form-check-label">Enable defog</span>
+				</label>
+				<div class="form-inline mt-1">
+					<span class="col-md-2">Level</span>
+					<select id="formDefogManualLevel" class="form-control-custom" style="width:120px;"> 
+						<option value="low">low</option>
+						<option value="medium">medium</option>
+						<option value="high">high</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">White Balance</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group mb-0">
+				<div class="form-inline">
+					<span class="col-md-3">White balance mode</span>
+					<select id="formCamWBMode" class="form-control-custom" style="width:120px;">
+						<option value="atw1">atw1</option>
+						<option value="atw2">atw2</option>
+						<option value="push">push</option>
+						<option value="manual">manual</option>
+						<option value="indoor">indoor</option>
+						<option value="outdoor">outdoor</option>
+					</select>
+				</div>
+				<div class="form-inline">
+					<span class="col-md-3">Red</span>
+					<input type="range" id="sliderCamGainRed" min="0" max="255"  style="width:200px;" class="slider">
+					<input type="text" size="5" id="formCamGainRed" class="form-control-custom text-center" />
+					<label>(0 ...255)</label>
+				</div>
+				<div class="form-inline mb-0">
+					<span class="col-md-3">Blue</span>
+					<input type="range" id="sliderCamGainBlue" min="0" max="255"  style="width:200px;" class="slider">
+					<input type="text" size="5" id="formCamGainBlue" class="form-control-custom text-center"/>
+					<label>(0 ...255)</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Video transform</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group mb-0">
+				<div class="form-inline">
+					<span class="col-md-2">Orientation</span>
+					<label class="form-check">
+						<input type="checkbox" id="formCamFlip" class="form-check-input" />
+						<span>Vertical flip</span>
+					</label>
+					<label class="form-check ml-3">
+						<input type="checkbox" id="formCamMirror" class="form-check-input" />
+						<span>Horizontal mirror</span>
+					</label>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-2">Rotation</span>
+					<label class="form-check">
+						<input type="radio"	name="formCamRotation" id="formCamRotation0" value="none" class="form-check-input" />
+						<span>None</span>
+					</label>
+					<label class="form-check ml-3">
+						<input type="radio"	name="formCamRotation" id="formCamRotation1" value="left" class="form-check-input" />
+						<span>Left(-90 degrees)</span>
+					</label>
+					<label class="form-check ml-3">
+						<input type="radio"	name="formCamRotation" id="formCamRotation2" value="right" class="form-check-input" />
+						<span>Right(+90 degrees)</span>
+					</label>
+				</div>
+			</div>
+			<span class="ml-3 mb-0" hidden>
+				Note: Image rotation is disabled while any of the features below is activated.
+			</span>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Auto Focus mode</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group form-inline mb-0">
+				<span class="col-md-3">Auto Focus mode</span>
+				<select id="formCamAFM" class="form-control-custom" style="width:100px">
+					<option value="auto">auto</option>
+					<option value="semiauto">semi-auto</option>
+					<option value="manual">manual</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Gain control</h6>
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<label class="form-check ml-3">
+					<input type="radio"	name="gainControlMode" id="gainControlMode_0" value="auto" class="form-check-input" />
+					<span>Auto</span>
+				</label>
+				<label class="form-check ml-3">
+					<input type="radio"	name="gainControlMode" id="gainControlMode_1" value="ice" class="form-check-input" />
+					<span>ICE</span>
+				</label>
+				<div class="form-inline ml-3">
+					<span class="col-md-2">level</span>
+					<input type="range" id="sliderIceLevel"  min="0" max="7" value="2" style="width:200px;" class="slider">
+					<input type="text" size="5" id="formIceLevel" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 7, 2)</label>
+				</div>
+				<label class="form-check ml-3">
+					<input type="radio"	name="gainControlMode" id="gainControlMode_2" value="manual" class="form-check-input" />
+					<span>Manual</span>
+				</label>
+				<div class="form-inline ml-3">
+					<span class="col-md-2">gain</span>
+					<input type="range" id="sliderManualGain"  min="0" max="4095" value="1024" style="width:200px;" class="slider">
+					<input type="text" size="5" id="formManualGain" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 4095, 1024)</label>
+				</div>
+				<div class="form-inline ml-3">
+					<span class="col-md-2">level</span>
+					<input type="range" id="sliderManualLevel"  min="0" max="4095" value="1024" style="width:200px;" class="slider">
+					<input type="text" size="5" id="formManualLevel" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 4095, 1024)</label>
+
+				</div>
+			</div>
+			<span hidden>
+				Note: The option except "Auto" option may lead to inaccurate VCA object tracking.
+			</span>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Noise reduction</h6>
+		</div>
+		<div class="card-body">  
+			<label class="form-check mb-0 ml-3">
+				<input type="checkbox" id="noiseredEnable" class="form-check-input" />
+				<span>Enable</span>
+			</label>
+		</div>
+	</div>
+	<div class = "col-md-12 mt-2 text-center">
+		<button id="btnApplyAdvanced" class="btn btn-sm btn-primary">Apply</button>
+	</div>
+</div>
+<script>
+function displayAdvanced(key){
+	$("#formCamNoisefilter").val(key.isp.noisefilter);
+	$("#sliderCamNoisefilter").val(key.isp.noisefilter);
+	if(key.isp.defog.enable == "yes") {
+		$("#formDefogEnable").prop("checked", true);
+	}
+	$("#formDefogManualLevel").val(key.isp.defog.manual.level);
+	$("#formCamWBMode").val(key.isp.whitebalance.mode);
+
+	$("#formCamGainRed").val(key.isp.whitebalance.manualredgain);
+	$("#sliderCamGainRed").val(key.isp.whitebalance.manualredgain);
+	$("#formCamGainBlue").val(key.isp.whitebalance.manualbluegain);
+	$("#sliderCamGainBlue").val(key.isp.whitebalance.manualbluegain);
+	if(key.image.mirror == 'flip'){
+		$("#formCamFlip").prop("checked", true);
+	}
+	if(key.image.mirror == 'mirror'){
+		$("#formCamMirror").prop("checked", true);
+	}
+	if(key.rotate.direction == 'none'){
+		$("#formCamRotation0").prop("checked", true);
+	}
+	else if(key.rotate.direction == 'left'){
+		$("#formCamRotation1").prop("checked", true);
+	}
+	else if(key.rotate.direction == 'right'){
+		$("#formCamRotation2").prop("checked", true);
+	}
+	$("#formCamAFM").val(key.focus.mode);
+
+	if(key.tim.gaincontrol.mode == "auto") {
+		$("#gainControlMode_0").prop("checked", true);
+	}
+	else if(key.tim.gaincontrol.mode == "ice") {
+		$("#gainControlMode_1").prop("checked", true);
+	}
+	else if(key.tim.gaincontrol.mode == "manual") {
+		$("#gainControlMode_2").prop("checked", true);
+	}
+	$("#formIceLevel").val(key.tim.gaincontrol.ice.level);
+	$("#sliderIceLevel").val(key.tim.gaincontrol.ice.level);
+
+
+	$("#formManualGain").val(key.tim.gaincontrol.manual.gain);
+	$("#sliderManualGain").val(key.tim.gaincontrol.manual.gain);
+
+	$("#formManualLevel").val(key.tim.gaincontrol.manual.offset);
+	$("#sliderManualLevel").val(key.tim.gaincontrol.manual.offset);
+
+	if(key.tim.noisereduction.enable=="no"){
+		$("#noiseredEnable").prop("checked", true);
+	}
+
+}
+
+</script>
+
+<!-- Expert -->
+<div class="tab-pane <?=$active_tab['expert']?>" id="tab-3" role="tabpanel">												
+	<div class="card">
+		<div class="card-header mb-0">
+			<h6 class="mb-0 font-weight-bold text-primary">Expert setting</h6>
+		</div>
+		<div class="card-body">
+			ISP 혹은 V4L2의 값을 설정할 수 있도록 설계	
+			<ul class="box colorizationContents dsp_hide">
+		<li class="box-title"><h2 class="0402019920">Color Palette</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_0" value="whitehot" />
+							<label for="colTable_0" class="0402019921"> White hot</label>
+						</li>
+						<li>
+							<img src="../images/whitehot.png" alt="whitehot" />
+						</li>
+					</ul>
+					<ul class="redLightContents">
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_1" value="redlight" />
+							<label for="colTable_1" class="0402019922"> Red light</label>
+						</li>
+						<li>
+							<img src="../images/redlight.png" alt="redlight" />
+						</li>
+					</ul>
+					<ul>
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_2" value="arcus" />
+							<label for="colTable_2" class="0402019923"> Arcus</label>
+						</li>
+						<li>
+							<img src="../images/arcus.png" alt="redlight" />
+						</li>
+					</ul>
+					<ul class="infernoContents">
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_3" value="inferno" />
+							<label for="colTable_3" class="0402019924"> Inferno</label>
+						</li>
+						<li>
+							<img src="../images/inferno.png" alt="inferno" />
+						</li>
+					</ul>
+					<ul>
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_4" value="softlight" />
+							<label for="colTable_4" class="0402019925"> Soft light</label>
+						</li>
+						<li>
+							<img src="../images/softlight.png" alt="softlight" />
+						</li>
+					</ul>
+					<ul>
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_5" value="sunset" />
+							<label for="colTable_5" class="0402019926"> Sunset</label>
+						</li>
+						<li>
+							<img src="../images/sunset.png" alt="sunset" />
+						</li>
+					</ul>
+					<ul>
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_6" value="memoriam" />
+							<label for="colTable_6" class="0402019927"> Memoriam</label>
+						</li>
+						<li>
+							<img src="../images/memoriam.png" alt="memoriam" />
+						</li>
+					</ul>
+					<ul class="flammaContents">
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_7" value="flammaarcticus" />
+							<label for="colTable_7" class="0402019928"> Flamma arcticus</label>
+						</li>
+						<li>
+							<img src="../images/flammaarcticus.png" alt="flammaarcticus" />
+						</li>
+					</ul>
+					<ul class="oceanContents">
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_8" value="ocean" />
+							<label for="colTable_8" class="0402019929"> Ocean</label>
+						</li>
+						<li>
+							<img src="../images/ocean.png" alt="ocean" />
+						</li>
+					</ul>
+					<ul>
+						<li class="width_step15">
+							<input type="radio"	name="colTable" id="colTable_9" value="fullspectrum" />
+							<label for="colTable_9" class="0402019930"> Full spectrum</label>
+						</li>
+						<li>
+							<img src="../images/fullspectrum.png" alt="fullspectrum" />
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li>
+							<input type="checkbox" id="colorNegativeEnable" />
+							<label for="colorNegativeEnable" class="0402019931"> Negative</label>
+						</li>
+					</ul>
+				</li>
+				<li class="noti_msg margin_left_step1">
+					<ul>
+						<li>
+							<span class="0402019937">
+								Note: The option except "White Hot" may lead to inaccurate VCA object tracking.
+							</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+		</div>
+	</div>
+</div>
+
+
+							</div>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<?=$footer?>
+<script>
+
+	// sliderCamBright formCamBright
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+
+
+function loadCameraConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=Video";
+	$.getJSON(url, function(response) {
+		// console.log(response);
+		let key = response.video.ch0;
+		console.log(key);
+		displayBasic(key);
+		displayAdvanced(key);
+	});
+}
+loadCameraConfig();
+</script>		
+</html>

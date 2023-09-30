@@ -1,0 +1,87 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Event Configuration</span> > <strong>Motion detection</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-body"> 
+								<div id="viewToggle" class="row mt-2 justify-content-center">
+									<canvas id="canvas"></canvas>
+									<script>
+										var canvas = document.getElementById("canvas");
+										canvas.width=720;
+										canvas.height = 360;
+										var ctx = canvas.getContext('2d');
+										var img =  new Image();
+										img.src="../images/demo_screen.jpg";
+										ctx.drawImage(img, 0,0,720,360);
+
+									</script>
+									<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
+								</div>	
+								<br /><span>* Motion detection configuration is only supported in Internet Explorer.</span>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary"><span>Motion Zones</span></h6>
+							</div>
+							<div class="card-body pl-0 pr-0 pt-0 pb-0"> 
+								<table class="table table-sm mb-0" >
+									<thead>
+										<tr>
+											<th><span>Enable<span></th>
+											<th><span>Zone id</span></th>
+											<th><span>Name</span></th>
+											<th><span>Description</span></th>
+											<th><span>Sensitivity</span></th>
+											<th><span>Object Size</span></th>
+										</tr>
+									</thead>
+									<tbody>
+<?PHP for ($i=0;$i<8; $i++) {?>
+										<tr>
+											<td class="pl-4 pr-0 pt-0 pb-0"><input type="checkbox" id="formZoneEnable_<?=$i?>" class="form-check form-check-input" /></td>
+											<td class="pl-3 pr-0 pt-0 pb-0"><?=$i?></td>
+											<td class="pl-0 pr-0 pt-0 pb-0"><input type="text" id="formZoneName_<?=$i?>" class="form-control-custom" size="5"/></td>
+											<td class="pl-0 pr-0 pt-0 pb-0"><input type="text" id="formZoneDesc_<?=$i?>" class="form-control-custom" size="10" /></td>
+											<td class="pl-0 pr-0 pt-0 pb-0"><input type="text" id="formZoneSens_<?=$i?>" class="form-control-custom" size="3" /></td>
+											<td class="pl-0 pr-0 pt-0 pb-0"><input type="text" id="formZoneObjSize_<?=$i?>" class="form-control-custom" size="3" /></td>
+										</tr>
+<?PHP } ?>											
+									</tbody>
+								</table>
+							</div>
+							<div class="card-footer text-center">
+								<button id="save" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>

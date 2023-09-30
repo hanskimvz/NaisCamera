@@ -1,0 +1,127 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Storage</span> > <strong>Video file download</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-body">
+								<div id="viewToggle" class="row mt-2 justify-content-center">
+									<canvas id="canvas"></canvas>
+									<script>
+										var canvas = document.getElementById("canvas");
+										canvas.width=720;
+										canvas.height = 360;
+										var ctx = canvas.getContext('2d');
+										var img =  new Image();
+										img.src="../images/demo_screen.jpg";
+										ctx.drawImage(img, 0,0,720,360);
+
+									</script>
+									<!--iframe src="/view.php" id="viewFrame"  class="col-lg-6"  scrolling="no" marginheight="1" marginwidth="1" frameborder="1"></iframe-->
+								</div>	
+							</div>
+							<div class="card-footer text-center">
+								<button id="btnPageFirst" class="btn btn-sm"><img src="../images/btn_page_first.gif" height="20" /></button>
+								<button id="btnPagePrev" class="btn btn-sm"><img src="../images/btn_page_prev.gif" height="20" /></button>
+								<span class="pageNumberGroup">| <span class='pageNumber_1'>1</span> |</span>
+								<button id="btnPageNext" class="btn btn-sm"><img src="../images/btn_page_next.gif" height="20" /></button>
+								<button id="btnPageLast" class="btn btn-sm"><img src="../images/btn_page_last.gif" height="20" /></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<body id="config-page">
+	<p class="menuLocationInfo">
+		<span class="04140101">Setup &gt; Storage &gt;</span>
+		<span id="pagename" class="04140102">Continuous</span>
+	</p>
+	<ul class="box">
+		<li class="box-content">
+			<ul>
+				<li id="formFDSearch" class="item nocolor float_right">
+					<ul>
+						<li>
+							<span class="04140103">Search :</span>
+							<input type="text" id="formSearchDate" class="text_cen" size="10"></input>
+						</li>
+						<li id="allSearch">x</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<ul class="box">
+		<li class="box-content">
+			<ul>
+				<li id="formFDTopList" class="item">
+					<ul>
+						<li id="filedown_num" class="04140104">Num</li>
+						<li id="filedown_filename" class="04140105">FileName</li>
+						<li id="filedown_datetime" class="04140106">DateTime</li>
+						<li id="filedown_size" class="04140107">Size</li>
+						<li class="04140108">Download</li>
+					</ul>
+				</li>
+				<li class="item" id="reclist"></li>
+				<li id="pageMove">
+					<ul>
+						<li>
+
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$("input[type='radio']").on("click", function () {
+	console.log(this);
+	$("#rec_avi0").prop("hidden", true);
+	$("#rec_avi1").prop("hidden", true);
+	$("#rec_avi2").prop("hidden", true);	
+	$("#rec_dat0").prop("hidden", true);
+	$("#rec_dat1").prop("hidden", true);	
+	if (this.id=="formRecType0") {
+		$("#rec_avi0").prop("hidden", false);
+		$("#rec_avi1").prop("hidden", false);
+		$("#rec_avi2").prop("hidden", false);
+	}
+	else if (this.id=="formRecType1") {
+		$("#rec_dat0").prop("hidden", false);
+		$("#rec_dat1").prop("hidden", false);
+	}	
+});
+
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+
+</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Video & Audio</span> > <strong>Video-Out</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body"> 
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-2">Mode</span>
+										<label class="form-check">
+											<input type="radio"	name="VideoOutMode" id="VideoOutMode0" value="loop" class="form-check-input" />
+											<span class="form-check-label">Loop-back</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type="radio"	name="VideoOutMode" id="VideoOutMode1" value="dac" class="form-check-input" />
+											<span class="form-check-label">DAC</span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Video Output</h6>
+							</div>
+							<div class="card-body"> 
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-2">BNC output</span>
+										<label class="form-check">
+											<input type="radio"	name="VideoOutBNCOutput" id="VideoOutBNCOutput0" value="ntsc" class="form-check-input" />
+											<span class="form-check-label">NTSC</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type="radio"	name="VideoOutBNCOutput" id="VideoOutBNCOutput1" value="pal" class="form-check-input" />
+											<span class="form-check-label">PAL</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type="radio"	name="VideoOutBNCOutput" id="VideoOutBNCOutput2" value="off" class="form-check-input" />
+											<span class="form-check-label">Off</span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2 col-lg-6 justify-content-center">
+						<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+</script>
+</html>

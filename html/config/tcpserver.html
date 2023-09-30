@@ -1,0 +1,52 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Event Configuration</span> > <strong>TCP server</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-2">Port</span>
+										<input type="text" id="formTcpPort" class="form-control-custom mr-2" />
+										<label class="04030705"> (1 ... 65535)</label>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+								<button id="linkcustomaizeventfmt" class="btn btn-mini btn-warning mt-1 float-right" data-toggle="modal" data-target="#tcpNotiModal">Message Customization</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php
+include "/usr/html/config/messagemodify.html";
+?>
+
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+</script>
+</html>

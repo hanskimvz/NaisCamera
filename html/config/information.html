@@ -1,0 +1,62 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>About</span> > <strong>Information</strong></p>
+				<div class="container-fluid">
+					<div class="row col-lg-6"> <!--div class="row mx-auto col-lg-6"-->
+						<table class="table table-sm table-hover">
+							<thead>
+								<tr><th><span>Name</span></th><th><span>value</span></th></tr>
+							</thead>
+							<tbody>
+								<tr><td><span>usn</span></td>				<td id="usnVal"></td></tr>
+								<tr><td><span>fullname</span></td>			<td id="fullNameVal"></td></tr>
+								<tr><td><span>shortname</span></td>			<td id="shortNameVal"><?=$arr_rs['BRAND.Product.shortname']?></td></tr>
+								<tr><td><span>firmwareversion</span></td>	<td id="firmwareVerVal"><?=$arr_rs['VERSION.firmware']?></td></tr>
+								<tr><td><span>userfsversion</span></td>		<td id="userfsVerVal"><?=$arr_rs['VERSION.userfs']?></td></tr>
+								<tr><td><span>micropversion</span></td>		<td id="manufacturerVerVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>manufacturer</span></td>		<td id="manufacturerVerVal"><?=$arr_rs['BRAND.brand']?></td></tr>
+								<tr><td><span>macaddr</span></td>			<td id="macAddrVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>pantilt</span></td>			<td id="panTitleVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>zoomfocus</span></td>			<td id="focusZoomVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>dcautoiris</span></td>		<td id="dcAutoirisVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>daynight</span></td>			<td id="dayNightVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>irillumination</span></td>	<td id="irIlluminationVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>tvout</span></td>				<td id="tvOutVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>audioinout</span></td>		<td id="audioVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>dido</span></td>				<td id="diDoVal"></td><?=$arr_rs['BRAND']?></tr>
+								<tr><td><span>rs485</span></td>				<td id="rs485Val"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>usb</span></td>				<td id="usbVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>sd</span></td>				<td id="sdVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>ispversion</span></td>		<td id="ispVersionVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>timversion</span></td>		<td id="timVersionVal"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>temperature</span></td>		<td id="temperatureValue"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>voltage</span></td>			<td id="voltageValue"><?=$arr_rs['BRAND']?></td></tr>
+								<tr><td><span>fanstate</span></td>			<td id="fanstateValue"><?=$arr_rs['BRAND']?></td></tr> 
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>	

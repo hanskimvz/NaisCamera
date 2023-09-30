@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<title></title>
+	<link type="text/css" href="../css/config.css" rel="stylesheet" />
+	<link type="text/css" href="../css/config/vcacomplexrules.css" rel="stylesheet" />
+	<script type="text/javascript" src="./vcacomplexrules/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="./vcacomplexrules/jquery-ui-1.10.4.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+	<script type="text/javascript" src="../js/cap.js"></script>
+	<script type="text/javascript" src="../js/cap.vca.js"></script>
+	<script type="text/javascript" src="vcacomplexrules/actiondefinition.js"></script>
+	<script type="text/javascript" src="vcacomplexrules/clausedefinition.js"></script>
+	<script type="text/javascript" src="./vcacomplexrules/angular-1.2.14.min.js"></script>
+	<script type="text/javascript" src="vcacomplexrules/app.js"></script>
+	<script type="text/javascript" src="vcacomplexrules/directives.js"></script>
+	<script type="text/javascript" src="vcacomplexrules/controllers.js"></script>
+	<script type="text/javascript" src="vcacomplexrules/filters.js"></script>
+	<script type="text/javascript" src="../js/config/vcacomplexrules.js"></script>
+
+	<!--[if lte IE 8]>
+		<script>
+			document.createElement('rulelistselector');
+			document.createElement('datatest');
+			document.createElement('rule');
+			document.createElement('actions');
+			document.createElement('action');
+			document.createElement('topclause');
+			document.createElement('clause');
+			document.createElement('parameter');
+			document.createElement('addclausebutton');
+		</script>
+	<![endif]-->
+</head>
+<body id="config-page" ng-app='complexRulesApp' ng-controller="accessComplexRulesObject">
+	<ul class="box">
+		<li class="box-title"><h2 class="04051301">Complex Rule List</h2></li>
+		<li class="box-content">
+			<ul>
+				<li id="CRListBoxColTitles" class="item">
+					<ul>
+						<li id="complexrule_name" class="04051302">Name</li>
+						<li class="04051303">Description</li>
+					</ul>
+				</li>
+				<li class="item">
+					<rulelistselector></rulelistselector>
+				</li>
+				<li id="CRButtons" class="item nocolor">
+					<button id="btnAdd"><span class="04051304">Add...</span></button>
+					<button id="btnModify"><span class="04051305">Modify...</span></button>
+					<button id="btnRemove"><span class="04051306">Remove</span></button>
+					<button id="btnRestoreDefaults"><span class="04051307">Restore Defaults</span></button>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<div id="rule-dialog" ng-controller="enableDebug">
+		<ul ng-class="{reLeft: debugchecked, reFull: !debugchecked}">
+			<li><rule ng-repeat="rule in complexrulesobj | complexRuleFilter:rule" 
+				ruledata='rule' complexrulesobj='complexrulesobj' selectedrule='selectedrule'>
+			</rule></li>
+			<li ng-hide="!enabledebug"><input type="checkbox" ng-model="debugchecked"><span translate="04051308">Debug</span></input></li>
+		</ul>
+		<div ng-if="debugchecked" class="reDebug">
+			<datatest></datatest>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<title></title>
+	<link type="text/css" href="../css/config.css" rel="stylesheet" />
+	<link type="text/css" href="../css/config/dbgutil.css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/defstring/defbrand.js"></script>
+	<script type="text/javascript" src="../js/utils/log.js"></script>
+	<script type="text/javascript" src="../js/utils/jq_string.js"></script>
+	<script type="text/javascript" src="../js/utils/jq_control.js"></script>
+	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+	<script type="text/javascript" src="../js/plat_utils/string.js"></script>
+	<script type="text/javascript" src="../js/plat_utils/brand.js"></script>
+	<script type="text/javascript" src="../js/config/dbgutil.js"></script>
+</head>
+<body id="config-page">
+	<ul class="box">
+		<li class="box-title"><h2 class="">Query</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li class="item-title ">Telnet enable:</li>
+						<li>
+							<input type="radio"	name="query" id="query_0" value="telnet_yes" checked />
+							<label for="query_0"> Enable</label>
+							<input type="radio"	name="query" id="query_1" value="telnet_no" />
+							<label for="query_1"> Disable</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title ">OEM enable:</li>
+						<li>
+							<input type="radio"	name="query" id="query_2" value="oem_yes" />
+							<label for="query_2"> Enable</label>
+							<input type="radio"	name="query" id="query_3" value="oem_no" />
+							<label for="query_3"> Disable</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title ">Param.cgi listing :</li>
+						<li>
+							<input type="radio"	name="query" id="query_4" value="list" />
+							<label for="query_4"> List</label>
+							<input type="radio"	name="query" id="query_5" value="query" />
+							<label for="query_5"> Query</label><br/>
+							group: <input id="paramListGroup" type="text" size=40></input>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div id="btn" class="box" align="center">
+		<button id="btnApply"><span class="">Apply</span></button>
+		<div>
+			<textarea id="sendquery"></textarea>
+			<textarea id="result"></textarea>
+		</div>
+	</div>
+</body>
+</html>

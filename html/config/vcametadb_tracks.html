@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+	'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+<head>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<link type='text/css' href='../css/config.css' rel='stylesheet' />
+	<link type='text/css' href='../css/theme.css' rel='stylesheet' />
+	<link type='text/css' href='../css/themes/smoothness/jquery-ui.css'>
+	<link type='text/css' href='../css/config/vcametadb_events.css' rel='stylesheet' />
+	<link type='text/css' href='../css/themes/base/jquery-ui.css' rel='stylesheet' />
+	<link type='text/css' href='../js/1.6.3/jquery-ui-timepicker-addon.css' rel='stylesheet' />
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.mouse.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.slider.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src='../js/uapi.ajax.js'></script>
+	<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
+	<script type="text/javascript" src="../js/jquery.ipaddress.js"></script>
+	<script type="text/javascript" src="../js/jquery.dateformat.js"></script>
+  	<script type="text/javascript" src="../js/jquery.epiclock.js"></script>
+	<script type="text/javascript" src="../js/jquery.caret.js"></script>
+	<script type='text/javascript' src='../js/common.js'></script>
+	<script type='text/javascript' src='../js/cap.js'></script>
+	<script type='text/javascript' src='../js/cap.vca.js'></script>
+	<script type='text/javascript' src='../js/utils/jq_string.js'></script>
+	<script type='text/javascript' src='../js/plat_utils/string.js'></script>
+	<script type='text/javascript' src='../js/config/vcametadb_events.js'></script>
+	<script type='text/javascript' src='../js/config/xtooltips.js'></script>
+	<script type="text/javascript" src="../js/1.6.3/jquery-ui-timepicker-addon.js"></script>
+</head>
+
+<body id="config-page">
+	<p class="menuLocationInfo">
+		<span class="04051501">Setup &gt; VCA &gt;</span>
+		<span id="pagename">Reporting</span> <!-- this will be changed by JS to "event/track reporting"-->
+	</p>
+	<ul class='box vcaDisabled' style="display:none">
+		<li class='box-title'><h2>Reporting</h2></li>
+		<li class='box-content'>
+			<p> <span class='04050720'>VCA is disabled, please go to the </span><span class='menuLocationInfo 04050721'>VCA > </span><span id='pagename' class='04050722'>Enable/Disable</span><span class ='04050723'> page to enable VCA.</span></p>
+		</li>
+	</ul>
+	<ul class='box vcaEnabled'>
+		<div id="stream_tab" class="tab_inline">
+			<ul class="css-tabs">
+				<li><a href="#reportservice" id="reportservice_link" class="04051503">Reporting service</a></li>
+				<li><a href="#dbservice" id="dbservice_link" class="04051504">Database service</a></li>
+			</ul>
+			<div id="reportservice">
+				<ul class="box">
+				<li class="box-content">
+					<ul>
+						<li class="item">
+							<span class="ctrpspan 04051505">Pre-defined request: </span>
+							<select id="predefinerequest" style="width:100px" onmouseover='xtooltip_show("predefine_tooltip","predefinerequest",0,0);' onmouseout='xtooltip_hide("predefine_tooltip");'></select>
+						</li>
+					</ul>
+				</li>
+				</ul>
+				<ul class="box">
+					<li class='box-title'><h2 class="04051506" style="text-align:left">Request Command</h2></li>
+					<li class="box-content">
+						<ul>
+							<li class="item">
+								<span class="ctrpspan 04051507">Time :</span>
+								<input type="text" id="from-ts"></input>
+								<label for="from-ts" class="04051508"> (from)</label>
+								<br>
+								<span class="ctrpspanto"></span>
+								<input type="text" id="to-ts"></input>
+								<label for="to-ts" class="04051509"> (to)</label>
+							</li>
+						</ul>
+					</li>
+					<li class="box-content" id="rulesfilter">
+						<div class="item">
+							<span class="ctrpspan 04051510">Rules :</span>
+							<div class="control">
+								<div id="lstAllBlock">
+									<label for="lstAll">All rules that triggered events:</label>
+									<select multiple="true" id="lstAll" class="listbox"></select>
+								</div>
+								<div class="button-panel">
+									<div class="test">
+										<button id="btnAll" type="button" onmouseover='xtooltip_show("btnAll_tooltip","btnAll",0,0);' onmouseout='xtooltip_hide("btnAll_tooltip");'>&raquo;</button>
+										<button id="btnAdd" type="button" onmouseover='xtooltip_show("btnAdd_tooltip","btnAdd",0,0);' onmouseout='xtooltip_hide("btnAdd_tooltip");'>&rsaquo;</button>
+										<button id="btnRem" type="button" onmouseover='xtooltip_show("btnRem_tooltip","btnRem",0,0);' onmouseout='xtooltip_hide("btnRem_tooltip");'>&lsaquo;</button>
+										<button id="btnClr" type="button" onmouseover='xtooltip_show("btnClr_tooltip","btnClr",0,0);' onmouseout='xtooltip_hide("btnClr_tooltip");'>&laquo;</button>
+									</div>
+								</div>
+								<div id="lstInBlock">
+									<label for="lstIn">Rules in report (empty means all):</label>
+									<select multiple="true" id="lstIn" class="listbox"></select>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<ul class="box">
+					<li class='box-title'><h2 class="04051511" style="text-align:left">Request</h2></li>
+					<li class="box-content">
+						<div class="item">
+							<span class="ctrpspan"></span>
+							<button id="btnCSV" type="button"><span class="04051512">CSV</span></button>
+							<label id="servicedisabled" style="display:none"><FONT color="red" class="04051513">Events (metadata) database service is disabled!</FONT></label>
+							<label id="pagestatus" style="display:none">Daemon too busy, some elements didn't load!</label>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="dbservice" style="display:none">
+				<ul class="box">
+					<li class='box-title'><h2 class="04051514" style="text-align:left">Database Service</h2></li>
+					<li class="box-content">
+						<div class="item">
+							<input type="checkbox" id="enabledbservice"></input>
+							<label id="labeldbservice"> Enable database service</label> <!-- this will be changed by JS to "enable track/event database service"-->
+						</div>
+					</li>
+					<li class="box-content">
+						<div class="item dbinfo">
+							<ul>
+								<li>
+									<span class="ctrpspan 04051516">Database storage :</span>
+									<select id="storedevice" style="width:100px"></select>
+									<label id="inuser"></label>
+									<a id="linkStoreInfo" href="#" class="04051517">Storage Information</a>
+								</li>
+							</ul>
+						</div>
+						<div class="item">
+							<ul>
+								<li id="dbsize">
+									<span class="ctrpspan 04051518">Database size :</span>
+									<input type="text" id="dbusersize" style="width:80px"></input>
+									<label>/</label>
+									<input type="text" id="dbtotalsize" readonly="readonly" disabled="true" style="width:80px"></input>
+									<label class="04051519"> Kbytes</label>
+								</li>
+							</ul>
+						</div>
+						<div class="item">
+							<ul>
+								<li>
+									<span class="ctrpspan 04051520">Range of data stored :</span>
+									<input type="text" id="firstrecord" readonly="readonly" disabled="true"/>
+									<label class="04051521">(oldest record)</label>
+									<br/>
+									<span class="ctrpspanto"></span>
+									<input type="text" id="lastrecord" readonly="readonly" disabled="true"/>
+									<label class="04051522">(newest record)</label>
+								</li>
+							</ul>
+						</div>
+						<div class="item">
+							<span class="ctrpspan"></span>
+							<button id="btnApply" type="button"><span class="04051523">Apply</span></button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</ul>
+<!-- Tooltip messages -->
+	<div id="predefine_tooltip" class="xstooltip">
+		<ul>
+			<li>keyword: from ~ to</li>
+			<li>one hour: now - 1 hour ~ now</li>
+			<li>today: today 00:00:00 ~ now</li>
+			<li>yesterday: yesterday ~ today</li>
+			<li>one day: now - 1 day ~ now</li>
+			<li>this week: sunday ~ today</li>
+			<li>last week: sunday - 1 week ~ saturday - 1 week</li>
+			<li>one week: today - 1 week ~ today</li>
+			<li>this month: 1st this month ~ today</li>
+			<li>last month: 1st last month ~ end last month</li>
+		</ul>
+	</div>
+
+	<div id="btnAdd_tooltip" class="xstooltip">
+		Add selected rules.
+	</div>
+	<div id="btnAll_tooltip" class="xstooltip">
+		Add all rules.
+	</div>
+	<div id="btnRem_tooltip" class="xstooltip">
+		Remove selected rules.
+	</div>
+	<div id="btnClr_tooltip" class="xstooltip">
+		Remove all rules (clear).
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Event Configuration</span> > <strong>TCP notification</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-3">IP address</span>
+										<input type="text" id="formTcpPushIp" size="15" class="form-control-custom"/>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Port</span>
+										<input type="text" id="formTcpPushPort" size="15" class="form-control-custom mr-2"/>(1 ... 65535)
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Connect timeout</span>
+										<input type="text" id="formTcpPushConnect" size="15" class="form-control-custom mr-2"/>(1 ... 300 sec)
+									</div>									
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Send timeout</span>
+										<input type="text" id="formTcpPushSend" size="15" class="form-control-custom mr-2"/>(1 ... 300 sec)
+									</div>	
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Alive type</span>
+										<label class="form-check">
+											<input type="radio" name="formTcpPushAliveType" id="formTcpPushAliveType0" value="once" class="form-check-input"/>
+											<span>Once</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type="radio" name="formTcpPushAliveType" id="formTcpPushAliveType1" value="unlimited"  class="form-check-input"/>
+											<span>Unlimited</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type="radio" name="formTcpPushAliveType" id="formTcpPushAliveType2" value="timeout"  class="form-check-input"/>
+											<span>Timeout</span>
+										</label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Alive Time</span>
+										<input type="text" id="formTcpPushTime" size="15" class="form-control-custom mr-2"/>(1 ... 86400 <span>sec(s)</span>)
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+								<button id="linkcustomaizeventfmt" class="btn btn-mini btn-warning float-right mt-1"  data-toggle="modal" data-target="#tcpNotiModal">Message Customization</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<?php
+include "messagemodify.html";
+?>
+</body>
+<?=$footer?>
+<script>
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+</script>
+</html>

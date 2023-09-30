@@ -1,0 +1,692 @@
+{
+        "default": {
+            "notify": {
+                "email": {
+                    "bcc": "",
+                    "description": "",
+                    "name": "",
+                    "to": ""
+                },
+                "ftp": {
+                    "account": "",
+                    "address": "0.0.0.0",
+                    "description": "",
+                    "msg": "",
+                    "name": "",
+                    "nameformatdate": "yyyymmdd",
+                    "nameformatprefix": "ip",
+                    "nameformattext": "",
+                    "port": "21",
+                    "targetpath": ""
+                },
+                "http": {
+                    "account": "",
+                    "address": "0.0.0.0",
+                    "description": "",
+                    "name": "",
+                    "optionenable": "yes",
+                    "port": "80",
+                    "syntax": "\/cgi-bin\/test.cgi?action",
+                    "syntaxformat": "0",
+                    "timeout": "5"
+                }
+            }
+        },
+        "legacy": {
+            "alarm": {
+                "ch0": {
+                    "timeout": "0"
+                }
+            },
+            "rule": {
+                "di": {
+                    "ch0": {
+                        "do": "0"
+                    },
+                    "ch1": {
+                        "do": "0"
+                    },
+                    "ch2": {
+                        "do": "0"
+                    },
+                    "ch3": {
+                        "do": "0"
+                    },
+                    "email": {
+                        "enable": "no",
+                        "snapshot": "no"
+                    },
+                    "ftp": {
+                        "enable": "no"
+                    },
+                    "http": {
+                        "enable": "yes",
+                        "enablelist": "0,1"
+                    },
+                    "multicast": {
+                        "enable": "no"
+                    },
+                    "tcp": {
+                        "enable": "yes"
+                    }
+                },
+                "md": {
+                    "do": "0",
+                    "email": {
+                        "enable": "no",
+                        "snapshot": "no"
+                    },
+                    "ftp": {
+                        "enable": "no"
+                    },
+                    "http": {
+                        "enable": "yes",
+                        "enablelist": "0,1"
+                    },
+                    "multicast": {
+                        "enable": "no"
+                    },
+                    "tcp": {
+                        "enable": "yes"
+                    }
+                },
+                "vca": {
+                    "alarm": {
+                        "enable": "no"
+                    },
+                    "email": {
+                        "enable": "no",
+                        "snapshot": "no"
+                    },
+                    "ftp": {
+                        "enable": "no"
+                    },
+                    "multicast": {
+                        "enable": "no"
+                    },
+                    "tcp": {
+                        "enable": "yes"
+                    }
+                },
+                "vsignal": {
+                    "do": "0",
+                    "email": {
+                        "enable": "no",
+                        "snapshot": "no"
+                    },
+                    "ftp": {
+                        "enable": "no"
+                    },
+                    "http": {
+                        "enable": "yes",
+                        "enablelist": "0,1"
+                    },
+                    "multicast": {
+                        "enable": "no"
+                    },
+                    "tcp": {
+                        "enable": "yes"
+                    }
+                }
+            }
+        },
+        "notify": {
+            "email": {
+                "contentstype": "html",
+                "fromemail": "",
+                "list": "",
+                "nbrofcount": "0",
+                "sendratelimit": "0",
+                "unitname": ""
+            },
+            "ftp": {
+                "list": "",
+                "nbrofcount": "0"
+            },
+            "http": {
+                "list": "0,1",
+                "nbrofcount": "2",
+                "h0": {
+                    "account": "",
+                    "address": "http:\/\/192.168.1.253",
+                    "description": "",
+                    "name": "snapshot",
+                    "optionenable": "yes",
+                    "port": "80",
+                    "syntax": "_upload_snapshot.php",
+                    "syntaxformat": "0",
+                    "timeout": "5"
+                },
+                "h1": {
+                    "account": "",
+                    "address": "http:\/\/192.168.1.250",
+                    "description": "",
+                    "name": "car_exit",
+                    "optionenable": "no",
+                    "port": "80",
+                    "syntax": "gateControl\/?mode",
+                    "syntaxformat": "0",
+                    "timeout": "5"
+                }
+            },
+            "message": {
+                "customizedheader": {
+                    "fmt": "DOOFTEN$EOS$$PACKETLEN$$EOS$EVENT\/1.0\\nip",
+                    "type": "default"
+                },
+                "dido": {
+                    "fmt": "count",
+                    "type": "default"
+                },
+                "md": {
+                    "detected": {
+                        "fmt": "configmask",
+                        "type": "default"
+                    },
+                    "enable": {
+                        "fmt": "configmask",
+                        "type": "default"
+                    },
+                    "zonecfg": {
+                        "fmt": "configmask",
+                        "type": "default"
+                    }
+                },
+                "network": {
+                    "fmt": "interface",
+                    "type": "default"
+                },
+                "pir": {
+                    "fmt": "status",
+                    "type": "default"
+                },
+                "system": {
+                    "fmt": "type",
+                    "type": "default"
+                },
+                "temperature": {
+                    "fmt": "celsius",
+                    "type": "default"
+                },
+                "vca": {
+                    "alarm": {
+                        "fmt": "ch",
+                        "type": "default"
+                    },
+                    "config": {
+                        "fmt": "ch",
+                        "type": "default"
+                    },
+                    "counter": {
+                        "fmt": "ch",
+                        "type": "default"
+                    }
+                },
+                "vsignal": {
+                    "fmt": "count",
+                    "type": "default"
+                }
+            },
+            "multicast": {
+                "address": "224.0.0.251",
+                "enable": "yes",
+                "name": "Multicast Event",
+                "port": "2555",
+                "ttl": "1"
+            },
+            "tcp": {
+                "enable": "yes",
+                "name": "Tcp Event",
+                "port": "2555"
+            },
+            "tcppush": {
+                "address": "192.168.1.2",
+                "enable": "no",
+                "name": "",
+                "port": "7200",
+                "alive": {
+                    "timeout": "2",
+                    "type": "timeout"
+                },
+                "connect": {
+                    "timeout": "2"
+                },
+                "send": {
+                    "timeout": "2"
+                }
+            }
+        },
+        "profile": {
+            "enable": "yes",
+            "list": "0,1",
+            "nbrofcount": "2",
+            "default": {
+                "profile": {
+                    "description": "This is test",
+                    "enable": "no",
+                    "name": "test",
+                    "action": {
+                        "enable": "no",
+                        "system": {
+                            "enableactionlist": ""
+                        },
+                        "vca": {
+                            "enableactionlist": "",
+                            "resetcounterlist": ""
+                        }
+                    },
+                    "notification": {
+                        "logenable": "no",
+                        "alarm": {
+                            "duration": "1",
+                            "enable": "no",
+                            "minholdontime": "1",
+                            "mode": "edge",
+                            "trigger": "active",
+                            "unlimitedoflevel": "no"
+                        },
+                        "email": {
+                            "content": "",
+                            "enable": "no",
+                            "enablelist": "",
+                            "holdoff": "0",
+                            "nbrofpost": "1",
+                            "nbrofpre": "2",
+                            "snapshot": "no",
+                            "subject": "",
+                            "thumbnail": "yes"
+                        },
+                        "ftp": {
+                            "enable": "no",
+                            "enablelist": "",
+                            "snapshot": "no",
+                            "text": "no",
+                            "thumbnail": "no"
+                        },
+                        "http": {
+                            "enable": "no",
+                            "enablelist": "",
+                            "method": "GET",
+                            "post": {
+                                "snapshot": "no",
+                                "thumbnail": "no"
+                            }
+                        },
+                        "multicast": {
+                            "enable": "no"
+                        },
+                        "recorder": {
+                            "enable": "no",
+                            "netlossenable": "no",
+                            "postinterval": "10",
+                            "preinterval": "3",
+                            "thumbnail": "yes"
+                        },
+                        "tcp": {
+                            "enable": "no"
+                        },
+                        "tcppush": {
+                            "enable": "no"
+                        }
+                    },
+                    "schedule": {
+                        "list": "",
+                        "nbrofcount": "0"
+                    },
+                    "source": {
+                        "advrl": {
+                            "enable": "no",
+                            "enablelist": ""
+                        },
+                        "alarm": {
+                            "enable": "no",
+                            "trigger": "active"
+                        },
+                        "custom0": {
+                            "enable": "no"
+                        },
+                        "daynight": {
+                            "enable": "no",
+                            "transition": "both"
+                        },
+                        "face": {
+                            "enable": "no",
+                            "enablelist": ""
+                        },
+                        "motion": {
+                            "enable": "no",
+                            "enablelist": "",
+                            "interval": "5"
+                        },
+                        "pir": {
+                            "enable": ""
+                        },
+                        "recurrence": {
+                            "enable": "no",
+                            "unit": "day",
+                            "value": "1"
+                        },
+                        "schedule": {
+                            "enable": "no",
+                            "enablelist": ""
+                        },
+                        "sensor": {
+                            "enable": "no",
+                            "trigger": "active"
+                        },
+                        "system": {
+                            "apchgenable": "no",
+                            "apperrenable": "no",
+                            "cpuenable": "no",
+                            "memoryenable": "no",
+                            "netchgenable": "no",
+                            "netlossenable": "no",
+                            "recerrenable": "no",
+                            "storageenable": "no",
+                            "syserrenable": "no",
+                            "tempenable": "no",
+                            "vsignal": "no",
+                            "vsignaltrigger": "all"
+                        },
+                        "vca": {
+                            "allzoneenable": "no",
+                            "configenable": "no",
+                            "countenable": "no",
+                            "enable": "no",
+                            "enablecounterlist": "",
+                            "enablelist": "",
+                            "enablerulelist": "",
+                            "potentialenable": "no",
+                            "tamperenable": "no",
+                            "translatemd": "no",
+                            "zonetrigger": "all"
+                        }
+                    }
+                }
+            },
+            "p0": {
+                "description": "",
+                "enable": "yes",
+                "name": "push_snapshot",
+                "action": {
+                    "enable": "no",
+                    "system": {
+                        "enableactionlist": ""
+                    },
+                    "vca": {
+                        "enableactionlist": "",
+                        "resetcounterlist": ""
+                    }
+                },
+                "notification": {
+                    "logenable": "no",
+                    "alarm": {
+                        "duration": "1",
+                        "enable": "no",
+                        "minholdontime": "1",
+                        "mode": "edge",
+                        "trigger": "active",
+                        "unlimitedoflevel": "no"
+                    },
+                    "email": {
+                        "content": "",
+                        "enable": "no",
+                        "enablelist": "",
+                        "holdoff": "0",
+                        "nbrofpost": "1",
+                        "nbrofpre": "2",
+                        "snapshot": "no",
+                        "subject": "",
+                        "thumbnail": "yes"
+                    },
+                    "ftp": {
+                        "enable": "no",
+                        "enablelist": "",
+                        "snapshot": "no",
+                        "text": "no",
+                        "thumbnail": "no"
+                    },
+                    "http": {
+                        "enable": "yes",
+                        "enablelist": "0",
+                        "method": "POST",
+                        "post": {
+                            "snapshot": "yes",
+                            "thumbnail": "no"
+                        }
+                    },
+                    "multicast": {
+                        "enable": "no"
+                    },
+                    "recorder": {
+                        "enable": "no",
+                        "netlossenable": "no",
+                        "postinterval": "10",
+                        "preinterval": "3",
+                        "thumbnail": "yes"
+                    },
+                    "tcp": {
+                        "enable": "no"
+                    },
+                    "tcppush": {
+                        "enable": "no"
+                    }
+                },
+                "schedule": {
+                    "list": "",
+                    "nbrofcount": "0"
+                },
+                "source": {
+                    "advrl": {
+                        "enable": "no",
+                        "enablelist": ""
+                    },
+                    "alarm": {
+                        "enable": "no",
+                        "trigger": "active"
+                    },
+                    "custom0": {
+                        "enable": "no"
+                    },
+                    "daynight": {
+                        "enable": "no",
+                        "transition": "both"
+                    },
+                    "face": {
+                        "enable": "no",
+                        "enablelist": ""
+                    },
+                    "motion": {
+                        "enable": "no",
+                        "enablelist": "",
+                        "interval": "5"
+                    },
+                    "pir": {
+                        "enable": "no"
+                    },
+                    "recurrence": {
+                        "enable": "no",
+                        "unit": "day",
+                        "value": "1"
+                    },
+                    "schedule": {
+                        "enable": "no",
+                        "enablelist": "undefined"
+                    },
+                    "sensor": {
+                        "enable": "no",
+                        "trigger": "active"
+                    },
+                    "system": {
+                        "apchgenable": "no",
+                        "apperrenable": "no",
+                        "cpuenable": "no",
+                        "memoryenable": "no",
+                        "netchgenable": "no",
+                        "netlossenable": "no",
+                        "recerrenable": "no",
+                        "storageenable": "no",
+                        "syserrenable": "no",
+                        "tempenable": "no",
+                        "vsignal": "no",
+                        "vsignaltrigger": "all"
+                    },
+                    "vca": {
+                        "allzoneenable": "yes",
+                        "configenable": "no",
+                        "countenable": "no",
+                        "enable": "yes",
+                        "enablecounterlist": "",
+                        "enablelist": "0,1,2",
+                        "enablerulelist": "0,1,2,3,4",
+                        "potentialenable": "no",
+                        "tamperenable": "no",
+                        "translatemd": "no",
+                        "zonetrigger": "all"
+                    }
+                }
+            },
+            "p1": {
+                "description": "",
+                "enable": "yes",
+                "name": "car_exit",
+                "action": {
+                    "enable": "no",
+                    "system": {
+                        "enableactionlist": ""
+                    },
+                    "vca": {
+                        "enableactionlist": "",
+                        "resetcounterlist": ""
+                    }
+                },
+                "notification": {
+                    "logenable": "no",
+                    "alarm": {
+                        "duration": "1",
+                        "enable": "no",
+                        "minholdontime": "1",
+                        "mode": "edge",
+                        "trigger": "active",
+                        "unlimitedoflevel": "no"
+                    },
+                    "email": {
+                        "content": "",
+                        "enable": "no",
+                        "enablelist": "",
+                        "holdoff": "0",
+                        "nbrofpost": "1",
+                        "nbrofpre": "2",
+                        "snapshot": "no",
+                        "subject": "",
+                        "thumbnail": "yes"
+                    },
+                    "ftp": {
+                        "enable": "no",
+                        "enablelist": "",
+                        "snapshot": "no",
+                        "text": "no",
+                        "thumbnail": "no"
+                    },
+                    "http": {
+                        "enable": "yes",
+                        "enablelist": "1",
+                        "method": "GET",
+                        "post": {
+                            "snapshot": "no",
+                            "thumbnail": "no"
+                        }
+                    },
+                    "multicast": {
+                        "enable": "no"
+                    },
+                    "recorder": {
+                        "enable": "no",
+                        "netlossenable": "no",
+                        "postinterval": "10",
+                        "preinterval": "3",
+                        "thumbnail": "yes"
+                    },
+                    "tcp": {
+                        "enable": "no"
+                    },
+                    "tcppush": {
+                        "enable": "no"
+                    }
+                },
+                "schedule": {
+                    "list": "",
+                    "nbrofcount": "0"
+                },
+                "source": {
+                    "advrl": {
+                        "enable": "no",
+                        "enablelist": ""
+                    },
+                    "alarm": {
+                        "enable": "no",
+                        "trigger": "active"
+                    },
+                    "custom0": {
+                        "enable": "no"
+                    },
+                    "daynight": {
+                        "enable": "no",
+                        "transition": "both"
+                    },
+                    "face": {
+                        "enable": "no",
+                        "enablelist": ""
+                    },
+                    "motion": {
+                        "enable": "no",
+                        "enablelist": "",
+                        "interval": "5"
+                    },
+                    "pir": {
+                        "enable": "no"
+                    },
+                    "recurrence": {
+                        "enable": "no",
+                        "unit": "day",
+                        "value": "1"
+                    },
+                    "schedule": {
+                        "enable": "no",
+                        "enablelist": "undefined"
+                    },
+                    "sensor": {
+                        "enable": "no",
+                        "trigger": "active"
+                    },
+                    "system": {
+                        "apchgenable": "no",
+                        "apperrenable": "no",
+                        "cpuenable": "no",
+                        "memoryenable": "no",
+                        "netchgenable": "no",
+                        "netlossenable": "no",
+                        "recerrenable": "no",
+                        "storageenable": "no",
+                        "syserrenable": "no",
+                        "tempenable": "no",
+                        "vsignal": "no",
+                        "vsignaltrigger": "all"
+                    },
+                    "vca": {
+                        "allzoneenable": "no",
+                        "configenable": "no",
+                        "countenable": "no",
+                        "enable": "yes",
+                        "enablecounterlist": "",
+                        "enablelist": "3",
+                        "enablerulelist": "5",
+                        "potentialenable": "no",
+                        "tamperenable": "no",
+                        "translatemd": "no",
+                        "zonetrigger": "all"
+                    }
+                }
+            }
+        }
+    }

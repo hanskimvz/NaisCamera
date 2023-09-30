@@ -1,0 +1,158 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<style>
+.btn-white{
+    background-color:#eee;
+    width:160px;
+}
+</style>
+<body>
+<div id="content">
+	<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>Users</strong></p>
+	<div class="container-fluid">
+		<div class="row col-lg-6">
+			<div class="card col-md-12">
+				<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">User List</h6></div>
+				<div class="card-body">
+					<div class="form-group mb-0">
+						<select id="formUserList" class="form-control" size="10"><option></option></select>
+					</div>
+				</div>
+				<div class="card-footer">
+					<button id="btnAdd" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#userInfoModal">Add</button>
+					<button id="btnModify" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#userInfoModal">Modify</button>
+					<button id="btnRemove" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#userDelModal">Remove</button>
+				</div>
+			</div>
+		</div>
+		<div class="row  col-lg-6 mt-4">
+			<div class="card col-md-12">	
+				<div class="card-header"><h6 class="m-0 font-weight-bold text-primary">User Authentication</h6></div>
+				<div class="card-body">
+					<label class="form-check mb-0">
+						<input type="checkbox" id="formAnonymous" class="form-check-input" />
+						<span class="form-check-label">Enable anonymous viewer login (no user name or password required)</span>
+					</label>
+				</div>
+				<div class="card-footer">
+					<button id="btnApply" class="btn btn-primary btn-sm ml-2">Apply</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Content Wrapper -->
+	<div id='debug_console'></div>
+</div>
+<!-- Add, modify Modal-->
+<div class="modal fade" id="userInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 class="modal-title" id="exampleModalLabel">User information</h6>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+			</div>
+			<div class="card-body">
+				<div class="form-group form-inline">
+					<span class="col-md-5">User name</span>
+					<input type="text" id="formUserName" class="form-control form-control-sm" />
+				</div>
+				<div class="form-group form-inline">
+					<span class="col-md-5">Password</span>
+					<input type="password" id="formUserPassword" class="form-control form-control-sm"/>
+				</div>
+				<div class="form-group form-inline">
+					<span class="col-md-5">Confirm Password</span>
+					<input type="password" id="formUserConfirmPassword" class="form-control form-control-sm"/>
+				</div>
+		
+				<div class="form-group ml-3 mb-0">
+					<span>User group</span>
+					<div class="form-group ml-2">
+						<label class="form-check mb-0">
+							<input type="radio" id="formUserGroup0" name="formUserGroup" value="viewer" class="form-check-input" />
+							<span>Viewer</span>
+						</label>
+						<label class="form-check mb-0">
+							<input type="radio" id="formUserGroup1" name="formUserGroup" value="operator" class="form-check-input" />
+							<span class="form-check-label">Operator</span>
+						</label>
+						<label class="form-check">
+							<input type="radio" id="formUserGroup2" name="formUserGroup" value="administrator" class="form-check-input" />
+							<span class="form-check-label">Administrator</span>
+						</label>
+					</div>
+				</div>										
+			</div>
+			<div class="modal-footer">
+				<button id="modalCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button id="modalApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+	
+
+
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$("select").on("click", function () {
+	console.log(this);
+	console.log(this.id, this.value);
+});
+
+
+function loadUSERConfig(){
+	user_level = ['Administrator', 'Operator', 'Viewer'];
+	url = "/uapi-cgi/param.cgi?action=list&group=user.member&format=json";
+	console.log(url);
+	$.getJSON(url, function(response) {
+		// console.log(response);
+		var member =response.user.member;
+		$("#formUserList").empty();
+		member.forEach(function(item){
+			var opt_str = item.username;
+			for (i=item.username.length; i<30; i++){
+				opt_str += '&nbsp;&nbsp;';
+			}
+			$("select#formUserList").append("<option value='" + item.username + "'>" +opt_str + user_level[item.level] + "</option>");
+			// $("select#formUserList").append("<option value='" + item.username + "'>" + FillText(item.username, 30, "left") + FillText(user_level[item.level], 20, "left") + "</option>");
+		});
+	});
+}
+
+loadUSERConfig();
+$(location.hash).addClass("show");
+$("#users").addClass("active");
+
+
+$(".collapse-item").on("click", function () {
+	console.log(this.id);
+	// if (this.id == 'basic_user'){
+		// $("#basic").addClass("show");
+		// $("#users").addClass("active");
+	// }
+
+	// $(".collapse-item").removeClass("active");
+    // $(this).addClass("active");
+    // toTop();
+});
+
+</script>
+
+</html>
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+  <meta http-equiv='imagetoolbar' content='no' />
+  <meta http-equiv="Cache-Control" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <title></title>
+  <link type='text/css' href='../css/config.css' rel='stylesheet' />
+  <link type='text/css' href='../css/theme.css' rel='stylesheet' />
+  <link type='text/css' href='../css/themes/base/jquery-ui.css' rel='stylesheet' />
+  <link type='text/css' href='../css/config/vcatamper.css' rel='stylesheet' />
+  <script type='text/javascript' src='../js/jquery-1.4.2.min.js'></script>
+  <script type='text/javascript' src='../js/jquery-ui-1.8.4.min.js'></script>
+  <script type="text/javascript" src="../js/jquery.ui.mouse.js"></script>
+  <script type="text/javascript" src="../js/jquery.ui.slider.js"></script>
+  <script type='text/javascript' src='../js/jquery.cookie.js'></script>
+  <script type="text/javascript" src="../js/uapi.ajax.js"></script>
+  <script type='text/javascript' src='../js/common.js'></script>
+  <script type='text/javascript' src='../js/cap.js'></script>
+  <script type='text/javascript' src='../js/cap.vca.js'></script> 
+  <script type="text/javascript" src="../js/uapi.player.js"></script>
+  <script type='text/javascript' src='../js/cap.player.js'></script>
+  <script type='text/javascript' src='../js/config/vcascenemaintenance.js'></script> 
+</head>
+
+<body id='config-page'>
+  <p class='menuLocationInfo'>
+    <span class="04051801">Setup > VCA ></span> 
+    <span id='pagename' class="04051802">Scene Maintenance</span>
+  </p>
+
+  <ul class='box vcaDisabled' style='display:'>
+    <li class='box-title 04051802'><h2>Scene Maintenance</h2></li>
+    <li class='box-content'>
+      <p> <span class='04051803'>VCA is disabled, please go to the </span><span class='menuLocationInfo 04051809'>VCA > </span><span id='pagename' class='04051810'>Enable/Disable</span><span class ='04051811'> page to enable VCA.</span></p>
+    </li>
+  </ul>
+
+  <div class='vcaInitialising' id='loadingMessage'>
+    <img id='loadingImage' src='/images/loading.gif'></img>
+    <span class="04051804">Loading Data - Please Wait</span>
+  </div>
+
+  <!-- The middle region containing the ActiveX control -->
+  <div id='middleregion' class="vcaEnabled">
+    <li class='box-title'><h2 class="04051805">Scene Maintenance</h2></li>
+    <!-- The ActiveX control -->
+    <div class="vcaEnabled" id="AxUMF"></div>
+    <div class="clear"></div>
+  </div>
+
+  <!-- Controls on the right hand side of the page -->
+  <div id="rightpanel" class="vcaEnabled" style="display:">
+  
+    <ul class='box vcaEnabled' style='display:'>
+      <li class='box-title'><h2 class="04051806">Reset Scene</h2></li>
+      <li class="04051807"> Click reset button to override automatic scene maintenance and force the current scene to be learned. Ensure the scene is empty of people whilst the scene learning message is displayed.</li>
+
+      <li class='box-content'>
+			<div id='screenTools' class='box' align='center'>
+			<button id='btnReset'><span class="04051808">Reset</span></button>
+			</div>
+		  </li>
+	</ul>
+
+  </div>
+	  <div class="clear"></div>
+</body>
+</html>

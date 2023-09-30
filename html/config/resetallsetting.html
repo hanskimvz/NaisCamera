@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>Reset all settings</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Reset all settings</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<span>Reset all configuration settings, but</span>
+									<label class="form-check mt-1">
+										<input type="checkbox" id="networkInfo" checked />
+										<span>Preserve network settings<span>
+									</label>
+									<label class="form-check">
+										<input type="checkbox" id="userInfo" checked />
+										<span>Preserve user account information<span>
+									</label>
+									<label class="form-check">
+										<input type="checkbox" id="timezoneInfo" checked />
+										<span>Preserve timezone setting<span>
+									</label>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnFactory" class="btn btn-sm btn-primary">Reset all settings</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>	
+

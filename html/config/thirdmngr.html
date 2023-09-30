@@ -1,0 +1,72 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Maintenance</span> > <strong>Third manager</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Stop/Start</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-inline mb-0">
+									<span id="serverMessage" class="col-md-3">server_mesg</span>
+									<span id="runStatus">run_st</span>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnServerStart" class="btn btn-mini btn-outline-warning">Start</button>
+								<button id="btnServerStop" class="btn btn-mini btn-outline-warning">Stop</button>
+								<button id="btnServerRestart" class="btn btn-mini btn-outline-warning">Restart</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Update</h6>
+							</div>
+							<div class="card-body">
+								<form enctype="multipart/form-data" action="/uapi-cgi/fwupload.cgi" method="post" class="mb-0">
+									<input name="Filedata" id="Filedata" type="file" accept=".enc" />
+									<input type="hidden" name="jqUploader" value="1" />
+									<button id="btnStart" type="submit" class="btn btn-sm btn-warning">Start</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Uninstall</h6>
+							</div>
+							<div class="card-body">
+								<button id="btnServerUninstall" class="btn btn-sm btn-secondary">Uninstall</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>	

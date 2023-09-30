@@ -1,0 +1,41 @@
+[
+    {   "key": "setup",                 "English": "Setup",                 "Korean" : "설정",          "Chinese": "配置" },
+    {   "key": "basic",                 "English": "Basic",                 "Korean" : "기본설정",      "Chinese": "基本配置" },
+    {   "key": "videonaudio",           "English": "Video & Audio",         "Korean" : "영상 & 음성",   "Chinese": "视频&音频" },
+    {   "key": "eventconf",             "English": "Event Configuration",   "Korean" : "이벤트 설정",   "Chinese": "事件配置" },
+    {   "key": "networkconf",           "English": "Network Configuration", "Korean" : "네트워크 설정", "Chinese": "网络配置" },
+    {   "key": "storage",               "English": "Storage",               "Korean" : "저장장치",      "Chinese": "存折设备" },
+    {   "key": "vcaconf",               "English": "VCA Configuration",     "Korean" : "지능분석 설정", "Chinese": "智能分析配置" },
+    {   "key": "peripherial",           "English": "Peripherial",           "Korean" : "주변장치",      "Chinese": "外接设备配置" },
+    {   "key": "ptzconf",               "English": "PTZ Configuration",     "Korean" : "PTZ 설정",      "Chinese": "云台配置" },
+    {   "key": "maintenance",           "English": "Maintanence",           "Korean" : "유지보수",      "Chinese": "基本配置" },
+    {   "key": "activation",            "English": "Activation",            "Korean" : "활성화",        "Chinese": "激活" },
+    {   "key": "about",                 "English": "About",                 "Korean" : "장치정보",      "Chinese": "关于" },
+    {   "key": "oem",                   "English": "OEM",                   "Korean" : "OEM",          "Chinese": "OEM" },
+
+    {   "key": "camera",                "English": "Camera",                "Korean" : "카메라",        "Chinese": "摄像机" },
+    {   "key": "zoomfocus",             "English": "Zoom/Focus",            "Korean" : "줌/포커스",     "Chinese": "缩放/焦距" },
+    {   "key": "burntintext",           "English": "Burnt in Text",         "Korean" : "OSD",           "Chinese": "字符叠加" },
+    {   "key": "stream",                "English": "Stream",                "Korean" : "영상압축",      "Chinese": "码流配置" },
+    {   "key": "privacymask",           "English": "Pirvacy Mask",          "Korean" : "사생활 보호",   "Chinese": "隐私遮挡" },
+    {   "key": "eventrules",            "English": "Event Rules",           "Korean" : "이벤트 규칙",   "Chinese": "事件规则" },
+ 
+
+    {   "key": "users",                 "English": "Users",                 "Korean" : "사용자",        "Chinese": "用户" },
+    {   "key": "video",                 "English": "Video",                 "Korean" : "영상",          "Chinese": "视频" },
+    {   "key": "general",               "English": "General",               "Korean" : "일반",          "Chinese": "通用" },
+    {   "key": "friendlyname",         "English": "Friendly name",         "Korean" : "별명",          "Chinese": "别名" },
+    
+    {   "key": "heartbeat",             "English": "Heart Beat",            "Korean" : "하트비트",      "Chinese": "心跳" },
+    {   "key": "configuration",         "English": "Configuration",         "Korean" : "설정",          "Chinese": "配置" },
+    {   "key": "enable",                "English": "Enable",                "Korean" : "사용",          "Chinese": "使用" },
+    {   "key": "interval",              "English": "Interval",              "Korean" : "간격",          "Chinese": "间隔" },
+    {   "key": "tcpServer",            "English": "TCP Server",            "Korean" : "TCP 서버",      "Chinese": "TCP 服务器" },
+    {   "key": "tcpnotification",      "English": "TCP Notification",      "Korean" : "TCP 알람",      "Chinese": "TCP 推送" },
+    {   "key": "multicast",             "English": "Multicast",             "Korean" : "멀티캐스트",     "Chinese": "多播" },
+
+    {   "key": "userlist",             "English": "User List",             "Korean" : "사용자목록",     "Chinese": "用户目录" }
+    
+
+
+]

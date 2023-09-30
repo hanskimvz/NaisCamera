@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+	'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+	<meta http-equiv='imagetoolbar' content='no' />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<title></title>
+	<link type='text/css' href='../css/config.css' rel='stylesheet' />
+	<link type='text/css' href='../css/theme.css' rel='stylesheet' />
+	<link type='text/css' href='../css/config/activate.css' rel='stylesheet' />
+	<link type='text/css' href='../css/themes/base/jquery-ui.css' rel='stylesheet' />
+	<script type='text/javascript' src='../js/jquery-1.4.2.min.js'></script>
+	<script type='text/javascript' src='../js/jquery-ui-1.8.4.min.js'></script>
+	<script type='text/javascript' src='../js/jquery.cookie.js'></script>
+	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+	<script type='text/javascript' src='../js/common.js'></script>
+	<script type='text/javascript' src='../js/utils/jq_string.js'></script>
+	<script type='text/javascript' src='../js/cap.js'></script>
+	<script type='text/javascript' src='../js/cap.vca.js'></script>
+	<script type='text/javascript' src='../js/plat_utils/string.js'></script>
+	<script type='text/javascript' src='../js/config/activate.js'></script>
+</head>
+<body id='config-page'>
+	<!-- VCA Initialising Message -->
+	<div class='vcaInitialising' id='loadingMessage'>
+		<img id='loadingImage' src='/images/loading.gif'></img>
+		<span class="04080101">Loading Data - Please Wait</span>
+	</div>
+
+	<ul class='box default' style='display:none'>
+		<li class='box-title'><h2 class="04080102">Hardware Code</h2></li>
+		<li class='box-content'>
+			<ul>
+				<li class='item'>
+					<input type="text" id='formHardwareCode' class="04080123" value="Please enable Javascript" readonly="readonly" />
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class='box vcaAllowTrial' style='display:none'>
+		<li class='box-title'><h2 class="04080108">Start VCA Trial</h2></li>
+		<li class='box-content'>
+			<ul>
+				<li class='item'>
+					<ul>
+						<li>
+							<button id='btnStartTrial'><span class="04080108">Start VCA Trial</span></button>
+							<input type='checkbox' id='startTrial' style='display:none'></input>
+						</li>
+					</ul>
+					<ul>
+						<li>
+						<span class="04080109">Start an unrestricted free 45 day trial to evaluate all VCA functionality, or enter a license in the box below.</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class='box vcaTrialInProgress' style='display:none'>
+		<li class='box-title'><h2 class="04080110">VCA Trial In Progress</h2></li>
+		<li class='box-content'>
+			<ul>
+				<li class='item'>
+					<ul>
+						<li>
+							<span class="04080111">A VCA trial is currently in progress. There are </span><span id='vcaDaysLeft'>100</span> <span class="04080112">days left.</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class='box default' style='display:none'>
+		<li class='box-title'><h2 class="04080103">Activation Code</h2></li>
+		<li class='box-content'>
+			<ul>
+				<li class='item'>
+					<textarea id='formActivationCode' rows='4' class='04080123'>Please enable Javascript</textarea>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class='box default' style='display:none'>
+		<li class='box-title'><h2 class="04080105">Installed Licenses</h2></li>
+		<li class='box-content'>
+			<ul id="formInstalledLicenses">
+				<li class='item 04080123'>Please enable Javascript</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div class='box settingButton default' style='display:none' >
+		<button id='btnApply'><span class="04080107">Apply</span></button>
+	</div>
+</body>
+</html>

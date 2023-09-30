@@ -1,0 +1,119 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Network Configuration</span> > <strong>DDNS</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="formDdnsEnable" class="form-check-input" />
+									<span>Enable DDNS</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">DDNS Service Provider</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline">
+									<span class="col-md-3">Service Provider</span>
+									<select id="formDdnsDynDns" class="form-control-custom" style="width:160px">
+										<option value="DynDNS" class="04040807">DynDNS.org</option>
+										<option value="No-IP" class="04040817">No-IP.com</option>
+										<option value="FreeDNS" class="04040818">FreeDNS.org</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">DDNS Setting</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-2">Domain name</span>
+										<input type="text" id="formDdnsDomainName" class="form-control-custom" size="25" />
+									</div>
+									<!-- <div class="form-inline"> -->
+									<span class="ml-4">Format: domain_name,hash_code</span> <br />
+									<span class="ml-4">For hash code, refer to</span><a id="link" href="http://www.inatech.eu/inadyn/readme.html#special_freedns" target="_blank">http://www.inatech.eu/inadyn/readme.html#special_freedns</a>
+									<div class="form-inline mt-1">
+										<span class="col-md-2">Update time</span>
+										<input type="text" id="formDdnsUpTime" class="form-control-custom mr-2" size="25" />
+										<label> (1 ... 864000 <span>sec(s)</span>, 10 <span>day(s)</span>)</label>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-2">username</span>
+										<input type="text" id="formDdnsUserName" class="form-control-custom" size="25" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-2">password</span>
+										<input type="password" id="formDdnsPass" class="form-control-custom" size="25" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-2 text-center">
+						<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="debug_console"></div>
+	</div>
+</body>
+<?=$footer?>
+<script>
+
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$("input[type=checkbox]").on("click", function() {
+	console.log(this.id);
+	
+});
+
+function loadDDNSConfig(){
+	url = "/inc/query.php?page=ddns";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=DDNS";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['DDNS.enable']=='yes'){
+			$("#formDdnsEnable").prop('checked', true);
+		}
+		$("#formDdnsDynDns").val(response['DDNS.servertype']);
+		$("#formDdnsDomainName").val(response['DDNS.domainname']);
+		$("#formDdnsUpTime").val(response['DDNS.updatetime']);
+		$("#formDdnsUserName").val(response['DDNS.user']);
+		$("#formDdnsPass").val(response['DDNS.pwd']);
+
+	});
+}
+
+loadDDNSConfig();
+</script>
+</html>

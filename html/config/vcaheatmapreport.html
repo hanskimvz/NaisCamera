@@ -1,0 +1,87 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+			<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Heatmap Report</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Database service</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="enabledbservice" class="form-check-input" />
+									<span class="form-check-label">Enable Heatmap Serivce</span>
+								</label>
+							</div>
+							<div class="card-footer text-center">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-1">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Request</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="usecolor" class="form-check-input" checked />
+									<span class="col-sm-3">Output color image</span>
+								</label>
+								<label class="form-check">
+									<input type="checkbox" id="annotateframe" class="form-check-input" checked />
+									<span class="col-sm-3">Annotate heatmap on snapshot</span>
+								</label>
+								<div class="form-group form-inline">
+									<span class="col-sm-3">Heatmap image size</span>
+									<select id="heatmapsize" class="form-control-custom " style="width:100px">
+										<option value="160x90">160x90</option>
+										<option value="320x180">320x180</option>
+										<option value="480x270">480x270</option>
+										<option value="640x360">640x360</option>
+									</select>
+								</div>
+							</div>
+							<div class="card-footer text-center">
+								<button id="btnPNG" class="btn btn-sm btn-primary">PNG</button>
+								<span id="servicedisabled" class="text-danger">Heatmap service is disabled.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+									
+	<div id="debug_console"></div>
+	<div id='loadingMessage' hidden>
+		<img id='loadingImage' src='/images/loading.gif'></img>
+		<span>Loading Data - Please Wait</span>
+	</div>
+	
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+</script>
+</html>

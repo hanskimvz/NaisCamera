@@ -1,0 +1,222 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>SNMP</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<label class="form-check">
+										<input type="checkbox" id="snmpEnable" class="form-check-input" />
+										<span>Enable</span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">SNMP Version</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<label class="form-check mr-2">
+										<input type="radio" name="formSnmpVersion" id="formSnmpVersion0" value="v2c" class="form-check-input" />
+										<span>v2c</span>
+									</label>
+									<label class="form-check">
+										<input type="radio" name="formSnmpVersion" id="formSnmpVersion1" value="v3" class="form-check-input" />
+										<span>v3</span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">SNMP Description</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-2">Location</span>
+										<input type="text" id="snmpDesLocation" class="form-control-custom" size="50" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-2">Contact</span>
+										<input type="text" id="snmpDesContact" class="form-control-custom" size="50" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>				
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">VACM Setting</h6>
+							</div>
+							<div class="card-body">
+								<div id="vacm_v2" class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-3">Read Community</span>
+										<input type="text" id="snmpDesCommunity" class="form-control-custom" size="50" />
+									</div>
+								</div>
+								<div id="vacm_v3" class="form-group mb-0" hidden>
+									<div class="form-inline">
+										<span class="col-md-5">User</span>
+										<span class="col-md-2">Auth</span>
+										<span class="col-md-2">Priv</span>
+									</div>
+									<select size="10" id="formUserList" class="form-control"><option></option></select><br />
+									<button id="btnAdd" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#user_form">Add</button>
+									<button id="btnModify" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#user_form">Modify</button>
+									<button id="btnRemove" class="btn btn-sm btn-secondary">Remove</button>
+								</div>
+							</div>
+						</div>
+					</div>					
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Trap Setting</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-2">Trap Ver1.0</span>
+										<span class="mr-2">Address</span>
+										<input type="text" id="snmpTrapSetVer1Addr" class="form-control-custom" size="30" />
+										<span class="ml-2 mr-2">Community</span>
+										<input type="text" id="snmpTrapSetVer1Community" class="form-control-custom" size="20" />
+
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-2">Trap Ver2.0</span>
+										<span class="mr-2">Address</span>
+										<input type="text" id="snmpTrapSetVer2Addr" class="form-control-custom" size="30" />
+										<span class="ml-2 mr-2">Community</span>
+										<input type="text" id="snmpTrapSetVer2Community" class="form-control-custom" size="20" />
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-2 text-center">
+						<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="user_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">User information</h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="card-body">
+					<div class="form-group form-inline">
+						<span class="col-md-5">User name</span>
+						<input type="text" id="formUserName" class="form-control form-control-sm" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Password</span>
+						<input type="password" id="formUserPassword" class="form-control form-control-sm"/>
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Confirm password</span>
+						<input type="password" id="formUserConfirmPassword" class="form-control form-control-sm"/>
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-6">Authentication Protocol</span>
+						<select id="formSelectAuth"  class="form-control form-control-sm col-md-3">
+							<option value="md5">MD5</option>
+							<option value="sha">SHA</option>
+						</select>
+					</div>				
+					<div class="form-group form-inline mb-0">
+						<span class="col-md-6">Privacy Protocol</span>
+						<select id="formSelectPriv"  class="form-control form-control-sm col-md-3">
+							<option value="des">DES</option>
+							<option value="aed">AES</option>
+						</select>
+					</div>						
+				</div>
+                <div class="modal-footer">
+                    <button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
+					<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>	
+	<div id="debug_console"></div>
+
+</body>
+<?=$footer?>
+<script>
+// $("#formHTTPSet0").on("click", function () {
+$("input:radio[name=formSnmpVersion]").on("click", function () {
+	console.log(this);
+	if ($("#formSnmpVersion1").prop('checked')) {
+		$("#vacm_v3").removeAttr('hidden');
+		$("#vacm_v2").attr('hidden','');
+	}
+	else {
+		$("#vacm_v3").attr('hidden','');
+		$("#vacm_v2").removeAttr('hidden');
+	}
+});
+
+
+function loadSNMPConfig(){
+	// url = "/inc/query.php?page=wsdiscovery";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Snmp";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['NETWORK.Snmp.enable']=='yes'){
+			$("#snmpEnable").prop('checked', true);
+		}
+		if (response['NETWORK.Snmp.version']=='v2c'){
+			$("#formSnmpVersion0").prop('checked', true);
+		}
+		else if (response['NETWORK.Snmp.version']=='v3'){
+			$("#formSnmpVersion1").prop('checked', true);
+		}
+		$("#snmpDesLocation").val(response['NETWORK.Snmp.location']);
+		$("#snmpDesContact").val(response['NETWORK.Snmp.contact']);
+		$("#snmpDesCommunity").val(response['NETWORK.Snmp.rocommunity']);
+		$("#snmpTrapSetVer1Addr").val(response['NETWORK.Snmp.trap1.address']);
+		$("#snmpTrapSetVer1Community").val(response['NETWORK.Snmp.trap1.community']);
+		$("#snmpTrapSetVer2Addr").val(response['NETWORK.Snmp.trap2.address']);
+		$("#snmpTrapSetVer2Community").val(response['NETWORK.Snmp.trap2.community']);
+		
+		
+	});
+}
+
+loadSNMPConfig();
+
+</script>
+</html>							

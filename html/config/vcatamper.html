@@ -1,0 +1,127 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<style type="text/css">
+    table {border-collapse: collapse; border: 0; width: 100%; box-shadow: 1px 2px 3px #eee;}
+	.center {text-align: center;}
+	.center table {margin: 1em auto; text-align: left;}
+	.center th {text-align: center !important;}
+	td, th {border: 1px solid #aaa; font-size: 75%; vertical-align: baseline; padding: 4px 5px;}
+</style>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Tamper Detection</strong></p>
+				<div class="container-fluid">
+					<div class="row col-lg-12" >
+						<div class="card col-lg-9 pl-0 pr-0 pt-0 pb-0">
+							<canvas id="canvas" class="card-img-top"></canvas>
+							<div class="card-body">
+								<table>
+									<thead><tr>
+										<th><span>ID</span></th>
+										<th><span>Rule</span></th>
+										<th><span>Zone</span></th>
+										<th><span>Object Class</span></th>
+										<th><span>Start time</span></th>
+										<th><span>End time</span></th>
+									</tr></thead>
+									<tbody style="height:200px;";>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="card col-lg-3">
+							<div class="card mt-1">
+								<div class="card-header pt-1 pb-1">
+									<h6 class="mb-0 font-weight-bold text-primary">Enable</h6>
+								</div>
+								<div class="card-body pt-1 pb-1 ">
+									<div class="form-group form-inline mb-0">
+										<span class="mr-5">Enable</span>
+										<input type="checkbox" id="formEnable" class="form-check-input"/>
+									</div>
+								</div>
+							</div>							
+							<div class="card mt-1">
+								<div class="card-header pt-1 pb-1">
+									<h6 class="mb-0 font-weight-bold text-primary">Advanced Settings</h6>
+								</div>
+								<div class="card-body pt-1 pb-1 ">
+									<div class="form-group form-inline mb-1">
+										<span class="mr-3">Tamper Duration until Alarm</span>
+										<input type="text" id="formTimeout" class="form-control-custom text-center mr-2" size="3"/>
+										<span>sec(s)</span>
+									</div>
+									<div class="form-group form-inline mb-1">
+										<span class="mr-3">Tampered Image Area</span>
+										<input type="text" id="formFireArea" class="form-control-custom text-center mr-2" size="3"/>
+										<span>%</span>
+									</div>
+									<div class="form-group form-inline mb-1">
+										<span class="mr-3">Suppress alarm on lights on/off</span>
+										<input type="checkBox" id="formLowLight" class="form-check-input"/>
+									</div>
+									<span>Suppress false alarms caused by major light changes.</span>
+									<span>Enabling can reduce sensitivity to genuine alarms.</span>
+								</div>
+							
+							</div>
+							<div class="card-body text-center">
+								<button id='btnApply'class="btn btn-sm btn-primary">Apply</button>
+								<button id='btnRestoreDefaults' class="btn btn-sm btn-secondary">Restore Defaults</button>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</body>
+<?=$footer?>
+
+<script>
+	var canvas = document.getElementById("canvas");
+	canvas.width=720;
+	canvas.height = 360;
+	var ctx = canvas.getContext('2d');
+	var img =  new Image();
+	img.src="../images/demo_screen.jpg";
+	ctx.drawImage(img, 0,0,720,360);
+	function render(){
+		img.src="../images/demo_screen.jpg";
+		ctx.drawImage(img, 0,0,720,360);
+
+
+	}
+	function main() {
+		render();
+		requestAnimationFrame(main);
+	}
+	main();
+</script>
+
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+</script>
+</html>
+
+
+

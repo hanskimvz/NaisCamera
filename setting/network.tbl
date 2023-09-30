@@ -1,0 +1,290 @@
+{
+    "nbrofethernet": "1",
+    "dns": {
+        "preferred": "1.1.1.1",
+        "alternate0": "",
+        "alternate1": "",
+        "alternate2": "2.2.2.2"
+    },
+    "eth0": {
+        "broadcast": "192.168.255.255",
+        "dns0": "0.0.0.0",
+        "dns1": "0.0.0.0",
+        "gateway": "192.168.0.1",
+        "hostname": "SC6102HD",
+        "interface": "eth0",
+        "ipaddress": "192.168.3.31",
+        "ipversion": "ipv4",
+        "mac": "00:13:23:A0:03:1F",
+        "mode": "auto",
+        "mtu": "1500",
+        "nbrofdns": "2",
+        "subnet": "255.255.0.0",
+        "autoip": {
+            "enable": "yes",
+            "ipaddress": "169.254.3.225",
+            "subnet": "255.255.0.0"
+        },
+        "dhcp": {
+            "broadcast": "0.0.0.0",
+            "dns0": "0.0.0.0",
+            "dns1": "0.0.0.0",
+            "enable": "no",
+            "gateway": "0.0.0.0",
+            "ipaddress": "0.0.0.0",
+            "nbrofdns": "2",
+            "subnet": "0.0.0.0"
+        },
+        "ipv6": {
+            "raenable": "yes",
+            "ipaddress": "",
+            "gateway": "",
+            "prefixlength": "128",
+            "dhcp": {
+                "enable": "yes",
+                "type": "auto",
+                "ipaddress": ""
+            }
+        }
+    },
+    "http": {
+        "authentype": "basic",
+        "enable": "yes",
+        "port": "80"
+    },
+    "https": {
+        "enable": "no",
+        "port": "443"
+    },
+    "ieee8021x": {
+        "enable": "no",
+        "eaptype": "tls",
+        "id": ""
+    },
+    "ipv6": {
+        "enable": "no"
+    },
+    "mdns": {
+        "enable": "yes",
+        "friendlyname": "SC6102HD"
+    },
+    "outerport": {
+        "rtsp": "554"
+    },
+    "rtmp": {
+        "nbrofstream": "2",
+        "enable": "yes",
+        "streambuffersize": "512",
+        "streambuffercount": "300",
+        "chunksize": "819200",
+        "port": "1935",
+        "tcpsocketbuffersize": "100",
+        "flashver": "",
+        "st0": {
+            "appname": "live",
+            "appinstance": "first",
+            "publish": {
+                "enable": "no",
+                "type": "live",
+                "url": "",
+                "bufferlength": "3000"
+            }
+        },
+        "st1": {
+            "appname": "live",
+            "appinstance": "second",
+            "publish": {
+                "enable": "no",
+                "type": "live",
+                "url": "",
+                "bufferlength": "3000"
+            }
+        }
+    },
+    "rtp": {
+        "nbrofstream": "2",
+        "st0": {
+            "multicast": {
+                "alwaysmulticast": "no",
+                "audiodscp": "0",
+                "audioipaddress": "0.0.0.0",
+                "audioport": "18890",
+                "enable": "no",
+                "enableqos": "no",
+                "includeaudio": "yes",
+                "includemeta": "yes",
+                "includeonvifmeta": "no",
+                "ipaddress": "0.0.0.0",
+                "metadscp": "0",
+                "metaipaddress": "0.0.0.0",
+                "metaport": "18892",
+                "name": "mfirststream",
+                "onvifmetadscp": "0",
+                "onvifmetaipaddress": "0.0.0.0",
+                "onvifmetaport": "18894",
+                "ttl": "1",
+                "videodscp": "0",
+                "videoport": "18888"
+            },
+            "unicast": {
+                "audiodscp": "0",
+                "enable": "yes",
+                "enableqos": "no",
+                "includeaudio": "yes",
+                "includemeta": "yes",
+                "includeonvifmeta": "no",
+                "metadscp": "0",
+                "name": "ufirststream",
+                "onvifmetadscp": "0",
+                "videodscp": "0"
+            }
+        },
+        "st1": {
+            "multicast": {
+                "alwaysmulticast": "no",
+                "audiodscp": "0",
+                "audioipaddress": "0.0.0.0",
+                "audioport": "28890",
+                "enable": "no",
+                "enableqos": "no",
+                "includeaudio": "yes",
+                "includemeta": "yes",
+                "includeonvifmeta": "no",
+                "ipaddress": "0.0.0.0",
+                "metadscp": "0",
+                "metaipaddress": "0.0.0.0",
+                "metaport": "28892",
+                "name": "msecondstream",
+                "onvifmetadscp": "0",
+                "onvifmetaipaddress": "0.0.0.0",
+                "onvifmetaport": "28894",
+                "ttl": "1",
+                "videodscp": "0",
+                "videoport": "28888"
+            },
+            "unicast": {
+                "audiodscp": "0",
+                "enable": "yes",
+                "enableqos": "no",
+                "includeaudio": "yes",
+                "includemeta": "yes",
+                "includeonvifmeta": "no",
+                "metadscp": "0",
+                "name": "usecondstream",
+                "onvifmetadscp": "0",
+                "videodscp": "0"
+            }
+        }
+    },
+    "rtsp": {
+        "bandwidth": "0",
+        "enable": "yes",
+        "port": "554",
+        "tcpsocketbuffersize": "100",
+        "udpsocketbuffersize": "50",
+        "streambuffersize": "1024",
+        "streambuffercount": "100",
+        "rtpheadercreatetype": "client",
+        "tunneltype": "standalone",
+        "authen": {
+            "enable": "no",
+            "privilege": "administrator",
+            "type": "digest"
+        }
+    },
+    "smtp": {
+        "address": "",
+        "auth": "",
+        "port": "",
+        "ssl": "",
+        "user": ""
+    },
+    "snmp": {
+        "contact": "",
+        "enable": "no",
+        "location": "",
+        "rocommunity": "public",
+        "trap1sink": "",
+        "trap2sink": "",
+        "version": "v2c",
+        "incmib": "cap",
+        "trap1": {
+            "address": "",
+            "community": ""
+        },
+        "trap2": {
+            "address": "",
+            "community": ""
+        },
+        "user": {
+            "default": {
+                "name": "",
+                "authprotocol": "sha",
+                "privprotocol": "aes"
+            },
+            "nbrofcount": "0",
+            "list": ""
+        }
+    },
+    "srtp": {
+        "enable": "no",
+        "protectionprofile": "srtp_aes128_cm_hmac_sha1_80",
+        "establish": {
+            "enable": "no",
+            "type": "sdp"
+        },
+        "key": {
+            "master": "",
+            "salt": ""
+        }
+    },
+    "telnet": {
+        "enable": "no"
+    },
+    "upnp": {
+        "enable": "yes",
+        "friendlyname": "SC6102HD"
+    },
+    "wlan0": {
+        "broadcast": "0.0.0.0",
+        "dns0": "0.0.0.0",
+        "dns1": "0.0.0.0",
+        "enable": "yes",
+        "gateway": "0.0.0.0",
+        "interface": "eth1",
+        "ipaddress": "0.0.0.0",
+        "ipversion": "ipv4",
+        "mac": "",
+        "subnet": "0.0.0.0",
+        "autoip": {
+            "enable": "yes",
+            "ipaddress": "169.254.0.1",
+            "subnet": "255.255.0.0"
+        },
+        "connect": {
+            "authmode": "OPEN",
+            "enable": "no",
+            "encrypttype": "NONE",
+            "essid": "",
+            "mode": "Managed",
+            "mac": "",
+            "ap": {
+                "authmode": "OPEN",
+                "encrypttype": "NONE",
+                "essid": ""
+            }
+        },
+        "dhcp": {
+            "broadcast": "0.0.0.0",
+            "dns0": "0.0.0.0",
+            "dns1": "0.0.0.0",
+            "enable": "yes",
+            "gateway": "0.0.0.0",
+            "ipaddress": "0.0.0.0",
+            "subnet": "0.0.0.0"
+        }
+    },
+    "wsdiscovery": {
+        "enable": "yes"
+    }
+}

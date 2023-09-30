@@ -1,0 +1,215 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+$stream = ["First Stream", "Second Stream", "Snapshot", "Audio"];
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div class="container-fluid">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Burnt-in Annotation</strong></p>
+				<div class="col-lg-6">
+					<div class="tab">
+						<ul class="nav nav-tabs"  role="tablist">
+							<li class="nav-item"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab"><span><?=$stream[0]?></span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab"><span><?=$stream[1]?></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-3" data-bs-toggle="tab" role="tab"><span><?=$stream[2]?></span></a></li>
+						</ul>
+						<div class="tab-content">
+<?PHP for($i=0; $i<3; $i++) {?>
+							<div class="tab-pane <?=($i==0 ? "active":"")?>" id="tab-<?=($i+1)?>" role="tabpanel">
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Burnt-in Annotation</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check mb-0">
+											<input type="checkbox" id="formEnable_<?=$i?>" class="form-check-input"/>
+											<span>Enable Burnt-in Annotation</span>
+										</label>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Zones</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check mb-0">
+											<input type="checkbox" id="formZoneEnable_<?=$i?>" class="form-check-input"/>
+											<span>Display zones</span>
+										</label>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Objects</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check">
+											<input type="checkbox" id="formObjectEnable_<?=$i?>" class="form-check-input"/>
+											<span>Display objects</span>
+										</label>
+										<div class="form-group ml-4 mb-0">
+											<label class="form-check">
+												<input type="checkbox" id="formObjectNAlarmEnable_<?=$i?>" class="form-check-input"/>
+												<span>Non-alarmed objects</span>
+											</label>
+											<label class="form-check">
+												<input type="checkbox" id="formObjectSpeedEnable_<?=$i?>" class="form-check-input"/>
+												<span>Object speed</span>
+											</label>
+											<label class="form-check">
+												<input type="checkbox" id="formObjectHeightEnable_<?=$i?>" class="form-check-input"/>
+												<span>Object height</span>
+											</label>
+											<label class="form-check">
+												<input type="checkbox" id="formObjectAreaEnable_<?=$i?>" class="form-check-input"/>
+												<span>Object area</span>
+											</label>
+											<label class="form-check">
+												<input type="checkbox" id="formObjectClassEnable_<?=$i?>" class="form-check-input"/>
+												<span>Object classification</span>
+											</label>
+											<div class="form-inline">
+												<span class="col-md-3">Text size</span>
+												<select id="formBiaObjectClassTextSize_<?=$i?>" class="form-control-custom" style="width:120px">
+													<option value="small">Small</option>
+													<option value="medium">Medium</option>
+													<option value="large">Large</option>
+												</select>
+											</div>
+											<label class="form-check">
+												<input type="radio" name="formDispObjColor" id="formDispObjBiColor_<?=$i?>" class="form-check-input"/>
+												<span>Display objects in tow colors</span>
+											</label>
+											<div class="form-inline">
+												<span class="col-md-3">Alarm object color</span>
+												<select id="formDispAlarmObjColor_<?=$i?>" class="form-control-custom" style="width:120px">
+													<option value="red">Red</option>
+													<option value="green">Green</option>
+													<option value="blue">Blue</option>
+													<option value="yellow">Yellow</option>
+													<option value="magenta">Magenta</option>
+													<option value="cyan">Cyan</option>
+													<option value="orange">Orange</option>
+												</select>
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-md-3">Non-alarm object color</span>
+												<select id="formDispNonAlarmObjColor_<?=$i?>" class="form-control-custom" style="width:120px">
+													<option value="red">Red</option>
+													<option value="green">Green</option>
+													<option value="blue">Blue</option>
+													<option value="yellow">Yellow</option>
+													<option value="magenta">Magenta</option>
+													<option value="cyan">Cyan</option>
+													<option value="orange">Orange</option>
+												</select>
+											</div>
+											<label class="form-check">
+												<input type="radio" name="formDispObjColor" id="formDispObjMtColor_<?=$i?>" class="form-check-input"/>
+												<span>Display objects in multiple colors</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Counters</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check">
+											<input type="checkbox" id="formCounterEnable_<?=$i?>" class="form-check-input"/>
+											<span>Display counters</span>
+										</label>
+										<div class="form-group form-inline ml-4 mb-0">
+											<label class="form-check">
+												<input type="checkbox" id="formCounterNameEnable_<?=$i?>" class="form-check-input"/>
+												<span>Name</span>
+											</label>
+											<label class="form-check ml-4">
+												<input type="checkbox" id="formCounterValueEnable_<?=$i?>" class="form-check-input"/>
+												<span>Value</span>
+											</label>
+											<span class="ml-4 mr-2">Text size</span>
+											<select id="formBiaCounterTextSize_<?=$i?>" class="form-control-custom" style="width:120px">
+												<option value="small">Small</option>
+												<option value="medium">Medium</option>
+												<option value="large">Large</option>
+											</select>											
+										</div>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">System messages</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check">
+											<input type="checkbox" id="formMsgEnable_<?=$i?>" class="form-check-input"/>
+											<span>Display messages</span>
+										</label>
+										<label class="form-check">
+											<input type="checkbox" id="formProfileEnable_<?=$i?>" class="form-check-input"/>
+											<span>Display current profile</span>
+										</label>
+										<div class="form-inline mb-0">
+											<span class="mr-3">Text size</span>
+											<select id="formBiaMsgTextSize_<?=$i?>" class="form-control-custom" style="width:120px">
+												<option value="small">Small</option>
+												<option value="medium">Medium</option>
+												<option value="large">Large</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Diagnostics</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check">
+											<input type="checkbox" id="formCtLineEnable_<?=$i?>" class="form-check-input"/>
+											<span>Display counting line events</span>
+										</label>
+									</div>
+								</div>
+								<div class="text-center mt-2">
+									<button id="btnApply_<?=$i?>" class="btn btn-sm btn-primary">Apply</button>
+								</div>
+							</div>
+<?PHP }?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+	<div id='loadingMessage' hidden>
+		<img id='loadingImage' src='/images/loading.gif'></img>
+		<span>Loading Data - Please Wait</span>
+	</div>
+	
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+
+</script>
+</html>

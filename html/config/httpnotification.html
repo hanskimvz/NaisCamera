@@ -1,0 +1,148 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Event Configuration</span> > <strong>HTTP notification</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">HTTP notification list</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-1">ID</span>
+										<span class="col-md-3">Name</span>
+										<span class="col-md-4">Description</span>
+									</div>
+									<select size="8" id="formNotifyList" class="form-control-custom col-md-12" onClick="viewSchedule(this)"><option></option></select>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnAdd" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#httpNotiModal">Add</button>
+								<button id="btnModify" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#httpNotiModal">Modify</button>
+								<button id="btnRemove" class="btn btn-sm btn-secondary" >Remove</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Information</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-2">Name</span>
+										<label id="infoHttpName"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Description</span>
+										<label id="infoHttpDes"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">IP address</span>
+										<label id="infoHttpAddr"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Port</span>
+										<label id="infoHttpPort"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Account</span>
+										<label id="infoHttpAcc"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Message</span>
+										<label id="infoHttpMsg"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Enable option</span>
+										<label id="infoHttpEnableOption"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+
+<div class="modal fade" id="httpNotiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" role="document" >
+		<div class="modal-content">
+			<div class="modal-header mb-0">
+				<h6 class="modal-title" id="exampleModalLabel">HTTP notification info</h6>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+			</div>
+			<div class="card-body">
+				<div class="form-group">
+					<div class="form-inline">	
+						<span class="col-md-3">Name</span>
+						<input type="text" id="formHttpName" class="form-control-custom col-md-8" />
+					</div>	
+					<div class="form-inline mt-1">	
+						<span class="col-md-3">Description</span>
+						<input type="text" id="formHttpDes" class="form-control-custom col-md-8" />
+					</div>	
+					<div class="form-inline mt-1">	
+						<span class="col-md-3">URL</span>
+						<input type="text" id="formHttpAddr" class="form-control-custom col-md-8" placeholder="http://10.0.0.1:123/test.cgi?query=value" />
+					</div>
+					<div class="form-inline">
+						<span class="col-md-3"></span>
+						<label class="form-check ml-2">
+							<input type="checkbox" id="formHttpOption" class="form-check-input"/> 
+							<span>Append detailed information</span>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<span>Login Credentials (if required)</span>
+					<div class="form-inline mt-1">	
+						<span class="col-md-3">Account</span>
+						<input type="text" id="formHttpUser" class="form-control-custom col-md-6" />
+					</div>
+					<div class="form-inline mt-1">	
+						<span class="col-md-3">Password</span>
+						<input type="text" id="formHttpPwd" class="form-control-custom col-md-6" />
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer ">
+				<button id="btnFTPTest" class="btn btn-sm btn-primary" data-dismiss="modal">Test</button>
+				<button id="btnDialogOK" class="btn btn-sm btn-primary" data-dismiss="modal">Apply</button>
+				<button id="btnDialogCancel" class="btn btn-sm btn-secondary ml-2" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<?=$footer?>
+<script>
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+</script>
+</html>

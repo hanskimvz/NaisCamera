@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<title></title>
+	<link type="text/css" href="../css/config.css" rel="stylesheet" />
+	<link type="text/css" href="../css/config/repositioning.css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+	<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+	<script type="text/javascript" src="../js/uapi.player.js"></script>
+	<script type="text/javascript" src="../js/activexobject.js"></script>
+	<script type="text/javascript" src="../js/cap.js"></script>
+	<script type="text/javascript" src="../js/config/repositioning.js"></script>
+	<!--[If lte IE 8]>
+		<link type="text/css" href="../css/ie8.css" rel="stylesheet" />
+	<![endif]-->
+</head>
+<body id="config-page" style="display:none">
+	<p class="menuLocationInfo" >
+			<span id="parentpagename" class="04020201">Setup &gt; Video &amp; Audio &gt;</span>
+			<span id="parentpagename_video" class="04020265" style="display:none;">Setup &gt; Video &gt;</span>
+		<span id="pagename" class="04020202">Repositioning</span>
+	</p>
+	<ul class="box">
+		<li class="box-title"><h2 class="04020203">Movement</h2></li>
+		<li id="ptz" class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li id="ptz_panel">
+							<ul>
+								<li id="pt_cu" class="ui-button"></li>
+								<li id="pt_lm" class="ui-button"></li>
+								<li id="pt_cm" class="ui-button"></li>
+								<li id="pt_rm" class="ui-button"></li>
+								<li id="pt_cd" class="ui-button"></li>
+							</ul>
+						</li>
+						<li id="ptz_zoomfocus">
+							<ul>
+								<li id="ptz_zoom" class="04020204">(Zoom) </li>
+								<li id="ptz_wide" class="04020205">Wide</li>
+								<li>
+									<img id="zoom_r3" class="ui-button" width="16" height="16" src="../images/left3.gif" />
+									<img id="zoom_r2" class="ui-button" width="16" height="16" src="../images/left2.gif" />
+									<img id="zoom_r1" class="ui-button" width="16" height="16" src="../images/left1.gif" />
+									<img id="tele_l1" class="ui-button" width="16" height="16" src="../images/right1.gif" />
+									<img id="tele_l2" class="ui-button" width="16" height="16" src="../images/right2.gif" />
+									<img id="tele_l3" class="ui-button" width="16" height="16" src="../images/right3.gif" />
+								</li>
+								<li id="ptz_tele" class="04020206"> Tele</li>
+							</ul>
+							<ul>
+								<li id="ptz_focus" class="04020207">(Focus) </li>
+								<li id="ptz_near" class="04020208"> Near</li>
+								<li>
+									<img id="focus_l3" class="ui-button" width="16" height="16" src="../images/left3.gif" />
+									<img id="focus_l2" class="ui-button" width="16" height="16" src="../images/left2.gif" />
+									<img id="focus_l1" class="ui-button" width="16" height="16" src="../images/left1.gif" />
+									<img id="far_r1" class="ui-button" width="16" height="16" src="../images/right1.gif" />
+									<img id="far_r2" class="ui-button" width="16" height="16" src="../images/right2.gif" />
+									<img id="far_r3" class="ui-button" width="16" height="16" src="../images/right3.gif" />
+								</li>
+								<li id="ptz_far" class="04020209">Far</li>
+							</ul>
+							<ul>
+								<li><button id="btnAF"><span class="04020210">One click focus</span></button></li>
+							</ul>
+							
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<ul id="ptz_preposition" class="box">
+		<li class="box-title"><h2 class="04020211">Pre Position</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li>
+							<select id="preset_list">
+								<option value="0" selected>---------------------- PTZ Preset ----------------------</option>
+								<option value="1">--disable--</option>
+								<option value="2">--disable--</option>
+								<option value="3">--disable--</option>
+								<option value="4">--disable--</option>
+								<option value="5">--disable--</option>
+								<option value="6">--disable--</option>
+								<option value="7">--disable--</option>
+								<option value="8">--disable--</option>
+								<option value="9">--disable--</option>
+								<option value="10">--disable--</option>
+								<option value="11">--disable--</option>
+								<option value="12">--disable--</option>
+								<option value="13">--disable--</option>
+								<option value="14">--disable--</option>
+								<option value="15">--disable--</option>
+								<option value="16">--disable--</option>
+							</select>
+						</li>
+						<li>
+							<label for="preset_name" id="preset_name_label" class="04020261">Name</label>
+							<input type="text" id="preset_name"></input>
+						</li>
+						<li><button id="btnGo"><span class="04020212">Go</span></button></li>
+						<li><button id="btnSet"><span class="04020213">Set</span></button></li>
+						<li><button id="btnClear"><span class="04020214">Clear</span></button></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<ul id="ptz_Calibration" class="box">
+		<li class="box-title"><h2 class="04020215">Calibration</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li id="pantilt_Title" class="04020216">Pan/Tilt :</li>
+						<li>
+							<button id="btnPanTilt"><span class="04020217">Calibrate</span></button>
+						</li>
+						<li id="zoomfocus_Title" class="04020218">Zoom/Focus :</li>
+						<li>
+							<button id="btnZoomFocus"><span class="04020219">Calibrate</span></button>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
+	<div id="viewToggle" class="box" align="center">
+		<li id="screen"></li>
+	</div>
+	
+	<ul id="" class="box">
+		<li class="box-title"><h2 class="04020255">Status</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item hidden_contents">
+					<ul>
+						<li class="adjustLeft">
+							<span class="04020256">Temperature(Celsius) : </span>
+							<span id="status_TempCelsius">-</span>
+						</li>
+					</ul>
+				</li>
+				<li class="item hidden_contents">
+					<ul>
+						<li class="adjustLeft">
+							<span class="04020257">Temperature(Fahrenheit) : </span>
+							<span id="status_TempFahrenheit">-</span>
+						</li>
+					</ul>
+				</li>
+				<!--
+				<li class="item">
+					<ul>
+						<li>
+							<span id="opTempExp" class="04020260">* Operating temperature : 10C~40C (50F~104F)</span>
+						</li>
+					</ul>
+				</li>
+				//-->
+				<li class="item">
+					<ul>
+						<li class="adjustLeft">
+							<span class="04020258">Cycle(Pan) : </span>
+							<span id="status_CyclePan">-</span>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="adjustLeft">
+							<span class="04020259">Cycle(Tilt) : </span>
+							<span id="status_CycleTilt">-</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
+	<ul id="schedulebox" class="box">
+		<li class="box-title"><h2 class="04020220">Schedule</h2></li>
+		<li class="item nocolor">
+			<ul>
+				<table id="schedule">
+					<thead>
+						<tr>
+							<th class="04020221">Num</th>
+							<th class="04020222">Day</th>
+							<th class="04020223">Time <br/><span class="04020224">(HH:MM 24-Hour)</span></th>
+							<th class="04020225">Pre position list</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1.</td>
+							<td>
+								<input type="checkbox" id="formPreset0_mon" />
+								<label for="formPreset0_mon" class="04020226"> Mon</label>
+								<input type="checkbox" id="formPreset0_tue" />
+								<label for="formPreset0_tue" class="04020227"> Tue</label>
+								<input type="checkbox" id="formPreset0_wed" />
+								<label for="formPreset0_wed" class="04020228"> Wed</label>
+								<input type="checkbox" id="formPreset0_thu" />
+								<label for="formPreset0_thu" class="04020229"> Thu</label>
+								<input type="checkbox" id="formPreset0_fri" />
+								<label for="formPreset0_fri" class="04020230"> Fri</label>
+								<input type="checkbox" id="formPreset0_sat" />
+								<label for="formPreset0_sat" class="04020231"> Sat</label>
+								<input type="checkbox" id="formPreset0_sun" />
+								<label for="formPreset0_sun" class="04020232"> Sun</label>
+							</td>
+							<td><input type="text" id="formPresetTime_0" value=""></input></td>
+							<td>
+								<select id="formPresetList_0"></select>
+							</td>
+						</tr>
+						<tr>
+							<td>2.</td>
+							<td>
+								<input type="checkbox" id="formPreset1_mon" />
+								<label for="formPreset1_mon" class="04020226"> Mon</label>
+								<input type="checkbox" id="formPreset1_tue" />
+								<label for="formPreset1_tue" class="04020227"> Tue</label>
+								<input type="checkbox" id="formPreset1_wed" />
+								<label for="formPreset1_wed" class="04020228"> Wed</label>
+								<input type="checkbox" id="formPreset1_thu" />
+								<label for="formPreset1_thu" class="04020229"> Thu</label>
+								<input type="checkbox" id="formPreset1_fri" />
+								<label for="formPreset1_fri" class="04020230"> Fri</label>
+								<input type="checkbox" id="formPreset1_sat" />
+								<label for="formPreset1_sat" class="04020231"> Sat</label>
+								<input type="checkbox" id="formPreset1_sun" />
+								<label for="formPreset1_sun" class="04020232"> Sun</label>
+							</td>
+							<td><input type="text" id="formPresetTime_1" value=""></input></td>
+							<td>
+								<select id="formPresetList_1"></select>
+							</td>
+						</tr>
+						<tr>
+							<td>3.</td>
+							<td>
+								<input type="checkbox" id="formPreset2_mon" />
+								<label for="formPreset2_mon" class="04020226"> Mon</label>
+								<input type="checkbox" id="formPreset2_tue" />
+								<label for="formPreset2_tue" class="04020227"> Tue</label>
+								<input type="checkbox" id="formPreset2_wed" />
+								<label for="formPreset2_wed" class="04020228"> Wed</label>
+								<input type="checkbox" id="formPreset2_thu" />
+								<label for="formPreset2_thu" class="04020229"> Thu</label>
+								<input type="checkbox" id="formPreset2_fri" />
+								<label for="formPreset2_fri" class="04020230"> Fri</label>
+								<input type="checkbox" id="formPreset2_sat" />
+								<label for="formPreset2_sat" class="04020231"> Sat</label>
+								<input type="checkbox" id="formPreset2_sun" />
+								<label for="formPreset2_sun" class="04020232"> Sun</label>
+							</td>
+							<td><input type="text" id="formPresetTime_2" value=""></input></td>
+							<td>
+								<select id="formPresetList_2"></select>
+							</td>
+						</tr>
+						<tr>
+							<td>4.</td>
+							<td>
+								<input type="checkbox" id="formPreset3_mon" />
+								<label for="formPreset3_mon" class="04020226"> Mon</label>
+								<input type="checkbox" id="formPreset3_tue" />
+								<label for="formPreset3_tue" class="04020227"> Tue</label>
+								<input type="checkbox" id="formPreset3_wed" />
+								<label for="formPreset3_wed" class="04020228"> Wed</label>
+								<input type="checkbox" id="formPreset3_thu" />
+								<label for="formPreset3_thu" class="04020229"> Thu</label>
+								<input type="checkbox" id="formPreset3_fri" />
+								<label for="formPreset3_fri" class="04020230"> Fri</label>
+								<input type="checkbox" id="formPreset3_sat" />
+								<label for="formPreset3_sat" class="04020231"> Sat</label>
+								<input type="checkbox" id="formPreset3_sun" />
+								<label for="formPreset3_sun" class="04020232"> Sun</label>
+							</td>
+							<td><input type="text" id="formPresetTime_3" value=""></input></td>
+							<td>
+								<select id="formPresetList_3"></select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</ul>
+		</li>
+	</ul>
+	<div id="btn" class="box" align="right">
+		<button id="save"><span class="04020254">SAVE</span></button>
+	</div>
+	
+	<div id='debug_console'></div>
+</body>
+</html>

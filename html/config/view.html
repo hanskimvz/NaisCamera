@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+$rtsp = new rtsp_client("10.10.9.110", 554, "admin", "123456");
+$url = "rtsp://10.10.9.110/media/video1";
+
+$options = $rtsp->request("OPTIONS", $url);
+$desc = $rtsp->request("DESCRIBE", $url);
+$setup = $rtsp->request("SETUP", $url."/video", array('Transport'=>'RTP/AVP;unicast;client_port=52614-52615', 'User-Agent'=>'PHPrtsp_client/0.0.1'));
+$rtsp->request("PLAY", $url, array('Session'=>$setup['Session'], 'User-Agent'=>'PHPrtsp_client/0.0.1', 'Range'=>'npt=0.000-'));
+?>
+	<head>
+		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+		<script type="text/javascript" src="../js/uapi.player.js"></script>
+		<script type="text/javascript" src="../js/activexobject.js"></script>
+		<script type="text/javascript" src="../js/config/view.js"></script>
+	</head>
+
+	<body>
+		<div id="screen" align="center"></div>
+	</body>
+</html>

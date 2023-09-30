@@ -1,0 +1,238 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+			<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Advanced</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Alarm Holdoff Time</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<span class="col-sm-3">Threshold</span>
+									<input type="range" id="sliderReTrigTime" class="slider mr-2" min="0" max="3600" style="width:200px;" />
+									<input type="text" id="formReTrigTime" class="form-control-custom text-center" size="5" />
+									<span class="ml-2 mr-2">sec(s)</span><label>[0...3600]</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Measurement Units</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<span class="col-sm-4">Height/Area/Speed units</span>
+									<select id="meaunits" class="form-control-custom " style="width:100px">
+										<option value="metric">Metric</option>
+										<option value="imperial">Imperial</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Metadata format</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<span class="font-weight-bold">Metadata</span>
+									<div class="form-inline ml-3">
+										<label class="form-check">
+											<input type='checkbox' class='form-check-input' id='event' />
+											<span class="form-check-label">Event</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type='checkbox' class='form-check-input' id='object' />
+											<span class="form-check-label"> Object</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type='checkbox' class='form-check-input' id='counting' />
+											<span class="form-check-label"> Counting</span>
+										</label>
+									</div>
+									<div class="form-inline ml-3">
+										<label class="form-check">
+				                			<input type='checkbox' class='form-check-input' id='compactdata' />
+											<span class="form-check-label">Do not send empty metadata packets (metadata won't be sent if no information generated)</span>
+										</label>
+									</div>
+								</div>
+								<div class="form-group mb-0">
+					            	<span class="font-weight-bold">Diagnostic Metadata</span>
+									<div class="form-inline ml-3">
+										<label class="form-check">
+											<input type='checkbox' class='form-check-input' id='blob' />
+											<span class="form-check-label"> Blob</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type='checkbox' class='form-check-input' id='linecounter' />
+											<span class="form-check-label"> Counting Line</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type='checkbox' class='form-check-input' id='tamper' />
+											<span class="form-check-label"> Tamper</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type='checkbox' class='form-check-input' id='scenechange' />
+											<span class="form-check-label"> Scene Change</span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>		
+
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Stationary Object Hold-on Time</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<span class="col-sm-3">Time</span>
+									<label class="form-check ml-2">
+						                <input type="radio" id="yes" name="autostatholdontime" class='form-check-input' />
+										<span class="form-check-label">Auto</span>
+									</label>
+									<label class="form-check ml-2">
+						                <input type="radio" id="no"  name="autostatholdontime" class='form-check-input' />
+										<input type="text" id="statholdontime" class="form-control-custom mr-2" size="8" />
+									</label>
+									<span class="form-check-label">sec(s)</span>
+								</div>
+							</div>
+						</div>
+					</div>		
+
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Tracking Options</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline mb-0">
+									<span class="col-sm-5">Minimum tracked object size</span>
+									<label class="form-check ml-2">
+						                <input type="radio" id="yes" name="autominobjarea" class='form-check-input' />
+										<span class="form-check-label">Auto</span>
+									</label>
+									<label class="form-check ml-2">
+						                <input type="radio" id="no"  name="autominobjarea" class='form-check-input' />
+										<input type="text" id="statholdontime" class="form-control-custom mr-2" size="8" />
+									</label>
+									<span class="form-check-label">blobmap pixels</span>
+								</div>
+							</div>
+						</div>
+					</div>		
+
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Display Options</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-sm-5">Minimum alarm object display time</span>
+										<input type="text" id="alarmdwell" class="form-control-custom mr-2" size="8" />
+										<span>milliseconds</span>[0 ... 65535]
+									</div>
+									<div class="form-inline mt-2">
+										<span class="col-sm-5">Minimum object display time</span>
+										<input type="text" id="fadeoutdwell" class="form-control-custom mr-2" size="8" />
+										<span>milliseconds</span>[0 ... 65535]
+									</div>									
+ 								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Detection Point of Tracked Objects</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check ml-2">
+									<input type='radio' name="detectionpoint" class='form-check-input' id='default' />
+									<span class="form-check-label">Default (choose centroid if calibrated overhead, midbottom if calibrated sideon or uncalibrated)</span>
+								</label>
+								<label class="form-check ml-2">
+									<input type='radio' name="detectionpoint" class='form-check-input' id='centroid' />
+									<span class="form-check-label">Centroid (force centroid)</span>
+								</label>
+								<label class="form-check ml-2 mb-0">
+									<input type='radio' name="detectionpoint" class='form-check-input' id='midbottom' />
+									<span class="form-check-label">Midbottom (force midbottom)</span>
+								</label>
+							</div>
+						</div>
+					</div>		
+
+			  		<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Global Restore Defaults</h6>
+							</div>
+							<div class="card-body">
+					            <button id='btnRestoreAllDefaults' class="btn btn-sm btn-warning">Restore all default VCA settings</button>
+							</div>
+						</div>
+					</div>		
+
+					
+					<div class='col-lg-6 mt-2'>
+						<button id='btnApply' class="btn btn-sm btn-primary">Apply</button>
+						<button id='btnRestoreDefaults' class="btn btn-sm btn-warning">Restore Defaults</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+		
+
+
+ 
+
+
+
+
+  <div id="debug_console"></div>
+	<div id='loadingMessage' hidden>
+		<img id='loadingImage' src='/images/loading.gif'></img>
+		<span>Loading Data - Please Wait</span>
+	</div>
+	
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+</script>
+</html>

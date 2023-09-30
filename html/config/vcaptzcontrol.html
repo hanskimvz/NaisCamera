@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta http-equiv="Cache-Control" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <title></title>
+  <link type="text/css" href="../css/config.css" rel="stylesheet" />
+  <link type="text/css" href="../css/config/vcaptzcontrol.css" rel="stylesheet" vca>
+  <script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.ui.mouse.js"></script>
+  <script type="text/javascript" src="../js/jquery.ui.slider.js"></script>
+  <script type="text/javascript" src="../js/knockout-2.1.0.js"></script>
+  <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+  <script type="text/javascript" src="../js/uapi.ajax.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type='text/javascript' src='../js/cap.js'></script>
+  <script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
+  <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+  <script type="text/javascript" src="../js/uapi.player.js"></script>
+  <script type="text/javascript" src="../js/config/vcaptzcontrol.js"></script>
+  <!--[If lte IE 8]>
+    <link type="text/css" href="../css/ie8.css" rel="stylesheet" />
+  <![endif]-->
+</head>
+<body id="config-page">
+  <ul id="ptz_movement" class="box">
+    <li class="box-title"><h2 class="04051001">PTZ Control</h2></li>
+    <li id="ptz" class="box-content">
+      <ul>
+        <li class="item" id="ptz_movement_bg">
+          <ul>
+            <li id="ptz_panel">
+              <ul>
+                <li id="pt_lu" class="ui-button ptzSpeed" data-bind="event: {mousedown: moveLeftUp, mouseup: moveStop, mouseout: moveStop}"></li>
+                <li id="pt_cu" class="ui-button" data-bind="event: {mousedown: moveUp, mouseup: moveStop, mouseout: moveStop}"></li>
+                <li id="pt_ru" class="ui-button ptzSpeed" data-bind="event: {mousedown: moveRightUp, mouseup: moveStop, mouseout: moveStop}"></li>
+                <li id="pt_lm" class="ui-button" data-bind="event: {mousedown: moveLeft, mouseup: moveStop, mouseout: moveStop}"></li>
+                <li id="pt_cm" class="ui-button" data-bind="event: {mousedown: moveStopForce}"></li>
+                <li id="pt_rm" class="ui-button" data-bind="event: {mousedown: moveRight, mouseup: moveStop, mouseout: moveStop}"></li>
+                <li id="pt_ld" class="ui-button ptzSpeed" data-bind="event: {mousedown: moveLeftDown, mouseup: moveStop, mouseout: moveStop}"></li>
+                <li id="pt_cd" class="ui-button" data-bind="event: {mousedown: moveDown, mouseup: moveStop, mouseout: moveStop}"></li>
+                <li id="pt_rd" class="ui-button ptzSpeed" data-bind="event: {mousedown: moveRightDown, mouseup: moveStop, mouseout: moveStop}"></li>
+              </ul>
+            </li>
+            <li id="ptz_zoomfocus">
+              <ul>
+                <li id="ptz_zoom" class="04051002">(Zoom) </li>
+                <li id="ptz_wide" class="ptzReposition 04051003">Wide</li>
+                <li class="ptzReposition">
+                  <img id="zoom_r3" class="ui-button" width="16" height="16" src="../images/left3.gif" data-bind="click: zoomWideLarge" />
+                  <img id="zoom_r2" class="ui-button" width="16" height="16" src="../images/left2.gif" data-bind="click: zoomWideMedium" />
+                  <img id="zoom_r1" class="ui-button" width="16" height="16" src="../images/left1.gif" data-bind="click: zoomWideSmall" />
+                  <img id="tele_l1" class="ui-button" width="16" height="16" src="../images/right1.gif" data-bind="click: zoomTeleSmall" />
+                  <img id="tele_l2" class="ui-button" width="16" height="16" src="../images/right2.gif" data-bind="click: zoomTeleMedium" />
+                  <img id="tele_l3" class="ui-button" width="16" height="16" src="../images/right3.gif" data-bind="click: zoomTeleLarge" />
+                </li>
+                <li id="ptz_tele" class="ptzReposition 04051004"> Tele</li>
+		<li class="ptzSpeed">
+		  <img id="_zIn" class="ui-button" width="16" height="16" src="../images/pt_fnear.gif" data-bind="event: {mousedown: zoomIn, mouseup: moveStop, mouseout: moveStop}" />
+		  <img id="_zOut" class="ui-button" width="16" height="16" src="../images/pt_ffar.gif" data-bind="event: {mousedown: zoomOut, mouseup: moveStop, mouseout: moveStop}" />
+		</li>
+               </ul>
+              <ul>
+                <li id="ptz_focus" class="04051005">(Focus) </li>
+                <li id="ptz_near" class="ptzReposition 04051006"> Near</li>
+                <li class="ptzReposition">
+                  <img id="focus_l3" class="ui-button" width="16" height="16" src="../images/left3.gif" data-bind="click: focusNearLarge" />
+                  <img id="focus_l2" class="ui-button" width="16" height="16" src="../images/left2.gif" data-bind="click: focusNearMedium" />
+                  <img id="focus_l1" class="ui-button" width="16" height="16" src="../images/left1.gif" data-bind="click: focusNearSmall" />
+                  <img id="far_r1" class="ui-button" width="16" height="16" src="../images/right1.gif" data-bind="click: focusFarSmall" />
+                  <img id="far_r2" class="ui-button" width="16" height="16" src="../images/right2.gif" data-bind="click: focusFarMedium" />
+                  <img id="far_r3" class="ui-button" width="16" height="16" src="../images/right3.gif" data-bind="click: focusFarLarge" />
+                </li>
+                <li id="ptz_far" class="ptzReposition 04051007">Far</li>
+                <li class="ptzSpeed">
+                  <img id="_fNear" class="ui-button" width="16" height="16" src="../images/pt_fnear.gif" alt="focus near" data-bind="event: {mousedown: focusNear, mouseup: focusStop, mouseout: focusStop}" />
+                  <img id="_fFar" class="ui-button" width="16" height="16" src="../images/pt_ffar.gif" alt="focus far" data-bind="event: {mousedown: focusFar, mouseup: focusStop, mouseout: focusStop}" />
+                </li>
+              </ul>
+              <ul class="ptzReposition">
+                <li><button id="btnAF" data-bind="click: autoFocus"><span class="04051008">One click focus</span></button></li>
+              </ul>
+              <ul class="ptzSpeed">
+                <li id="ptz_speed" class="04051009">Speed </li>
+                <ul>
+                  <li><div id="slider_speedbar"></div></li>
+                  <li>
+                    <input type="text" size="1" id="text_speedbar" value=20></input>
+                    <label for="text_speedbar">(1 ... 100)</label>
+                  </li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div id="ptz_config">
+    <ul id="ptz_preposition" class="box">
+      <li class="box-title"><h2 class="04051010">PTZ Preset Control</h2></li>
+      <li class="box-content">
+        <ul>
+          <li class="item" id="ptz_preposition_bg">
+            <div>
+              <select id="preset_list">
+                <option value="0" class="04051019" selected>-------------- PTZ Preset --------------</option>
+				<option value="17" data-bind="text: prDropDownNames[16]"></option>
+                <option value="1" data-bind="text: prDropDownNames[0]"></option>
+                <option value="2" data-bind="text: prDropDownNames[1]"></option>
+                <option value="3" data-bind="text: prDropDownNames[2]"></option>
+                <option value="4" data-bind="text: prDropDownNames[3]"></option>
+                <option value="5" data-bind="text: prDropDownNames[4]"></option>
+                <option value="6" data-bind="text: prDropDownNames[5]"></option>
+                <option value="7" data-bind="text: prDropDownNames[6]"></option>
+                <option value="8" data-bind="text: prDropDownNames[7]"></option>
+                <option value="9" data-bind="text: prDropDownNames[8]"></option>
+                <option value="10" data-bind="text: prDropDownNames[9]"></option>
+                <option value="11" data-bind="text: prDropDownNames[10]"></option>
+                <option value="12" data-bind="text: prDropDownNames[11]"></option>
+                <option value="13" data-bind="text: prDropDownNames[12]"></option>
+                <option value="14" data-bind="text: prDropDownNames[13]"></option>
+                <option value="15" data-bind="text: prDropDownNames[14]"></option>
+                <option value="16" data-bind="text: prDropDownNames[15]"></option>
+              </select>
+            </div>
+            <div class="ptzReposition">
+              <!--li id="preset_name_label">Name</li-->
+              <label for="preset_name" id="preset_name_label" class="04051018">Name</label>
+              <input type="text" id="preset_name" data-bind="value: prCurName"></input>
+            </div>
+            <ul class="margin_3004">
+              <li><button id="btnGo" data-bind="click: goToPreset"><span class="04051011">Go</span></button></li>
+              <li><button id="btnSet" data-bind="click: setPreset"><span class="04051012">Set</span></button></li>
+              <li><button id="btnClear" data-bind="click: clearPreset"><span class="04051013">Clear</span></button></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul id="ptz_profiles" class="box">
+      <li class="box-title"><h2 class="04051014">Profiles</h2></li>
+      <li class="box-content">
+        <ul>
+          <li class="item" id="ptz_profiles_bg">
+            <ul>
+              <li><button id="btnAddProfile" data-bind="click: addProfile"><span class="04051015">Add Profile</span></button></li>
+            </ul>
+            <ul>
+              <li><button id="btnDelProfile" data-bind="click: delProfile"><span class="04051016">Delete Profile</span></button></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

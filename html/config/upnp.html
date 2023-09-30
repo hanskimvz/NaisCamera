@@ -1,0 +1,60 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> >  <span>Network Configuration</span> > <strong>UPnP</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-text ml-2">
+									<input type="checkbox" id="formUpnpEnable" class="form-check-input"/>
+									<span>Enable</span>
+								</label>
+								<div class="form-group form-inline mb-0">
+									<span class="col-md-3">Friendly name</span>
+									<input type="text" id="formUpnpFriName" class="form-control-custom col-md-9" />
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary"><span>apply</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("#btnApply").on("click", function (){
+	console.log(this);
+});
+
+function loadUPNPConfig(){
+	// url = "/inc/query.php?page=upnp";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Upnp";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['network']['upnp']['enable']=='yes'){
+			$("#formUpnpEnable").prop('checked', true);
+		}
+		$("#formUpnpFriName").val(response['network']['upnp']['friendlyname']);
+	});
+}
+
+loadUPNPConfig();
+</script>
+</html>

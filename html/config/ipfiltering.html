@@ -1,0 +1,130 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Network Configuration</span> > <strong>IP Filtering</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<label class="form-check">
+										<input type="checkbox" id="IPFilteringEnable" class="form-check-input" />
+										<span>Enable</span>
+									</label>
+									<label class="form-check">
+										<input type="checkbox" id="AlwaysAllowPing" class="form-check-input" />
+										<span>Always allow ping request </span>
+									</label>
+									<div class="form-inline">
+										<span class="col-md-3">Allow admin IP</span>
+										<input type="text" id="formAllowadminIP" class="form-control-custom" size="20"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Filtering policy</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline">
+									<label class="form-check">
+										<input type="radio" name="formIPFilterAllowDeny" id="formIPFilterAllowDeny0" class="form-check-input" />
+										<span>Allow</span>
+									</label>
+									<label class="form-check ml-2">
+										<input type="radio"name="formIPFilterAllowDeny" id="formIPFilterAllowDeny1" class="form-check-input" />
+										<span>Deny</span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span class="col-md-3">Filtered IP Addresses</span>
+									<select size="10" id="formIPAddressList" class="col-md-12 form-control-custom"><option></option></select>
+								</div>
+								<button id="btnAddIP" class="btn btn-mini btn-warning" data-toggle="modal" data-target="#filtered_ip">Add</button>
+								<button id="btnRemoveIP" class="btn btn-mini btn-secondary">Remove</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-2 text-center">
+						<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+
+
+<div class="modal fade" id="filtered_ip" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 class="modal-title" id="exampleModalLabel">Filtered IP address setup</h6>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+			</div>
+			<div class="card-body">
+				<div class="form-group form-inline">
+					<span class="col-md-5">IP address</span>
+					<input type="text" id="formIPAddr" class="form-control form-control-sm" />
+				</div>
+				<p class="ml-5"><span>IP format</span> :<br />xxx.xxx.xxx.xxx<br />xxx.xxx.xxx.xxx/xx<br />xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx<br /></p>
+			</div>
+			<div class="modal-footer">
+				<button id="btnDialogApply" class="btn btn-primary" data-dismiss="modal">Apply</button>
+				<button id="btnDialogCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+	
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+
+function loadIPFConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=IPFILTER";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['NETWORK.Http.enable']=='yes'){
+			$("#formHTTPSet1").prop('checked', true);
+		}
+		else if (response['NETWORK.Https.enable']=='yes'){
+			$("#formHTTPSet0").prop('checked', true);
+			$("#https_contents").removeAttr('hidden');
+		}
+
+		$("#formHttpPort").val(response['NETWORK.Http.port']);
+		$("#formHttpsPort").val(response['NETWORK.Https.port']);
+		$("#formHTTPAuthType").val(response['NETWORK.Http.authentype']);
+		// $("#system_datetime_ntp_s3").val(response['SYSTEM.Datetime.Ntp.s3']);
+	});
+}
+
+loadIPFConfig();
+
+</script>
+</html>

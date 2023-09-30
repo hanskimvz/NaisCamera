@@ -1,0 +1,220 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>Wireless lan</strong></p>
+				<div class="container-fluid">
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Wireless AP list</h6>
+							</div>
+							<div class="card-body pb-0">
+								<span>Choose a wireless network</span>
+								<select id="formWL_List" class="form-control" size="10"><option></option></select>				
+							</div>
+							<div class="card-body">
+								
+								<div class="form-inline">
+									<span class="col-md-2">ESSID</span>
+									<span id="essid" class="col-md-2">-</span>
+								</div>
+								<div class="form-inline mt-1">
+									<span class="col-md-2">Mode</span>
+									<span id="mode" class="col-md-2">-</span>
+								</div>
+								<div class="form-inline mt-1">
+									<span class="col-md-2">MAC address</span>
+									<span id="mac" class="col-md-2">-</span>
+								</div>
+								<div class="form-inline mt-1">
+									<span class="col-md-2">Bitrate</span>
+									<span id="bitrate" class="col-md-2">-</span>
+								</div>
+								<div class="form-inline mt-1">
+									<span class="col-md-2">Encryption</span>
+									<span id="enctryption" class="col-md-2">-</span>
+								</div>
+								<div class="form-inline mt-1">
+									<span class="col-md-2">Authentication</span>
+									<select id="authentication" class="col-md-2 form-control-custom"><option></option></select>
+								</div>
+								<div class="form-inline mt-1 mb-0">
+									<span class="col-md-2">Network key</span>
+									<input type="text" id="network_key" class="form-control-custom col-md-4" />
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnList" class="btn btn-mini btn-warning mt-2">Refresh network list</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Wireless network IP configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="radio" name="formWL_DhcpChk" id="formWL_DhcpChk0" value="yes" class="form-check-input" />
+									<span>Obtain an IP address via DHCP </span>
+								</label>
+								<div class="form-group">
+									<div class="form-inline">
+										<span class="col-md-3">IP address</span>
+										<input type="text" id="formWL_DhcpIPText" class="form-control-custom col-md-2" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Subnet mask</span>
+										<input type="text" id="formWL_DhcpSubnetText" class="form-control-custom col-md-2" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Gateway address</span>
+										<input type="text" id="formWL_DhcpGatewayText" class="form-control-custom col-md-2" />
+									</div>
+								</div>
+
+								<label class="form-check">
+									<input type="radio" name="formWL_DhcpChk" id="formWL_DhcpChk1" value="yes" class="form-check-input" />
+									<span>Use the following IP address</span>
+								</label>
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-3">IP address</span>
+										<input type="text" id="formWL_StaticIPText" class="form-control-custom col-md-2 mr-2" />
+										<button id="btnIPTest" class="btn btn-mini btn-warning mr-1"><span>test</span></button>
+										<span id="formTestBtnResult"></span>
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Subnet mask</span>
+										<input type="text" id="formWL_StaticSubnetText" class="form-control-custom col-md-2" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Gateway address</span>
+										<input type="text" id="formWL_StaticGatewayText" class="form-control-custom col-md-2" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Primary DNS server</span>
+										<input type="text" id="formWL_StaticDns1Text" class="form-control-custom col-md-2" />
+									</div>
+									<div class="form-inline mt-1">
+										<span class="col-md-3">Secondary DNS server</span>
+										<input type="text" id="formWL_StaticDns2Text" class="form-control-custom col-md-2" />
+									</div>
+								</div>								
+							
+							</div>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Link-Local Address</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="linkLocalEnable" value="yes" class="form-check-input" />
+									<span>Enable Auto-Configuration link-local address </span>
+								</label>
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-2">IP address</span>
+										<input type="text" id="formLinkLocalIP" class="form-control-custom col-md-2 mr-2" />
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Subnet mask</span>
+										<input type="text" id="formLinkLocalSubnet" class="form-control-custom col-md-2 mr-2" />
+										<button id="btnIPRenew" class="btn btn-mini btn-warning">Renew</button>
+									</div>
+								</div>								
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 text-center mt-2">
+						<button id="btnApply" class="btn ttn-sm btn-primary">Apply</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+function loadWLANConfig(){
+	// url = "/inc/query.php?page=wsdiscovery";
+
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Wlan0";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['NETWORK.Snmp.enable']=='yes'){
+			$("#snmpEnable").prop('checked', true);
+		}
+		if (response['NETWORK.Snmp.version']=='v2c'){
+			$("#formSnmpVersion0").prop('checked', true);
+		}
+		else if (response['NETWORK.Snmp.version']=='v3'){
+			$("#formSnmpVersion1").prop('checked', true);
+		}
+		$("#snmpDesLocation").val(response['NETWORK.Snmp.location']);
+		$("#snmpDesContact").val(response['NETWORK.Snmp.contact']);
+		$("#snmpDesCommunity").val(response['NETWORK.Snmp.rocommunity']);
+		$("#snmpTrapSetVer1Addr").val(response['NETWORK.Snmp.trap1.address']);
+		$("#snmpTrapSetVer1Community").val(response['NETWORK.Snmp.trap1.community']);
+		$("#snmpTrapSetVer2Addr").val(response['NETWORK.Snmp.trap2.address']);
+		$("#snmpTrapSetVer2Community").val(response['NETWORK.Snmp.trap2.community']);
+		
+		
+	});
+}
+// 	NETWORK.Wlan0.Autoip.enable: "yes"
+// 	NETWORK.Wlan0.Autoip.ipaddress: "169.254.0.1"
+// 	NETWORK.Wlan0.Autoip.subnet: "255.255.0.0"
+// 	NETWORK.Wlan0.Connect.Ap.authmode: "OPEN"
+// 	NETWORK.Wlan0.Connect.Ap.encrypttype: "NONE"
+// 	NETWORK.Wlan0.Connect.Ap.essid: ""
+// 	NETWORK.Wlan0.Connect.Ap.key: ""
+// 	NETWORK.Wlan0.Connect.authmode: "OPEN"
+// 	NETWORK.Wlan0.Connect.enable: "no"
+// 	NETWORK.Wlan0.Connect.encrypttype: "NONE"
+// 	NETWORK.Wlan0.Connect.essid: ""
+// 	NETWORK.Wlan0.Connect.key: ""
+// 	NETWORK.Wlan0.Connect.mac: ""
+// 	NETWORK.Wlan0.Connect.mode: "Managed"
+// 	NETWORK.Wlan0.Dhcp.broadcast: "0.0.0.0"
+// 	NETWORK.Wlan0.Dhcp.dns0: "0.0.0.0"
+// 	NETWORK.Wlan0.Dhcp.dns1: "0.0.0.0"
+// 	NETWORK.Wlan0.Dhcp.enable: "yes"
+// 	NETWORK.Wlan0.Dhcp.gateway: "0.0.0.0"
+// 	NETWORK.Wlan0.Dhcp.ipaddress: "0.0.0.0"
+// 	NETWORK.Wlan0.Dhcp.subnet: "0.0.0.0"
+// 	NETWORK.Wlan0.broadcast: "0.0.0.0"
+// 	NETWORK.Wlan0.dns0: "0.0.0.0"
+// 	NETWORK.Wlan0.dns1: "0.0.0.0"
+// 	NETWORK.Wlan0.enable: "yes"
+// 	NETWORK.Wlan0.gateway: "0.0.0.0"
+// 	NETWORK.Wlan0.interface: "eth1"
+// 	NETWORK.Wlan0.ipaddress: "0.0.0.0"
+// 	NETWORK.Wlan0.ipversion: "ipv4"
+// 	NETWORK.Wlan0.mac: ""
+// 	NETWORK.Wlan0.subnet: "0.0.0.0"
+
+loadWLANConfig();
+</script>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<style type="text/css">
+    table {border-collapse: collapse; border: 0; width: 100%; box-shadow: 1px 2px 3px #eee;}
+	.center {text-align: center;}
+	.center table {margin: 1em auto; text-align: left;}
+	.center th {text-align: center !important;}
+	td, th {border: 1px solid #aaa; font-size: 75%; vertical-align: baseline; padding: 4px 5px;}
+</style>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Scene Change Detection</strong></p>
+				<div class="container-fluid">
+					<div class="row col-lg-12" >
+						<div class="card col-lg-9 pl-0 pr-0 pt-0 pb-0">
+							<canvas id="canvas" class="card-img-top"></canvas>
+							<div class="card-body">
+								<table>
+									<thead><tr>
+										<th><span>ID</span></th>
+										<th><span>Rule</span></th>
+										<th><span>Zone</span></th>
+										<th><span>Object Class</span></th>
+										<th><span>Start time</span></th>
+										<th><span>End time</span></th>
+									</tr></thead>
+									<tbody style="height:200px;";>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="card col-lg-3">
+							<div class="card mt-1">
+								<div class="card-header pt-1 pb-1">
+									<h6 class="mb-0 font-weight-bold text-primary">Mode</h6>
+								</div>
+								<div class="card-body pt-1 pb-1 ">
+									<div class="form-group form-inline mb-0">
+										<label class="form-check">
+											<input type="radio" name="formMode" id="formModeAutomatic" class="form-check-input"/>
+											<span class="form-check-label">Audomatic</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type="radio" name="formMode" id="formModeManual" class="form-check-input"/>
+											<span class="form-check-label">Manual</span>
+										</label>
+										<label class="form-check ml-2">
+											<input type="radio" name="formMode" id="formModeDisabled" class="form-check-input"/>
+											<span class="form-check-label">Disabled</span>
+										</label>
+									</div>
+								</div>
+							</div>							
+							<div class="card mt-1">
+								<div class="card-header pt-1 pb-1">
+									<h6 class="mb-0 font-weight-bold text-primary">Advanced Settings</h6>
+								</div>
+								<div class="card-body pt-1 pb-1 ">
+									<div class="form-group form-inline mb-1">
+										<span class="mr-3">Changed time</span>
+										<input type="text" id="formTimeout" class="form-control-custom text-center mr-2" size="3"/>
+										<span>sec(s)</span>
+									</div>
+									<div class="form-group form-inline mb-1">
+										<span class="mr-3">Changed image area</span>
+										<input type="text" id="formFireArea" class="form-control-custom text-center mr-2" size="3"/>
+										<span>%</span>
+									</div>
+									<div class="form-group form-inline mb-1">
+										<span class="mr-3">Day/Night Mode Change Detection</span>
+										<input type="checkBox" id="formLowLight" class="form-check-input"/>
+									</div>
+									<span>Detect the transition between day and night mode by looking for color from/to grayscale transition between two successive frames.</span>
+								</div>
+							
+							</div>
+							<div class="card-body text-center">
+								<button id='btnApply'class="btn btn-sm btn-primary">Apply</button>
+								<button id='btnRestoreDefaults' class="btn btn-sm btn-secondary">Restore Defaults</button>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</body>
+<?=$footer?>
+
+<script>
+	var canvas = document.getElementById("canvas");
+	canvas.width=720;
+	canvas.height = 360;
+	var ctx = canvas.getContext('2d');
+	var img =  new Image();
+	img.src="../images/demo_screen.jpg";
+	ctx.drawImage(img, 0,0,720,360);
+	function render(){
+		img.src="../images/demo_screen.jpg";
+		ctx.drawImage(img, 0,0,720,360);
+
+
+	}
+	function main() {
+		render();
+		requestAnimationFrame(main);
+	}
+	main();
+</script>
+
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+</script>
+</html>
+
+
+
+
+
+<body id='config-page'>
+  <p class='menuLocationInfo'>
+    <span class="04050701">Setup > VCA ></span> 
+    <span id='pagename' class="04050702">Scene Change Detection</span>
+  </p>
+
+  <ul class='box vcaDisabled' style='display:none'>
+    <li class='box-title 04050702'><h2>Scene Change Detection</h2></li>
+    <li class='box-content'>
+      <p> <span class='04050720'>VCA is disabled, please go to the </span><span class='menuLocationInfo 04050721'>VCA > </span><span id='pagename' class='04050722'>Enable/Disable</span><span class ='04050723'> page to enable VCA.</span></p>
+    </li>
+  </ul>
+
+  <div class='vcaInitialising' id='loadingMessage'>
+    <img id='loadingImage' src='/images/loading.gif'></img>
+    <span class="04050719">Loading Data - Please Wait</span>
+  </div>
+
+  <!-- The middle region containing the ActiveX control -->
+  <div id='middleregion' class="vcaEnabled">
+    <li class='box-title'><h2 class="04050703">Scene Change Detection</h2></li>
+    <!-- The ActiveX control -->
+    <div class="vcaEnabled" id="AxUMF"></div>
+    <div class="clear"></div>
+  </div>
+
+  <!-- Controls on the right hand side of the page -->
+  <div id="rightpanel" class="vcaEnabled" style="display:none">
+    <!-- Mode section -->
+    <ul class='box vcaEnabled' style='display:none'>
+      <li class='box-title'><h2 class="04050704">Mode</h2></li>
+      <li class='box-content'>
+        <ul>
+          <li class="item">
+            <ul>
+              <li>
+                <span class="auto-select" id="mode">
+                  <input type="radio" id="automatic" class="auto-item" name="mode"><span class="04050705">Automatic</span></input>
+                  <input type="radio" id="manual" class="auto-item" name="mode"><span class="04050706">Manual</span></input>
+                  <input type="radio" id="disabled" class="auto-item" name="mode"/><span class="04050707">Disabled</span></input>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    
+    <!-- Manual Settings-->
+    <ul class='box vcaEnabled' style='display:none'>
+      <li class='box-title'><h2 class="04050708">Advanced Settings</h2></li>
+      <li class='box-content'>
+        <ul>
+          <li class="item advancedsetting">
+            <ul>
+              <li class="item-title 04050709">Changed Time</li>
+              <li>
+                <input type="text" id="timeout" class="auto-text" size="15" data-validation="int,1,10"/><label for="timeout" class="04050710"> secs</label>
+              </li>
+            </ul>
+          </li>
+          <li class="item advancedsetting">
+            <ul>
+              <li class="item-title 04050711">Changed Image Area</li>
+              <li>
+                <input type="text" id="firedarea" class="auto-text" size="15" data-validation="int,1,100"/><label for="firedarea"> %</label>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Day/Night detection settings-->
+    <ul class='box vcaEnabled' style='display:none'>
+      <li class='box-title'><h2 class="04050712">Day&frasl;Night Mode Change Detection</h2></li>
+      <li class='box-content'>
+        <ul>
+          <li class="item">
+            <ul>
+              <li class="item-title 04050713">Enabled:</li>
+              <li>
+                <input type="checkbox" id="daynightenable" class="auto-yesno" size="15" />
+              </li>
+              <li class="04050714"> Detect the transition between day and night mode by looking for color from/to grayscale transition between two successive frames. </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div id='screenTools' class='box' align='center'>
+      <button id='btnApply' disabled='true' ><span class="04050717">Apply</span></button>
+      <button id='btnRestoreDefaults'><span class="04050718">Restore Defaults</span></button>
+    </div>
+  </div>
+  <div class="clear"></div>
+</body>
+</html>

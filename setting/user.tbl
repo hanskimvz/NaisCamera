@@ -1,0 +1,26 @@
+{
+    "anonymousviewerlogin": "yes",
+    "enableauthen": "yes",
+    "grouplist": "Admin,Operator,Viewer",
+    "admin": {
+        "name": "root"
+    },
+    "operator": {
+        "name": "root,oper"
+    },
+    "viewer": {
+        "name": "root,view"
+    },
+    "member" : [
+        {
+            "username": "root",
+            "password": "1a1dc91c907325c69271ddf0c944bc72",
+            "level": 0
+        },
+        {
+            "username": "hanskim",
+            "password": "827ccb0eea8a706c4c34a16891f84e7b",
+            "level": 0
+        }
+    ]
+}

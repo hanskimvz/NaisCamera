@@ -1,0 +1,578 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+
+<?php
+include ("../inc/common.php");
+echo $header;
+
+?>
+<!-- <select id="predefinerequest" style="width:100px" onmouseover='xtooltip_show("predefine_tooltip","predefinerequest",0,0);' onmouseout='xtooltip_hide("predefine_tooltip");'></select> -->
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div class="container-fluid">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>VCA Configuration</span> > <strong>Counting Report</strong></p>
+
+				<div class="col-lg-6">
+					<div class="tab">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab"><span>Reporting Service</span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab"><span>Database Service</a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-3" data-bs-toggle="tab" role="tab"><span>Email Notification</span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-4" data-bs-toggle="tab" role="tab"><span>Push Service</span></a></li>
+						</ul>
+						<div class="tab-content">
+<!--######### TAB1 ######-->
+							<div class="tab-pane active" id="tab-1" role="tabpanel">
+								<div class="card mt-1">
+									<div class="card-body">
+										<div class="form-group form-inline mb-0">
+											<span class="col-sm-3">Predefined Request</span>
+											<select id="predefinerequest" class="form-control-custom col-sm-2">
+												<option value="onehour">One hour</span>
+												<option value="today">Today</span>
+												<option value="yesterday">Yesterday</span>
+												<option value="oneday">One day</span>
+												<option value="thisweek">This week</span>
+												<option value="lastweek">Last week</span>
+												<option value="oneweek">One week</span>
+												<option value="thismonth">This month</span>
+												<option value="lastmonth">Last month</span>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Request Command</h6>
+									</div>
+									<div class="card-body">
+										<div class="form-group mb-0">
+											<div class="form-inline">
+												<span class="col-sm-3">Time</span>
+												<input type="text" id="timeFrom" class="form-control-custom mr-2" size="12">~
+												<input type="text" id="timeTo" class="form-control-custom ml-2" size="12">
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Counter ID</span>
+												<select id="countSelect" class="form-control-custom col-sm-2 mr-2"></select>
+												<label> {active|all|0,1,...n}</label>
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Table(Sampling)</span>
+												<select id="tableSelect" class="form-control-custom col-sm-2 mr-2"></select>
+												<label>(<span>minute(s)</span>)</label>
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Sorting order</span>
+												<select id="sortSelect" class="form-control-custom col-sm-2"></select>
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Value type</span>
+												<select id="valuetypeselect" class="form-control-custom col-sm-2"></select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Request</h6>
+									</div>
+									<div class="card-body text-center">
+										<button id="btnTable" class="btn -btn-sm btn-warning">Table</button>
+										<button id="btnBar" class="btn -btn-sm btn-warning">Bar</button>
+										<button id="btnCurve" class="btn -btn-sm btn-warning">Curve</button>
+										<button id="btnCSV" class="btn -btn-sm btn-warning">CSV</button>
+										<span id="serviceDisabled" class="text-danger ml-2" >DB Service is disabled.</span>
+									</div>
+									<div class="card-footer">
+										<div class="form-group form-inline mb-0">
+											<span class="col-sm-3">Request URI</span>
+											<textarea id="requestUri" rows="3" class="form-control form-control-sm col-md-9"  readonly="readonly"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+<!--######### TAB2 ######-->
+							<div class="tab-pane" id="tab-2" role="tabpanel">
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">General</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check">
+											<input type="checkbox" id="enableDBService" class="form-check-input">
+											<span class="form-check-label">Enable Database service</span>
+										</label>
+										<div class="form-group pl-3">
+											<div class="form-inline">
+												<span class="col-sm-3">DB Storage</span>
+												<select id="storeDevice" class="form-control-custom mr-2" style="width:100px"></select>
+												<a id="linkStoreInfo" href="#"><span>Storage Information</span></a>
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Total DB Size</span>				
+												<input type="text" id="dbUsedSize" class="form-control-custom mr-1" size="3" />/
+												<input type="text" id="dbTotalSize" class="form-control-custom ml-1 mr-2" size="3"></input>
+												<label> Kbytes</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Tables</h6>
+									</div>
+									<div class="card-body">
+<?php for($i=0; $i<4; $i++)	{?>
+										<div class="form-group pl-3">									
+											<label class="form-check">
+												<input type="checkbox" id="enableTBL<?$i?>" class="form-check-input">
+												<span class="form-check-label">Enable Table<?=$i?></span>
+											</label>
+											<div class="form-inline">
+												<span class="col-sm-3">Sampling interval</span>
+												<input type="text" id="sampling<?i?>" class="form-control-custom"  onpaste="return false" />
+												<span>minute(s)</span>
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Roll-over Count</span>
+												<input type="text" id="rolloverct<?=$i?>" class="form-control-custom" onpaste="return false" />
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Roll-over Time</span>
+												<input type="text" id="rollovertime<?=$i?>" class="form-control-custom" size="6" />
+												<span id="table<?=$i?>_rollover_hour" hidden>hour(s)</span>
+												<span id="table<?=$i?>_rollover_days" hidden>day(s)</span>
+											</div>
+										</div>
+<?PHP } ?>				
+									</div>
+									<div class="card-footer text-center">
+										<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+										<button id='btnRestoreDefaults' class="btn btn-sm btn-success">Restore Defaults</button>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Database Management</h6>
+									</div>
+									<div class="card-body">
+										<button id="btnClear" class="btn btn-sm btn-primary">Clear</button>
+										<button id="btnBackup" class="btn btn-sm btn-primary">Back Up</button>
+										<div class="form-inline">
+											<span class="col-sm-3">Restore from</span>
+							                <input name="Filedata" id="Filedata" type="file" class="text-warning" />
+							                <button id="btnStart" type="submit" name="submit" class="btn btn-sm btn-warning">Start</button>
+										</div>
+									</div>
+								</div>
+							</div>
+<!--######### TAB3 ######-->
+							<div class="tab-pane" id="tab-3" role="tabpanel">
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check">
+											<input type="checkbox" id="mailNotifyEnable" class="form-check-input">
+											<span class="form-check-label">Enable email notification</span>
+										</label>
+									</div>
+									<div class="card-footer text-center">
+										<button id="btnApplyEmailEnable" class="btn btn-sm btn-primary">Apply</button>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Email Recipient List</h6>
+									</div>
+									<div class="card-body">
+										<div class="form-group">
+											<div class="form-inline">
+												<span class="col-sm-1">Id</span>
+												<span class="col-sm-2">Name</span>
+												<span class="col-sm-3">Subject</span>
+											</div>
+									    	<select size="8" id="formNotifyList" class="form-control-custom col-sm-12"><option></option></select>
+										</div>
+									</div>
+									<div class="card-footer text-center">
+										<div class="float-right">
+											<a id="linkSmtp" href="#"><span>Go to SMTP (E-Mail) Configuration</span></a>
+										</div>
+										<button id="btnAddAddr" class="btn btn-sm btn-primary">Add</button>
+										<button id="btnModifyAddr" class="btn btn-sm btn-primary">Modify</button>
+										<button id="btnRemoveAddr" class="btn btn-sm btn-primary">Remove</button>
+										
+									</div>
+								</div>
+
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Email Configuration</h6>
+									</div>
+									<div class="card-body">
+										<div class="form-group">
+											<div class="form-inline">
+												<span class="col-sm-3">Name</span>
+												<input type="text" id="mailname" class="form-control-custom" />
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Subject</span>
+												<input type="text" id="maildesc" class="form-control-custom" />
+											</div>
+											<div class="form-inline mt-1">
+												<span class="col-sm-3">Address</span>
+												<input type="text" id="mailaddr" class="form-control-custom" />
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Schedule Configuration</h6>
+									</div>
+									<div class="card-body">
+										<div class="form-group">
+											<div class="form-inline">
+												<span>Current Device Time</span>:<label id="server_clock"></label>
+											</div>
+											<div class="form-inline mt-2">
+												<label class="form-check">
+													<input type="checkbox" name="triggerMode" id="triggerMode0" class="form-check-input">
+													<span class="form-check-label">Enable Hourly Report</span>
+												</label>
+											</div>
+											<div class="form-inline mt-2">
+												<label class="form-check">
+													<input type="checkbox" name="triggerMode" id="triggerMode1" class="form-check-input">
+													<span class="form-check-label">Enable Daily Report</span>
+												</label>
+											</div>
+											<div class="form-inline mt-2">
+												<label class="form-check mr-3">
+													<input type="checkbox" name="triggerMode" id="triggerMode2" class="form-check-input">
+													<span class="form-check-label">Enable Weekly Report</span>
+												</label>
+												<span>Trigger Day</span>
+												<select id="weekdaysel" class="form-control-custom ml-2" style="width:100px"></select>
+											</div>
+											<div class="form-inline mt-2">
+												<label class="form-check mr-3">
+													<input type="checkbox" name="triggerMode" id="triggerMode3" class="form-check-input">
+													<span class="form-check-label">Enable Monthly Report</span>
+												</label>
+												<span>Trigger Day</span>
+												<select id="monthdaysel" class="form-control-custom ml-2" style="width:100px"></select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Report Configuration</h6>
+									</div>
+									<div class="card-body">
+										<div class="form-group">
+											<div class="form-inline">
+												<span class="col-sm-2">Time :</span>
+												<label class="form-check">
+													<input type="checkbox" id="reportall" class="form-check-input"/>
+													<span class="form-check-label">Report all data</span>
+												</label>
+												<select id="mailtimefrom" class="form-control-custom mr-2 ml-3" style="width:100px"><option></option></select> ~
+												<select id="mailtimeto" class="form-control-custom ml-2" style="width:100px"><option></option></select>
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-2">Counter ID</span>
+												<select id="mailcountselect" class="form-control-custom mr-2" style="width:100px"><option></option></select>
+												<label>{active|all|0,1,...n}</label>
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-2">Table(Sampling)</span>
+												<label class="form-check">
+													<input type="checkbox" id="table0" class="form-check-input"/>
+													<span class="ctrpspan 04050964">Table 0
+												</label>
+												<label class="form-check ml-3">
+													<input type="checkbox" id="table1" class="form-check-input"/>
+													<span class="ctrpspan 04050965">Table 1
+												</label>
+												<label class="form-check ml-3">
+													<input type="checkbox" id="table2" class="form-check-input"/>
+													<span class="ctrpspan 04050966">Table 2
+												</label>
+												<label class="form-check ml-3">
+													<input type="checkbox" id="table3" class="form-check-input"/>
+													<span class="ctrpspan 04050967">Table 3
+												</label>
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-2">Sorting order</span>
+												<label class="form-check">
+													<input type="radio"  name="formSort" id="formSort0" value="descending" class="form-check-input"/>
+													<span  class="form-check-label"> Descending</span>
+												</label>
+												<label class="form-check ml-3">
+													<input type="radio"  name="formSort" id="formSort1" value="ascending" class="form-check-input"/>
+													<span class="form-check-label"> Ascending</span>
+												</label>
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-2">Value type</span>
+												<label class="form-check">
+													<input type="radio"  name="formValue" id="formValue0" value="abs" class="form-check-input"/>
+													<span  class="form-check-label"> Absolute</span>
+
+												</label>
+												<label class="form-check ml-3">
+													<input type="radio"  name="formValue" id="formValue1" value="diff" class="form-check-input"/>
+													<span  class="form-check-label"> Difference</span>
+												</label>
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-2">Format</span>
+												<label class="form-check">
+													<input type="radio"  name="formFormat" id="formFormat0" value="table" class="form-check-input"/>
+													<span class="form-check-label"> HTML</span>
+												</label>
+												<label class="form-check ml-3">
+													<input type="radio"  name="formFormat" id="formFormat2" value="bar"  class="form-check-input"/>
+													<span class="form-check-label"> Bar</span>
+												</label>
+												<label class="form-check ml-3">
+													<input type="radio"  name="formFormat" id="formFormat2" value="csv" class="form-check-input"/>
+													<span class="form-check-label"> CSV(Attachment)</span>
+												</label>
+												<label class="form-check ml-3">
+													<input type="radio"  name="formFormat" id="formFormat3" value="plain"  class="form-check-input"/>
+													<span class="form-check-label"> CSV(Plain Text)</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-center mt-2">
+									<button id="btnDialogTest" class="btn btn-sm btn-primary">Send Test Report</button>
+									<button id="btnDialogOK" class="btn btn-sm btn-primary">OK</button>
+									<button id="btnDialogCancel" class="btn btn-sm btn-primary">Cancel</button>
+								</div>
+								
+							</div>
+
+<!--######### TAB4 ######-->
+							<div class="tab-pane" id="tab-4" role="tabpanel">
+								<div class="card mt-1">
+									<div class="card-header">
+										<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+									</div>
+									<div class="card-body">
+										<label class="form-check">
+											<input type="checkbox" id="enablepushservice" class="form-check-input">
+											<span class="form-check-label">Enable Push Service</span>
+										</label>
+										<div class="form-group">
+											<div class="form-inline">
+												<span class="col-sm-3">Protocol Type</span>
+												<select id="protocaltype" class="form-control-custom" style="width:100px"><option></option></select>
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-3">Server IP</span>
+												<input type="text" id="serverip" class="form-control-custom" size="20" />
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-3">Server Port</span>
+												<input type="text" id="serverport" class="form-control-custom" size="20" />
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-3">Report Interval(sec)</span>
+												<input type="text" id="reportinter" class="form-control-custom" size="20" />
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-3">Heartbeat Interval(sec)</span>
+												<input type="text" id="heartinter" class="form-control-custom" size="20" />
+											</div>
+											<div class="form-inline mt-2">
+												<span class="col-sm-3">Status</span>
+												<span id="status_connecting">connecting</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer text-center">
+										<button id="btnPSApply" class="btn btn-sm btn-primary">Apply</button>
+									</div>
+								</div>
+								<div class="card mt-1">
+									<div class="card-body">
+										<span class="col-sm-3">DB & Queue Management</span>
+										<button id="btnCQ" class="btn btn-sm btn-warning">Clear Queue</button>
+										<button id="btnStatus" class="btn btn-sm btn-info">Status</button>
+									</div>
+								</div>
+							</div>
+<!--###########################################-->						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+	<div id='loadingMessage' hidden>
+		<img id='loadingImage' src='/images/loading.gif'></img>
+		<span>Loading Data - Please Wait</span>
+	</div>
+	
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+//XSToolTip
+function xstooltip_findPosX(obj,w) 
+{
+	var curleft = 0;
+	if (w) curleft = obj.offsetWidth;
+	if (obj.offsetParent) 
+	{
+		while (obj.offsetParent) 
+        {
+            curleft += obj.offsetLeft
+            obj = obj.offsetParent;
+        }
+    }
+    else if (obj.x)
+        curleft += obj.x;
+    return curleft;
+}
+
+function xstooltip_findPosY(obj,h) 
+{
+	var curtop = 0;
+	if (h) curtop = obj.offsetHeight;
+
+    if (obj.offsetParent) 
+    {
+        while (obj.offsetParent) 
+        {
+            curtop += obj.offsetTop
+            obj = obj.offsetParent;
+        }
+    }
+    else if (obj.y)
+        curtop += obj.y;
+    return curtop;
+}
+
+function xtooltip_show(tooltipId, parentId, posX, posY)
+{
+    it = document.getElementById(tooltipId);
+    
+	if (it.style.first)
+    {
+		it.style.first = 0;
+        // need to fixate default size (MSIE problem)
+        it.style.width = it.offsetWidth + 'px';
+        it.style.height = it.offsetHeight + 'px';
+    }
+
+	{    
+        img = document.getElementById(parentId); 
+    
+        // if tooltip is too wide, shift left to be within parent 
+        //if (posX + it.offsetWidth > img.offsetWidth) posX = img.offsetWidth - it.offsetWidth;
+        //if (posX < 0 ) posX = 0; 
+        
+        var x = xstooltip_findPosX(img,1) + posX;
+        var y = xstooltip_findPosY(img,0) + posY;
+
+        it.style.top = y + 'px';
+        it.style.left = x + 'px';
+    }
+    
+    it.style.visibility = 'visible'; 	
+}
+
+function xtooltip_hide(tooltipId)
+{
+	it = document.getElementById(tooltipId);
+	it.style.visibility = 'hidden'; 	
+}
+
+</script>
+</html>
+
+
+<!-- ToolTip -->
+<div id="tootltips" hidden>
+<button class="btn btn-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-container="body" title="Tooltip on right">Tooltip on right</button>
+
+
+	<div id="predefine_tooltip" class="xstooltip">
+		<ul>
+			<li>keyword: from ~ to</li>
+			<li>one hour: now - 1 hour ~ now</li>
+			<li>today: today 00:00:00 ~ now</li>
+			<li>yesterday: yesterday ~ today</li>
+			<li>one day: now - 1 day ~ now</li>
+			<li>this week: sunday ~ today</li>
+			<li>last week: sunday - 1 week ~ saturday - 1 week</li>
+			<li>one week: today - 1 week ~ today</li>
+			<li>this month: 1st this month ~ today</li>
+			<li>last month: 1st last month ~ end last month</li>
+		</ul>
+	</div> 
+	<div id="tm_tooltip" class="xstooltip">
+		<ul>
+			<li>The available values are the reserved keyword, date, time and seconds.</li>
+			<li>keywords : now, today, yesterday, sunday ~ saturday, this_week ...</li>
+			<li>date,time : YYYY/MM/DD hh:mm</li>
+			<li>second : decimal integer value</li>
+			<li>------------------------------</li>
+			<li>time(from,to) examples</li>
+			<li>Assume that current time is 2011/05/23 14:20 monday</li>
+			<li>'now' means 2011/05/23 14:20</li>
+			<li>'today' means 2011/05/23 00:00</li>
+			<li>'now-01:00' means 2011/05/23 13:20</li>
+			<li>'today 04:00' means 2011/05/23 04:00</li>
+			<li>'today-04:00' means 2011/05/22 20:00</li>
+			<li>'yesterday+3600' means 2011/05/22 01:00</li>
+			<li>'sunday 06:00' means 2011/05/22 06:00</li>
+		</ul>
+	</div> 
+	<div id="counterid_tooltip" class="xstooltip">
+		<ul>
+			<li>It is the counter to want to show.</li>
+			<li>'active' means the displayed counters.</li>
+			<li>'all' means all counters (0~19).</li>
+			<li>The integer value means the counter id.</li>
+		</ul>
+	</div> 
+	<div id="sortorder_tooltip" class="xstooltip">
+		<ul>
+			<li>Select whether the results returned should be in</li>
+			<li>descending or ascending order.</li>
+		</ul>
+	</div>
+	<div id="valuetype_tooltip" class="xstooltip">
+		<ul>
+			<li>Select whether the results returned should be</li>
+			<li>the absolute value at each sample,</li>
+			<li>or the difference between the samples.</li>
+		</ul>
+	</div> 
+
+</div>				

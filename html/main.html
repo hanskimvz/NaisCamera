@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <!--#include virtual="./ssi/includemeta"-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title></title>
+    <link type="text/css" href="./css/common.css" rel="stylesheet" />
+    <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui-1.8.4.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.mouse.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.slider.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.slider-rtl.js"></script>
+    <script type="text/javascript" src="./js/jquery.corner.js?v2.09"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="./js/fafu_util.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/utils/log.js"></script>
+    <script type="text/javascript" src="./js/utils/jq_control.js"></script>
+    <script type="text/javascript" src="./js/utils/jq_string.js"></script>
+    <script type="text/javascript" src="./js/uapi.ajax.js"></script>
+
+    <!-- http://jquery.thewikies.com/browser/ // -->
+    <script type="text/javascript" src="./js/jquery.browser.js"></script>
+    <script type="text/javascript" src="./js/jquery.alphanumeric.pack.js"></script>
+    <script type="text/javascript" src="./js/uapi.player.js"></script>
+    <script type="text/javascript" src="./js/activexobject.js"></script>
+    <script type="text/javascript" src="./js/activexptz.js"></script>
+    <script type="text/javascript" src="./js/defstring/defbrand.js"></script>
+    <script type="text/javascript" src="./js/plat_utils/string.js"></script>
+    <script type="text/javascript" src="./js/plat_utils/control.js"></script>
+    <script type="text/javascript" src="./js/plat_utils/brand.js"></script>
+    <script type="text/javascript" src="./js/plat_utils/uconfig.js"></script>
+    <script type="text/javascript" src="./js/brand.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <!--[If lte IE 8]>
+        <link type="text/css" href="./css/ie8.css" rel="stylesheet" />
+    <![endif]-->
+    <!--[If lte IE 7]>
+        <script type="text/javascript" src="./js/ie_exception.js"></script>
+    <![endif]-->
+    <!--[If lte IE 5]>
+        <table bgcolor="#FF5555" width="100%" border="0" cellspacing="8">
+            <tr>
+                <th align="center">
+                    <font size="3" color="#FFF7F7" face="Verdana, Geneva, Arial, Helvetica, sans-serif">
+                        Your web browser does not support.<br>Please try one of these more modern browsers.
+                    </font>
+                </th>
+            <tr>
+                <th align="center">
+                    <font size="2" color="#FFDCD4" face="Arial, Helvetica, sans-serif, Verdana, Geneva">
+                        IE8 or later &nbsp; Firefox &nbsp; Chrome &nbsp; Safari
+                    </font>
+                </th>
+            </tr>
+        </table>
+    <![endif]-->
+</head>
+<body id="screen-page">
+<div id="compatible_ie"></div>
+<div id="frame">
+    <div id="top" style="display:none">
+        <div id="logomenu">
+            <a href="/">
+                <img id="logo" class="mainLogoLink" alt="" />
+            </a>
+        </div>
+        <div id="topmenu" class="ui-widget-header">
+            <ul id="list">
+                <li>
+                    <a href="./config/index.html" class="0103">Setup</a>
+                </li>
+                <li class="storage_TopMenu">
+                    <a href="./storage/storage.html" class="0109">Search</a>
+                </li>
+                <li class="ui-state-hover-top">
+                    <a href="/viewer/main.html" class="0101">Live</a>
+                </li>
+            </ul>
+        </div>
+        <div id="brandname"></div>
+    </div>
+    <div id="textlink">
+        <a href="/" id="textlinkURL"></a>
+    </div>
+    <div id="main" class="main round-top" style="display:none">
+        <div id="content">
+            <div>
+                <ul>
+                    <li><button id="toggle_panel_out" class="toggle_panel"><span class="0201">Panel</span></button></li>
+                </ul>
+            </div>
+            <div id="left" class="dsp_hide">
+                <div>
+                    <ul>
+                        <li><button id="toggle_panel_in" class="toggle_panel"><span class="0201">Panel</span></button></li>
+                    </ul>
+                </div>
+                <div id="panel">
+                    <div>
+                        <ul class="box">
+                            <li>
+                                <div id="panel_tabs">
+                                    <ul class="css-tabs">
+                                        <li><a href="#tab_0" class="020101">Option</a></li>
+                                        <li><a href="#tab_1" class="020110">Status</a></li>
+                                        <li><a href="#tab_2" class="">PTZ</a></li>
+                                        <li class="dewarpingTab dsp_hide"><a href="#tab_3" class="020178">Unwarping</a></li>
+                                    </ul>
+                                    
+                                    <!-- tab source //-->
+                                    <div id="tab_0">
+                                        <dl class="box">
+                                            <dd class="box-title"><h2 class="020102">Stream</h2></dd>
+                                            <dd id="streamSector" class="box-content">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <dd>
+                                                                <select id="transmission" onchange="ChangeVideo()"></select>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <dd>
+                                                                <input type="checkbox" id="videoStreamEnableCheckBox" />
+                                                                <label for="videoStreamEnableCheckBox" class="020185">Video</label>
+                                                                <input type="checkbox" id="audioStreamEnableCheckBox" class="audioContents"/>
+                                                                <label for="audioStreamEnableCheckBox" class="audioContents 020186">Audio</label>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box">
+                                            <dd class="box-title"><h2 class="020103">Size</h2></dd>
+                                            <dd id="sizeSector" class="box-content">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <dd>
+                                                                <select id="screen_size">
+                                                                    <option value="0" selected>Fit</option>
+                                                                    <option value="0.25">25%</option>
+                                                                    <option value="0.5">50%</option>
+                                                                    <option value="0.75">75%</option>
+                                                                    <option value="1">100%</option>
+                                                                    <option value="1.5">150%</option>
+                                                                </select>
+                                                                <button id="screen_full"><span class="020137">Full</span></button>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box trigAlarmContents">
+                                            <dd class="box-title"><h2 class="020104">Trigger-Alarm(DO)</h2></dd>
+                                            <dd id="triggerSector" class="box-content">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <dd>
+                                                                <select id="doChannel" class="dsp_hide">
+                                                                    <option value="0">Channel1</option>
+                                                                </select>
+                                                                <input type="radio" name="formMainTrigger" id="trig_on" value="on" />
+                                                                <label for="trig_on" class="020105"> On</label>
+                                                                <input type="radio" name="formMainTrigger" id="trig_off" value="off" />
+                                                                <label for="trig_off" class="020106"> Off</label>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box audioContents">
+                                            <dd class="box-title"><h2 class="020107">Audio</h2></dd>
+                                            <dd id="audioSector" class="box-content">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <dd>
+                                                                <input type="checkbox" id="audioSpeaker" />
+                                                                <label for="audioSpeaker" class="020108">Speaker</label>
+                                                                <div id="audioSpeakerVolumeSlider" class="slider-bar"></div>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <dd>
+                                                                <input type="checkbox" id="audioMicrophone" />
+                                                                <label for="audioMicrophone" class="020109">Microphone</label>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box recordContents">
+                                            <dd class="box-title"><h2 class="020168">Video Control</h2></dd>
+                                            <dd id="controlSector" class="box-content">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <dd>
+                                                                <button id="recording"><span id="txtRec">Record</span></button>
+                                                                <button id="snapshot"><span class="020164">Snapshot</span></button>
+                                                            </dd>
+                                                            <dd>
+                                                                <button id="pause"><span id="txtPause" class="020165">Pause</span></button>
+                                                                <button id="controlSetting"><span class="020167">Setting</span></button>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+
+                                        
+                                    </div>
+                                        
+                                    <div id="tab_1">
+                                        <dl class="box">
+                                            <dd class="box-title h2BottomSpace"><h2 class="020157">System</h2></dd>
+                                            <dd class="box-content adjustStatus">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <span class="020158">CPU : </span>
+                                                            <span id="status_CpuUsed">-</span>%
+                                                        </dl>
+                                                        <dl>
+                                                            <span class="020159">Memory : </span>
+                                                            <span id="status_MemUsed">-</span>%
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box">
+                                            <dd class="box-title h2BottomSpace"><h2 class="020115">Time</h2></dd>
+                                            <dd class="box-content adjustStatus">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <span class="020116">Uptime : </span>
+                                                            <span id="status_TimeUptime">-</span>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box stream0StatusContents">
+                                            <dd class="box-title h2BottomSpace"><h2 class="020120">First Stream</h2></dd>
+                                            <dd class="box-content adjustStatus">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <span class="020121">Type: </span> 
+                                                            <span id="status_FstreamType">-</span>
+                                                        </dl>
+                                                        <dl>
+                                                            <span class="020122">Resolution : </span> 
+                                                            <span id="status_FstreamResolution">-</span>
+                                                        </dl>
+                                                        <dl>
+                                                            <span class="020123">Fps : </span> 
+                                                            <span id="status_FstreamFps">-</span>
+                                                        </dl>
+                                                        <dl class="bitrateContents">
+                                                            <span class="020124">Bitrate : </span> 
+                                                            <span id="status_FstreamBitrate">-</span>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box stream1StatusContents">
+                                            <dd class="box-title h2BottomSpace"><h2 class="020125">Second Stream</h2></dd>
+                                            <dd class="box-content adjustStatus">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <span class="020126">Type : </span>
+                                                            <span id="status_SstreamType">-</span>
+                                                        </dl>
+                                                        <dl>
+                                                            <span class="020127">Resolution : </span>
+                                                            <span id="status_SstreamResolution">-</span>
+                                                        </dl>
+                                                        <dl>
+                                                            <span class="020128">Fps : </span>
+                                                            <span id="status_SstreamFps">-</span>
+                                                        </dl>
+                                                        <dl class="bitrateContents">
+                                                            <span class="020129">Bitrate : </span>
+                                                            <span id="status_SstreamBitrate">-</span>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box stream2StatusContents">
+                                            <dd class="box-title h2BottomSpace"><h2 class="020130">Snapshot</h2></dd>
+                                            <dd class="box-content adjustStatus">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <span class="020131">Type : </span>
+                                                            <span id="status_SnapshotType">-</span>
+                                                        </dl>
+                                                        <dl>
+                                                            <span class="020132">Resolution : </span>
+                                                            <span id="status_SnapshotResolution">-</span>
+                                                        </dl>
+                                                        <dl>
+                                                            <span class="020133">Fps : </span>
+                                                            <span id="status_SnapshotFps">-</span>
+                                                        </dl>
+                                                        <dl class="bitrateContents">
+                                                            <span class="020134">Bitrate : </span>
+                                                            <span id="status_SnapshotBitrate">-</span>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                        <dl class="box">
+                                            <dd class="box-title h2BottomSpace"><h2 class="020160">RTSP Connect List</h2></dd>
+                                            <dd id="connectSector" class="box-content">
+                                                <dl>
+                                                    <dd class="item">
+                                                        <dl>
+                                                            <span class=" adjustStatus 020161">Total : </span> 
+                                                            <span id="status_ConnectNum">-</span>
+                                                        </dl>
+                                                        <dl>
+                                                            <dd>
+                                                                <select size="7" id="formConnectList" class="select-list"><option></option></select>
+                                                            </dd>
+                                                        </dl>
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+                                    <div id="tab_2">
+                                        <div id="loading_ptz" class="dsp_show_block margin_top_step2 text_cen">
+                                            <img src="./images/loading.gif" alt="in" />
+                                        </div>
+                                        <div id="panel_ptz" class="dsp_hide">
+                                            <dl class="box">
+                                                <dd class="box-title"><h2 class="020139">Movement</h2></dd>
+                                                <dd id="ptz" class="box-content">
+                                                    <dl>
+                                                        <dd id="ptz_panel" class="item">
+                                                            <dl>
+                                                                <dd id="pt_lu" class="ui-button"></dd>
+                                                                <dd id="pt_cu" class="ui-button"></dd>
+                                                                <dd id="pt_ru" class="ui-button"></dd>
+                                                                <dd id="pt_lm" class="ui-button"></dd>
+                                                                <dd id="pt_cm" class="ui-button"></dd>
+                                                                <dd id="pt_rm" class="ui-button"></dd>
+                                                                <dd id="pt_ld" class="ui-button"></dd>
+                                                                <dd id="pt_cd" class="ui-button"></dd>
+                                                                <dd id="pt_rd" class="ui-button"></dd>
+                                                            </dl>
+                                                        </dd>
+                                                        <dd id="ptz_zoomfocus">
+                                                            <dl>
+                                                                <dd id="main_ptz_zoom" class="020140">Zoom</dd>
+                                                                <dd>
+                                                                    <img id="_zIn" class="ui-button" width="16" height="16" src="images/pt_fnear.gif" alt="zoom in" />
+                                                                    <img id="_zOut" class="ui-button" width="16" height="16" src="images/pt_ffar.gif" alt="zoom out" />
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dd id="main_ptz_focus" class="020141">Focus</dd>
+                                                                <dd>
+                                                                    <img id="_fNear" class="ui-button" width="16" height="16" src="images/pt_fnear.gif" alt="focus near" />
+                                                                    <img id="_fFar" class="ui-button" width="16" height="16" src="images/pt_ffar.gif" alt="focus far" />
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                            <dl class="box">
+                                                <dd class="box-title"><h2 class="020142">Speed</h2></dd>
+                                                <dd class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd id="ptz_speedbar">
+                                                                    <dl>
+                                                                        <dd><div id="slider_speedbar" class="slider-bar"></div></dd>
+                                                                        <dd>
+                                                                            <input type="text" size="3" id="text_speedbar" value=20></input>
+                                                                        </dd>
+                                                                    </dl>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                            <dl class="box">
+                                                <dd class="box-title"><h2 class="020143">Pre Position</h2></dd>
+                                                <dd class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd id="ptz_numberbar">
+                                                                    <dl>
+                                                                        <dd>
+                                                                            <input type="text" size="1" id="preset_number" value=20></input>
+                                                                            <label for="preset_number">(1 ... 255)</label>
+                                                                        </dd>
+                                                                    </dl>
+                                                                </dd>
+                                                                <dd class="setclear_button">
+                                                                    <button id="btnSet"><span class="020144">Set</span></button>
+                                                                    <button id="btnClear"><span class="020146">Clear</span></button>
+                                                                </dd>
+                                                                <dd class="preset_Number_contents">
+                                                                    <dl>
+                                                                        <dd>
+                                                                            <span class="020147">Preset Number :</span>
+                                                                            <select class="select" id="setPresetList"></select>
+                                                                            <input type="text" size="1" id="setPresetText" class="dsp_hide"></input>
+                                                                        </dd>
+                                                                    </dl>
+                                                                </dd>
+                                                                <dd class="go_button">
+                                                                    <button id="btnGo"><span class="020145">Go</span></button>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                            <dl class="box TourContents dsp_hide">
+                                                <dd class="box-title"><h2 class="020148">Tour</h2></dd>
+                                                <dd class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd>
+                                                                    <span class="020149">Touring Number :</span>
+                                                                    <select class="select" id="bottomTourListContents">
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                        <option value="6">6</option>
+                                                                    </select>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dd class="tourStartStop_button">
+                                                                    <button id="btnTourStart"><span class="020150">Start</span></button>
+                                                                    <button id="btnTourStop"><span class="020151">Stop</span></button>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                            <dl class="box HomePositionContents dsp_hide">
+                                                <dd class="box-title"><h2 class="020152">Home Position</h2></dd>
+                                                <dd class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd class="homeSetGo_button">
+                                                                    <button id="btnHomeSet"><span class="020153">Set</span></button>
+                                                                    <button id="btnHomeGo"><span class="020154">Go</span></button>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                            <dl class="box ptzCtrlContents dsp_hide">
+	                                            <dd class="box-title"><h2 class="020181">PTZ Control</h2></dd>
+	                                            <dd id="" class="box-content">
+	                                                <dl>
+	                                                    <dd class="item">
+	                                                        <dl>
+	                                                            <dd>
+	                                                                <button id="ptzCtrlShow"><span class="020182">Show</span></button>
+	                                                                <button id="ptzCtrlHide"><span class="020183">Hide</span></button>
+	                                                            </dd>
+	                                                        </dl>
+	                                                    </dd>
+	                                                </dl>
+	                                            </dd>
+	                                        </dl>
+                                            <dl class="box wiperContents dsp_hide">
+                                                <dd class="box-title"><h2 class="020184">Wiper</h2></dd>
+                                                <dd id="" class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd>
+                                                                    <button id="btnWiperStart"><span class="020150">Start</span></button>
+                                                                    <button id="btnWiperStop"><span class="020151">Stop</span></button>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+
+                                    <div id="tab_3">
+                                        <div id="dewarpingContents">
+                                            <dl class="box intallPlaceContents">
+                                                <dd class="box-title"><h2 class="020169">Installation Place</h2></dd>
+                                                <dd id="" class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd>
+                                                                    <input type="radio" name="positionType" id="positionType0" value="ceiling" />
+                                                                    <label for="positionType0" class="020170"> Ceiling</label>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dd>
+                                                                    <input type="radio" name="positionType" id="positionType1" value="wall" />
+                                                                    <label for="positionType1" class="020171"> Wall</label>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dd>
+                                                                    <input type="radio" name="positionType" id="positionType2" value="ground" />
+                                                                    <label for="positionType2" class="020172"> Ground</label>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dd>
+                                                                    <button id="positionTypeSave" class="positionTypeSave"><span class="020173">Save</span></button>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                            <dl class="box viewTypeContents dsp_hide">
+                                                <dd class="box-title"><h2 class="020174">View Type</h2></dd>
+                                                <dd id="" class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd>
+                                                                    <input type="radio" name="viewType" id="viewType0" value="ptz" />
+                                                                    <label for="viewType0" class="020175"> Single</label>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dd>
+                                                                    <input type="radio" name="viewType" id="viewType1" value="quad" />
+                                                                    <label for="viewType1" class="020176"> Quad</label>
+                                                                </dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dd>
+                                                                    <input type="radio" name="viewType" id="viewType2" value="peri" />
+                                                                    <label for="viewType2" class="020177"> Panorama</label>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                            <dl class="box defaultPositionContents dsp_hide">
+                                                <dd class="box-title"><h2 class="020179">Default Position</h2></dd>
+                                                <dd id="" class="box-content">
+                                                    <dl>
+                                                        <dd class="item">
+                                                            <dl>
+                                                                <dd>
+                                                                    <button id="defaultPosition" class="defaultPosition"><span class="020180">Set</span></button>
+                                                                </dd>
+                                                            </dl>
+                                                        </dd>
+                                                    </dl>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <!-- tab source end //-->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="right" class="content">
+                <div id="rightlist">
+                    <div id="screen" align="center">
+                    </div>
+                    <div id="screen_tools">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear">&nbsp;</div>
+<!--
+        <div id="bottom">
+            <ul>
+                <li>
+                    <a href="http://validator.w3.org/check?uri=referer"><img
+                    src="http://www.w3.org/Icons/valid-xhtml10"
+                    alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+                </li>
+            </ul>
+        </div>
+-->
+    </div>
+</div>
+</body>
+</html>

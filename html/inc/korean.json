@@ -1,0 +1,41 @@
+{
+    "setup":            "Setup",
+    "basic":            "English",
+    "videonaudio":      "Video & Audio",
+    "eventconf":        "Event Configuration",
+    "networkconf":      "Network Configuration",
+    "storage":          "Storage",
+    "vcaconf":          "VCA Configuration",
+    "peripherial":      "Peripherial",
+    "ptzconf":          "PTZ Configuration",
+    "maintenance":      "Maintanence",
+    "activation":       "Activation",
+    "about":            "About",
+    "oem":              "OEM",
+
+    "camera":           "Camera",
+    "zoomfocus":        "Zoom/Focus",
+    "burntintext":      "Burnt in Text",
+    "stream":           "Stream",
+    "privacymask":      "Pirvacy Mask",
+    "eventrules":       "Event Rules",
+ 
+
+    "users":            "Users",
+    "video":            "Video",
+    "general":          "General",
+    "friendlyname":     "Friendly name",
+    
+    "heartbeat":        "Heart Beat",
+    "configuration":    "Configuration",
+    "enable":           "Enable",
+    "interval":         "Interval",
+    "tcpServer":        "TCP Server",
+    "tcpnotification":  "TCP Notification",
+    "multicast":        "Multicast",
+
+    "userlist":         "User List",
+    "add":              "Add"
+
+
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Event Configuration</span> > <strong>Heartbeat</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="checkbox" id="formHeartBeatEnable" class="form-check-input"/>
+									<span>Enable</span>
+								</label>
+								<div class="form-group ml-4 mb-0">
+									<div class="form-inline mb-1">
+										<span class="col-md-3">Interval</span>
+										<input type="range" id="sliderHeartbeatInterval"  min="1" max="300" style="width:200px;" class="slider mr-2">
+										<input type="text" size="5" id="formHeartbeatInterval" class="form-control-custom text-center mr-2"/>
+										<label>(5 ... 300 <span>sec(s)</span>)</label>
+									</div>
+									<label class="form-check">
+										<input type="checkbox" id="formHeartBeatServer" class="form-check-input"/>
+										<span>TCP server</span>
+									</label>
+									<label class="form-check">
+										<input type="checkbox" id="formHeartBeatNotification" class="form-check-input"/>
+										<span>TCP notification</span>
+									</label>
+									<label class="form-check">
+										<input type="checkbox" id="formHeartBeatMulticast" class="form-check-input"/>
+										<span>Multicast</span>
+									</label>
+								</div>								
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+
+function loadHEARTBEATConfig(){
+	// HEARTBEAT.enable=yes
+	// HEARTBEAT.interval=60
+	// HEARTBEAT.Multicast.enable=no
+	// HEARTBEAT.Tcp.enable=no
+	// HEARTBEAT.Tcppush.enable=yes
+	// url = "/config/query_config.php?page=heartbeat";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=HEARTBEAT";
+	$.getJSON(url, function(response) {
+		// console.log(response);
+		if (response['HEARTBEAT.enable'] == 'yes') {
+			$("#formHeartBeatEnable").prop("checked", true);
+		}
+		$("#sliderHeartbeatInterval").val(response['HEARTBEAT.interval']);
+		$("#formHeartbeatInterval").val(response['HEARTBEAT.interval']);
+
+		if (response['HEARTBEAT.Tcp.enable'] == 'yes') {
+			$("#formHeartBeatServer").prop("checked", true);
+		}
+		if (response['HEARTBEAT.Tcppush.enable'] == 'yes') {
+			$("#formHeartBeatNotification").prop("checked", true);
+		}	
+		if (response['HEARTBEAT.Multicast.enable'] == 'yes') {
+			$("#formHeartBeatMulticast").prop("checked", true);
+		}	
+	});
+}
+
+loadHEARTBEATConfig();
+</script>
+</html>

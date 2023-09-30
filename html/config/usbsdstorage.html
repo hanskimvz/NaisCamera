@@ -1,0 +1,92 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Storage</span> > <strong>SD Storage</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Storage list</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group mb-0">
+									<select size="8" id="formStorageList" class="form-control-custom col-md-12"><option></option></select>
+								</div>
+							</div>
+							<div class="card-body pt-0">
+								<div class="form-group mb-0">
+									<div class="form-inline">
+										<span class="col-md-2">Disk size</span>
+										<label id="txtDiskSize"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Disk</span>
+										<label id="txtDisk"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Disk type</span>
+										<label id="txtType"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Total capacity</span>
+										<label id="txtSize"></label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-2">Free space</span>
+										<label id="txtFree"></label>
+									</div>								
+									<div class="form-inline">
+										<span class="col-md-2">Status</span>
+										<label id="txtStatus"></label>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnList_sd" class="btn btn-mini btn-warning">Refresh SD device list</button>
+							</div>							
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Record devicec ontrol</span></h6>
+							</div>
+							<div class="card-body">
+								<span id="ready">ready</span>
+								<span id="format" hidden>formatting</span>
+								<span id="unmounted" hidden>unmounted</span>
+								<span id="ejected" hidden >ejected</span>
+								<div id="image-progress" class="progressbar" ></div>
+							</div>
+							<div class="card-footer">
+								<button id="btnFormatVfat" class="btn btn-mini btn-warning">Format(vfat)</button>
+								<button id="btnFormatExt3" class="btn btn-mini btn-warning">Format(ext3)</button>
+								<button id="btnMount" class="btn btn-mini btn-warning">Mount</button>
+								<button id="btnEject" class="btn btn-mini btn-warning">Eject</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+</script>
+</html>

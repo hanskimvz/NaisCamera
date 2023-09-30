@@ -1,0 +1,631 @@
+{
+    "hwguid": "12EECDDC6BB28D861DA25A4394FE05494026A0A9AF4A382EC2394D736CBEFBE0",
+    "licensestatus": "ready",
+    "nbroflicense": "1",
+    "nextuid": "11",
+    "svnversion": "",
+    "version": "",
+    "ch0": {
+        "alarmdwell": "2000",
+        "autominobjarea": "yes",
+        "autostatholdontime": "yes",
+        "curclsgrp": "",
+        "curprofile": "0",
+        "detectionpoint": "default",
+        "enable": "yes",
+        "enablecntline": "yes",
+        "enablemovobj": "yes",
+        "fadeoutdwell": "2000",
+        "licenseid": "0",
+        "meaunits": "metric",
+        "metafmt": "event,object,counting,linecounter",
+        "minobjarea": "16",
+        "nbrofaction": "0",
+        "nbrofclause": "0",
+        "nbrofclsgrp": "1",
+        "nbrofcounter": "0",
+        "nbrofprofile": "0",
+        "nbrofrule": "6",
+        "nbrofzone": "5",
+        "pushservice": "no",
+        "retrigtime": "5",
+        "statholdontime": "60",
+        "trackmode": "surv",
+        "ba0": {
+            "alarmcolor": "255,0,0",
+            "counterfmt": "name,value",
+            "countertxtsz": "medium",
+            "diagnostics": "",
+            "enable": "no",
+            "enablecounter": "yes",
+            "enableobject": "yes",
+            "enableprofiletext": "no",
+            "enablesysmsg": "yes",
+            "enablezone": "no",
+            "name": "first stream",
+            "nonalarmcolor": "255,255,0",
+            "objectfmt": "nonalarm,class",
+            "objecttxtsz": "small",
+            "sysmsgtxtsz": "medium"
+        },
+        "ba1": {
+            "alarmcolor": "255,0,0",
+            "counterfmt": "name,value",
+            "countertxtsz": "medium",
+            "diagnostics": "",
+            "enable": "yes",
+            "enablecounter": "yes",
+            "enableobject": "yes",
+            "enableprofiletext": "no",
+            "enablesysmsg": "yes",
+            "enablezone": "no",
+            "name": "second stream",
+            "nonalarmcolor": "255,255,0",
+            "objectfmt": "nonalarm,class",
+            "objecttxtsz": "small",
+            "sysmsgtxtsz": "medium"
+        },
+        "ba2": {
+            "alarmcolor": "255,0,0",
+            "counterfmt": "name,value",
+            "countertxtsz": "medium",
+            "diagnostics": "",
+            "enable": "no",
+            "enablecounter": "yes",
+            "enableobject": "yes",
+            "enableprofiletext": "no",
+            "enablesysmsg": "yes",
+            "enablezone": "no",
+            "name": "snapshot",
+            "nonalarmcolor": "255,255,0",
+            "objectfmt": "nonalarm,class",
+            "objecttxtsz": "small",
+            "sysmsgtxtsz": "medium"
+        },
+        "ba3": {
+            "alarmcolor": "255,0,0",
+            "counterfmt": "name,value",
+            "countertxtsz": "medium",
+            "diagnostics": "",
+            "enable": "no",
+            "enablecounter": "yes",
+            "enableobject": "yes",
+            "enableprofiletext": "no",
+            "enablesysmsg": "yes",
+            "enablezone": "no",
+            "name": "analogout",
+            "nonalarmcolor": "255,255,0",
+            "objectfmt": "nonalarm,class",
+            "objecttxtsz": "small",
+            "sysmsgtxtsz": "medium"
+        },
+        "cb": {
+            "camheight": "4.862024",
+            "mode": "params",
+            "panangle": "0",
+            "rollangle": "0",
+            "status": "Calibrated side-on",
+            "tiltangle": "21.743327",
+            "vfov": "45.000000"
+        },
+        "cg0": {
+            "id": "0",
+            "name": "Classification Group 0",
+            "nbrofobjcls": "4",
+            "oc0": {
+                "area": "5.0000:20.0000",
+                "enable": "yes",
+                "id": "0",
+                "name": "Person",
+                "speed": "0.0000:20.0000"
+            },
+            "oc1": {
+                "area": "40.0000:1000.0000",
+                "enable": "yes",
+                "id": "1",
+                "name": "Vehicle",
+                "speed": "0.0000:200.0000"
+            },
+            "oc2": {
+                "area": "0.0000:4.0000",
+                "enable": "yes",
+                "id": "2",
+                "name": "Clutter",
+                "speed": "0.0000:50.0000"
+            },
+            "oc3": {
+                "area": "21.0000:39.0000",
+                "enable": "yes",
+                "id": "3",
+                "name": "Group of People",
+                "speed": "0.0000:20.0000"
+            }
+        },
+        "cr": {
+            "error": "",
+            "status": "ready"
+        },
+        "crpt": {
+            "db": {
+                "enable": "yes",
+                "maxsize": "0",
+                "nbroftable": "4",
+                "realstorage": "iflash",
+                "storage": "iflash",
+                "tb0": {
+                    "enable": "yes",
+                    "rollcount": "720",
+                    "sampling": "60"
+                },
+                "tb1": {
+                    "enable": "yes",
+                    "rollcount": "1008",
+                    "sampling": "600"
+                },
+                "tb2": {
+                    "enable": "no",
+                    "rollcount": "744",
+                    "sampling": "3600"
+                },
+                "tb3": {
+                    "enable": "no",
+                    "rollcount": "365",
+                    "sampling": "86400"
+                }
+            },
+            "email": {
+                "enable": "no",
+                "list": "",
+                "nbrofmail": "0"
+            },
+            "push": {
+                "enable": "no",
+                "protocol": "qxml",
+                "qxml": {
+                    "heartbeatinterval": "120",
+                    "ip": "0.0.0.0",
+                    "port": "12000",
+                    "reportinterval": "0"
+                }
+            }
+        },
+        "hm": {
+            "enable": "no",
+            "maxsize": "30720000",
+            "nbroftable": "4",
+            "storage": "flash",
+            "tb0": {
+                "enable": "no",
+                "rollovertime": "36000",
+                "sampling": "600",
+                "type": "dwell"
+            },
+            "tb1": {
+                "enable": "no",
+                "rollovertime": "216000",
+                "sampling": "3600",
+                "type": "dwell"
+            },
+            "tb2": {
+                "enable": "no",
+                "rollovertime": "1296000",
+                "sampling": "21600",
+                "type": "dwell"
+            },
+            "tb3": {
+                "enable": "yes",
+                "rollovertime": "216000",
+                "sampling": "3600",
+                "type": "dwell"
+            }
+        },
+        "ptz": {
+            "enable": "no",
+            "homepreset": "1",
+            "hometrackingonly": "yes",
+            "return2home": "yes",
+            "return2hometimeout": "30",
+            "at": {
+                "enable": "no",
+                "holdontime": "5",
+                "manualoverride": "yes",
+                "maxtrackingtime": "60",
+                "triggerrules": "",
+                "triggertype": "anyobject"
+            }
+        },
+        "rd": {
+            "backupinterval": "0",
+            "ev": {
+                "enable": "no",
+                "filesize": "262144",
+                "numfiles": "3",
+                "storage": "flash",
+                "transaction": {
+                    "size": "1",
+                    "waittime": "1000"
+                }
+            },
+            "tr": {
+                "enable": "no",
+                "filesize": "262144",
+                "numfiles": "2",
+                "storage": "flash",
+                "transaction": {
+                    "size": "1",
+                    "waittime": "5000"
+                }
+            }
+        },
+        "rl0": {
+            "actions": "-1",
+            "dataarea": "100:400",
+            "datacolfilter": "0:0",
+            "datacustom": "",
+            "datadirection": "(-3600:3600)",
+            "dataextra": "0",
+            "datalinecounter": "0",
+            "datashadowfilter": "no",
+            "dataspeed": "10:40",
+            "datatimer": "10",
+            "datazone": "0",
+            "description": "rule description",
+            "enable": "yes",
+            "name": "Zone 0-Presence",
+            "topclause": "",
+            "trkobj": "N\/A",
+            "type": "presence",
+            "uid": "1"
+        },
+        "rl1": {
+            "actions": "-1",
+            "dataarea": "100:400",
+            "datacolfilter": "0:0",
+            "datacustom": "",
+            "datadirection": "(-3600:3600)",
+            "dataextra": "0",
+            "datalinecounter": "0",
+            "datashadowfilter": "no",
+            "dataspeed": "10:40",
+            "datatimer": "10",
+            "datazone": "1",
+            "description": "rule description",
+            "enable": "yes",
+            "name": "Zone 1-Cnt Line - Dir A",
+            "topclause": "",
+            "trkobj": "N\/A",
+            "type": "linecountera",
+            "uid": "4"
+        },
+        "rl2": {
+            "actions": "-1",
+            "dataarea": "100:400",
+            "datacolfilter": "0:0",
+            "datacustom": "",
+            "datadirection": "(-3600:3600)",
+            "dataextra": "0",
+            "datalinecounter": "0",
+            "datashadowfilter": "no",
+            "dataspeed": "10:40",
+            "datatimer": "10",
+            "datazone": "1",
+            "description": "rule description",
+            "enable": "yes",
+            "name": "Zone 1-Cnt Line - Dir B",
+            "topclause": "",
+            "trkobj": "N\/A",
+            "type": "linecounterb",
+            "uid": "5"
+        },
+        "rl3": {
+            "actions": "-1",
+            "dataarea": "100:400",
+            "datacolfilter": "0:0",
+            "datacustom": "",
+            "datadirection": "(-3600:3600)",
+            "dataextra": "0",
+            "datalinecounter": "0",
+            "datashadowfilter": "no",
+            "dataspeed": "10:40",
+            "datatimer": "10",
+            "datazone": "2",
+            "description": "rule description",
+            "enable": "yes",
+            "name": "Zone 2-Cnt Line - Dir A",
+            "topclause": "",
+            "trkobj": "N\/A",
+            "type": "linecountera",
+            "uid": "6"
+        },
+        "rl4": {
+            "actions": "-1",
+            "dataarea": "100:400",
+            "datacolfilter": "0:0",
+            "datacustom": "",
+            "datadirection": "(-3600:3600)",
+            "dataextra": "0",
+            "datalinecounter": "0",
+            "datashadowfilter": "no",
+            "dataspeed": "10:40",
+            "datatimer": "10",
+            "datazone": "2",
+            "description": "rule description",
+            "enable": "yes",
+            "name": "Zone 2-Cnt Line - Dir B",
+            "topclause": "",
+            "trkobj": "N\/A",
+            "type": "linecounterb",
+            "uid": "7"
+        },
+        "rl5": {
+            "actions": "-1",
+            "dataarea": "100:400",
+            "datacolfilter": "0:0",
+            "datacustom": "",
+            "datadirection": "(-3600:3600)",
+            "dataextra": "0",
+            "datalinecounter": "14923",
+            "datashadowfilter": "no",
+            "dataspeed": "10:40",
+            "datatimer": "10",
+            "datazone": "3",
+            "description": "rule description",
+            "enable": "yes",
+            "name": "Car_exit",
+            "topclause": "",
+            "trkobj": "N\/A",
+            "type": "linecounterb",
+            "uid": "9"
+        },
+        "sd": {
+            "daynightenable": "no",
+            "firedarea": "40",
+            "mode": "automatic",
+            "timeout": "3"
+        },
+        "st": {
+            "enable": "no"
+        },
+        "tp": {
+            "enable": "no",
+            "firedarea": "40",
+            "lowlight_enable": "yes",
+            "timeout": "20"
+        },
+        "zn0": {
+            "color": "255,0,0",
+            "enable": "yes",
+            "name": "Zone 0",
+            "points": "54623:17625,61143:20346,58215:43059,51229:65535,15701:56071,17697:38445",
+            "style": "polygon",
+            "type": "alarm",
+            "uid": "0"
+        },
+        "zn1": {
+            "color": "0,255,0",
+            "enable": "yes",
+            "name": "Zone 1",
+            "points": "46506:15496,38389:13958",
+            "style": "line",
+            "type": "alarm",
+            "uid": "2"
+        },
+        "zn2": {
+            "color": "0,0,255",
+            "enable": "yes",
+            "name": "Zone 2",
+            "points": "37524:61867,6320:53823,4590:35606",
+            "style": "line",
+            "type": "alarm",
+            "uid": "3"
+        },
+        "zn3": {
+            "color": "255,255,0",
+            "enable": "yes",
+            "name": "Zone 3",
+            "points": "36327:25551,60611:42231",
+            "style": "line",
+            "type": "alarm",
+            "uid": "8"
+        },
+        "zn4": {
+            "color": "0,255,0",
+            "enable": "yes",
+            "name": "Zone 4",
+            "points": "6786:0,65535:354,65535:65535,51430:65535,61276:20228,54423:17152,41649:24723,29207:22239,7518:30993,6520:15969",
+            "style": "polygon",
+            "type": "nondetection",
+            "uid": "10"
+        }
+    },
+    "default": {
+        "action": {
+            "id": "",
+            "params": "",
+            "type": ""
+        },
+        "clause": {
+            "id": "",
+            "params": "",
+            "type": ""
+        },
+        "clsgrp": {
+            "id": "",
+            "name": "",
+            "nbrofobjcls": "0"
+        },
+        "counter": {
+            "color": "0,0,0",
+            "count": "-1",
+            "enable": "yes",
+            "name": "counter",
+            "nbrofsrc": "0",
+            "points": "",
+            "uid": ""
+        },
+        "email": {
+            "addr": "",
+            "counter": "",
+            "daily": "",
+            "description": "",
+            "from": "",
+            "hourly": "",
+            "id": "",
+            "mday": "",
+            "monthly": "",
+            "name": "",
+            "order": "",
+            "reportall": "",
+            "reportfmt": "",
+            "table": "",
+            "time": "",
+            "to": "",
+            "value": "",
+            "wday": "",
+            "wdaylist": "",
+            "weekly": ""
+        },
+        "license": {
+            "channelassignments": "",
+            "daemonid": "",
+            "expired": "",
+            "id": "",
+            "license": "",
+            "licenseinfo": "",
+            "product": "",
+            "productcode": "",
+            "token": "",
+            "sf": {
+                "appear": "",
+                "autotracking": "",
+                "autotrackinglayon": "",
+                "calibration": "",
+                "colorfilter": "",
+                "complexrules": "",
+                "counting": "",
+                "direction": "",
+                "disappear": "",
+                "dwell": "",
+                "enter": "",
+                "exit": "",
+                "linecounter": "",
+                "maxnbrofcounter": "0",
+                "maxnbrofrule": "0",
+                "maxnbrofzone": "0",
+                "metadata": "",
+                "multiptztrack": "",
+                "nbrofchannel": "",
+                "peopletracking": "",
+                "presence": "",
+                "speed": "",
+                "statistics": "",
+                "stopped": "",
+                "tailgating": "",
+                "tamper": "",
+                "trackingengine": "",
+                "webinterface": ""
+            }
+        },
+        "objcls": {
+            "area": "100.0000:400.0000",
+            "enable": "yes",
+            "id": "",
+            "name": "",
+            "speed": "10.0000:40.0000"
+        },
+        "profile": {
+            "id": "",
+            "rules": "",
+            "zones": "",
+            "cb": {
+                "camheight": "2",
+                "mode": "uncalibrated",
+                "panangle": "0",
+                "rollangle": "0",
+                "status": "",
+                "tiltangle": "45",
+                "vfov": "40"
+            }
+        },
+        "rule": {
+            "actions": "-1",
+            "dataarea": "100:400",
+            "datacolfilter": "0:0",
+            "datacustom": "",
+            "datadirection": "(-3600:3600)",
+            "dataextra": "0",
+            "datalinecounter": "0",
+            "datashadowfilter": "no",
+            "dataspeed": "10:40",
+            "datatimer": "10",
+            "datazone": "0",
+            "description": "rule description",
+            "enable": "yes",
+            "name": "rule",
+            "topclause": "",
+            "trkobj": "",
+            "type": "presence",
+            "uid": ""
+        },
+        "source": {
+            "enable": "yes",
+            "source": "0",
+            "type": "inc"
+        },
+        "table": {
+            "enable": "yes",
+            "id": "",
+            "rollovertime": "",
+            "sampling": ""
+        },
+        "zone": {
+            "color": "0,0,0",
+            "enable": "yes",
+            "name": "zone",
+            "points": "10000:10000,10000:40000,40000:40000,40000:10000",
+            "style": "polygon",
+            "type": "alarm",
+            "uid": ""
+        }
+    },
+    "lc0": {
+        "channelassignments": "0",
+        "daemonid": "1",
+        "expired": "no",
+        "id": "0",
+        "licenseinfo": "Pro 1ch",
+        "product": "vcasys",
+        "productcode": "1184",
+        "sf": {
+            "appear": "yes",
+            "autotracking": "no",
+            "autotrackinglayon": "no",
+            "calibration": "yes",
+            "colorfilter": "yes",
+            "complexrules": "yes",
+            "counting": "yes",
+            "direction": "yes",
+            "disappear": "yes",
+            "dwell": "yes",
+            "enter": "yes",
+            "exit": "yes",
+            "heatmap": "yes",
+            "linecounter": "yes",
+            "maxnbrofcounter": "255",
+            "maxnbrofrule": "255",
+            "maxnbrofzone": "255",
+            "metadata": "yes",
+            "multiptztrack": "no",
+            "nbrofchannel": "1",
+            "peopletracking": "yes",
+            "presence": "yes",
+            "speed": "yes",
+            "statistics": "yes",
+            "stopped": "yes",
+            "tailgating": "yes",
+            "tamper": "yes",
+            "trackingengine": "yes",
+            "webinterface": "no"
+        }
+    }
+}

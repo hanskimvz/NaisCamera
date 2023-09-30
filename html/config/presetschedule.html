@@ -1,0 +1,133 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>PTZ configuration</span> > <strong>Preset Schedule</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6 pb-2">
+							<div class="card-header mb-2">
+								<h6 class="m-0 font-weight-bold text-primary">Touring list</h6>
+							</div>
+<?php
+                        echo $PTZ_CONTROL_PAD;
+?>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Schedule</h6>
+							</div>
+							<div class="card-body">
+								<table id="schedule" class="table table-mini">
+									<thead>
+										<tr>
+											<th>No.</th>
+											<th><span>Week day</span></th>
+											<th><span>Time</span><br/><span>(HH:MM 24-Hour)</span></th>
+											<th><span>Preset Number</span></th>
+										</tr>
+									</thead>
+									<tbody>
+<?php for ($i=0; $i<4; $i++) { ?>									
+										<tr>
+											<td><?=($i+1)?></td>
+											<td class="form-group form-inline pb-0">
+												<label class="form-check mr-1">
+													<input type="checkbox" id="formPreset<?=$i?>_mon" class="form-check-input" />
+													<span class="form-control-label">Mon</span>
+												</label>
+												<label class="form-check mr-1">
+													<input type="checkbox" id="formPreset<?=$i?>_tue" class="form-check-input" />
+													<span class="form-control-label">Tue</span>
+												</label>
+												<label class="form-check mr-1">
+													<input type="checkbox" id="formPreset<?=$i?>_wed" class="form-check-input" />
+													<span class="form-control-label">Wed</span>
+												</label>
+												<label class="form-check mr-1">
+													<input type="checkbox" id="formPreset<?=$i?>_thu" class="form-check-input" />
+													<span class="form-control-label">Thu</span>
+												</label>
+												<label class="form-check mr-1">
+													<input type="checkbox" id="formPreset<?=$i?>_fri" class="form-check-input" />
+													<span class="form-control-label">Fri</span>
+												</label>
+												<label class="form-check mr-1">
+													<input type="checkbox" id="formPreset<?=$i?>_sat" class="form-check-input" />
+													<span class="form-control-label">Sat</span>
+												</label>
+												<label class="form-check">
+													<input type="checkbox" id="formPreset<?=$i?>_sun" class="form-check-input" />
+													<span class="form-control-label">Sun</span>
+												</label>
+											</td>
+											<td class="pb-0"><input type="text" id="ptz_ch0_schedule_s<?=$i?>_time" class="form-control-custom mb-0" value="" size="16"/></td>
+											<td class="pb-0">
+												<select id="ptz_ch0_schedule_s<?=$i?>_preset" class="form-control-custom" style="width:100px;"></select>
+											</td>
+										</tr>
+<?php } ?>										
+									</tbody>
+								</table>
+							</div>
+							<div class="card-footer text-center">
+								<button id="btnApply"  class="btn btn-sm btn-primary">Apply</button>
+							</div>
+	
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+
+	</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+$("input[type='radio']").on("click", function () {
+	console.log(this);
+	$("#uart_udp").prop("hidden", true);
+	$("#uart_tcpclient").prop("hidden", true);
+	$("#uart_tcpserver").prop("hidden", true);	
+	if (this.id=="formUartOverIPModeUdp") {
+		$("#uart_udp").prop("hidden", false);
+	}
+	else if (this.id=="formUartOverIPModeTcpClient") {
+		$("#uart_tcpclient").prop("hidden", false);
+	}
+	else if (this.id=="formUartOverIPModeTcpServer") {
+		$("#uart_tcpserver").prop("hidden", false);
+	}		
+
+});
+
+
+
+
+</script>
+</html>

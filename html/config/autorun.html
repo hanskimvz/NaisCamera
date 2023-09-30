@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>PTZ configuration</span> > <strong>Auto run</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header">
+								<h6 class="m-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<div class="form-group form-inline">
+									<label class="form-check ml-2">
+										<input type="checkbox" id="formAutorunEnable" class="form-check-input" />
+										<span>Enable auto run</span>
+									</label>
+								</div>
+								<div class="form-group form-inline ml-3">
+									<span>After</span>
+									<input type="text" size="5" id="formAutorunTime" class="form-control-custom ml-2 mr-1"/>
+									<select id="autorunTime" class="form-control-custom mr-2" style="width:100px;">
+										<option value="min">min(s)</option>
+										<option value="sec">sec(s)</option>
+									</select>
+									<label id="autorunTimeSpeedType1">(1 ... 60)</label>
+									<label id="autorunTimeIRSpeedPTZ">(10, 30, 60, 300, 600, 1200, 1800, 2400, 3000, 3600)</label>
+								</div>
+								<div class="form-group form-inline">
+									<label class="form-check ml-2">
+										<input type="radio" name="formAutorunMoveMenu" id="formAutorunMoveMenu0"  class="form-check-input" />
+										<span>Go to home position</span>
+									</label>
+								</div>
+								<div class="form-group form-inline">
+									<label class="form-check ml-2 mr-2">
+										<input type="radio" name="formAutorunMoveMenu" id="formAutorunMoveMenu1"  class="form-check-input" />
+										<span>Start hour</span>
+									</label>
+									<select id="selectTouringNumber" class="form-control-custom" style="width:40px;">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+									</select>
+								</div>
+								<div class="form-group form-inline">
+									<label class="form-check ml-2">
+										<input type="radio" name="formAutorunMoveMenu" id="formAutorunMoveMenu2" class="form-check-input" />
+										<span>Go to preset</span>
+									</label>
+									<select id="selectPresetNumber" class="form-control-custom ml-2" style="width:120px;">
+										<option value="none">None</option>
+									</select>
+								</div>
+								<div class="form-group form-inline">
+									<label class="form-check ml-2 mr-4">
+										<input type="radio" name="formAutorunMoveMenu" id="formAutorunMoveMenu3" class="form-check-input" />
+										<span>Panning</span>
+									</label>
+									<span>Angle</span>
+									<input type="text" size="5" id="formAutorunPanningAngle" class="form-control-custom ml-2 mr-2" />
+									<label>(-5 ... 185)</label>,
+									<span class="ml-3">Speed</span>
+									<input type="text" size="5" id="formAutorunPanningSpeed" class="form-control-custom ml-2 mr-2" />
+									<label>(20 ... 50)</label>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+$("input[type='radio']").on("click", function () {
+	console.log(this);
+
+});
+
+</script>
+</html>

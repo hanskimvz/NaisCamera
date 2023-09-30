@@ -1,0 +1,434 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+$stream = ["First Stream", "Second Stream", "Snapshot", "Audio"];
+?>
+
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div class="container-fluid">
+				<p class="menuLocationInfo"><span>Setup</span> > <span>Video & Audio</span> > <strong>Stream</strong></p>
+				<div class="col-lg-6">
+					<div class="tab">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab"><span><?=$stream[0]?></span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab"><span><?=$stream[1]?></span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-3" data-bs-toggle="tab" role="tab"><span><?=$stream[2]?></span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab-4" data-bs-toggle="tab" role="tab"><span><?=$stream[3]?></span></a></li>
+						</ul>
+						<div class="tab-content">
+							
+<?PHP for($i=0; $i<2; $i++) {?>
+<div class="tab-pane <?=($i==0 ? "active":"")?>" id="tab-<?=($i+1)?>" role="tabpanel">
+	<div class="card mt-1">
+		<div class="card-header">
+			<h6 class="mb-0 font-weight-bold text-primary"><?=$stream[$i]?></h6>
+		</div>
+		<div class="card-body">
+			<label class="form-check">
+				<input type="checkbox" id="formEncoderPFEnable_stream_<?=$i?>" class="form-check-input"/>
+				<span>Enable streaming</span>
+			</label>
+			<div class="form-group">
+				<div class="form-inline">
+					<span class="col-md-3">Video codec</span>
+					<select id="formEncoderPFVCodec_stream_<?=$i?>" class="form-control-custom" style="width:120px">
+						<option value="mjpeg">MJPEG</option>
+						<option value="h264">H.264</option>
+					</select>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Resolution</span>
+					<select class="form-control-custom" id="formResolution_stream_<?=$i?>" style="width:120px;"><option></option></select>
+					<span class="ml-2" id="resolutuon_result"></span>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Max. FPS</span>
+					<input type="range" id="sliderMaxFps_stream_<?=$i?>"  min="1" max="30" style="width:200px;" class="slider">
+					<input type="text" id="formMaxFps_stream_<?=$i?>"  class="form-control-custom text-center ml-2 mr-2" size="3" />
+					<label>(1 ... 30 fps)</label>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">GOP</span>
+					<input type="range" id="sliderGOP_stream_<?=$i?>"  min="1" max="30" style="width:200px;" class="slider">
+					<input type="text" id="formGOP_stream_<?=$i?>" class="form-control-custom text-center ml-2 mr-2" size="3" />
+					<label>(1 ... 30)</label>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Profile identification</span>
+					<select id="formProfileid_<?=$i?>" class="form-control-custom" style="width:120px;">
+						<option value="HiP">High</option>
+						<option value="MP">Main</option>
+						<option value="BP">Baseline</option>
+					</select>
+				</div>
+				<div class="form-inline mt-1" hidden>
+					<span class="col-md-3">Multiple slices</span>
+					<label class="form-check">
+						<input type="checkbox" id="formMultipleSlices_stream_<?=$i?>" class="form-check-input" />
+						<span>Enable</span>
+					</label>
+				</div>
+			</div>
+			<div class="form-group mt-3">
+				<label><span>Bitrate control</span></label>
+				<div class="form-group">
+					<label class="form-check">
+						<input type="radio" name="formBitrateCtrl_stream_<?=$i?>" id="formBitrateCtrl_stream_<?=$i?>_0" value="vbr" class="form-check-input"/>
+						<span>Variable bitrate(VBR)</span>
+					</label>
+					<div class="form-inline ml-2">
+						<span class="col-md-3">Maximum bitrate</span>
+						<input type="range" id="sliderMaxBitrate_stream_<?=$i?>"  min="128" max="12000" style="width:200px;" class="slider">
+						<input type="text" id="formMaxBitrate_stream_<?=$i?>" class="form-control-custom text-center ml-2 mr-2" size="5" />
+						<label>(128 ... 12000 kbps)</label>
+					</div>
+					<div class="form-inline mt-1 ml-2">
+						<span class="col-md-3">Image Quality</span>
+						<select id="formBRC_VBR_stream_<?=$i?>_QValue" class="form-control-custom" style="width:120px;">
+							<option value="highest">Highest</option>
+							<option value="high">High</option>
+							<option value="normal">Medium</option>
+							<option value="low">Low</option>
+							<option value="lowest">Lowest</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="form-check">
+						<input type="radio" name="formBitrateCtrl_stream_<?=$i?>" id="formBitrateCtrl_stream_<?=$i?>_1" value="cbr" class="form-check-input" />
+						<span>Constant bitrate(CBR)</span>
+					</label>
+					<div class="form-inline ml-2">
+						<span class="col-md-3">Target bitrate</span>
+						<input type="range" id="sliderBitrate_stream_<?=$i?>"  min="128" max="8000" style="width:200px;" class="slider">
+						<input type="text" id="formBitrate_stream_<?=$i?>" class="form-control-custom text-center ml-2 mr-2" size="5" />
+						<label>(128 ... 8000 kbps)</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer text-center">
+			<button id="btnStream_<?=$i?>_Set" class="btn btn-sm btn-primary">Apply</button>
+		</div>
+	</div>
+</div>
+<?PHP }?>
+
+<div class="tab-pane" id="tab-3" role="tabpanel"><!--snapshot-->
+	<div class="card mt-2">
+		<div class="card-header">
+			<h6 class="mb-0 font-weight-bold text-primary">Snapshot</h6>
+		</div>
+		<div class="card-body">
+			<label class="form-check">
+				<input type="checkbox" id="formCdSnapEnable" class="form-check-input"/>
+				<span>Enable Snapshot</span>
+			</label>
+			<div class="form-group">
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Resolution</span>
+					<select class="form-control-custom" id="formCdSnapResolution" style="width:120px;"><option></option></select>
+					<span class="ml-2" id="resolutuon_result"></span>
+				</div>
+				<div class="form-inline">
+					<span class="col-md-3">Max. FPS</span>
+					<input type="range" id="sliderCdSnapMaxFps"  min="1" max="30" style="width:200px;" class="slider">
+					<input type="text" id="formCdSnapMaxFps" class="form-control-custom text-center ml-2 mr-2" size="5" />
+					<label>(1 ... 30 fps)</label>
+				</div>
+				<div class="form-inline">
+					<span class="col-md-3">JPEG Quality</span>
+					<input type="range" id="sliderCdSnapQuality"  min="0" max="100" style="width:200px;" class="slider">
+					<input type="text" id="formCdSnapQuality" class="form-control-custom text-center ml-2 mr-2" size="5" />
+					<label>(0 ... 100 <span>bestquality is 100</span>)</label>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer text-center">
+			<button id="btnSnapshotSet" class="btn btn-sm btn-primary">Apply</button>
+		</div>
+	</div>
+</div>
+<div class="tab-pane" id="tab-4" role="tabpanel"><!--audio-->
+	<div class="card mt-2">
+		<div class="card-header">
+			<h6 class="mb-0 font-weight-bold text-primary">Audio input</h6>
+		</div>
+		<div class="card-body">
+			<label class="form-check">
+				<input type="checkbox" id="formAudInEnable" class="form-check-input"/>
+				<span>Enable</span>
+			</label>
+			<div class="form-group mb-0">
+				<div class="form-inline" hidden>
+					<span class="col-md-3">Source</span>
+					<label class="form-check">
+						<input type="radio" name="audioInputSource" id="audioInputSource_0" value="0" class="form-control-custom mr-1" checked/>
+						<span>Mic</span>
+					</label>
+					<label class="form-check ml-3">
+						<input type="radio" name="audioInputSource" id="audioInputSource_1" value="1" class="form-control-custom mr-1" />
+						<span>Line-in</span>
+					</label>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Volume</span>
+					<input type="range" id="sliderInVolume"  min="0" max="255" style="width:200px;" class="slider">
+					<input type="text" size="5" id="formInVolume" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 255)</label>
+				</div>
+				<div class="form-inline mt-1" >
+					<span class="col-md-3">Codec</span>
+					<select id="formInCodec" class="form-control-custom" style="width:160px;">
+						<option value="g711">G711-uLaw</option>
+					</select>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Sampling frequency</span>
+					<select id="formInFrequency" class="form-control-custom" style="width:160px;">
+						<option value="8000">8kHz</option>
+						<option value="16000">16kHz</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-2">
+		<div class="card-header">
+			<h6 class="mb-0 font-weight-bold text-primary">Audio output</h6>
+		</div>
+		<div class="card-body">
+			<label class="form-check">
+				<input type="checkbox" id="formAudOutEnable" class="form-check-input"/>
+				<span>Enable</span>
+			</label>
+			<div class="form-group mb-0">
+				<div class="form-inline mt-1">
+					<span class="col-md-3">Volume</span>
+					<input type="range" id="sliderOutVolume"  min="0" max="255" style="width:200px;" class="slider">
+					<input type="text" size="5" id="formOutVolume" class="form-control-custom text-center ml-2 mr-2" />
+					<label>(0 ... 255)</label>
+				</div>
+				<div class="form-inline mt-1">
+					<span class="col-md-3">TCP listen port</span>
+					<input type="text" size="5" id="formOutPort" class="form-control-custom text-center mr-2" />
+					<label>(1 ... 65535, 6000)</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mt-2 text-center">
+		<button id="btnAudioSet" class="btn btn-sm btn-primary">Apply</button>
+	</div>
+	
+</div>
+<!--tab contents end -->
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	// if (this.id == "modalApply") {
+	// 	console.log($("#formUserName").val());
+	// }
+});
+
+$(".slider").on("input", function () {
+	xt = this.id.replace("slider","form");
+ 	$("#" + xt).val(this.value);
+});
+
+resolution = ['1920x1080','1280x720', '1120x630','960x540','800x450','640x360','480x270','320x180'];
+$("select#formResolution_stream_0").empty();
+$("select#formResolution_stream_1").empty();
+$("select#formCdSnapResolution").empty();
+
+resolution.forEach(function(item){
+	$("select#formResolution_stream_0").append('<option value="' + item + '">'+item+'</option>');
+	$("select#formResolution_stream_1").append('<option value="' + item + '">'+item+'</option>');
+	$("select#formCdSnapResolution").append('<option value="' + item + '">'+item+'</option>');
+});
+
+function loadSTREAMConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=ENCODER.Ch0.Videocodec,ENCODER.Ch0.Snapshot,ENCODER.Ch0.Audioin,ENCODER.Ch0.Audioout";
+	$.getJSON(url, function(response) {
+		console.log(response);
+		for (i=0; i<2; i++) {
+			let key = response.encoder.ch0.videocodec['st'+i];
+			if (key.enable == 'yes'){
+				$("#formEncoderPFEnable_stream_"+i).prop('checked', true);
+			}
+			$("#formEncoderPFVCodec_stream_"+i).val(key.standard);
+			if(key.standard=='h264'){
+				$("#formResolution_stream_"+i).val(key.h264.resolution);
+				$("#sliderMaxFps_stream_"+i).val(key.h264.maxfps);
+				$("#formMaxFps_stream_"+i).val(key.h264.maxfps);
+				$("#sliderGOP_stream_"+i).val(key.h264.pcount*1+1);
+				$("#formGOP_stream_"+i).val(key.h264.pcount*1+1);
+				$("#formProfileid_"+i).val(key.h264.profile);
+				if (key.h264.slice=='yes'){
+					$("#formMultipleSlices_stream_"+i).prop('checked', true);
+				}
+				if (key.h264.bitratectrl == 'vbr'){
+					$("#formBitrateCtrl_stream_"+i+"_0").prop('checked', true);
+				}
+				else if (key.h264.bitratectrl == 'cbr'){
+					$("#formBitrateCtrl_stream_"+i+"_1").prop('checked', true);
+				}
+				$("#sliderMaxBitrate_stream_"+i).val(key.h264.maxbitrate);
+				$("#formMaxBitrate_stream_"+i).val(key.h264.maxbitrate);
+				$("#formBRC_VBR_stream_"+i).val(key.h264.qvalue);
+				$("#sliderBitrate_stream_"+i).val(key.h264.bitrate);
+				$("#formBitrate_stream_"+i).val(key.h264.bitrate);
+			}
+		}
+		key = response.encoder.ch0.snapshot;
+		if (key.enable=='yes'){
+			$("#formCdSnapEnable").prop('checked', true);
+		}
+		$("#formCdSnapResolution").val(key.resolution);
+		$("#sliderCdSnapMaxFps").val(key.maxfps);
+		$("#formCdSnapMaxFps").val(key.maxfps);
+		$("#sliderCdSnapQuality").val(key.quality);
+		$("#formCdSnapQuality").val(key.quality);
+
+		if (response.encoder.ch0.audioin.ch0.enable=='yes'){
+			$("#formAudInEnable").prop('checked', true);
+		}
+		if (response.encoder.ch0.audioout.ch0.enable=='yes'){
+			$("#formAudOutEnable").prop('checked', true);
+		}
+		$("#sliderInVolume").val(response.encoder.ch0.audioin.ch0.volume);
+		$("#formInVolume").val(response.encoder.ch0.audioin.ch0.volume);
+		$("#sliderOutVolume").val(response.encoder.ch0.audioout.ch0.volume);
+		$("#formOutVolume").val(response.encoder.ch0.audioout.ch0.volume);
+
+		$("#formInCodec").val(response.encoder.ch0.audioin.ch0.adc.codec);
+		$("#formInFrequency").val(response.encoder.ch0.audioin.ch0.adc.frequency);
+		$("#formOutPort").val(response.encoder.ch0.audioout.ch0.tcp.port);
+
+	});
+}
+
+loadSTREAMConfig();
+
+</script>
+</html>
+
+
+
+<?php
+exit();
+?>
+
+<!--			 Audio	Source	 START			 -->
+<div id="stream_audio" class="dsp_hide">
+	<ul class="box audioInContents">
+		<li class="box-title"><h2 class="04020688">Audio Input</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li>
+							<input type="checkbox" id="formInEnable" />
+							<label for="formInEnable" class="04020689">Enable</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item audioInSourceContents">
+					<ul>
+						<li class="item-title">Source :</li>
+						<li>
+							<input type="radio" name="audioInputSource" id="audioInputSource_0" value="0" />
+							<label for="audioInputSource_0" class="">MIC</label>
+							<input type="radio" name="audioInputSource" id="audioInputSource_1" value="1" />
+							<label for="audioInputSource_1" class="">Line-in</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 04020690">Volume :</li>
+						<li><div id="sliderEncoderPFInputVol" class="slider-bar"></div></li>
+						<li>
+							<input type="text" size="5" id="formInVolume" class="text_cen" />
+							<label class="04020691">(0 ... 255)</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 04020692">Codec :</li>
+						<li>
+							<select id="formInCodec">
+								<option value="g711" class="04020693">G711-uLaw</option>
+							</select>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 04020694">Sampling frequency :</li>
+						<li>
+							<select id="formInFrequency">
+								<option value="8000" class="04020695">8kHz</option>
+								<option value="16000" class="04020696">16kHz</option>
+							</select>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<ul class="box audioOutContents">
+		<li class="box-title"><h2 class="04020697">Audio Output</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li>
+							<input type="checkbox" id="formOutEnable" />
+							<label for="formOutEnable" class="04020698">Enable</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 04020699">Volume :</li>
+						<li><div id="sliderEncoderPFOutVol" class="slider-bar"></div></li>
+						<li>
+							<input type="text" size="5" id="formOutVolume" class="text_cen" />
+							<label class="0402069901">(0 ... 255)</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 0402069902">TCP/IP listen port :</li>
+						<li>
+							<input type="text" size="5" id="formOutPort" />
+							<label class="0402069903">(1 ... 65535, 6000)</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<!--			 Audio	Source	 END				 -->
+<div id="debug_console"></div>
+</body>
+</html>

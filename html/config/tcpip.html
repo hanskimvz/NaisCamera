@@ -1,0 +1,263 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<style>
+.btn-white{
+    background-color:#eee;
+    width:160px;
+}
+</style>
+<body>
+<div id="content">
+	<p class="menuLocationInfo"><span>Setup</span> > <span>Network Configuration</span> > <strong>TCP/IP</strong></p>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="card col-lg-6">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">IP Address Configuration</h6>
+				</div>
+				<div class="card-body">
+					<label class="form-check">
+						<input type="checkbox" id="ipv4Enable" class="form-check-input" checked disabled/>
+						<span>Enable IPv4</span>
+					</label>
+					<div class="form-group ml-4">
+						<label class="form-check">
+							<input type="radio" name="formTcpipDhcpChk" id="formTcpipDhcpChk0" value="yes" class="form-check-input"/>
+							<span>Obtain an IP address via DHCP</span>
+						</label>
+						<div class="form-inline">
+							<span class="col-md-3 ml-4">IP address</span>
+							<input type="text" id="formTcpipDhcpIP" class="form-control-custom" readonly />
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 ml-4">Subnet mask</span>
+							<input type="text" id="formTcpipDhcpSub" class="form-control-custom" readonly />
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 ml-4">Gateway address</span>
+							<input type="text" id="formTcpipDhcpGate" class="form-control-custom" readonly />
+						</div>
+					</div>
+					<div class="form-group ml-4">
+						<label class="form-check">
+							<input type="radio" name="formTcpipDhcpChk" id="formTcpipDhcpChk1" value="no" class="form-check-input" />
+							<span>Use the following IP address</span>
+						</label>
+						<div class="form-inline mb-0" id="tcpip_static_ip">
+							<span class="col-md-3  ml-4">IP address</span>
+							<input type="text" id="formTcpipStaticIP" class="form-control-custom ipv4" />
+							<button class="btn btn-micro btn-warning ml-2" id="btnIPTest"><span>test</span></button>
+							<span id="formTestBtnResult"></span>
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 ml-4">Subnet mask</span>
+							<input type="text" id="formTcpipStaticSub" class="form-control-custom ipv4" />
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 ml-4">Gateway address</span>
+							<input type="text" id="formTcpipStaticGate" class="form-control-custom ipv4" />
+						</div>
+					</div>
+
+					<label class="form-check">
+						<input type="checkbox" id="ipv6Enable" class="form-check-input"/>
+						<span>Enable IPv6</span>
+					</label>
+					<div class="form-group" id="ipv6Contents" hidden>
+						<div class="form-inline">
+							<span class="col-md-3  ml-3" valign="top">IP address(Information)</span>
+							<textarea id="ipaddressInformation" class="form-control col-md-8" readonly></textarea>
+						</div>
+						<div class="form-inline">
+							<label class="form-check-label">
+								<input type="checkbox" id="acceptRAEnable" class="form-check-input ml-4" />
+								<span>Enable accept router advertisements</span>
+							</label>
+						</div>
+						<div class="form-inline mt-1">
+							<label class="form-check-label">
+								<input type="checkbox" id="dhcpEnable" class="form-check-input ml-4" />
+								<span>Enable DHCP</span>
+							</label>
+							<div class="form-inline">
+								<span class="ml-4">DHCP typ</span>
+								<!-- <input type="radio" name="dhcpType" value="auto" class="form-check-input ml-2">
+								<label>Auto</label>
+								<input type="radio" name="dhcpType" value="stateful" class="form-check-input ml-2">
+								<label>stateful</label>
+								<input type="radio" name="dhcpType" value="stateless" class="form-check-input ml-2">
+								<label>stateless</label> -->
+								<select id="dhcpType" class="form-control-custom ml-2">
+									<option value="auto">auto</option>
+									<option value="stateful">stateful</option>
+									<option value="stateless">stateless</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 ml-4">IP address</span>
+							<input type="text" id="staticIPaddress"class="form-control-custom" />
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 ml-4">Prefix length</span>
+							<input type="text" id="prefixLength" class="form-control-custom"/><label class="input-label ml-2">(0 ... 128, 128)</label>
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 ml-4">Default router</span>
+							<input type="text" id="defaultRouter" class="form-control-custom"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="card col-lg-6">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">DNS Configuration</h6>
+				</div>
+				<div class="card-body">
+					<div class="form-group mb-0">
+						<div class="form-inline">
+							<span class="col-md-3">Primary DNS server</span>
+							<input type="text" id="formTcpipPriDNS" class="form-control-custom ipv4" />
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3">Secondary DNS Server</span>
+							<input type="text" id="formTcpipSecDNS" class="form-control-custom ipv4" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="card col-lg-6">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">Host Configuration</h6>
+				</div>
+				<div class="card-body">
+					<div class="form-group form-inline mb-0">
+						<span class="col-md-3">Host name</span>
+						<input type="text" id="formHostname" class="form-control-custom"/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="card col-lg-6">
+				<div class="card-header">
+					<h6 class="font-weight-bold text-primary mb-0"><span>Link-Local Address</span></h6>
+				</div>
+				<div class="card-body">
+					<div class="form-group mb-0">
+						<label class="form-check mb-1">
+							<input type="checkbox" id="linkLocalEnable" class="form-check-input ipv4" />
+							<span>Enable Auto-Configuration link-local address</span>
+						</label>									
+
+						<div class="form-inline">
+							<span class="col-md-3 mr-2">IP address</span>
+							<input type="text" id="formLinkLocalIP" class="form-control-custom ipv4" />
+						</div>
+						<div class="form-inline mt-1">
+							<span class="col-md-3 mr-2">Subnet mask</span>
+							<input type="text" id="formLinkLocalSubnet" class="form-control-custom mr-4" />
+							<button id="btnIPRenew" class="btn btn-micro btn-secondary"><span>renew</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button id="btnApply" class="btn btn-sm btn-primary mt-2">Apply</button>
+	</div>
+	<div id='debug_console'></div>
+</div>
+</body>
+<?=$footer?>
+<script>
+$("button").on("click", function () {
+	console.log(this);
+	if (this.id == "modalApply") {
+		console.log($("#formUserName").val());
+	}
+});
+
+$("#ipv6Enable").on("click", function () {
+	console.log(this.checked)
+	if (this.checked) {
+		$("#ipv6Contents").removeAttr('hidden');
+	}
+	else {
+		$("#ipv6Contents").attr('hidden','');
+	}
+});
+
+
+function loadTCPIPConfig(){
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.eth0,NETWORK.Dns";
+	console.log(url);
+	$.getJSON(url, function(response) {
+		console.log(response);
+		if (response['network']['eth0']['dhcp']['enable']=='yes'){
+			$("#formTcpipDhcpChk0").prop('checked', true);
+		}
+		else {
+			$("#formTcpipDhcpChk1").prop('checked', true);
+			// $("#https_contents").removeAttr('hidden');
+		}
+		
+		$("#formTcpipDhcpIP").val(response['network']['eth0']['dhcp']['ipaddress']);
+		$("#formTcpipDhcpSub").val(response['network']['eth0']['dhcp']['subnet']);
+		$("#formTcpipDhcpGate").val(response['network']['eth0']['dhcp']['gateway']);
+		$("#formTcpipStaticIP").val(response['network']['eth0']['ipaddress']);
+		$("#formTcpipStaticSub").val(response['network']['eth0']['subnet']);
+		$("#formTcpipStaticGate").val(response['network']['eth0']['gateway']);
+
+		if (response['network']['eth0']['ipversion']=='ipv6'){
+			$("#ipv6Enable").prop('checked', true);
+			$("#ipv6Contents").removeAttr('hidden');
+		}		
+		$("#ipaddressInformation").val(response['network']['eth0']['ipv6']['dhcp']['ipaddress']);
+		if (response['network']['eth0']['ipv6']['raenable']=='yes')	{
+			$("#acceptRAEnable").prop('checked', true);
+		}
+		if (response['network']['eth0']['ipv6']['dhcp']['enable']=='yes'){
+			$("#dhcpEnable").prop('checked', true);
+		}
+		
+		$("#dhcpType").val(response['network']['eth0']['ipv6']['dhcp']['type']);
+		$("#staticIPaddress").val(response['network']['eth0']['ipv6']['ipaddress']);
+		$("#prefixLength").val(response['network']['eth0']['ipv6']['prefixlength']);
+		$("#defaultRouter").val(response['network']['eth0']['ipv6']['gateway']);
+
+		$("#formTcpipPriDNS").val(response['network']['dns']['preferred']);
+		$("#formTcpipSecDNS").val(response['network']['eth0']['dns0']);
+		$("#formHostname").val(response['network']['eth0']['hostname']);
+
+		if (response['network']['eth0']['.Autoip.enable']=='yes'){
+			$("#linkLocalEnable").prop('checked', true);
+		}
+		
+		$("#formLinkLocalIP").val(response['network']['eth0']['autoip']['ipaddress']);
+		$("#formLinkLocalSubnet").val(response['network']['eth0']['autoip']['subnet']);
+		
+	});
+}
+loadTCPIPConfig();
+
+$(location.hash).addClass("show");
+$("#tcpip").addClass("active");
+
+</script>
+
+</html>
+<script>
+window.scrollTo({top: 0})
+</script>
+

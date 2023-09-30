@@ -1,0 +1,117 @@
+{
+    "top_left_menu": [
+        {"id": "live",      "display": "Live",     "flag": "y", "href": "/"},
+        {"id": "setting",   "display": "Setting",  "flag": "y", "href": "/config/"},
+        {"id": "search",    "display": "Search",   "flag": "n", "href": "/search/"}
+    ],
+    "config": {
+        "basic": { "display":"Basic", "flag": "y", "submenus": [
+            { "display":"Users",        "id": "basic_user",         "href": "users.html",       "flag": "y" },
+            { "display":"TCP/IP",       "id": "basic_tcpip",        "href": "tcpip.html" ,      "flag": "y"},
+            { "display":"Datetime",     "id": "basic_datetime",     "href": "datetime.html",    "flag": "y" },
+            { "display":"Stream",       "id": "basic_stream",       "href": "stream.html",      "flag": "y" },
+            { "display":"Focus Assist", "id": "basic_focusassist",  "href": "focusassist.html", "flag": "y" }
+        ]},
+        "videonaudio": { "display":"Video & Audio", "flag": "y", "submenus": [
+            { "display":"Camera",          "id": "va_camera",          "href": "camera.html",         "flag": "y" },
+            { "display":"Zoom&Focus",      "id": "va_zoomfocus",       "href": "zoomfocus.html",      "flag": "y" },
+            { "display":"Burnt in Text",   "id": "va_burntintext",     "href": "burntintext.html",    "flag": "y" },
+            { "display":"Encoder Profile", "id": "va_encoderprofile",  "href": "encoderprofile.html", "flag": "y" },
+            { "display":"Stream",          "id": "va_stream",          "href": "stream.html" ,        "flag": "y"},
+            { "display":"Privacymask",     "id": "va_privacymask",     "href": "privacymask.html" ,   "flag": "y"},
+            { "display":"Video Out",       "id": "va_videoout",        "href": "videoout.html",       "flag": "y" }
+        ]},
+        "eventConf": { "display":"Event Configuration", "flag": "y", "submenus": [
+            { "display":"Event Rules",              "id": "eventrules",             "href": "eventrules.html", "flag": "y" },
+            { "display":"Advanced Rules",           "id": "advancedrules",          "href": "advancedrules.html", "flag": "n" },
+            { "display":"Motion Detection",         "id": "motiondetection",        "href": "motiondetection.html", "flag": "y" },
+            { "display":"Face Detection",           "id": "facedetection",          "href": "facedetection.html", "flag": "y" },
+            { "display":"Network Loss",             "id": "networkloss",            "href": "networkloss.html", "flag": "y" },
+            { "display":"Heartbeat",               "id": "heartbeat",              "href": "heartbeat.html", "flag": "y" },
+            { "display":"Event Schedule",           "id": "eventschedule",          "href": "eventschedule.html", "flag": "y" },
+            { "display":"Email Recipient",          "id": "emailrecipient",         "href": "emailrecipient.html" , "flag": "y"},
+            { "display":"FTP Notification",         "id": "ftpnotification",        "href": "ftpnotification.html", "flag": "y" },
+            { "display":"HTTP Notification",        "id": "httpnotification",       "href": "httpnotification.html", "flag": "y" },
+            { "display":"TCP Notification",         "id": "tcpnotification",        "href": "tcpnotification.html", "flag": "y" },
+            { "display":"TCP Server",               "id": "tcpserver",              "href": "tcpserver.html" , "flag": "y"},
+            { "display":"Multicast Notification",   "id": "multicastnotification",  "href": "multicastnotification.html" , "flag": "y"}
+        ]},
+        "networkConf":{ "display":"Network Configuration", "flag": "y", "submenus": [
+            { "display":"TCP/IP",               "id": "tcpip",          "href": "tcpip.html", "flag": "y" },
+            { "display":"HTTP",                 "id": "http",           "href": "http.html", "flag": "y" },
+            { "display":"NTP",                  "id": "ntp",            "href": "ntp.html", "flag": "y" },
+            { "display":"UPNP",                 "id": "upnp",           "href": "upnp.html" , "flag": "y"},
+            { "display":"RTP/RTSP",             "id": "rtsprtp",        "href": "rtsprtp.html" , "flag": "y"},
+            { "display":"RTMP",                 "id": "rtmp",           "href": "rtmp.html", "flag": "y" },
+            { "display":"mDNS",                 "id": "mdns",           "href": "mdns.html", "flag": "y" },
+            { "display":"WS Discovery",         "id": "wsdiscovery",    "href": "wsdiscovery.html" , "flag": "y"},
+            { "display":"SMTP",                 "id": "smtp",           "href": "smtp.html", "flag": "y" },
+            { "display":"DDNS",                 "id": "ddns",           "href": "ddns.html" , "flag": "y"},
+            { "display":"SNMP",                 "id": "snmp",           "href": "snmp.html" , "flag": "y"},
+            { "display":"Wireless Lan",         "id": "wirelesslan",    "href": "wirelesslan.html" , "flag": "y"},
+            { "display":"IP Filtering",         "id": "ipfiltering",    "href": "ipfiltering.html" , "flag": "y"},
+            { "display":"Hosted Service",       "id": "hostedservice",  "href": "hostedservice.html" , "flag": "y"},
+            { "display":"Retail Cloud Service", "id": "iotservice",     "href": "iotservice.html", "flag": "y" },
+            { "display":"IEEE 8021x",           "id": "ieee8021x",      "href": "ieee8021x.html", "flag": "y" }
+        ]},
+        "storage":{ "display":"Storage", "flag": "y", "submenus": [
+            { "display":"SD Storage",    "id": "usbsdstorage",   "href": "usbsdstorage.html", "flag": "y" },
+            { "display":"FTP Storage",      "id": "ftpstorage",     "href": "ftpstorage.html" , "flag": "y"},
+            { "display":"Recording",       "id": "recording",      "href": "recording.html" , "flag": "y"},
+            { "display":"File Download",    "id": "filedownload",   "href": "filedownload.html" , "flag": "n"}
+        ]},
+        "vcaConf":{ "display":"VCA Configuration", "flag": "y", "submenus": [
+            { "display":"VCA License",              "id": "vcaenabledisable",       "href": "vcaenabledisable.html" , "flag": "y"},
+            { "display":"Zones & Rules",            "id": "vcazoneconfiguration",   "href": "vcazoneconfiguration.html" , "flag": "y"},
+            { "display":"3D Calibration",              "id": "vcacalibration",         "href": "vcacalibration.html", "flag": "y" },
+            { "display":"Classification",        "id": "vcaclassification",      "href": "vcaclassification.html" , "flag": "y"},
+            { "display":"Tamper",                   "id": "vcatamper",              "href": "vcatamper.html" , "flag": "y"},
+            { "display":"Scene Change",             "id": "vcascenechange",         "href": "vcascenechange.html", "flag": "y" },
+            { "display":"Scene Maintenance",        "id": "vcascenemaintenance",    "href": "vcascenemaintenance.html", "flag": "y" },
+            { "display":"PTZ Tracking",             "id": "vcaptztracking",         "href": "vcaptztracking.html", "flag": "y" },
+            { "display":"Burnt in Annotation",      "id": "vcaburntinannotation",   "href": "vcaburntinannotation.html", "flag": "y" },
+            { "display":"Counting Report",          "id": "vcacounterreport",       "href": "vcacounterreport.html", "flag": "y" },
+            { "display":"Heatmap Report",           "id": "vcaheatmapreport",       "href": "vcaheatmapreport.html", "flag": "y" },
+            { "display":"Event Report",             "id": "vcaeventreport",         "href": "vcametadb_events.html", "flag": "n" },
+            { "display":"Track Report",             "id": "vcatracksreport",         "href": "vcametadb_tracks.html", "flag": "n" },
+            { "display":"Advanced",                 "id": "vcaadvanced",            "href": "vcaadvanced.html", "flag": "y" },
+            { "display":"VCA Conf. Import Export",  "id": "vcaloadsave",            "href": "vcaloadsave.html" , "flag": "y"}
+        ]},
+        "peripherial": { "display":"Peripherial", "flag": "y", "submenus": [
+            { "display":"DI / DO",    "id": "dido",   "href": "dido.html" , "flag": "y"},
+            { "display":"UART",    "id": "uart",   "href": "uart.html" , "flag": "y"},
+            { "display":"Heater",  "id": "heater", "href": "heater.html", "flag": "y" }
+        ]},
+        "ptzConf":{ "display":"PTZ Configuration", "flag": "y", "submenus": [
+            { "display":"PTZ",             "id": "ptz",            "href": "ptz.html" , "flag": "y"},
+            { "display":"Touring",         "id": "touring",        "href": "touring.html", "flag": "y" },
+            { "display":"Auto Run",         "id": "autorun",        "href": "autorun.html" , "flag": "y"},
+            { "display":"Protocol",        "id": "protocol",       "href": "protocol.html", "flag": "y" },
+            { "display":"Preset Schedule",  "id": "presetschedule", "href": "presetschedule.html", "flag": "y" }          
+        ]},
+        "maintenance":{ "display":"Maintenance", "flag": "y", "submenus": [
+            { "display":"Users",           "id": "users",              "href": "users.html", "flag": "y" },
+            { "display":"Datetime",        "id": "datetime",           "href": "datetime.html" , "flag": "y"},
+            { "display":"API",             "id": "api",                "href": "api.html" , "flag": "y"},
+            { "display":"Language",        "id": "language",           "href": "language.html" , "flag": "y"},
+            { "display":"Firmware Upgrade", "id": "firmwareupgrade",    "href": "firmwareupgrade.html", "flag": "y" },
+            { "display":"System Log",       "id": "systemlog",          "href": "systemlog.html", "flag": "y" },
+            { "display":"Conf. Import Export","id": "confimportexport",   "href": "confimportexport.html", "flag": "y" },
+            { "display":"Reset All Settings", "id": "resetallsetting",    "href": "resetallsetting.html", "flag": "y" },
+            { "display":"Reboot",          "id": "reboot",             "href": "reboot.html" , "flag": "y"},
+            { "display":"Third Manager",       "id": "thirdmngr",          "href": "thirdmngr.html" , "flag": "y"}    
+        ]},
+        "about": { "display":"About", "flag": "y", "submenus": [
+            { "display":"Information", "id": "information",    "href": "information.html" , "flag": "y"} ,
+            { "display":"License",     "id": "license",        "href": "license.html" , "flag": "y"} 
+        ]},
+        "oem": { "display":"OEM", "flag": "y", "submenus": [
+            { "display":"OEM",  "id": "oem", "href": "oem.html", "flag": "y" } 
+        ]}
+    },
+    "storage": {
+    },
+    "main": {
+        
+    }
+}

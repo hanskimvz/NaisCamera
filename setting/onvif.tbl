@@ -1,0 +1,110 @@
+{
+        "enable": "yes",
+        "version": "1.0.0",
+        "authentication": {
+            "enable": "yes"
+        },
+        "profile": {
+            "default1": {
+                "fixed": "1",
+                "name": "DEFAULT1",
+                "token": "DEFAULT1",
+                "videoencoderconfigtoken": "VIDENCCFG0",
+                "videosourceconfigtoken": "VIDSRCCFG0"
+            },
+            "default2": {
+                "fixed": "1",
+                "name": "DEFAULT2",
+                "token": "DEFAULT2",
+                "videoencoderconfigtoken": "VIDENCCFG1",
+                "videosourceconfigtoken": "VIDSRCCFG0"
+            }
+        },
+        "profileg": {
+            "enable": "yes"
+        },
+        "recordingjob": {
+            "sizejob": "1",
+            "job1": {
+                "enable": "no",
+                "jobtoken": "Jobtoken1",
+                "configuration": {
+                    "eventstatus": "done",
+                    "mode": "Idle",
+                    "priority": "50",
+                    "recordingtoken": "RECTOKEN1",
+                    "sizesource": "1",
+                    "source1": {
+                        "sizetracks": "0",
+                        "sourcetoken": "DEFAULT1",
+                        "sourcetype": "http:\/\/www.onvif.org\/ver10\/schema\/Profile"
+                    }
+                }
+            }
+        },
+        "recordings": {
+            "record1": {
+                "recordingtoken": "RECTOKEN1",
+                "spareaudiotrack": "0",
+                "sparejob": "1",
+                "sparevideotrack": "0",
+                "configuration": {
+                    "content": "default",
+                    "maximumretentiontime": "0",
+                    "source": {
+                        "address": "default",
+                        "description": "default",
+                        "location": "default",
+                        "name": "default",
+                        "sourceid": "default"
+                    }
+                },
+                "tracks": {
+                    "sizetrack": "1",
+                    "track1": {
+                        "token": "track1"
+                    }
+                }
+            }
+        },
+        "replayattackprotection": {
+            "enable": "no"
+        },
+        "rtspurlnat": {
+            "enable": "yes"
+        },
+        "scopes": {
+            "item0": {
+                "fixed": "1",
+                "uri": "onvif:\/\/www.onvif.org\/Profile\/Streaming"
+            },
+            "item1": {
+                "fixed": "1",
+                "uri": "onvif:\/\/www.onvif.org\/Profile\/G"
+            },
+            "item2": {
+                "fixed": "0",
+                "uri": "onvif:\/\/www.onvif.org\/name\/SC6102HD-6311"
+            },
+            "item3": {
+                "fixed": "1",
+                "uri": "onvif:\/\/www.onvif.org\/type\/video_encoder"
+            },
+            "item4": {
+                "fixed": "0",
+                "uri": "onvif:\/\/www.onvif.org\/location\/"
+            },
+            "item5": {
+                "fixed": "1",
+                "uri": "onvif:\/\/www.onvif.org\/hardware\/SC6102HD"
+            }
+        },
+        "tracks": {
+            "sizetrack": "1",
+            "track1": {
+                "description": "none",
+                "recordingtoken": "RECTOKEN1",
+                "tracktype": "0"
+            }
+        }
+    }

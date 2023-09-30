@@ -1,0 +1,250 @@
+<!DOCTYPE html lang="en">
+<html lang="en" >
+<?php
+include ("../inc/common.php");
+echo $header;
+?>
+<body>
+    <div id="wrapper">
+		<div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+				<p class="menuLocationInfo"><span>setup</span> > <span>Network Configuration</span> > <strong>Web server</strong></p>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="card col-lg-6">
+							<div class="card-header mb-0">
+								<h6 class="mb-0 font-weight-bold text-primary">Configuration</h6>
+							</div>
+							<div class="card-body">
+								<label class="form-check">
+									<input type="radio" name="formHTTPSet" id="formHTTPSet0" value="yes" class="form-check-input" />
+									<span>Https</span>
+								</label>
+								<label class="form-check">
+									<input type="radio" name="formHTTPSet" id="formHTTPSet1" value="yes" class="form-check-input" />
+									<span>Http</span>
+								</label>
+								<div class="form-group mb-0">
+									<div class="form-inline mb-1">
+										<span class="col-md-4">TCP/IP port number of HTTP </span>
+										<input type="text" id="formHttpPort"  size="8" class="form-control-custom text-center mr-2"/>
+										<label>(1 ... 65535)</label>
+									</div>
+									<div class="form-inline mb-1">
+										<span class="col-md-4">TCP/IP port number of HTTPS </span>
+										<input type="text" id="formHttpsPort"  size="8" class="form-control-custom text-center mr-2"/>
+										<label>(1 ... 65535)</label>
+									</div>
+									<div class="form-inline">
+										<span class="col-md-4">Authentication Type </span>
+										<select id="formHTTPAuthType" class="form-control-custom" style="width:80px">
+											<option value="basic">basic</option>
+											<option value="digest">digest</option>
+										</select>
+									</div>									
+								</div>
+							</div>
+							<div class="card-footer">
+								<button id="btnApply" class="btn btn-sm btn-primary">Apply</button>
+							</div>
+						</div>
+					</div>
+					
+					<div id="https_contents" hidden>
+						<div class="row mt-2">
+							<div class="card col-lg-6">
+								<div class="card-header mb-0">
+									<h6 class="mb-0 font-weight-bold text-primary">Certificate Create & Install</h6>
+								</div>
+								<div class="card-body">
+									<div class="form-group">
+										<span class="col-md-4">Create & install self-signed certificate</span>
+										<div class="form-inline ml-4">
+											<span class="col-md-3">Self-signed certificate</span>
+											<button id="CreateSelfCert" class="btn btn-mini btn-warning" data-toggle="modal" data-target="#selfCertDialog" >Create</button>
+										</div>
+									</div>
+									<div class="form-group mb-0">
+										<span class="col-md-4">Create certificate signing request</span>
+										<div class="form-inline ml-4">
+											<span class="col-md-3">Create request</span>
+											<button id="createCertReq" class="btn btn-mini btn-warning" data-toggle="modal" data-target="#certReqDialog">Create</button>
+										</div>
+										<div class="form-inline ml-4 mt-1">
+												<span class="col-md-3">Select certificate file</span>
+												<form enctype="multipart/form-data" action="/uapi-cgi/certmngr.cgi" method="post" class="form-group">
+												<input name="Filedata" id="Filedata" type="file" accept=".pem"/>
+												<input type="hidden" name="action" value="installcert" />
+												<input type="submit" name="submitStart" id="submitStart" class="btn btn-mini btn-primary"/>
+												</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="card col-lg-6">
+								<div class="card-header mb-0">
+									<h6 class="mb-0 font-weight-bold text-primary">Created Certificate Request</h6>
+								</div>
+								<div class="card-body">
+									<input type="text" id="certReqState" size="90" disabled value="No certificate request created." class="col-md-12 form-control-custom mb-1"/>
+									<button id="certReqProperty" class="btn btn-mini btn-secondary">Properties</button>
+									<button id="certReqRemove"  class="btn btn-mini btn-secondary">Remove</button>
+									<pre class="mb-0"></pre>
+								</div>
+
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="card col-lg-6">
+								<div class="card-header mb-0">
+									<h6 class="mb-0 font-weight-bold text-primary">Installed Certificate</h6>
+								</div>
+								<div class="card-body">
+									<input type="text" id="installCertState" size="90" disabled value="No certificate configured." class="col-md-12 form-control-custom mb-1"/>
+									<button id="installCertProperty" class="btn btn-mini btn-secondary">Properties</button>
+									<button id="installCertRemove" class="btn btn-mini btn-secondary">Remove</button>
+									<pre class="mb-0"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="selfCertDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">Self-signed Certificate</h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="card-body">
+					<div class="form-group form-inline">
+						<span class="col-md-5">Country code</span>
+						<input type="text" id="selfCertCountry" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">State or province</span>
+						<input type="text" id="selfCertState" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Locality</span>
+						<input type="text" id="selfCertLocality" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Organization</span>
+						<input type="text" id="selfCertOrganization" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Organizational Unit</span>
+						<input type="text" id="selfCertOrganizationUnit" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Common Name</span>
+						<input type="text" id="selfCertCommonName" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Validity</span>
+						<input type="text" id="selfCertValidity" class="form-control-custom col-md-2"  />
+						<label><span>day(s)</span> [1...9999]</label>
+					</div>
+				</div>
+                <div class="modal-footer">
+                    <button id="selfCertDialogBtnOk" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="selfCertDialogBtnCancel" class="btn btn-primary" data-dismiss="modal">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>					
+	<div class="modal fade" id="certReqDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" >Created Request Certificate</h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="card-body">
+					<div class="form-group form-inline">
+						<span class="col-md-5">Country code</span>
+						<input type="text" id="certReqCountry" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">State or province</span>
+						<input type="text" id="certReqStateProvince" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Locality</span>
+						<input type="text" id="certReqLocality" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Organization</span>
+						<input type="text" id="certReqOrganization" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Organizational Unit</span>
+						<input type="text" id="certReqOrganizationUnit" class="form-control-custom" />
+					</div>
+					<div class="form-group form-inline">
+						<span class="col-md-5">Common Name</span>
+						<input type="text" id="certReqCommonName" class="form-control-custom" />
+					</div>
+				</div>
+                <div class="modal-footer">
+                    <button id="certReqDialogBtnOk" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="certReqDialogBtnCancel" class="btn btn-primary" data-dismiss="modal">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div id="countryCodeDialog" hidden>
+		<fieldset id="countryCodeList"></fieldset>
+	</div>
+	<div id="debug_console"></div>
+</body>
+<?=$footer?>
+<script>
+// $("#formHTTPSet0").on("click", function () {
+$("input:radio[name=formHTTPSet]").on("click", function () {
+	// console.log(this);
+	if ($("#formHTTPSet0").prop('checked')) {
+		$("#https_contents").removeAttr('hidden');
+	}
+	else {
+		$("#https_contents").attr('hidden','');
+	}
+});
+
+function loadHTTPConfig(){
+	// url = "/inc/query.php?page=http";
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.Http,NETWORK.Https";
+	$.getJSON(url, function(response) {
+		// console.log(response);
+		if (response['network']['http']['enable']=='yes'){
+			$("#formHTTPSet1").prop('checked', true);
+		}
+		else if (response['network']['https']['enable']=='yes'){
+			$("#formHTTPSet0").prop('checked', true);
+			$("#https_contents").removeAttr('hidden');
+		}
+
+		$("#formHttpPort").val(response['network']['http']['port']);
+		$("#formHttpsPort").val(response['network']['https']['port']);
+		$("#formHTTPAuthType").val(response['network']['http']['authentype']);
+		// $("#system_datetime_ntp_s3").val(response['SYSTEM.Datetime.Ntp.s3']);
+	});
+}
+
+loadHTTPConfig();
+// value="<?=$arr_rs['NETWORK.Http.port']?>"
+// value="<?=$arr_rs['NETWORK.Https.port']?>"
+</script>
+</html>

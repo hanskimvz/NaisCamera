@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<title></title>
+	<link type="text/css" href="../css/common.css" rel="stylesheet" />
+	<link type="text/css" href="../css/jquery.ui.slider-rtl.css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.mouse.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.slider.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.slider-rtl.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/defstring/defbrand.js"></script>
+	<script type="text/javascript" src="../js/utils/jq_string.js"></script>
+	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+	<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
+	<script type="text/javascript" src="../js/jquery.filedown.js"></script>
+	<script type="text/javascript" src="../js/plat_utils/brand.js"></script>
+	<script type="text/javascript" src="../js/config/configuration.js"></script>
+</head>
+<body id="config-page">
+	<p class="menuLocationInfo">
+		<span class="04140201">Setup &gt; Storage &gt;</span>
+		<span id="pagename" class="04140202">Recording</span>
+	</p>
+	<ul class="box">
+		<li class="box-title"><h2 class="04140203">Recording Type</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li>
+							<input type="radio" name="formRecType" id="formRecType0" value="avi" checked />
+							<label for="formRecType0" class="04140204"> Continuous</label>
+						</li>
+						<li>
+							<input type="radio" name="formRecType" id="formRecType1" value="dat" />
+							<label for="formRecType1" class="04140205"> Event</label>
+						</li>
+						<li>
+							<input type="radio" name="formRecType" id="formRecType2" value="no" />
+							<label for="formRecType2" class="04140206"> None</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
+	<!-- AVI Contents //-->
+	<div class="avi_contents dsp_hide">
+		<ul class="box">
+			<li class="box-title"><h2 class="04140207">Recording Storage Options</h2></li>
+			<li class="box-content">
+				<ul>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140208">Storage device :</li>
+							<li class="formConfSdUsbChk">
+								<input type="checkbox" id="formARStorageSDCard" value="sd"></input>
+								<label for="formARStorageSDCard" class="04140209">SD card</label>
+							</li>
+						</ul>
+					</li>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140210">Recycling : </li>
+							<li>
+								<input type="radio" name="formARRecycling" id="formARRecycling0" value="no" />
+								<label for="formARRecycling0" class="04140211"> Stop recording</label>
+							</li>
+							<li>
+								<input type="radio" name="formARRecycling" id="formARRecycling1" value="yes" />
+								<label for="formARRecycling1" class="04140212"> Delete files and recycle (oldest first)</label>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="box">
+			<li class="box-title"><h2 class="04140214">Recording Setting</h2></li>
+			<li class="box-content">
+				<ul>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140215">Prefix of filename :</li>
+							<li>
+								<input type="text" id="formARRecSet" size="15" />
+								<label for="formARRecSet" class="">_CYYYYMMDD_hhmmss-XXXXXXXXXX.avi</label>
+							</li>
+						</ul>
+					</li>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140217">Recording resource : </li>
+							<li>
+								<select id="formARRecRes" class="width_step12">
+									<option value="video">Video only</option>
+									<option value="audiovideo">Audio + Video</option>
+								</select>
+							</li>
+						</ul>
+					</li>
+					<li class="item">
+						<ul>
+							<li class="item-title minwidth_step17 04140244">Maximum file size/duration :</li>
+							<li>
+								<input type="radio" name="formARPriRulSeg" id="formARPriRulSeg1" value="size" />
+								<label for="formARPriRulSeg1" class="width_step4 04140219"> Size</label>
+							</li>
+							<li><div class="slider-bar" id="formARSliderMega"></div></li>
+							<li>
+								<input type="text" id="formARMegabyte" class="text_cen" size="5" />
+								<label for="formARMegabyte" class="04140220"> (100 ... 1440 mb)</label>
+							</li>
+						</ul>
+					</li>
+					<li class="item">
+						<ul>
+							<li class="item-title minwidth_step17"></li>
+							<li>
+								<input type="radio" name="formARPriRulSeg" id="formARPriRulSeg2" value="time" />
+								<label for="formARPriRulSeg2" class="width_step4 04140221"> Time</label>
+							</li>
+							<li><div class="slider-bar" id="formARSliderTime"></div></li>
+							<li>
+								<input type="text" id="formARMinute" class="text_cen" size="5" />
+								<label for="formARMinute" class="04140222"> (5 ... 20 minutes)</label>
+							</li>
+						</ul>
+					</li>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140223">Stream source : </li>
+							<li>
+								<select id="formARPriStream" class="width_step12">
+									<option value='first'>First stream</option>
+									<option value='second'>Second stream</option>
+								</select>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="box InstantRecContents dsp_show_block">
+			<li class="box-title"><h2 class="04140226">Instant Recording</h2></li>
+			<li class="box-content">
+				<ul>
+					<li class="item">
+						<ul>
+							<li>
+								<button id="btnStart"><span class="04140227">Start</span></button>
+								<button id="btnStop"><span class="04140228">Stop</span></button>
+								<input type="text" id="formARConfRecSec" class="text_cen" size="8" value="60"/>
+								<label for="formARConfRecSec" class="04140229">(10 ... 600, 60 sec)</label>
+								<span id="testText"></span>
+							</li>
+							<li id="formConfDownBtn" class="float_right">
+								<span>
+									<button id="btnDown"><span class="04140230">Download</span></button>
+								</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div id="btn" class="box" align="center">
+			<button id="btnApply"><span class="04140224">Apply</span></button>
+		</div>
+	</div>
+	
+	<!-- DAT Contents //-->
+	<div class="dat_contents dsp_hide">
+		<ul class="box">
+			<li class="box-title"><h2 class="04140231">Recording Storage Options</h2></li>
+			<li class="box-content">
+				<ul>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140232">Storage device :</li>
+							<li class="">
+								<select id="formADStorageDevice">
+									<option value="ftp">sd+ftp</option>
+									<option value="sd">sd</option>
+								</select>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="box">
+			<li class="box-title"><h2 class="04140234">Recording Setting</h2></li>
+			<li class="box-content">
+				<ul>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140235">Recording resource : </li>
+							<li><input type="checkbox" id="recSrcCheckBoxVideo" /><label for="recSrcCheckBoxVideo" class="04140245"> Video</label></li>
+							<li><input type="checkbox" id="recSrcCheckBoxAudeo" /><label for="recSrcCheckBoxAudeo" class="04140246"> Audio</label></li>
+							<li><input type="checkbox" id="recSrcCheckBoxVcameta" /><label for="recSrcCheckBoxVcameta"> VCAmeta</label></li>
+							<li><input type="checkbox" id="recSrcCheckBoxMdmeta" /><label for="recSrcCheckBoxMdmeta"> MDmeta</label></li>
+						</ul>
+					</li>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140236">Recording hold off time :</li>
+							<li><div class="slider-bar" id="formADSliderDuration"></div></li>
+							<li>
+								<input type="text" id="formADDuration" class="text_cen" size="5" />
+								<label for="formADDuration" class="04140237"> (5 ... 60 sec)</label>
+							</li>
+						</ul>
+					</li>
+					<li class="item">
+						<ul>
+							<li class="item-title 04140238">Stream source : </li>
+							<li>
+								<select id="formADPriStream">
+									<option value='first'>First stream</option>
+									<option value='second'>Second stream</option>
+								</select>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div id="btn" class="box" align="center">
+			<button id="btnADApply"><span class="04140224">Apply</span></button>
+		</div>
+	</div>
+	
+	<!-- No recording Contents //-->
+	<div class="no_contents">
+		<div id="btn" class="box" align="center">
+			<button id="btnNoRecApply"><span class="04140224">Apply</span></button>
+		</div> 
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,174 @@
+{
+    "nbrofchannel": "1",
+    "ch0": {
+        "description": "",
+        "name": "default",
+        "profile": "default",
+        "audioin": {
+            "nbrofchannel": "0",
+            "ch0": {
+                "enable": "no",
+                "port": "0",
+                "volume": "128",
+                "adc": {
+                    "codec": "g711",
+                    "frequency": "16000"
+                }
+            }
+        },
+        "audioout": {
+            "nbrofchannel": "0",
+            "ch0": {
+                "enable": "no",
+                "name": "audioout",
+                "volume": "128",
+                "tcp": {
+                    "port": "6000"
+                }
+            }
+        },
+        "snapshot": {
+            "enable": "yes",
+            "maxfps": "2",
+            "name": "snapshot",
+            "quality": "70",
+            "resolution": "1920x1080"
+        },
+        "videocodec": {
+            "lock": "yes",
+            "nbrofstream": "2",
+            "recenable": "no",
+            "vcaenable": "no",
+            "st0": {
+                "enable": "yes",
+                "name": "stream-0",
+                "standard": "h264",
+                "h264": {
+                    "bitrate": "5120",
+                    "bitratectrl": "vbr",
+                    "maxbitrate": "12000",
+                    "maxfps": "10",
+                    "pcount": "14",
+                    "profile": "HiP",
+                    "qvalue": "highest",
+                    "resolution": "1920x1080",
+                    "slice": "yes",
+                    "unchainedgop": "no"
+                },
+                "mjpeg": {
+                    "maxfps": "15",
+                    "quality": "50",
+                    "resolution": "1280x720"
+                }
+            },
+            "st1": {
+                "enable": "yes",
+                "name": "stream-1",
+                "standard": "h264",
+                "h264": {
+                    "bitrate": "5120",
+                    "bitratectrl": "vbr",
+                    "maxbitrate": "12000",
+                    "maxfps": "10",
+                    "pcount": "29",
+                    "profile": "HiP",
+                    "qvalue": "highest",
+                    "resolution": "640x360",
+                    "slice": "yes",
+                    "unchainedgop": "no"
+                },
+                "mjpeg": {
+                    "maxfps": "15",
+                    "quality": "50",
+                    "resolution": "1280x720"
+                }
+            }
+        }
+    },
+    "profile": {
+        "list": "default",
+        "nbrofprofile": "1",
+        "default": {
+            "description": "",
+            "name": "default",
+            "audioin": {
+                "nbrofchannel": "0",
+                "ch0": {
+                    "enable": "no",
+                    "port": "0",
+                    "volume": "128",
+                    "adc": {
+                        "codec": "g711",
+                        "frequency": "16000"
+                    }
+                }
+            },
+            "audioout": {
+                "nbrofchannel": "0",
+                "ch0": {
+                    "enable": "no",
+                    "volume": "128",
+                    "tcp": {
+                        "port": "6000"
+                    }
+                }
+            },
+            "snapshot": {
+                "enable": "yes",
+                "maxfps": "2",
+                "name": "snapshot",
+                "quality": "70",
+                "resolution": "800x450"
+            },
+            "videocodec": {
+                "nbrofstream": "2",
+                "recenable": "no",
+                "vcaenable": "no",
+                "st0": {
+                    "enable": "yes",
+                    "name": "stream-0",
+                    "standard": "h264",
+                    "h264": {
+                        "bitrate": "5120",
+                        "bitratectrl": "vbr",
+                        "maxbitrate": "12000",
+                        "maxfps": "30",
+                        "pcount": "29",
+                        "profile": "HiP",
+                        "qvalue": "highest",
+                        "resolution": "1280x720",
+                        "slice": "yes",
+                        "unchainedgop": "no"
+                    },
+                    "mjpeg": {
+                        "maxfps": "15",
+                        "quality": "50",
+                        "resolution": "1280x720"
+                    }
+                },
+                "st1": {
+                    "enable": "no",
+                    "name": "stream-1",
+                    "standard": "h264",
+                    "h264": {
+                        "bitrate": "5120",
+                        "bitratectrl": "vbr",
+                        "maxbitrate": "12000",
+                        "maxfps": "15",
+                        "pcount": "29",
+                        "profile": "HiP",
+                        "qvalue": "highest",
+                        "resolution": "1280x720",
+                        "slice": "yes",
+                        "unchainedgop": "no"
+                    },
+                    "mjpeg": {
+                        "maxfps": "15",
+                        "quality": "50",
+                        "resolution": "1280x720"
+                    }
+                }
+            }
+        }
+    }
+}

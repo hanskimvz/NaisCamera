@@ -1,0 +1,334 @@
+{
+    "version": {
+        "bootloader": "1.1.116",
+        "kernel": "1.1.2",
+        "firmware": "1.12.0.27",
+        "description": "Official Release",
+        "revision": "3532e87ac7ebeed8cc9fdb90afffe9762bd9a0a6",
+        "hwrevision": "000C",
+        "userfs": "1.12.0.25A",
+        "serialno": "G90A0031F",
+        "db": "0.3.310"
+    },
+    "brand": {
+        "brand": "SEJIN TECH LTD.",
+        "authenkey": "8BA4D163B633007248531BA8CB6D2F07",
+        "product": {
+            "fullname": "SC6102HD-6311",
+            "shortname": "SC6102HD",
+            "description": "NETWORK CAMERA"
+        },
+        "model": {
+            "productid": "B104"
+        }
+    },
+    "adrec": {
+        "backupinterval": "60",
+        "duration": "0",
+        "enable": "no",
+        "maxduration": "0",
+        "recycle": "yes",
+        "resource": "video",
+        "segmentsize": "700",
+        "source": "first",
+        "storage": "sd",
+        "version": "1",
+        "ftp": {
+            "account": "",
+            "address": "",
+            "name": "",
+            "port": "21",
+            "prefixname": "usn",
+            "prefixusername": "",
+            "targetpath": "",
+            "infofile": {
+                "enable": "no"
+            }
+        }
+    },
+    "avirec": {
+        "enable": "no",
+        "enableautosense": "no",
+        "prefixname": "REC",
+        "recycle": "yes",
+        "resource": "video",
+        "segsize": "100",
+        "segtime": "10",
+        "segtype": "size",
+        "source": "first",
+        "storage": "sd",
+        "verifyintegrity": "no"
+    },
+    "bitxt": {
+        "nbrofchannel": "1",
+        "ch0": {
+            "nbrofstream": "1",
+            "st0": {
+                "enable": "yes",
+                "date": {
+                    "enable": "yes",
+                    "position": "6%:12%"
+                },
+                "name": {
+                    "enable": "no",
+                    "position": "6%:20%",
+                    "text": "SC6102HD"
+                },
+                "time": {
+                    "enable": "yes",
+                    "millisec": "no",
+                    "position": "6%:16%"
+                }
+            }
+        }
+    },
+    "ddns": {
+        "domainname": "",
+        "enable": "no",
+        "servertype": "DynDNS",
+        "updatetime": "600",
+        "user": ""
+    },
+    "dido": {
+        "di": {
+            "enable": "yes",
+            "nbrofchannel": "0",
+            "type": "relay",
+            "ch0": {
+                "enable": "yes",
+                "name": "DI1_NAME",
+                "trig": "ready",
+                "type": "relay"
+            }
+        },
+        "do": {
+            "nbrofchannel": "0",
+            "ch0": {
+                "enable": "yes",
+                "name": "DO1_NAME",
+                "opermanu": "yes",
+                "trig": "ready"
+            }
+        },
+        "map": {
+            "di": {
+                "nbrofchannel": "0",
+                "ch0": {
+                    "detectiontype": "edge",
+                    "duration": "5",
+                    "elapse": "5",
+                    "type": "no"
+                }
+            },
+            "do": {
+                "ch0": {
+                    "detectiontype": "edge",
+                    "duration": "5",
+                    "elapse": "5"
+                }
+            }
+        }
+    },
+    "fd": {
+        "enable": "yes",
+        "nbrofchannel": "1",
+        "ch0": {
+            "cliprateh": "150",
+            "clipratew": "130",
+            "confidence": "128",
+            "enable": "no",
+            "ignorecnt": "3",
+            "list": "0,1,2,3",
+            "maxcnt": "4",
+            "maxsizerate": "100",
+            "minsizerate": "0",
+            "nbrofzone": "4",
+            "sizeorder": "descending",
+            "trkfactorh": "100",
+            "trkfactorw": "100",
+            "trkholdon": "3000",
+            "da0": {
+                "description": "",
+                "enable": "no",
+                "name": "da",
+                "position": "0,0,9999,0",
+                "trkduration": "120"
+            },
+            "ez0": {
+                "enable": "no",
+                "name": "ez0",
+                "position": "0,0,0,0"
+            },
+            "ez1": {
+                "enable": "no",
+                "name": "ez1",
+                "position": "0,0,0,0"
+            },
+            "ez2": {
+                "enable": "no",
+                "name": "ez2",
+                "position": "0,0,0,0"
+            },
+            "ez3": {
+                "enable": "no",
+                "name": "ez3",
+                "position": "0,0,0,0"
+            },
+            "osd": {
+                "enable": "no",
+                "snapshot": "no",
+                "st0": "no",
+                "st1": "no",
+                "zone": "no"
+            },
+            "z0": {
+                "description": "",
+                "enable": "no",
+                "name": "zone",
+                "number": "0",
+                "position": "0,0,9999,9999"
+            },
+            "z1": {
+                "description": "",
+                "enable": "no",
+                "name": "zone",
+                "number": "1",
+                "position": "2500,0,4999,9999"
+            },
+            "z2": {
+                "description": "",
+                "enable": "no",
+                "name": "zone",
+                "number": "2",
+                "position": "5000,0,7499,9999"
+            },
+            "z3": {
+                "description": "",
+                "enable": "no",
+                "name": "zone",
+                "number": "3",
+                "position": "7500,0,10000,9999"
+            }
+        }
+    },
+    "fwupgrade": {
+        "server": {
+            "enable": "no",
+            "url": ""
+        }
+    },
+    "genetec": {
+        "enable": "yes",
+        "version": "1.0.0"
+    },
+    "heartbeat": {
+        "enable": "yes",
+        "interval": "60",
+        "multicast": {
+            "enable": "yes"
+        },
+        "tcp": {
+            "enable": "yes"
+        },
+        "tcppush": {
+            "enable": "no"
+        }
+    },
+    "host": {
+        "address": "",
+        "enable": "no",
+        "port": "5000",
+        "updateinterval": "60"
+    },
+    "iot": {
+        "address": "iot.ucount.it",
+        "enable": "no",
+        "port": "1883",
+        "status": "init"
+    },
+    "ipfilter": {
+        "adminip": "",
+        "alwaysallowicmp": "yes",
+        "enable": "no",
+        "type": "deny",
+        "allowlist": {
+            "filter": ""
+        },
+        "denylist": {
+            "filter": ""
+        }
+    },
+    "netloss": {
+        "detect": {
+            "ethlink": {
+                "enable": "yes"
+            },
+            "ping": {
+                "address": "",
+                "enable": "no",
+                "interval": "10"
+            }
+        }
+    },
+    "pir": {
+        "interval": "5"
+    },
+    "privacyzone": {
+        "enable": "yes",
+        "nbrofchannel": "1",
+        "ch0": {
+            "enable": "yes",
+            "list": "0,1,2,3,4,5,6,7",
+            "nbrofzone": "8",
+            "type": "static",
+            "z0": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "0,102,591,1899"
+            },
+            "z1": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "5000,2500,7498,4999"
+            },
+            "z2": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "2500,5000,4999,7499"
+            },
+            "z3": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "5000,5000,7498,7499"
+            },
+            "z4": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "0,0,0,0"
+            },
+            "z5": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "0,0,0,0"
+            },
+            "z6": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "0,0,0,0"
+            },
+            "z7": {
+                "dynamic": "",
+                "enable": "no",
+                "name": "zone",
+                "position": "0,0,0,0"
+            }
+        }
+    }
+}

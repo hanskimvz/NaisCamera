@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<title>Recording/Snapshot Configuration</title>
+	<link type="text/css" href="../css/common.css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.ui.mouse.js"></script>
+	<script type="text/javascript" src="../js/jquery.corner.js?v2.09"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/brand.js"></script>
+	<script type="text/javascript" src="../js/fafu_util.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/defstring/defbrand.js"></script>
+	<script type="text/javascript" src="../js/utils/jq_string.js"></script>
+	<script type="text/javascript" src="../js/uapi.ajax.js"></script>
+
+	<!-- http://jquery.thewikies.com/browser/ // -->
+	<script type="text/javascript" src="../js/jquery.browser.js"></script>
+	<script type="text/javascript" src="../js/jquery.alphanumeric.pack.js"></script>
+	<script type="text/javascript" src="../js/uapi.player.js"></script>
+	<script type="text/javascript" src="../js/activexobject.js"></script>
+	<script type="text/javascript" src="../js/plat_utils/uconfig.js"></script>
+	<script type="text/javascript" src="../js/plat_utils/brand.js"></script>
+	<script type="text/javascript" src="../js/config/recsnapconfig.js"></script>
+</head>
+
+<body id="screen-page">
+<div>
+	<ul class="box">
+		<li class="box-title"><h2 class="02016703">Local Recording</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li class="item-title 02016704">Save Path :</li>
+						<li>
+							<input type="text" id="formARRecPath" size="35" />
+							<button id="btnRecPath"><span class="">Browse...</span></button>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 02016705">Prefix of filename :</li>
+						<li>
+							<input type="text" id="formARRecSet" size="15" />
+							<label for="formARRecSet" class="">_yyyymmdd_hh-mm-ss.avi</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 02016706">Recording resource : </li>
+						<li>
+							<select id="formARRecRes">
+								<option value="video">Video only</option>
+								<option value="audiovideo">Audio + Video</option>
+							</select>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 02016714">Maximum file size/duration :</li>
+						<li>
+							<input type="radio" name="formARPriRulSeg" id="formARPriRulSeg1" value="size" />
+						</li>
+						<li class="formConfSliderWidth slider_width_step1">
+							<label for="formARPriRulSeg1" class="02016708"> Size</label>
+						</li>
+						<li>
+							<input type="text" id="formARMegabyte" size="5" />
+							<label for="formARMegabyte"> (10 ... 2000 MB)</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title"></li>
+						<li>
+							<input type="radio" name="formARPriRulSeg" id="formARPriRulSeg2" value="times" />
+						</li>
+						<li class="formConfSliderWidth slider_width_step1">
+							<label for="formARPriRulSeg2" class="02016709"> Time</label>
+						</li>
+						<li>
+							<input type="text" id="formARSecond" size="5" />
+							<label for="formARSecond"> (10 ... 3600 <span class="02016715">sec</span>)</label>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title"></li>
+						<li>
+							<input type="radio" name="formARPriRulSeg" id="formARPriRulSeg3" value="timem" />
+						</li>
+						<li class="formConfSliderWidth slider_width_step1">
+							<label for="formARPriRulSeg3" class="02016709"> Time</label>
+						</li>
+						<li>
+							<input type="text" id="formARMinute" size="5" />
+							<label for="formARMinute"> (1 ... 3600 <span class="02016716">min</span>)</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class="box">
+		<li class="box-title"><h2 class="02016710">Snapshot</h2></li>
+		<li class="box-content">
+			<ul>
+				<li class="item">
+					<ul>
+						<li class="item-title 02016704">Save Path :</li>
+						<li>
+							<input type="text" id="formARSnapPath" size="35" />
+							<button id="btnSnapPath"><span class="">Browse...</span></button>
+						</li>
+					</ul>
+				</li>
+				<li class="item">
+					<ul>
+						<li class="item-title 02016705">Prefix of filename :</li>
+						<li>
+							<input type="text" id="formARSnapSet" size="15" />
+							<label for="formARSnapSet" class="">_yyyymmdd_hh-mm-ss.jpg</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div class="box settingButton text_cen" >
+		<button id="btnApply"><span class="02016711">Apply</span></button>
+		<button id="btnReset"><span class="02016712">Close</span></button>
+	</div>
+</div>
+
+<div id="frame">
+	<div id="activex" class="activex round-top">
+		<div id="rightlist">
+			<div id="screen" align="center"></div>
+			<div id="screen_tools"></div>
+		</div>
+		<div class="clear">&nbsp;</div>
+	</div>
+</div>
+</body>
+</html>

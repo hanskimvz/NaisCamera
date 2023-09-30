@@ -1,0 +1,117 @@
+{
+    "enable": "yes",
+    "nbrofchannel": "1",
+    "zonemode": "position",
+    "ch0": {
+        "enable": "yes",
+        "list": "0,1,2,3,4,5,6,7",
+        "nbrofzone": "8",
+        "z0": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "0",
+            "objectsize": "128",
+            "position": "0,0,2499,4999",
+            "sensitivity": "128"
+        },
+        "z1": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "1",
+            "objectsize": "128",
+            "position": "2500,0,4999,4999",
+            "sensitivity": "128"
+        },
+        "z2": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "2",
+            "objectsize": "128",
+            "position": "5000,0,7499,4999",
+            "sensitivity": "128"
+        },
+        "z3": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "3",
+            "objectsize": "128",
+            "position": "7500,0,10000,4999",
+            "sensitivity": "128"
+        },
+        "z4": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "4",
+            "objectsize": "128",
+            "position": "0,5000,2499,10000",
+            "sensitivity": "128"
+        },
+        "z5": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "5",
+            "objectsize": "128",
+            "position": "2500,5000,4999,10000",
+            "sensitivity": "128"
+        },
+        "z6": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "6",
+            "objectsize": "128",
+            "position": "5000,5000,7499,10000",
+            "sensitivity": "128"
+        },
+        "z7": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "no",
+            "name": "zone",
+            "number": "7",
+            "objectsize": "128",
+            "position": "7500,5000,10000,10000",
+            "sensitivity": "128"
+        }
+    },
+    "default": {
+        "zone": {
+            "bitmask": "",
+            "description": "",
+            "duration": "0",
+            "enable": "yes",
+            "name": "zone",
+            "number": "0",
+            "objectsize": "128",
+            "position": "500,900,3000,4000",
+            "sensitivity": "128"
+        }
+    },
+    "metadata": {
+        "enable": "yes",
+        "blob": {
+            "enable": "yes"
+        }
+    }
+}
