@@ -11,6 +11,7 @@
     "CPU":                  "CPU",
     "Memory":               "메모리",
     "Uptime":               "작동 시간",
+    "Temperature":          "온도",
     "Bitrate":              "비트레이트",
     "Fps":                  "Fps",
     "RTSP Connect List":    "RTSP 연결 수",

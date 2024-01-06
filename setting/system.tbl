@@ -1,114 +1,115 @@
- {
-        "properties": {
-            "hardware": {
-                "pantilt": "NONE",
-                "fan": "0",
-                "heater": "0",
-                "lens": "HAISHI-BH243",
-                "iristype": "NONE",
-                "dntype": "TDN",
-                "irtype": "SMARTIR_TYPE1",
-                "stream": "3",
-                "tvout": "0",
-                "audioin": "0",
-                "audioout": "0",
-                "di": "0",
-                "do": "0",
-                "rs485": "0",
-                "usb": "0",
-                "sd": "0",
-                "wifi": "0",
-                "pir": "0"
-            },
-            "web": {
-                "logoimage": "\/images\/logo.png",
-                "logopos": "left",
-                "topname": "(null)hortname",
-                "namepos": "center",
-                "menupos": "right",
-                "skin": "noline-silver"
-            },
-            "stream": {
-                "resolution": "1920x1080,1280x720,1120x630,960x540,800x450,640x360,480x270,320x180",
-                "standard": "h264,mjpeg"
-            }
+{
+    "properties": {
+        "hardware": {
+            "pantilt": "NONE",
+            "fan": "0",
+            "heater": "0",
+            "lens": "HAISHI-BH243",
+            "iristype": "NONE",
+            "dntype": "TDN",
+            "irtype": "SMARTIR_TYPE1",
+            "stream": "3",
+            "tvout": "0",
+            "audioin": "0",
+            "audioout": "0",
+            "di": "0",
+            "do": "0",
+            "rs485": "0",
+            "usb": "0",
+            "sd": "0",
+            "wifi": "0",
+            "pir": "0"
         },
-        "datetime": {
-            "syncinterval": "none",
-            "syncsource": "ntp",
-            "date": {
-                "format": "yyyymmdd"
-            },
-            "ntp": {
-                "nbrofserver": "4",
-                "s0": "time.windows.com",
-                "s1": "clock.isc.org",
-                "s2": "ntp.shoa.cl",
-                "s3": "time.bora.net"
-            },
-            "sntpd": {
-                "enable": "no"
-            },
-            "time": {
-                "format": "24hmnss"
-            },
-            "tz": {
-                "name": "UTC",
-                "posixrule": "GMT0",
-                "utcoffset": "0",
-                "dst": {
-                    "enabled": "no",
-                    "mode": "auto"
-                }
-            }
+        "web": {
+            "logoimage": "\/images\/logo.png",
+            "logopos": "left",
+            "topname": "(null)hortname",
+            "namepos": "center",
+            "menupos": "right",
+            "skin": "noline-silver"
         },
-        "heater": {
-            "control": {
-                "mode": "auto",
-                "offtemp": "3",
-                "ontemp": "0",
-                "unit": "cel"
-            }
+        "stream": {
+            "resolution": "1920x1080,1280x720,1120x630,960x540,800x450,640x360,480x270,320x180",
+            "standard": "h264,mjpeg"
+        }
+    },
+    "datetime": {
+        "syncinterval": "none",
+        "syncsource": "ntp",
+        "date": {
+            "format": "yyyymmdd"
         },
-        "info": {
-            "rack": "r0b0m0",
-            "rackstate": {
-                "fanstate0": "ok",
-                "fanstate1": "ok",
-                "fanstate2": "ok",
-                "temperature0": "0.0",
-                "temperature1": "0.0",
-                "temperature2": "0.0",
-                "voltage0": "0.0",
-                "voltage1": "0.0"
-            }
+        "ntp": {
+            "nbrofserver": "4",
+            "s0": "time.windows.com",
+            "s1": "clock.isc.org",
+            "s2": "ntp.shoa.cl",
+            "s3": "time.bora.net"
         },
-        "install": {
-            "place": "ceiling"
+        "sntpd": {
+            "enable": "no"
         },
-        "loadbalance": {
-            "enable": "yes",
-            "max": "95",
-            "method": "dfps",
-            "min": "92"
+        "time": {
+            "format": "24hmnss"
         },
-        "status": {
-            "videoin": {
-                "ch0": {
-                    "signal": "normal",
-                    "standard": "cmos"
-                }
-            }
-        },
-        "log": {
-            "mode": "manual",
-            "ftp": {
-                "account": "",
-                "address": "",
-                "name": "",
-                "port": "21",
-                "prefixname": "",
-                "targetpath": ""
+        "tz": {
+            "name": "Seoul",
+            "posixrule": "WIB-7",
+            "utcoffset": 25200,
+            "dst": {
+                "enabled": "no",
+                "mode": "auto"
             }
         }
-    }
+    },
+    "heater": {
+        "control": {
+            "mode": "auto",
+            "offtemp": "3",
+            "ontemp": "0",
+            "unit": "cel"
+        }
+    },
+    "info": {
+        "rack": "r0b0m0",
+        "rackstate": {
+            "fanstate0": "ok",
+            "fanstate1": "ok",
+            "fanstate2": "ok",
+            "temperature0": "0.0",
+            "temperature1": "0.0",
+            "temperature2": "0.0",
+            "voltage0": "0.0",
+            "voltage1": "0.0"
+        }
+    },
+    "install": {
+        "place": "ceiling"
+    },
+    "loadbalance": {
+        "enable": "yes",
+        "max": "95",
+        "method": "dfps",
+        "min": "92"
+    },
+    "status": {
+        "videoin": {
+            "ch0": {
+                "signal": "normal",
+                "standard": "cmos"
+            }
+        }
+    },
+    "log": {
+        "mode": "manual",
+        "ftp": {
+            "account": "",
+            "address": "",
+            "name": "",
+            "port": "21",
+            "prefixname": "",
+            "targetpath": ""
+        }
+    },
+    "fname": "\/app\/setting\/system.tbl"
+}

@@ -1,5 +1,5 @@
 <?php
-
+# do not use, json is used.
 $fname ="/mnt/db/param.db";
 $db = new SQLite3($fname);
 

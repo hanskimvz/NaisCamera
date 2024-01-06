@@ -1,21 +1,21 @@
 {
     "nbrofethernet": "1",
     "dns": {
-        "preferred": "1.1.1.1",
-        "alternate0": "",
+        "preferred": "168.126.63.1",
+        "alternate0": "114.114.114.114",
         "alternate1": "",
-        "alternate2": "2.2.2.2"
+        "alternate2": ""
     },
     "eth0": {
         "broadcast": "192.168.255.255",
-        "dns0": "0.0.0.0",
+        "dns0": "114.114.114.114",
         "dns1": "0.0.0.0",
-        "gateway": "192.168.0.1",
+        "gateway": "192.168.1.1",
         "hostname": "SC6102HD",
         "interface": "eth0",
-        "ipaddress": "192.168.3.31",
+        "ipaddress": "192.168.1.201",
         "ipversion": "ipv4",
-        "mac": "00:13:23:A0:03:1F",
+        "mac": "00:13:24:A0:03:1F",
         "mode": "auto",
         "mtu": "1500",
         "nbrofdns": "2",
@@ -286,5 +286,6 @@
     },
     "wsdiscovery": {
         "enable": "yes"
-    }
+    },
+    "fname": "\/home\/setting\/network.tbl"
 }

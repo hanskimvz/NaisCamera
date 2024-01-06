@@ -6,6 +6,19 @@
 include ("inc/common.php");
 echo $header;
 
+// $sSock      = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+// socket_bind($sSock, '', 6555);
+// socket_listen($sSock);
+// while($cSock = socket_accept($sSock))
+// {
+//     socket_getpeername($cSock, $addr, $port);
+//     echo "SERVER >> client connected $addr:$port \n";
+//     $date = date("Y/m/d H:i:s");
+//     socket_write($cSock, $date);
+//     socket_close($cSock);
+//     echo "SERVER >> client Close.\n";
+// }
+
 require_once $_SERVER['DOCUMENT_ROOT']."/inc/json.php";
 $json = new Services_JSON();
 $json_str = file_get_contents($_SERVER['DOCUMENT_ROOT']."/inc/menu.json");
@@ -134,16 +147,23 @@ $stream = ["First Stream", "Second Stream", "Snapshot", "Audio"];
                     <div class="sidebar-card ml-2 mr-2 mt-1 mb-1">
                         <div class="sidebar-card-title"><h6>System</h6></div>
                         <div>
-                            <span>CPU</span>:<label id="status_CpuUsed" class="ml-1 mr-1">90</label>%
+                            <span>CPU</span>:<label id="status_CpuUsed" class="ml-1 mr-1">90</label>%, 
                             <span>Memory</span>:<label id="status_MemUsed" class="ml-1 mr-1">98</label>%
                         </div>
                     </div>
                     <div class="sidebar-card ml-2 mr-2 mt-1 mb-1">
                         <div class="slider-card-title"><h6>Time</h6></div>
                         <div>
-                            <span>Uptime</span>:<label id="status_TimeUptime">-</label>
+                            <span>Uptime</span>: <label id="status_TimeUptime">-</label>
                         </div>
                     </div>
+                    <div class="sidebar-card ml-2 mr-2 mt-1 mb-1">
+                        <div class="slider-card-title"><h6>Temperature</h6></div>
+                        <div>
+                            <span>Temperature</span>: <label id="status_Temperature">-</label>
+                        </div>
+                    </div>
+
 <?PHP for ($i=0; $i<3; $i++) { ?>
                     <div class="sidebar-card ml-2 mr-2 mt-1 mb-1">
                         <div class="sidebar-card-title"><h6><?=$stream[$i]?></h6></div>
@@ -311,10 +331,41 @@ function getMeta(){
 }
 // render();
 
+function getStatus(){
+    url = "/uapi-cgi/status.cgi";
+    $.getJSON(url, function(response) {
+        console.log(response);
+        document.getElementById('status_CpuUsed').innerHTML = response['cpu'];
+        document.getElementById('status_MemUsed').innerHTML = response['memory']['usage_percent'];
+        document.getElementById('status_TimeUptime').innerHTML = response['uptime']['str'];
+        document.getElementById('status_Temperature').innerHTML = response['temperature'];
+        document.getElementById('status_ConnectNum').innerHTML = response['connection'].length;
+
+        var select = document.getElementById('formConnectList');
+        for (var i = select.length - 1; i >= 0; i--){
+            if (select) {
+                select.remove(i);
+            }
+        }        
+        for (var i = 0; i<response['connection'].length; i++){
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = response['connection'][i]['address'];
+            select.appendChild(opt);
+        }
+        
+    });
+}
+
 setInterval(() => {
-    render();
-    getMeta();
+    // render();
+    // getMeta();
+    n++;
+    if (n%20 == 0) {
+        getStatus();
+    }
 }, 50);
+// getStatus();
 
 </script>
 

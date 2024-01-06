@@ -147,7 +147,7 @@ echo $header;
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
 
 		<div class="row mt-4">
 			<div class="card col-lg-6">
@@ -181,15 +181,83 @@ echo $header;
 </body>
 <?=$footer?>
 <script>
-$("button").on("click", function () {
-	console.log(this);
-	if (this.id == "modalApply") {
-		console.log($("#formUserName").val());
-	}
+
+function updateTCPIPConfig() {
+	// document.querySelectorAll('input').forEach((input) => {
+    // 	console.log("$('#"+ input.id +"').val()", input.type);
+  	// });
+	var params = {
+		"action": 'update',
+	  	// $('ipv4Enable').val() checkbox
+		//  $('formTcpipDhcpChk1').val() radio
+		"network.eth0.dhcp.enable" : $('#formTcpipDhcpChk0').prop("checked") ? "yes" : "no",
+		"network.eth0.dhcp.ipaddress" : $('#formTcpipDhcpIP').val(),
+		"network.eth0.dhcp.subnet" : $('#formTcpipDhcpSub').val(),
+		"network.eth0.dhcp.gateway": $('#formTcpipDhcpGate').val(),
+		"network.eth0.ipaddress": $('#formTcpipStaticIP').val(),
+		"network.eth0.subnet": $('#formTcpipStaticSub').val(),
+		"network.eth0.gateway": $('#formTcpipStaticGate').val(),
+		"network.ipv6.enable": $('#ipv6Enable').prop("checked") ? "yes" :"no",
+		"network.eth0.ipversion": $('#ipv6Enable').prop("checked") ? "ipv6" :"ipv4",
+		"network.eth0.ipv6.raenable": $('#acceptRAEnable').prop("checked") ? "yes": "no",
+		"network.eth0.ipv6.dhcp.enable": $('#dhcpEnable').prop("checked") ? "yes": "no", 
+		"network.eth0.ipv6.dhcp.type": $('#dhcpType').val(),
+		"network.eth0.ipv6.ipaddress": $('#staticIPaddress').val(),
+		"network.eth0.ipv6.prefixlength":$('#prefixLength').val(),
+		"network.eth0.ipv6.gateway": $('#defaultRouter').val(),
+		"network.dns.preferred": $('#formTcpipPriDNS').val(),
+		"network.dns.alternate0": $('#formTcpipSecDNS').val(),
+		"network.eth0.hostname": $('#formHostname').val(),
+		"network.eth0.autoip.enable": $('#linkLocalEnable').prop("checked") ? "yes" : "no",
+		"network.eth0.autoip.ipaddress" : $('#formLinkLocalIP').val(),
+		"network.eth0.autoip.subnet": $('#formLinkLocalSubnet').val()
+	}	
+	console.log(params);
+	let url = "/uapi-cgi/param.cgi";
+	console.log(url);
+	$.ajax({
+        url : url,
+        type : 'GET',
+        async: true,
+        data :  params,
+        dataType : "text", // output format
+        timeout: 10000,    
+        contentType:"application/text",        
+    //     // beforeSend:function(){
+    //     //     $('.wrap-loading').removeClass('display-none');
+    //     // },
+    //     // complete:function(){
+    //     //     $('.wrap-loading').addClass('display-none');
+    //     // },
+        success : function(data){
+			console.log(data);
+        },
+        error : function(request,status,error){
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            var err=JSON.parse(request.responseText);
+            console.log(err.resData[0].errorMsg);
+        },
+        fail : function() {
+            alert("인터넷 연결 상태를 확인해주세요.");
+        }
+    });
+}
+
+$("#btnApply").on("click", function() {	
+	updateTCPIPConfig();
 });
+// $("button").on("click", function () {
+// 	console.log(this);
+// 	if (this.id == "btnApply"){
+// 		updateTCPIPConfig();
+// 	}
+// 	else if (this.id == "modalApply") {
+// 		console.log($("#formUserName").val());
+// 	}
+// });
 
 $("#ipv6Enable").on("click", function () {
-	console.log(this.checked)
+	// console.log(this.checked)
 	if (this.checked) {
 		$("#ipv6Contents").removeAttr('hidden');
 	}
@@ -200,10 +268,10 @@ $("#ipv6Enable").on("click", function () {
 
 
 function loadTCPIPConfig(){
-	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK.eth0,NETWORK.Dns";
-	console.log(url);
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=NETWORK";
+	// console.log(url);
 	$.getJSON(url, function(response) {
-		console.log(response);
+		// console.log(response);
 		if (response['network']['eth0']['dhcp']['enable']=='yes'){
 			$("#formTcpipDhcpChk0").prop('checked', true);
 		}
@@ -218,9 +286,11 @@ function loadTCPIPConfig(){
 		$("#formTcpipStaticIP").val(response['network']['eth0']['ipaddress']);
 		$("#formTcpipStaticSub").val(response['network']['eth0']['subnet']);
 		$("#formTcpipStaticGate").val(response['network']['eth0']['gateway']);
-
-		if (response['network']['eth0']['ipversion']=='ipv6'){
+		
+		if (response['network']['ipv6']['enable']=='yes'){
 			$("#ipv6Enable").prop('checked', true);
+		}
+		if (response['network']['eth0']['ipversion']=='ipv6'){
 			$("#ipv6Contents").removeAttr('hidden');
 		}		
 		$("#ipaddressInformation").val(response['network']['eth0']['ipv6']['dhcp']['ipaddress']);
@@ -237,10 +307,10 @@ function loadTCPIPConfig(){
 		$("#defaultRouter").val(response['network']['eth0']['ipv6']['gateway']);
 
 		$("#formTcpipPriDNS").val(response['network']['dns']['preferred']);
-		$("#formTcpipSecDNS").val(response['network']['eth0']['dns0']);
+		$("#formTcpipSecDNS").val(response['network']['dns']['alternate0']);
 		$("#formHostname").val(response['network']['eth0']['hostname']);
 
-		if (response['network']['eth0']['.Autoip.enable']=='yes'){
+		if (response['network']['eth0']['autoip']['enable']=='yes'){
 			$("#linkLocalEnable").prop('checked', true);
 		}
 		

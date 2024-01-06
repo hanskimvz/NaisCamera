@@ -1,6 +1,7 @@
 <!DOCTYPE html lang="en">
 <html lang="en" >
 <?php
+print (exec("whoami"));
 include ("../inc/common.php");
 echo $header;
 ?>
@@ -11,7 +12,7 @@ echo $header;
 }
 </style>
 <?php
-$body = file_get_contents("/root/data/setting/zoneinfo/tz.json");
+$body = file_get_contents("/app/setting/zoneinfo/tz.json");
 $arr_tz = json_decode($body, True);
 $sel_tz = '';
 foreach($arr_tz as $tz){
@@ -21,7 +22,6 @@ foreach($arr_tz as $tz){
 }
 
 $now = date("Y/m/d H:i:s");
-// print $now;
 
 ?>
 <div id="content">
@@ -48,7 +48,7 @@ $now = date("Y/m/d H:i:s");
 					</div>
 					<div class="form-group">
 						<div class="float-right">
-							<a id="linkNtp" href="#"><span>Go to NTP configuration</span></a>
+							<a id="linkNtp" href="/config/ntp.html"><span>Go to NTP configuration</span></a>
 						</div>
 						<div class="form-inline">
 							<span class="col-md-3">Sync source</span>
@@ -88,7 +88,7 @@ $now = date("Y/m/d H:i:s");
 						<div class="form-inline">
 							<span class="col-md-2">Source</span>
 							<label class="form-check">	
-								<input type="radio" name="formSyncMethod" id="formSyncMethod0" value="pc" class="form-check-input"/>
+								<input type="radio" name="formSyncMethod" id="formSyncMethod0" value="pc" class="form-check-input" checked />
 								<span>Set this computer's Datetime</span>
 							</label>
 						</div>
@@ -117,13 +117,13 @@ $now = date("Y/m/d H:i:s");
 						<div class="form-inline mt-1">
 							<span class="col-md-2 mr-4"></span>
 							<span class="col-md-1">Date</span>
-							<input id="formDate" type="text" class="form-control-custom mr-2" /> 
-							<span>MM-DD-YYYY</span>
+							<input id="formDate" type="text" class="form-control-custom mr-2" value="<?=date("Y-m-d")?>" /> 
+							<span>YYYY-MM-DD</span>
 						</div>
 						<div class="form-inline mt-1">
 							<span class="col-md-2 mr-4"></span>
 							<span class="col-md-1">Time</span>
-							<input id="formTime" type="text"  class="form-control-custom mr-2" />
+							<input id="formTime" type="text"  class="form-control-custom mr-2" value="<?=date("H:i:s")?>" />
 							<label>HH:MM:SS(<span>24-Hour</span>)</label>
 						</div>
 					</div> 
@@ -144,33 +144,155 @@ $now = date("Y/m/d H:i:s");
 </body>
 <?=$footer?>
 <script>
-$("button").on("click", function () {
-	console.log(this);
-	if (this.id == "modalApply") {
-		console.log($("#formUserName").val());
-	}
+function updateDatetimeConfig() {
+	var url = "/uapi-cgi/param.cgi";
+	var params = {
+		"action":"update",
+		"system.datetime.tz.name": $('#formTzName').val(),
+		"system.datetime.date.format": $('#formDateFormat').val(),
+		"system.datetime.syncsource": $('#formSyncSource').prop("checked") ? "ntp" :"rtc",
+		"system.datetime.time.format": $('#formTimehour').prop("checked") ? "24hmnss": "12hmss",
+	};
+	console.log(params);
+	$.ajax({
+        url : url,
+        type : 'GET',
+        async: true,
+        data :  params,
+        dataType : "text", // output format
+        timeout: 10000,    
+        contentType:"application/text",        
+    //     // beforeSend:function(){
+    //     //     $('.wrap-loading').removeClass('display-none');
+    //     // },
+    //     // complete:function(){
+    //     //     $('.wrap-loading').addClass('display-none');
+    //     // },
+        success : function(data){
+			console.log(data);
+        },
+        error : function(request,status,error){
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            var err=JSON.parse(request.responseText);
+            console.log(err.resData[0].errorMsg);
+        },
+        fail : function() {
+            alert("check internet connection");
+        }
+    });	
+
+}
+$("#btnApply").on("click", function () {
+	updateDatetimeConfig();
 });
 
-function loadDatetimeConfig() {
-url = "/uapi-cgi/param.cgi?action=list&format=json&group=system.datetime";
+$("#btnSet").on("click", function () {
+	var cmd;
+	var now;
+	if($('#formSyncMethod0').prop("checked")){
+		// set time via pc
+		now = $('#machineTime').html();
+		cmd = '/bin/date -s "' + now + '"';
+		console.log(cmd);
+	}
+	else if($('#formSyncMethod1').prop("checked")){ 
+		now = "";
+		cmd = "/usr/bin/ntpdate  time.windows.com >/dev/null 2>&1 &";
+		// set time via ntp
+	}
+	else if($('#formSyncMethod2').prop("checked")){
+		now = $('#formDate').val() +" "+ $('#formTime').val()
+		cmd = '/bin/date -s "' + now + '"';
+	}
+	url = "/uapi-cgi/param.cgi?action=syscmd&script="+cmd;
 	console.log(url);
+	$.ajax({
+        url : url,
+        type : 'GET',
+        async: true,
+        data :  {},
+        dataType : "text", // output format
+        timeout: 10000,    
+        contentType:"application/text",        
+        success : function(data){
+			console.log(data);
+        },
+        error : function(request,status,error){
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            var err=JSON.parse(request.responseText);
+            console.log(err.resData[0].errorMsg);
+        },
+        fail : function() {
+            alert("check internet connection");
+        }
+    });		
+
+});
+
+// $("button").on("click", function () {
+// 	console.log(this);
+// 	if (this.id == "btnApply"){
+// 		url = "/uapi-cgi/param.cgi?action=update&group=system.datetime";
+// 		console.log(url);
+// 	}
+// 	else if (this.id == "modalApply") {
+// 		console.log($("#formUserName").val());
+// 	}
+// });
+
+function loadDatetimeConfig() {
+	url = "/uapi-cgi/param.cgi?action=list&format=json&group=system.datetime";
+	// console.log(url);
 	$.getJSON(url, function(response) {
-		console.log(response);
+		// console.log(response);
 		$('#formTzName').val(response.system.datetime.tz.name);
 		if(response.system.datetime.syncsource=='ntp') {
 			$('#formSyncSource').prop("checked", true);
 		}
 		$('#formDateFormat').val(response.system.datetime.date.format);
+		if(response.system.datetime.time.format=='24hmnss'){
+			$('#formTimehour').prop("checked", true);
+		}
 	});
+
 }
 loadDatetimeConfig();
+
+function getDeviceDatetime(){
+	url = "/uapi-cgi/status.cgi?item=datetime";
+    $.getJSON(url, function(response) {
+		// console.log(response);
+		$('#server_clock').html(response['datetime']);
+	});
+}
+
+function getComputerDatetime(){
+	var now = new Date();
+	datestring = now.getFullYear() +
+		'-' + ( (now.getMonth()+1) < 9 ? "0" + (now.getMonth()+1) : (now.getMonth()+1) )+
+		'-' + ( (now.getDate()) < 9 ? "0" + (now.getDate()) : (now.getDate()) ) + 
+		' ' + ( (now.getHours()) < 9 ? "0" + (now.getHours()) : (now.getHours()) ) + 
+		':' + ( (now.getMinutes()) < 9 ? "0" + (now.getMinutes()) : (now.getMinutes()) ) + 
+		':' + ( (now.getSeconds()) < 9 ? "0" + (now.getSeconds()) : (now.getSeconds()) );
+
+
+	// console.log(now);
+	$('#machineTime').html(datestring);
+}
+setInterval(() => {
+	getDeviceDatetime();
+	getComputerDatetime();
+}, 1000);
+
+
 // $("#basic").addClass("show");
 // $("#datetime").addClass("active");
 </script>
 </html>
 <!--
 Time zone 설정
-/root/data/setting/zoneinfo 의 파일을 /etc/localtime으로 복사
+/home/setting/zoneinfo 의 파일을 /etc/localtime으로 복사
+/etc/timezone 파일 갱신
 
 
 -->

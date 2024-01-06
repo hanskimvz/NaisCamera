@@ -1,135 +1,135 @@
  {
-        "nbrofchannel": "1",
-        "ch0": {
-            "name": "SC6102HD-6311",
-            "adjust": {
-                "ntsc": {
-                    "hdelay": "15",
-                    "vdelay": "18"
-                },
-                "pal": {
-                    "hdelay": "10",
-                    "vdelay": "24"
-                }
+    "nbrofchannel": "1",
+    "ch0": {
+        "name": "SC6102HD-6311",
+        "adjust": {
+            "ntsc": {
+                "hdelay": "15",
+                "vdelay": "18"
             },
-            "cmos": {
-                "ratio": "16:9"
-            },
-            "color": {
-                "brightness": "128",
-                "contrast": "128",
-                "saturation": "128",
-                "sharpness": "128"
-            },
-            "deinterlace": {
-                "enable": "yes"
-            },
-            "focus": {
-                "mode": "semiauto",
-                "syncwithdaynight": "no"
-            },
-            "image": {
-                "mirror": "none"
-            },
-            "isp": {
-                "noisefilter": "3",
-                "defog": {
-                    "enable": "no",
-                    "mode": "manual",
-                    "manual": {
-                        "level": "low"
-                    }
-                },
-                "exposure": {
-                    "compensation": "128",
-                    "dss": "16x",
-                    "fixedshutter": "30",
-                    "irlevel": "128",
-                    "irmode": "off",
-                    "maxagc": "50",
-                    "maxshutter": "30",
-                    "minshutter": "2000",
-                    "mode": "normal"
-                },
-                "whitebalance": {
-                    "manualbluegain": "128",
-                    "manualredgain": "128",
-                    "mode": "atw1"
-                }
-            },
-            "light": {
-                "backlight": {
-                    "enable": "yes",
-                    "level": "off",
-                    "zone": "left"
-                },
-                "daynight": {
-                    "dtnlevel": "1",
-                    "mode": "day",
-                    "ntdlevel": "3",
-                    "sensor": {
-                        "enable": "no"
-                    }
-                }
-            },
-            "rotate": {
-                "direction": "none"
-            },
-            "tim": {
-                "agcspeed": "255",
-                "version": "",
-                "colorization": {
-                    "mode": "whitehot",
-                    "polarity": "positive"
-                },
-                "gaincontrol": {
-                    "mode": "auto",
-                    "ice": {
-                        "level": "2"
-                    },
-                    "manual": {
-                        "gain": "1024",
-                        "offset": "1024"
-                    }
-                },
-                "metadata": {
-                    "enable": "no"
-                },
-                "noisereduction": {
-                    "enable": "no"
-                },
-                "nuc": {
-                    "interval": "5"
-                }
-            },
-            "tof": {
-                "multicam": {
-                    "enable": "no",
-                    "id": "0",
-                    "maxnum": "3"
-                }
-            },
-            "vs": {
-                "bordertype": "dynamic",
-                "enable": "yes",
-                "snapshot": "no",
-                "st0": "no",
-                "st1": "no"
-            },
-            "wdr": {
-                "enable": "yes",
-                "level": "7",
-                "mode": "manual"
+            "pal": {
+                "hdelay": "10",
+                "vdelay": "24"
             }
         },
-        "out": {
-            "nbrofchannel": "1",
-            "ch0": {
-                "mode": "loop",
-                "bnc": {
-                    "enable": "no",
-                    "standard": "pal"
+        "cmos": {
+            "ratio": "16:9"
+        },
+        "color": {
+            "brightness": "128",
+            "contrast": "128",
+            "saturation": "128",
+            "sharpness": "128"
+        },
+        "deinterlace": {
+            "enable": "yes"
+        },
+        "focus": {
+            "mode": "semiauto",
+            "syncwithdaynight": "no"
+        },
+        "image": {
+            "mirror": "none"
+        },
+        "isp": {
+            "noisefilter": "3",
+            "defog": {
+                "enable": "no",
+                "mode": "manual",
+                "manual": {
+                    "level": "low"
                 }
+            },
+            "exposure": {
+                "compensation": "128",
+                "dss": "16x",
+                "fixedshutter": "30",
+                "irlevel": "128",
+                "irmode": "off",
+                "maxagc": "50",
+                "maxshutter": "30",
+                "minshutter": "2000",
+                "mode": "normal"
+            },
+            "whitebalance": {
+                "manualbluegain": "128",
+                "manualredgain": "128",
+                "mode": "atw1"
+            }
+        },
+        "light": {
+            "backlight": {
+                "enable": "yes",
+                "level": "off",
+                "zone": "left"
+            },
+            "daynight": {
+                "dtnlevel": "1",
+                "mode": "day",
+                "ntdlevel": "3",
+                "sensor": {
+                    "enable": "no"
+                }
+            }
+        },
+        "rotate": {
+            "direction": "none"
+        },
+        "tim": {
+            "agcspeed": "255",
+            "version": "",
+            "colorization": {
+                "mode": "whitehot",
+                "polarity": "positive"
+            },
+            "gaincontrol": {
+                "mode": "auto",
+                "ice": {
+                    "level": "2"
+                },
+                "manual": {
+                    "gain": "1024",
+                    "offset": "1024"
+                }
+            },
+            "metadata": {
+                "enable": "no"
+            },
+            "noisereduction": {
+                "enable": "no"
+            },
+            "nuc": {
+                "interval": "5"
+            }
+        },
+        "tof": {
+            "multicam": {
+                "enable": "no",
+                "id": "0",
+                "maxnum": "3"
+            }
+        },
+        "vs": {
+            "bordertype": "dynamic",
+            "enable": "yes",
+            "snapshot": "no",
+            "st0": "no",
+            "st1": "no"
+        },
+        "wdr": {
+            "enable": "yes",
+            "level": "7",
+            "mode": "manual"
+        }
+    },
+    "out": {
+        "nbrofchannel": "1",
+        "ch0": {
+            "mode": "loop",
+            "bnc": {
+                "enable": "no",
+                "standard": "pal"
             }
         }
     }
+}

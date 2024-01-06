@@ -118,11 +118,11 @@ $("select").on("click", function () {
 
 function loadUSERConfig(){
 	user_level = ['Administrator', 'Operator', 'Viewer'];
-	url = "/uapi-cgi/param.cgi?action=list&group=user.member&format=json";
-	console.log(url);
+	url = "/uapi-cgi/users.cgi?action=list&group=user&format=json";
+	// console.log(url);
 	$.getJSON(url, function(response) {
 		// console.log(response);
-		var member =response.user.member;
+		var member =response.member;
 		$("#formUserList").empty();
 		member.forEach(function(item){
 			var opt_str = item.username;

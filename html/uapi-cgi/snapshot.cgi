@@ -6,9 +6,6 @@ $systemid = 0x000f6085; // System ID for the shared memory segment
 $shmid = shmop_open($systemid, "a", 0, 0); 
 $offset = 524288;
 
-
-
-
 // read_data[4:5] frame_cnt
 // read_data[6:7] timestamp_microsecond
 // read_data[8:11] timestamp_second
